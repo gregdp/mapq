@@ -1,1 +1,3 @@
 # mapq
+
+Calculates Q-scores
