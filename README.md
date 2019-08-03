@@ -5,7 +5,7 @@ Calculates Q-scores
 To Install:
 
 1. First, <a href="https://www.cgl.ucsf.edu/chimera/download.html">download</a> and install UCSF Chimera. (Run it once before installing the plugin; you may see a warning message on first run which you have to accept. This may prevent further issues after adding the plugin.)
-2. <a href="https://github.com/gregdp/modelz/tree/master/download">Download</a> latest version of MapQ.
+2. <a href="https://github.com/gregdp/mapq/tree/master/download">Download</a> latest version of MapQ.
 3. In a terminal, navigate to where the file was downloaded, then execute the following commands:
 * unzip mapq_chimera_1_2.zip
 * cd mapq_chimera_1_2
