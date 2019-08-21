@@ -25,4 +25,4 @@ To Run:
 
 \* On Mac OS, an error message may be shown on first run after installing, see [here](https://www.santoshsrinivas.com/disable-gatekeeper-in-macos-sierra/) for solution.
 
-UCSF Chimera runs on MacOS, Linux and Windows.
+UCSF Chimera runs on MacOS, Linux and Windows. The above install should take about 5 minutes. For a tutorial, please see the "tutorials" folder.
