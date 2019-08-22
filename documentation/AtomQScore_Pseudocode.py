@@ -32,10 +32,10 @@ def GetReferenceGaussianParams (map) :
 
 def GetRadialPoints ( atom, mol, R, N ) :
 
-
-	# get N points evently distributed around a sphere with radius R
+	# get ~N points evently distributed around a sphere with radius R
     # all points should be closest to the atom and not another atom in mol
-    # hence this might take a few tries
+    # hence this might take a few tries since some points distributed on a
+    # sphere will have to be thrown away
 
 	# Input
         # atom : atom
@@ -48,23 +48,28 @@ def GetRadialPoints ( atom, mol, R, N ) :
 	# Output
     	# atomQ : Q-score for the atom
 
-    spherePoints = None
+    rPoints = None
 
     for tryN = 0 to 99 # give up after 100 tries and keep possibly fewer than N points
 
-        spherePoints = []
-    	rPoints = SpherePoints ( atom.position, R, N + tryN )
+        rPoints = []
 
-        for rPoint in rPoints:
-    		if rPoint is closer to another atom in mol than to atom
-    			pass
+        # this function returns (N + tryN) points evenly distributed on a
+        # sphere of radius R centered at the atom's position
+    	spherePoints = SpherePoints ( atom.position, R, N + tryN )
+
+        for P in spherePoints:
+    		if P is closer to another atom in mol than to atom
+                # ignore this point
+                pass
     		else
-    			spherePoints.append ( rPoint )
+                # use this point
+    			rPoints.append ( rPoint )
 
-        if len(spherePoints) >= N :
+        if len(rPoints) >= N :
             break
 
-    return spherePoints
+    return rPoints
 
 
 
