@@ -25,4 +25,4 @@ To Run:
 
 \* On Mac OS, an error message may be shown on first run after installing, see [here](https://www.santoshsrinivas.com/disable-gatekeeper-in-macos-sierra/) for solution.
 
-UCSF Chimera runs on MacOS, Linux and Windows. The above install should take about 5 minutes. For a tutorial, please see the "tutorials" folder.
+UCSF Chimera runs on MacOS, Linux and Windows. To install Chimera it should take ~10 minutes, and MapQ another ~5 minutes. For a tutorial on MapQ, please see the "tutorials" folder.
