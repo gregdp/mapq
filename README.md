@@ -21,7 +21,8 @@ Note that on Windows, you may use the python bundled with Chimera itself, so the
 To Run:
 1. (Re)start Chimera*
 2. Start MapQ: Tools -> Volume Data -> MapQ
-3. See [more details and tutorials](https://cryoem.slac.stanford.edu/ncmi/resources/software/modelz)
+3. See [tutorial](https://github.com/gregdp/mapq/tree/master/tutorials)
+3. More details [here](https://cryoem.slac.stanford.edu/ncmi/resources/software/modelz)
 
 \* On Mac OS, an error message may be shown on first run after installing, see [here](https://www.santoshsrinivas.com/disable-gatekeeper-in-macos-sierra/) for solution.
 
