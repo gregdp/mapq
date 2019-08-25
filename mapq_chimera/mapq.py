@@ -62,13 +62,13 @@ devMenu = False
 isModelZ = False
 
 dlgName = "mapqdlg"
-dlgTitle = "MapQ (v1.2)"
+dlgTitle = "MapQ (v1.3)"
 dlgHelp = 'https://cryoem.slac.stanford.edu/ncmi/resources/software/mapq'
 
 if isModelZ :
     devMenu = False
     dlgName = "modelzdlg"
-    dlgTitle = "ModelZ (v1.2)"
+    dlgTitle = "ModelZ (v1.3)"
     dlgHelp = 'https://cryoem.slac.stanford.edu/ncmi/resources/software/modelz'
 
 
@@ -1104,7 +1104,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 print " - %s %d.%s, keeping %s score %.2f" % (r.type, r.id.position, r.id.chainId, keepAlt, maxScore)
 
                 for at in r.atoms :
-                    if at.isSC :
+                    if len(at.altLoc) > 0 :
                         if at.altLoc == keepAlt :
                             at.altLoc = ''
                         else :
@@ -1996,7 +1996,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         if len ( ress ) == 0 :
             umsg ( "No molecule/chain selected?" )
-            return
+            #return
 
 
         ok = True
@@ -2037,6 +2037,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         CalcQ (self.cur_mol, self.chain.get(), self.cur_dmap, allAtTree=allAtTree, log=True )
 
+        self.SaveQ ( self.cur_mol, self.chain.get(), self.cur_dmap )
+
 
         self.scores, self.scores2 = [], []
         scBB, scSC = [], []
@@ -2060,18 +2062,24 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #scRes = (self.avgScore2 - 3.507) / -0.721
         #bbRes = (self.avgScore - 6.1234) / -0.9191
 
-        scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
-        bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
+
+        try :
+            scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
+            bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
 
 
-        print "Average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
-        print "Average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
+            print "Average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
+            print "Average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
 
 
-        self.minSCscore, self.maxSCscore = 0.0,1
-        self.minBBscore, self.maxBBscore = 0.0,1
+            self.minSCscore, self.maxSCscore = 0.0,1
+            self.minBBscore, self.maxBBscore = 0.0,1
 
-        self.UpdateSeq ()
+            self.UpdateSeq ()
+
+        except :
+            pass
+
 
 
 
@@ -2211,7 +2219,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             if line[0:4] == "ATOM" or line[0:6] == "HETATM" :
                 aname, aloc, cid, resi, occ, bfac = line[12:16].strip(), line[16:17].strip(), line[21], int(line[22:26]), float ( line[54:60] ), float ( line[60:66] )
 
-                #if bfactor < 1.0 :
+                #if occ < 1.0 :
                 rid = "%d.%s" % (resi,cid)
 
                 if rid in rids :
@@ -2225,7 +2233,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         found = False
                         for at in ats :
                             if at.altLoc == aloc :
-                                at.bfactor = at.Q = bfac
+                                at.occupancy = at.Q = occ
                                 if halfMap1 : at.Q1 = at.Q
                                 if halfMap2 : at.Q2 = at.Q
                                 found = True
@@ -2246,21 +2254,197 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         QStats1 (self.cur_mol, chainId)
 
 
-        if 0 :
-
-            RES = 4.1
-            EQ = -0.1502 * RES + 1.0123 # rna
-            #EQ = -0.1487 * RES + 0.959 # protein
+        if 1 :
+            self.SaveQ ( self.cur_mol, chainId, self.cur_dmap )
 
 
-            cres = {}
-            for r in self.cur_mol.residues :
-                try :
-                    cres[r.id.chainId].append ( [r.id.position, r] )
-                except :
-                    cres[r.id.chainId] = [ [r.id.position, r] ]
 
-            for cid in cres.keys () :
+        self.scores, self.scores2 = [], []
+        scBB, scSC = [], []
+
+        doRess = []
+        for r in self.cur_mol.residues :
+            if r.id.chainId == chainId :
+                doRess.append ( r )
+
+        print "Q for %d res..." % ( len(doRess) )
+        for r in doRess :
+
+            CalcResQ (r, None, None, useOld=True )
+
+            if r.isProt or r.isNA :
+                self.scores2.append ( r.bbQ )
+                self.scores.append ( r.scQ )
+                if r.bbQ != None : scBB.append ( r.bbQ )
+                if r.scQ != None : scSC.append ( r.scQ )
+            else :
+                self.scores2.append ( r.Q )
+                self.scores.append ( r.Q )
+
+
+        if len (scSC) > 0 :
+            scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
+            bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
+
+            print " - average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
+            print " - average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
+            print ""
+
+            self.minSCscore, self.maxSCscore = 0.0,1
+            self.minBBscore, self.maxBBscore = 0.0,1
+
+            self.UpdateSeq ()
+
+        self.QStats ()
+
+
+
+
+
+    def SaveQ ( self, mol, chainId, dmap ) :
+
+
+        RES = 3.0
+        avgQrna = -0.1574 * RES + 1.0673 # rna
+        avgQprot = -0.1794 * RES + 1.1244 # protein
+
+
+        cres = {}
+        for r in mol.residues :
+            try :
+                cres[r.id.chainId].append ( [r.id.position, r] )
+            except :
+                cres[r.id.chainId] = [ [r.id.position, r] ]
+
+
+        molPath = os.path.splitext(mol.openedAs[0])[0]
+        mapName = os.path.splitext(dmap.name)[0]
+        nname = molPath + "__Q__" + mapName + ".txt"
+        #nname = molPath + "__Q__" + mapName + "_" + cid + ".txt"
+        fp = open (nname, "w")
+
+
+        print " - save Qs for %s" % (mol.name), chainId
+
+        for cid in cres.keys () :
+
+            if cid == chainId or chainId == "All" :
+
+                fp.write ( "Chain %s\t\t\t\t\t\t\t\tAverage over 1 residue\t\t\t\t\tAverage over 2 residues\t\t\t\t\tAverage over 3 residues\t\t\t\t\tAverage over 5 residues\n\n" % cid )
+
+                fp.write ( "Chain\tRes\tRes #\tQ_backBone\tQ_sideChain\tQ_residue\tAvgQ@%.2f\t\t" % RES )
+                fp.write ( "Q_backBone(avg-1)\tQ_sideChain(avg-1)\tQ_residue(avg-1)\tAvgQ@%.2f\t\t" % RES )
+                fp.write ( "Q_backBone(avg-2)\tQ_sideChain(avg-2)\tQ_residue(avg-2)\tAvgQ@%.2f\t\t" % RES )
+                fp.write ( "Q_backBone(avg-3)\tQ_sideChain(avg-3)\tQ_residue(avg-3)\tAvgQ@%.2f\t\t" % RES )
+                fp.write ( "Q_backBone(avg-5)\tQ_sideChain(avg-5)\tQ_residue(avg-5)\tAvgQ@%.2f\t\n" % RES )
+
+                #cid = 'A'
+                rs = cres[cid]
+
+                print " - cid: %s - " % (cid)
+
+                rs.sort()
+                #for i in range (10) :
+                #    print rs[i]
+
+                ress = []
+                Qs, AV, CC = [], [], []
+                for ri, r in rs :
+
+                    #if not r.isProt and not r.isNA :
+                    #    print " - cid: %s - r %d - not prot or RNA" % (cid, r.id.position)
+                    #    continue
+
+                    ress.append (r)
+
+                    r.Q = numpy.average ( [at.Q for at in r.atoms] )
+
+                    r.qBB, r.qSC = 0, 0
+                    if len(r.bbAtoms) > 0 :
+                        r.qBB = numpy.average ( [at.Q for at in r.bbAtoms] )
+                    if len(r.scAtoms) > 0 :
+                        r.qSC = numpy.average ( [at.Q for at in r.scAtoms] )
+                    Qs.append ( [r.qBB, r.qSC, r.Q] )
+
+                    if 0 :
+                        ad = avgdAts ( r.atoms, self.cur_dmap )
+                        aSC, aBB = 0, 0
+                        if len(r.scAtoms) > 0 :
+                            aSC = avgdAts ( r.scAtoms, self.cur_dmap )
+                        if len(r.bbAtoms) > 0 :
+                            aBB = avgdAts ( r.bbAtoms, self.cur_dmap )
+                        AV.append ( [ad, aBB, aSC] )
+
+                    if 0 :
+                        cc, ccm = ccAts ( r.atoms, self.cur_dmap, RES )
+                        ccSC, ccmSC = ccAts ( r.scAtoms, self.cur_dmap, RES )
+                        ccBB, ccmBB = ccAts ( r.bbAtoms, self.cur_dmap, RES )
+                        CC.append ( [cc, ccBB, ccSC] )
+                        #CC.append ( [ccm, ccmBB, ccmSugar, ccmBase] )
+
+
+
+                def N ( A, i, ind, N ) :
+                    #for i, a in enumerate ( A ) :
+                    sum, n = 0, 0
+                    for j in range ( i-N, i+N+1 ) :
+                        if j >= 0 and j < len(A) :
+                            sum += A[j][ind]
+                            n += 1.0
+                    return sum/n
+
+
+
+                for i, r in enumerate ( ress ) :
+                    if r.isNA :
+                        fp.write ( "%s\t%s\t%d\t%f\t%f\t%f\t%f\t\t" % (r.id.chainId, r.type, r.id.position, r.qBB, r.qSC, r.Q, avgQrna ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,1), N(Qs,i,1,1), N(Qs,i,2,1), avgQrna ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,2), N(Qs,i,1,2), N(Qs,i,2,2), avgQrna ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,3), N(Qs,i,1,3), N(Qs,i,2,3), avgQrna ) )
+                        fp.write ( "%f\t%f\t%f\t%f\n" % (N(Qs,i,0,5), N(Qs,i,1,5), N(Qs,i,2,5), avgQrna ) )
+                    elif r.isProt :
+                        fp.write ( "%s\t%s\t%d\t%f\t%f\t%f\t%f\t\t" % (r.id.chainId, r.type, r.id.position, r.qBB, r.qSC, r.Q, avgQprot ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,1), N(Qs,i,1,1), N(Qs,i,2,1), avgQprot ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,2), N(Qs,i,1,2), N(Qs,i,2,2), avgQprot ) )
+                        fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,3), N(Qs,i,1,3), N(Qs,i,2,3), avgQprot ) )
+                        fp.write ( "%f\t%f\t%f\t%f\n" % (N(Qs,i,0,5), N(Qs,i,1,5), N(Qs,i,2,5), avgQprot ) )
+                    else :
+                        fp.write ( "%s\t%s\t%d\t\t\t%f\t%f\t\t" % (r.id.chainId, r.type, r.id.position, r.Q, avgQprot ) )
+                        fp.write ( "\t\t%f\t%f\t\t" % (N(Qs,i,2,1), avgQprot ) )
+                        fp.write ( "\t\t%f\t%f\t\t" % (N(Qs,i,2,2), avgQprot ) )
+                        fp.write ( "\t\t%f\t%f\t\t" % (N(Qs,i,2,3), avgQprot ) )
+                        fp.write ( "\t\t%f\t%f\n" % (N(Qs,i,2,5), avgQprot ) )
+
+
+                fp.write ( "\n\n" )
+
+
+        fp.close()
+
+
+
+
+
+
+
+    def SaveQ_ ( self, mol, chainId, dmap ) :
+
+
+        RES = 4.1
+        EQ = -0.1502 * RES + 1.0123 # rna
+        #EQ = -0.1487 * RES + 0.959 # protein
+
+
+        cres = {}
+        for r in mol.residues :
+            try :
+                cres[r.id.chainId].append ( [r.id.position, r] )
+            except :
+                cres[r.id.chainId] = [ [r.id.position, r] ]
+
+        for cid in cres.keys () :
+
+            if cid == chainId or chainId == None :
 
                 #cid = 'A'
                 rs = cres[cid]
@@ -2382,46 +2566,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         pass
 
                 fp.close()
-
-
-
-        self.scores, self.scores2 = [], []
-        scBB, scSC = [], []
-
-        doRess = []
-        for r in self.cur_mol.residues :
-            if r.id.chainId == chainId :
-                doRess.append ( r )
-
-        print "Q for %d res..." % ( len(doRess) )
-        for r in doRess :
-
-            CalcResQ (r, None, None, useOld=True )
-
-            if r.isProt or r.isNA :
-                self.scores2.append ( r.bbQ )
-                self.scores.append ( r.scQ )
-                if r.bbQ != None : scBB.append ( r.bbQ )
-                if r.scQ != None : scSC.append ( r.scQ )
-            else :
-                self.scores2.append ( r.Q )
-                self.scores.append ( r.Q )
-
-
-        if len (scSC) > 0 :
-            scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
-            bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
-
-            print " - average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
-            print " - average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
-            print ""
-
-            self.minSCscore, self.maxSCscore = 0.0,1
-            self.minBBscore, self.maxBBscore = 0.0,1
-
-            self.UpdateSeq ()
-
-        self.QStats ()
 
 
 
@@ -4163,6 +4307,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         avg = 0.0
 
+        import traceback
+
+
         try :
 
             for ai, at in enumerate ( atoms ) :
@@ -4170,7 +4317,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 cc, ccm = RadCC ( [at], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
 
                 at.Q = ccm
-                at.bfactor = ccm
+                at.occupancy = ccm
                 avg += ccm
 
                 end = time.time()
@@ -4197,6 +4344,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         except Exception, err:
             umsg ( "Something went wrong..." )
             print Exception, err
+            traceback.print_exc()
             return
 
 
@@ -4561,7 +4709,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
     def HohE ( self ) :
 
-        print "hoh"
+        print "hoh - figure in Q-scores paper"
 
         mol = self.cur_mol
         if self.cur_mol == None :
@@ -4583,9 +4731,11 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     for at in res.atoms :
                         at.display = False
 
-    def HohD ( self ) :
 
-        print "hoh-D"
+
+    def HohD_ ( self ) :
+
+        print "hoh-D - distances between HOH atoms using same residue numbers"
 
         mols = []
         for m in chimera.openModels.list() :
@@ -4642,11 +4792,83 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         print "%.0f atoms, min: %2f, max: %.2f, avg: %.2f, rmsd: %.2f -- %d same" % (N, min(ds), max(ds), numpy.average(ds), rmsd, nsame)
 
 
+    def HohD ( self ) :
+
+        print "hoh-D - distances between HOH atoms - nearest search"
+
+        mols = []
+        for m in chimera.openModels.list() :
+            if m.display == True and type(m) == chimera.Molecule :
+                mols.append ( m )
+
+        m1, m2 = mols
+
+        print "M1: %s" % m1.name
+        print "M2: %s" % m2.name
+
+
+        ats = [at for at in m1.atoms if at.residue.type == "HOH"]
+        points = _multiscale.get_atom_coordinates ( ats, transformed = False )
+        print " - search tree: %d HOH atoms / %d ats" % ( len(ats), len(m1.atoms) )
+        atTree = AdaptiveTree ( points.tolist(), ats, 2.0)
+
+
+        Ds = {}
+
+        def addD ( t, d ) :
+            if not t in Ds :
+                Ds[t] = numpy.zeros ( 16 )
+            i = int ( numpy.round(d*5.0) )
+            if i < 31 :
+                Ds[t][i] += 1
+
+        for at2 in m2.atoms :
+            if at2.residue.type == "HOH" :
+
+                nearAts = self.AtsWithin ( [at2], 3.0, atTree )
+                for nat in nearAts :
+                    d = (nat.coord() - at2.coord()).length
+                    addD ( "-", d )
+
+
+        print ""
+        print "Distances:"
+
+        s = ""
+        for i in range ( 16 ) :
+            s = s + "\t%.2f" % (i/5.0)
+        print s
+
+        for t, dists in Ds.iteritems () :
+            s = t
+            for n in dists :
+                s = s + "\t%d" % n
+            print s
+
+
+
 
 
     def Hoh ( self ) :
 
         print "hoh"
+
+
+        for m in chimera.openModels.list() :
+            if type(m) == chimera.Molecule :
+                SetBBAts ( m )
+                num={}
+                for r in m.residues :
+                    if r.isProt or r.isNA :
+                        continue
+                    if r.type in num :
+                        num[r.type] += 1
+                    else :
+                        num[r.type] = 1
+                print m.name
+                for t, n in num.iteritems() :
+                    print " - ", t, n
+
 
         mol = self.cur_mol
         if self.cur_mol == None :
@@ -4717,7 +4939,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 addQ ( 'HOH', at.Q )
 
                 if at.Q < 0.8 :
-                    #deletAts[at] = 1
+                    deletAts[at] = 1
                     continue
                     pass
 
@@ -4770,8 +4992,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
                 addQ ( 'MG', at.Q )
 
-                #if at.Q < 0.7 :
-                #    continue
+                if at.Q < 0.8 :
+                    deletAts[at] = 1
+                    continue
 
                 nearAts = self.AtsWithin ( [at], 6.0, atTree )
                 for nat in nearAts :
@@ -4799,6 +5022,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         else :
                             addD ( "MG-%s" % nat.element.name.upper(), d )
 
+
         print " - deleting %d ats" % len(deletAts.keys())
         for at in deletAts.keys() :
             if len(at.residue.atoms) == 1 :
@@ -4815,8 +5039,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         for l, ds in [ ["Mg-HOH", Mg_Hoh], ["Mg-O", Mg_O], ["Mg-N", Mg_N] ] :
             print "%s\t%f\t%f" % (l, numpy.average(ds), numpy.std(ds))
-
-
 
 
         print " - tot HOH/MG: %d" % (totAt)
@@ -5375,24 +5597,37 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         regi = 0
         for numRegPts, reg in n_regs :
 
-            ctr = reg.center_of_points()
-            #rrad = reg.region_radius()
 
+            ctr = None
+            if 0 :
+                ctr = reg.center_of_points()
+            elif 1 :
+                ctr, maxD = None, -1e9
+                rpts = reg.map_points()
+                map_values = segMap.interpolated_values ( rpts, segMap.openState.xform )
+                #print map_values
+                #break
+                for pt, val in zip(rpts, map_values) :
+                    if val > maxD or ctr == None :
+                        ctr = pt
+                        maxD = val
+            else :
+                rpts = reg.map_points()
+                #rpts = reg.points()
+                map_values = segMap.interpolated_values ( rpts, segMap.openState.xform )
+                #print map_values
+                #break
+                ctr, sum = numpy.array ( [0,0,0] ), 0.0
+                for pt, val in zip(rpts, map_values) :
+                    ctr += pt * val
+                    sum += val
+                ctr = ctr / sum
+
+
+
+            #rrad = reg.region_radius()
             cpt = chimera.Point(ctr[0],ctr[1],ctr[2])
 
-            nearAts = self.AtsWithinPt ( ctr, 5.0, atTree )
-
-            clash = False
-            # check clashes with other atoms
-            for dist, at in nearAts :
-                if at.element.name == "H" or at.residue.type == "HOH" :
-                    continue
-                if dist < 2.0 :
-                    clash = True
-                    break
-
-            if clash :
-                continue
 
             # check already added waters?
             if 0 :
@@ -5405,62 +5640,89 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if clash :
                     continue
 
-            nearRes = {}
-            doChains = {"A":1,"C":1,"D":1,"L":1,"K":1}
-            for dist, at in nearAts :
-                if at.residue.id.chainId in doChains :
-                    nearRes[at.residue] = 1
+            # check non-solvent atoms
+            if 0 :
+                nearAts = self.AtsWithinPt ( ctr, 5.0, atTree )
 
-            dists = []
+                clash = False
+                # check clashes with other atoms
+                for dist, at in nearAts :
+                    if at.element.name == "H" or at.residue.type == "HOH" :
+                        continue
+                    if dist < 2.0 :
+                        clash = True
+                        break
 
-            #doRes = {"ASP":1,"GLU":1,"SER":1,"ASN":1,"GLN":1,"THR":1,"TYR":1,"ARG":1,"LYS":1}
-            doRes = {"ASP":1,"GLU":1,"SER":1,"ASN":1,"GLN":1,"THR":1}
-            for nres in nearRes.keys() :
-                if nres.type in doRes :
-                    for rota in self.Rotas ( nres ) :
-                        if rota.rotamerProb > 0.001 :
-                            for at in rota.atoms :
-                                if at.name == "O" or at.name == "N" :
-                                    continue
-                                if at.element.name == "O" or at.element.name == "N" :
-                                    d = (at.coord() - cpt).length
-                                    if abs(d-2.8) < 0.4 :
-                                        #AddAt ( d, at, nres, rota )
-                                        dists.append ( [abs(d-2.8), at, nres, rota] )
+                if clash :
+                    continue
+
+                # check rotamers :]
+                if 0 :
+                    if nearAts == None :
+                        nearAts = self.AtsWithinPt ( ctr, 5.0, atTree )
+                    nearRes = {}
+                    doChains = {"A":1,"C":1,"D":1,"L":1,"K":1}
+                    for dist, at in nearAts :
+                        if at.residue.id.chainId in doChains :
+                            nearRes[at.residue] = 1
+
+                    dists = []
+
+                    #doRes = {"ASP":1,"GLU":1,"SER":1,"ASN":1,"GLN":1,"THR":1,"TYR":1,"ARG":1,"LYS":1}
+                    doRes = {"ASP":1,"GLU":1,"SER":1,"ASN":1,"GLN":1,"THR":1}
+                    for nres in nearRes.keys() :
+                        if nres.type in doRes :
+                            for rota in self.Rotas ( nres ) :
+                                if rota.rotamerProb > 0.001 :
+                                    for at in rota.atoms :
+                                        if at.name == "O" or at.name == "N" :
+                                            continue
+                                        if at.element.name == "O" or at.element.name == "N" :
+                                            d = (at.coord() - cpt).length
+                                            if abs(d-2.8) < 0.4 :
+                                                #AddAt ( d, at, nres, rota )
+                                                dists.append ( [abs(d-2.8), at, nres, rota] )
 
 
-            for dist, at in nearAts :
-                #if abs(dist-2.8) < 0.4 and at.name == "O" :
-                if abs(dist-2.8) < 0.4 and (at.element.name == "O" or at.element.name == "N") :
-                    dists.append ( [abs(dist-2.8)-0.001, at, None, None] )
-                #elif dist > 2.0 and dist < 2.4 and at.element.name == "Mg" :
-                #    add = True
+                    for dist, at in nearAts :
+                        #if abs(dist-2.8) < 0.4 and at.name == "O" :
+                        if abs(dist-2.8) < 0.4 and (at.element.name == "O" or at.element.name == "N") :
+                            dists.append ( [abs(dist-2.8)-0.001, at, None, None] )
+                        #elif dist > 2.0 and dist < 2.4 and at.element.name == "Mg" :
+                        #    add = True
 
 
-            if len(dists) > 0 :
+                    if len(dists) > 0 :
 
-                dists.sort ( reverse=False, key=lambda x: x[0] )
+                        dists.sort ( reverse=False, key=lambda x: x[0] )
 
-                minD, at, res, rota = dists[0]
-                if rota != None :
-                    print " - res rota %d.%s %s" % (res.id.position, res.id.chainId, res.type)
-                    self.ApplyRota ( res, rota )
+                        minD, at, res, rota = dists[0]
+                        if rota != None :
+                            print " - res rota %d.%s %s" % (res.id.position, res.id.chainId, res.type)
+                            self.ApplyRota ( res, rota )
 
-                addPts.append ( [minD, reg, cpt] )
+                        addPts.append ( [minD, reg, cpt] )
 
-            if regi % 100 == 0 :
-                status ( "At region %d/%d - %d waters so far" % (regi+1, len(n_regs), len(addPts))  )
-                print ".",
+                    if regi % 100 == 0 :
+                        status ( "At region %d/%d - %d waters so far" % (regi+1, len(n_regs), len(addPts))  )
+                        print ".",
 
-            regi += 1
+                    regi += 1
+
+
+            else:
+                addPts.append ( [0, reg, cpt] )
 
 
 
         print " - adding %d waters" % len(addPts)
 
-        #nmol = chimera.Molecule()
-        #nmol.name = "Hoh"
-        nmol = mol
+        if 1 :
+            nmol = chimera.Molecule()
+            nmol.name = "Hoh"
+            chimera.openModels.add ( [nmol] )
+        else :
+            nmol = mol
 
         i = 1
         for minD, reg, pt in addPts :
@@ -5483,17 +5745,17 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             i += 1
 
 
-        status ( "Added %d/%d waters - done" % (i, len(addPts))  )
+        status ( "Added %d/%d waters - done" % (i-1, len(addPts))  )
 
-        molPath = os.path.splitext(mol.openedAs[0])[0]
-        #mapName = os.path.splitext(dmap.name)[0]
+        if 0 :
+            molPath = os.path.splitext(mol.openedAs[0])[0]
+            #mapName = os.path.splitext(dmap.name)[0]
 
-        nname = molPath + "_waters.pdb"
-        print "Saving pdb waters:", nname
-        chimera.PDBio().writePDBfile ( [mol], nname )
+            nname = molPath + "_waters.pdb"
+            print "Saving pdb waters:", nname
+            chimera.PDBio().writePDBfile ( [mol], nname )
 
-        print "."
-        #chimera.openModels.add ( [nmol] )
+            print "."
 
 
 
@@ -7284,7 +7546,7 @@ def CalcQ ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=False, log=False )
 
     ress = []
     for r in mol.residues :
-        if cid == None or r.id.chainId == cid :
+        if cid == None or cid == "All" or r.id.chainId == cid :
             for at in r.atoms :
                 if at.element.name == "H" :
                     continue
@@ -7292,8 +7554,13 @@ def CalcQ ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=False, log=False )
 
     print " - atoms to do: %d" % len(ress)
 
+    #for ai, at in enumerate ( atoms[0:2] ) :
+    #    cc, ccm = RadCC ( [at], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD )
+
+
     from chimera import tasks, CancelOperation
     task = tasks.Task('Calculating Q-scores', modal = True)
+
 
     try :
 
@@ -7302,7 +7569,7 @@ def CalcQ ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=False, log=False )
             cc, ccm = RadCC ( [at], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD )
 
             at.Q = ccm
-            at.bfactor = ccm
+            at.occupancy = ccm
 
             end = time.time()
             totSec = end - start
@@ -7490,7 +7757,7 @@ def QsFromFile ( mol, nname ) :
     for line in fin :
         if line[0:4] == "ATOM" or line[0:6] == "HETATM" :
             aname, aloc, cid, resi, occ, bfac = line[12:16].strip(), line[16:17].strip(), line[21], int(line[22:26]), float ( line[54:60] ), float ( line[60:66] )
-            #if bfactor < 1.0 :
+            #if occ < 1.0 :
             rid = "%s.%s" % (resi,cid)
             if rid in rids :
                 r = rids[rid]
@@ -7500,7 +7767,7 @@ def QsFromFile ( mol, nname ) :
                     found = False
                     for at in ats :
                         if at.altLoc == aloc :
-                            at.bfactor = at.Q = bfac
+                            at.occupancy = at.Q = occ
                             found = True
                     if not found :
                         #print " -xx- %s.%s - atom %s - loc %s" % (resi, cid, aname, aloc)
@@ -7548,7 +7815,7 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
     ress = []
     atoms = []
     for r in mol.residues :
-        if cid == None or r.id.chainId == cid :
+        if cid == None or cid == "All" or r.id.chainId == cid :
             #if r.isNA :
             ress.append ( r )
             for at in r.atoms :
@@ -7659,7 +7926,7 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
             #at = r.atomsMap[atName][0]
             at.Q = float(ccm)
             at.CC = float(cc)
-            at.bfactor = at.Q
+            at.occupancy = at.Q
 
         #print " - removing..."
         os.remove ( mapBase + "_%d_out.txt" % mi )
@@ -7703,8 +7970,8 @@ def QStats1 ( mol, chainId ) :
     doRess = []
 
     for r in mol.residues :
-        if r.id.chainId == chainId or chainId == None :
-            doRess.append ( r )
+        #if r.id.chainId == chainId or chainId == None :
+        doRess.append ( r )
 
     print ""
     print "Q for %d res..." % ( len(doRess) )
@@ -7717,8 +7984,9 @@ def QStats1 ( mol, chainId ) :
         CalcResQ (r, None, None, useOld=True )
 
         for at in r.atoms :
+            if at.element.name == "H" :
+                continue
             if hasattr ( at, "Q") :
-
                 #if 0 or r.isNA :
                 if at.residue.isProt or 0 :
                     totQ += at.Q
@@ -7731,14 +7999,31 @@ def QStats1 ( mol, chainId ) :
                 if at.residue.isNA : tp = "Nucleic"
                 QT[tp] += at.Q; QN[tp] += 1.0
 
+                tps = "chain " + r.id.chainId + " (" + tp.lower() + ")"
+                if tps in QT :
+                    QT[tps] += at.Q; QN[tps] += 1.0
+                else :
+                    QT[tps] = at.Q; QN[tps] = 1.0
+
     try :
         umsg ( "Model Q-score: %.3f" % (totQ/totN) )
     except :
         pass
 
-    for tp in ["Other", "Protein", "Nucleic"] :
+    #for tp in ["Other", "Protein", "Nucleic"] :
+    print ""
+    print "Average Q-scores / Est. Resolution:"
+    for tp in QT.keys() :
         if QN[tp] > 0 :
-            print " %s: %.3f" % (tp, QT[tp]/QN[tp])
+            avgQ = QT[tp]/QN[tp]
+            avgR = 0
+            if "nucleic" in tp.lower() :
+                avgR = (avgQ-1.0673)/-0.1574
+            else :
+                avgR = (avgQ-1.1244)/-0.1794
+            print " %s: %.3f / %.2f" % (tp, avgQ, avgR )
+        else :
+            print " %s: n/a" % (tp)
 
     print ""
 
@@ -7849,6 +8134,11 @@ def RadCC ( atoms, dmap, sigma, allAtTree = None, show=0, log=0, numPts=8, toRAD
 
     from _multiscale import get_atom_coordinates
     pts = get_atom_coordinates(atoms, transformed = False)
+
+
+    A, B = maxD - minD, minD
+    refG = A * numpy.exp ( -0.5 * numpy.power(0.0/sigma,2) ) + B
+
 
     d_vals = dmap.interpolated_values ( pts, atoms[0].molecule.openState.xform ).astype(numpy.float64, copy=False)
     GV = numpy.average ( d_vals )
