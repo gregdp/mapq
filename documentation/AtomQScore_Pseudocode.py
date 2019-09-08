@@ -12,6 +12,7 @@ def GetReferenceGaussianParams (map) :
         # B : refererence gaussian offset
 
 	# determine max and min value in map M
+
     mapValues = map.allValues()
     maxM = max(mapValues)
     minM = min(mapValues)
