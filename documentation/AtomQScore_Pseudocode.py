@@ -94,11 +94,16 @@ def CalculateQscoreForAtom (atom, map, mol, A, B, sigma, numPts) :
 
 	# map value at point P, interpolated from nearby grid points
 	MapValueAtR0 = map.ValueAtPoint(P)
-	mapValues.append ( MapValueAtR0 )
+
+    # replicate it numPts times so that it has the ~same 'weight' as the
+    # ~numPts that will be added at each radial distance below
+    # in the below, * is the replication operator as in python
+    # e.g. [1] * 4 -> [1,1,1,1]
+	mapValues.append ( [MapValueAtR0] * numPts )
 
 	# value of reference gaussian at radial distance of 0
 	RefGvalueAtR0 = A + B
-	referenceGaussianValues.append ( RefGvalueAtR0 )
+	referenceGaussianValues.append ( [RefGvalueAtR0] * numPts )
 
     for R = 0.1 to 2.0 in increments of 0.1 :
 
@@ -107,7 +112,7 @@ def CalculateQscoreForAtom (atom, map, mol, A, B, sigma, numPts) :
         mapValues.append ( mapValuesAtPoints )
 
     	RefGvalueAtR = A * e^(-(1/2)*(R/sigma)^2) + B
-        RefGvalues = array of RefGvalueAtR with length len(rPoints)
+        RefGvalues = [RefGvalueAtR] * len(rPoints)
         referenceGaussianValues.append ( RefGvalues )
 
     atomQ = correlationAboutMean ( mapValues, referenceGaussianValues  )
