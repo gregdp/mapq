@@ -8576,13 +8576,21 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
 
     import multiprocessing
     numProc = multiprocessing.cpu_count() / 2
+    print " - num processors detected:", numProc
+
+    import sys
+    try :
+        numProc = int ( sys.argv[-1] )
+    except :
+        print " -- did not find # processors as last argument in the command"
+        return -2, -2
 
     M = dmap.data.full_matrix()
     minD, maxD = numpy.min(M), numpy.max(M)
 
     print "Q Scores - p - %d" % numProc
     print " - map: %s" % dmap.name
-    print " - mol: %s, chain: %s" % (mol.name, cid if cid != None else "All")
+    print " - mol: %s, chain: %s" % (mol.name, cid if cid != None else "_all_")
     print " - sigma: %.2f" % sigma
     print " - mind: %.3f, maxd: %.3f" % (minD, maxD)
 
@@ -8603,24 +8611,27 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
     print " - atoms to do: %d" % len(atoms)
 
     import subprocess
-    import sys
     mapPath = os.path.split ( dmap.data.path )[0]
     mapBase = os.path.splitext ( dmap.data.path )[0]
 
-    print "Ran:"
-    print sys.argv
+    print "cmd:",
+    #print sys.argv
+    for arg in sys.argv :
+        print arg,
+    print ""
+
     # '/Users/greg/_mol/Chimera.app/Contents/Resources/share/__main__.py'
     chiPath = os.path.split ( sys.argv[0] )[0]
-    mapQPPath = os.path.join ( chiPath, 'mapq' )
-    mapQPPath = os.path.join ( chiPath, 'mapqp.py' )
-    print " -- ", mapQPPath
+    #mapQPPath = os.path.join ( chiPath, 'Segger' )
+    #mapQPPath = os.path.join ( chiPath, 'mapqp.py' )
+    #print " -- path to mapQ script:", mapQPPath
 
     # for Mac
     chiPath, share = os.path.split ( chiPath )
     print chiPath, share
     chiPath2, resOrChim = os.path.split ( chiPath )
     print chiPath, resOrChim
-    if resOrChim == "Chimera" :
+    if "Chimera" in resOrChim :
         print " -- on unix"
         chiPath = os.path.join ( chiPath, 'bin' )
         chiPath = os.path.join ( chiPath, 'chimera' )
@@ -8631,16 +8642,16 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
         chiPath = os.path.join ( chiPath2, 'MacOS' )
         chiPath = os.path.join ( chiPath, 'chimera' )
 
-    print " -- chiPath: ", chiPath
+    print " -- path to Chimera:", chiPath
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     inDir = os.path.split(dir_path)[0]
-    print "Working dir: ", inDir
+    print "Working dir:", inDir
     mapQPPath = os.path.join ( inDir, 'mapq' )
     mapQPPath = os.path.join ( mapQPPath, 'mapqp.py' )
-    print " -- ", mapQPPath
+    print " -- path to mapQ script:", mapQPPath
 
-    mapBase = mapBase + "_qscore_2019_proc"
+    mapBase = mapBase + "_Q-score-mp"
 
     n = len(atoms)
     g = [atoms[(n*c)/numProc:(n*(c+1))/numProc] for c in range(numProc)]
@@ -8664,10 +8675,11 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
         #nmap.write_file ( nmap_path , "mrc" )
 
         args = [chiPath, '--nogui', '--silent', '--nostatus', mol.openedAs[0], nmap_path, mapQPPath]
-        if 0 :
-            print " - running:",
+        if mi == 0 :
+            print "running proc:",
             for arg in args :
                 print arg,
+            print ""
 
         fout = open ( mapBase + "_%d.log" % mi, "w" )
         foute = open ( mapBase + "_%d_err.log" % mi, "w" )

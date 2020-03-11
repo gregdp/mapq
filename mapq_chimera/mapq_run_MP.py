@@ -36,8 +36,7 @@ allAtTree = AdaptiveTree ( points.tolist(), ats, 1.0)
 #q, qcc = CalcQp ( mol, None, dmap, allAtTree=allAtTree )
 q, qcc = mapq.mapq.CalcQp ( mol, None, dmap, allAtTree=allAtTree )
 
-print ""
-print "Avg. Q score: %.3f" % q
-print ""
-
-
+if q >= -1 :
+    print ""
+    print "Avg. Q score: %.3f" % q
+    print ""
