@@ -8,9 +8,9 @@ To Install:
 * Run it once before installing the plugin; on some platforms, e.g. MacOS, you may see a warning message on first run which you have to accept. This may prevent further issues after adding the plugin.
 * On Windows, install to your home folder rather than to "Program Files". In the latter, the OS may not allow further modifications at a user level, i.e. adding this plugin.
 2. <a href="https://github.com/gregdp/mapq/tree/master/download">Download</a> latest version of MapQ.
-3. In a terminal, navigate to where the file was downloaded, then execute the following commands:
-* unzip mapq_chimera_1_2.zip
-* cd mapq_chimera_1_2
+3. In a terminal, navigate to where the file was downloaded, then execute the following commands (replacing #_# with latest version number):
+* unzip mapq_chimera_#_#.zip 
+* cd mapq_chimera_#_#
 * python install.py [path to Chimera]
 
 e.g.:
