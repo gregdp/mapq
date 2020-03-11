@@ -8409,8 +8409,11 @@ def CalcQ ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=False, log=False )
 
     q, qcc = QStats1 ( mol, cid )
 
-    return q, qcc
+    print "Map: %s, Model: %s" % (dmap.name, mol.name)
+    print " --> avg. Q score: %.3f" % q
+    print ""
 
+    return q, qcc
 
 
 
@@ -8766,6 +8769,10 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
     chimera.PDBio().writePDBfile ( [mol], nname )
 
     q, qcc = QStats1 ( mol, cid )
+
+    print "Map: %s, Model: %s" % (dmap.name, mol.name)
+    print " --> avg. Q score: %.3f" % q
+    print ""
 
     return q, qcc
 
