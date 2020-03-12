@@ -66,7 +66,7 @@ devMenu = False
 isModelZ = False
 
 dlgName = "mapqdlg"
-dlgTitle = "MapQ (v1.4)"
+dlgTitle = "MapQ (v1.5)"
 dlgHelp = 'https://cryoem.slac.stanford.edu/ncmi/resources/software/mapq'
 
 if isModelZ :
@@ -338,8 +338,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 b = Tkinter.Button(fff, text="Calc", command=self.CalcAllQ )
                 b.grid (column=2, row=0, sticky='w', padx=5)
 
-                if devMenu :
-                    b = Tkinter.Button(fff, text="Calc(P)", command=self.CalcAllQp )
+                if 1 or devMenu :
+                    b = Tkinter.Button(fff, text="Calc(MP)", command=self.CalcAllQp )
                     b.grid (column=3, row=0, sticky='w', padx=5)
 
                 b = Tkinter.Button(fff, text="Load", command=self.GetQsFromFile )
@@ -8298,6 +8298,7 @@ def CalcQ_ ( mol, cid, dmap, sigma=0.5, allAtTree=None, useOld=False, log=False 
 
 
 
+
 def CalcQ ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=False, log=False ) :
 
 
@@ -8563,8 +8564,50 @@ def QsFromFile ( mol, nname ) :
     return True
 
 
+def Calc ( chimeraPath, numProc ) :
 
-def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False ) :
+    print "Calc Q scores:"
+    print " - chimera path : ", chimeraPath
+    print " - num processors: ", numProc
+
+
+    from VolumeViewer import Volume
+    vols = chimera.openModels.list(modelTypes = [Volume])
+    if len(vols) == 0 :
+        print " - no volumes loaded"
+        return
+
+    dmap = vols[0]
+    print " - volume: %s" % dmap.name
+
+
+    from chimera import Molecule
+
+    mols = chimera.openModels.list(modelTypes = [Molecule])
+    if len(mols) == 0 :
+        print " - no molecules loaded"
+        return
+
+    for mi, mol in enumerate (mols) :
+
+        print ""
+        print "Model %d/%d: %s" % (mi+1, len(mols), mol.name)
+        SetBBAts ( mol )
+
+        ats = [at for at in mol.atoms if not at.element.name == "H"]
+        points = _multiscale.get_atom_coordinates ( ats, transformed = False )
+        print " - search tree: %d/%d ats" % ( len(ats), len(mol.atoms) )
+        allAtTree = AdaptiveTree ( points.tolist(), ats, 1.0)
+        #allAtTree = None
+
+        if numProc == 1 :
+            CalcQ ( mol, None, dmap, allAtTree=allAtTree )
+        else :
+            CalcQp ( mol, None, dmap, allAtTree=allAtTree, numProc=numProc )
+
+
+
+def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False, numProc=None ) :
 
 
     molPath = os.path.splitext(mol.openedAs[0])[0]
@@ -8577,16 +8620,17 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False )
             return q, qcc
 
 
-    import multiprocessing
-    numProc = multiprocessing.cpu_count() / 2
-    print " - num processors detected:", numProc
-
     import sys
-    try :
-        numProc = int ( sys.argv[-1] )
-    except :
-        print " -- did not find # processors as last argument in the command"
-        return -2, -2
+    if numProc == None :
+        try :
+            numProc = int ( sys.argv[-1] )
+        except :
+            print " -- did not find # processors as last argument in the command"
+
+            import multiprocessing
+            numProc = multiprocessing.cpu_count() / 2
+            print " - num processors detected:", numProc
+
 
     M = dmap.data.full_matrix()
     minD, maxD = numpy.min(M), numpy.max(M)
