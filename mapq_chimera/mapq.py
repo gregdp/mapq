@@ -66,7 +66,7 @@ devMenu = False
 isModelZ = False
 
 dlgName = "mapqdlg"
-dlgTitle = "MapQ (v1.5)"
+dlgTitle = "MapQ (v1.5.1)"
 dlgHelp = 'https://cryoem.slac.stanford.edu/ncmi/resources/software/mapq'
 
 if isModelZ :
@@ -8668,28 +8668,34 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False, 
     print ""
 
     # '/Users/greg/_mol/Chimera.app/Contents/Resources/share/__main__.py'
-    chiPath = os.path.split ( sys.argv[0] )[0]
+    #chiPath = os.path.split ( sys.argv[0] )[0]
     #mapQPPath = os.path.join ( chiPath, 'Segger' )
     #mapQPPath = os.path.join ( chiPath, 'mapqp.py' )
     #print " -- path to mapQ script:", mapQPPath
 
-    # for Mac
-    chiPath, share = os.path.split ( chiPath )
-    print chiPath, share
-    chiPath2, resOrChim = os.path.split ( chiPath )
-    print chiPath, resOrChim
-    if "Chimera" in resOrChim :
-        print " -- on unix"
-        chiPath = os.path.join ( chiPath, 'bin' )
-        chiPath = os.path.join ( chiPath, 'chimera' )
-    else :
-        print " -- on mac"
-        #chiPath2, contents = os.path.split ( chiPath2 )
-        #print chiPath2, contents
-        chiPath = os.path.join ( chiPath2, 'MacOS' )
-        chiPath = os.path.join ( chiPath, 'chimera' )
 
-    print " -- path to Chimera:", chiPath
+    # backtrack through path to chimera script to find executable
+    print "Finding Chimera exec:"
+    atPath = os.path.split ( sys.argv[0] )[0]
+    chiPath = None
+    for i in range (100) :
+        atPath = os.path.split ( atPath )[0]
+        print " --- at %s" % atPath
+        for f1, f2 in ( ('bin', 'chimera'), ('MacOS', 'chimera') ) :
+            tryPath = os.path.join(os.path.join(atPath,f1),f2)
+            if os.path.isfile(tryPath) :
+                print " - found path: %s" % tryPath
+                chiPath = tryPath
+                break
+
+        if chiPath != None or len(atPath) <= 1 :
+            break
+
+    if chiPath == None :
+        print " - did not find Chimera exec path"
+        return
+
+    #print " - path to Chimera:", chiPath
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     inDir = os.path.split(dir_path)[0]
