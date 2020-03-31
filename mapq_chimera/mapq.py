@@ -65,8 +65,11 @@ OML = chimera.openModels.list
 devMenu = False
 isModelZ = False
 
+mapqVersion = "1.5.2"
+
+
 dlgName = "mapqdlg"
-dlgTitle = "MapQ (v1.5.1)"
+dlgTitle = "MapQ (v%s)" % mapqVersion
 dlgHelp = 'https://cryoem.slac.stanford.edu/ncmi/resources/software/mapq'
 
 if isModelZ :
@@ -8566,7 +8569,7 @@ def QsFromFile ( mol, nname ) :
 
 def Calc ( chimeraPath, numProc ) :
 
-    print "Calc Q scores:"
+    print "Calc Q scores, v%s:" % mapqVersion
     print " - chimera path : ", chimeraPath
     print " - num processors: ", numProc
 
@@ -8579,7 +8582,6 @@ def Calc ( chimeraPath, numProc ) :
 
     dmap = vols[0]
     print " - volume: %s" % dmap.name
-
 
     from chimera import Molecule
 
@@ -11077,26 +11079,37 @@ def MaskMapResize ( atoms, R, dmap, fout=None ) :
     from VolumeData import grid_indices, zone_masked_grid_data, interpolate_volume_data
 
     points = _multiscale.get_atom_coordinates ( atoms, transformed = True )
-
-    _contour.affine_transform_vertices ( points, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
-    mdata = VolumeData.zone_masked_grid_data ( dmap.data, points, R )
-
-    #mdata = VolumeData.Array_Grid_Data ( mdata.full_matrix(), dmap.data.origin, dmap.data.step, dmap.data.cell_angles, name = "atom masked" )
+    #print " %d points" % len(points)
+    fpoints = points
 
 
-    mat = mdata.full_matrix()
-    threshold = 1e-3
+    if 0 :
+        _contour.affine_transform_vertices ( points, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+        mdata = VolumeData.zone_masked_grid_data ( dmap.data, points, R )
 
-    points = _volume.high_indices(mat, threshold)
-    fpoints = points.astype(numpy.single)
-    fpoint_weights = mat[points[:,2],points[:,1],points[:,0]]
+        #mdata = VolumeData.Array_Grid_Data ( mdata.full_matrix(), dmap.data.origin, dmap.data.step, dmap.data.cell_angles, name = "atom masked" )
 
-    nz = numpy.nonzero( fpoint_weights )[0]
-    if len(nz) < len (fpoint_weights) :
-        fpoints = numpy.take( fpoints, nz, axis=0 )
-        fpoint_weights = numpy.take(fpoint_weights, nz, axis=0)
 
-    #transform_vertices( fpoints, fmap.data.ijk_to_xyz_transform )
+        mat = mdata.full_matrix()
+        threshold = 1e-3
+
+        points = _volume.high_indices(mat, threshold)
+        fpoints = points.astype(numpy.single)
+        fpoint_weights = mat[points[:,2],points[:,1],points[:,0]]
+
+        #print " %d points" % len(points)
+
+
+        nz = numpy.nonzero( fpoint_weights )[0]
+        #print " %d pts nonzero" % len(nz)
+        if len(nz) > 0 and len(nz) < len (fpoint_weights) :
+            fpoints = numpy.take( fpoints, nz, axis=0 )
+            fpoint_weights = numpy.take(fpoint_weights, nz, axis=0)
+
+    else :
+        _contour.affine_transform_vertices ( fpoints, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+        #transform_vertices( fpoints, dmap.data.ijk_to_xyz_transform )
+        transform_vertices( fpoints, dmap.data.xyz_to_ijk_transform )
 
     #print " - %s mask %d atoms, %d nonzero points" % ( dmap.name, len(atoms), len(nz) )
 
@@ -11104,7 +11117,7 @@ def MaskMapResize ( atoms, R, dmap, fout=None ) :
     #transform_vertices( fpoints,  Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
     #transform_vertices ( fpoints, dmap.data.xyz_to_ijk_transform )
 
-    bound = 2
+    bound = 6
     li,lj,lk = numpy.min ( fpoints, axis=0 ) - (bound, bound, bound)
     hi,hj,hk = numpy.max ( fpoints, axis=0 ) + (bound, bound, bound)
 
