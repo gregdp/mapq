@@ -6,6 +6,7 @@ import sys, os
 mods = []
 chimeraPath = None
 numProc = 1
+res = 3.0
 
 
 for arg in sys.argv :
@@ -16,7 +17,7 @@ for arg in sys.argv :
         print ( " -> this script" )
 
     elif os.path.isdir(arg) :
-        #print ( " -> Chimera path" )
+        print ( " -> Chimera path" )
 
         cp = os.path.join ( os.path.join ( arg, 'bin' ), 'chimera' )
         if os.path.isfile(cp) :
@@ -39,6 +40,12 @@ for arg in sys.argv :
             try :
                 numProc = int ( tokens[1] )
                 print ( " -> number of processes: %d" % numProc )
+            except :
+                print ( " -> unknown" )
+        elif len(tokens) == 2 and tokens[0] == "res" :
+            try :
+                res = float ( tokens[1] )
+                print ( " -> resolution: %.3f" % res )
             except :
                 print ( " -> unknown" )
         else :
@@ -73,7 +80,7 @@ if ok :
 
     fp.write ( "import mapq\n" )
     fp.write ( "import mapq.mapq\n" )
-    fp.write ( "mapq.mapq.Calc('%s',%d)\n" % (chimeraPath, numProc) )
+    fp.write ( "mapq.mapq.Calc('%s',%d,%f)\n" % (chimeraPath, numProc, res) )
     fp.close()
 
 
