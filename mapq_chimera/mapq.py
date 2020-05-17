@@ -66,7 +66,7 @@ OML = chimera.openModels.list
 devMenu = False
 isModelZ = False
 
-mapqVersion = "1.5.3"
+mapqVersion = "1.5.4"
 
 
 dlgName = "mapqdlg"
@@ -2822,7 +2822,15 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
             #print "sel seq..."
             seqI = ( event.x - self.seqX ) / self.tw
-            status ( "Start sequence sel at %d" % (seqI+1) )
+
+            resStartI = seqI
+            try :
+                resStartI = self.seqRes[seqI].id.position
+            except :
+                pass
+
+            status ( "Start sequence sel at %d" % resStartI )
+
             self.seqSel = [seqI, seqI]
             self.UpdateSeqSel ()
 
@@ -3408,7 +3416,16 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     self.seqSel[1] = seqI
                 elif seqI < self.seqSel[1] :
                     self.seqSel[0] = seqI
-                status ( "Sequence selected %d - %d" % (self.seqSel[0]+1, self.seqSel[1]+1) )
+
+                resStartI = self.seqSel[0]+1
+                resEndI = self.seqSel[1]+1
+                try :
+                    resStartI = self.seqRes [ self.seqSel[0] ].id.position
+                    resEndI = self.seqRes [ self.seqSel[1] ].id.position
+                except :
+                    pass
+                status ( "Sequence selected %d - %d" % (resStartI,resEndI) )
+
                 self.UpdateSeqSel ()
         elif self.drag == 'con' :
             x1, y1, x2, y2 = self.Canvas.coords ( self.conLine )
@@ -4694,7 +4711,7 @@ def QsFromFile ( mol, nname ) :
     return True
 
 
-def Calc ( chimeraPath, numProc, res=3.0 ) :
+def Calc ( chimeraPath, numProc, res=3.0, bfactor=-1 ) :
 
     print "Calc Q scores, v%s:" % mapqVersion
     print " - chimera path: ", chimeraPath
@@ -4736,6 +4753,22 @@ def Calc ( chimeraPath, numProc, res=3.0 ) :
             CalcQp ( mol, None, dmap, allAtTree=allAtTree, numProc=numProc )
 
         SaveQ ( mol, "All", dmap, res )
+
+        if bfactor > 0 :
+            for at in mol.atoms :
+                at.bfactor = bfactor * (1.0 - at.Q)
+                at.occupancy = 1.0 # max(0,at.Q)
+                #dval = self.cur_dmap.interpolated_values ( [ at.coord()  ], self.cur_mol.openState.xform ).astype(numpy.float64, copy=False)[0]
+                #at.occupancy = (dval - minD) / (maxD - minD)
+
+            molPath = os.path.splitext(mol.openedAs[0])[0]
+            nname = molPath + "_B%.0f.pdb" % bfactor
+            print "Saving pdb with B-factors, max %.0f:" % bfactor
+            print "  -> ", nname
+            print "  - bfactor = %.0f*(1-Qscore), range -%.0f to %.0f" % (bfactor, bfactor, bfactor)
+            print "  - all occupancies set to 1"
+            print ""
+            chimera.PDBio().writePDBfile ( [mol], nname )
 
 
 
@@ -4947,7 +4980,10 @@ def CalcQp ( mol, cid, dmap, sigma=0.6, allAtTree=None, useOld=True, log=False, 
     mapName = os.path.splitext(dmap.name)[0]
 
     nname = molPath + "__Q__" + mapName + ".pdb"
-    print "Saving pdb with Q-scores:", nname
+    print "Saving pdb with Q-scores:"
+    print " -> %s" % nname
+    print " Q-scores are in occupancy column (range -1 to 1)"
+    print " bfactor column left as in input file"
     chimera.PDBio().writePDBfile ( [mol], nname )
 
     q, qcc = QStats1 ( mol, cid )

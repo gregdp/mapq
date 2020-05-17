@@ -7,21 +7,30 @@ mods = []
 chimeraPath = None
 numProc = 1
 res = 3.0
+bfactor = -1
 
+
+print ("")
+print ("Found parameters:")
 
 for arg in sys.argv :
 
-    print ("%s" % arg),
+    print ("  %s" % arg),
 
     if "mapq_cmd.py" in arg :
         print ( " -> this script" )
 
     elif os.path.isdir(arg) :
-        print ( " -> Chimera path" )
+        #print ( " -> Chimera path" )
 
         cp = os.path.join ( os.path.join ( arg, 'bin' ), 'chimera' )
         if os.path.isfile(cp) :
             print ( " -> Chimera path, Unix" )
+            chimeraPath = cp
+
+        cp = os.path.join ( os.path.join ( arg, 'bin' ), 'chimera.exe' )
+        if os.path.isfile(cp) :
+            print ( " -> Chimera path, Windows" )
             chimeraPath = cp
 
         cp = os.path.join ( os.path.join ( os.path.join ( arg, 'Contents' ), 'MacOS' ), "chimera" )
@@ -48,18 +57,37 @@ for arg in sys.argv :
                 print ( " -> resolution: %.3f" % res )
             except :
                 print ( " -> unknown" )
+        elif len(tokens) == 2 and tokens[0] == "bfactor" :
+            try :
+                bfactor = float ( tokens[1] )
+                print ( " -> bfactor: %.0f" % bfactor )
+            except :
+                print ( " -> unknown" )
         else :
             print ( " -> unknown" )
 
 print ("")
 
 ok = True
-if len(mods) < 2 :
-    print (" - Please specify at least one map and one model. This script checks if the file exists and does not count it if not.")
-    ok = False
-
-if chimeraPath == None :
-    print (" - Please specify path to Chimera. If specified, the script may not have found a valid path.")
+if len(mods) == 0 or chimeraPath == None :
+    print ("")
+    print ("mapq_cmd.py")
+    print ("  - Calculate Q-scores from command line")
+    print ("")
+    print ("Parameters:")
+    print ("  - [path to model or map file]")
+    print ("    one map and at least one model should be specified")
+    print ("    files must exist")
+    print ("  - [path to Chimera]")
+    print ("    e.g.: ~/Chimera.app (Mac)")
+    print ("          ~/Chimera (Unix)")
+    print ("          C:\\Users\\name\\Chimera (Windows)")
+    print ("  - res=# (optional)")
+    print ("    resolution of map, e.g. res=3.2")
+    print ("    only used in output of Q-scores/residue as comparison")
+    print ("  - bfactor=f (optional)")
+    print ("    if specified, Q-scores are converted to Bfactors")
+    print ("    using the formula bfactor=f*(1.0-Qscore)")
     ok = False
 
 print ("")
@@ -80,7 +108,7 @@ if ok :
 
     fp.write ( "import mapq\n" )
     fp.write ( "import mapq.mapq\n" )
-    fp.write ( "mapq.mapq.Calc('%s',%d,%f)\n" % (chimeraPath, numProc, res) )
+    fp.write ( "mapq.mapq.Calc('%s',%d,%f,%f)\n" % (chimeraPath, numProc, res, bfactor) )
     fp.close()
 
 
