@@ -19,10 +19,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import mapq
-import mapq.mapq
 
-import sys
+import mapq
+import mapq.qscores
+
+#import sys
 
 #print ""
 #rint " -- ress: ", sys.argv[-2]
@@ -31,6 +32,6 @@ import sys
 #sigma = float ( sys.argv[-1] )
 #print " - sigma: ", sigma
 
-mapq.mapq.CalcQForOpenModelsRess ()
+mapq.qscores.CalcQForOpenModelsRess ()
 #Segger.mapq.CalcR_ ( sys.argv[-1] )
 #Segger.mapq.CalcR_ ()

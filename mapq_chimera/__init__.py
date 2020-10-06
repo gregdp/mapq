@@ -1,1 +1,1 @@
-mapqVersion = '1.5.4'
+mapqVersion = '1.6.1'
