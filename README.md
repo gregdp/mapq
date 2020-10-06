@@ -7,7 +7,7 @@ For <strong>how to use</strong>, please see <a href="https://github.com/gregdp/m
 For <strong>technical details</strong> (and please cite :)
 * (2020) Measurement of atom resolvability in cryo-EM maps with Q-scores <a href="https://www.nature.com/articles/s41592-020-0731-1" target="_blank">Nature Methods</a>, <a href="https://www.biorxiv.org/content/10.1101/722991v2" target="_blank">BioRXiv</a>
 
-To Install:
+To <strong>install</strong>:
 
 1. First, <a href="https://www.cgl.ucsf.edu/chimera/download.html">download</a> and install UCSF Chimera.
 * Run it once before installing the plugin; on some platforms, e.g. MacOS, you may see a warning message on first run which you have to accept. This may prevent further issues after adding the plugin.
