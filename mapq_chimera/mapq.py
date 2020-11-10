@@ -72,14 +72,13 @@ reload (qscores)
 
 gSigma = 0.6
 
-
 OML = chimera.openModels.list
 
 devMenu = False
 isModelZ = False
 
 dlgName = "mapqdlg"
-dlgTitle = "MapQ (v1.6.1)"
+dlgTitle = "MapQ (v1.6.2)"
 dlgHelp = 'https://github.com/gregdp/segger'
 
 if isModelZ :
@@ -89,6 +88,8 @@ if isModelZ :
     dlgHelp = 'https://github.com/gregdp/modelz'
 
 
+chargedIons = { "MG":2, "NA":1, "CL":-1, "CA":2, "ZN":2, "MN":2, "FE":3, "CO":2, "NI":2 }
+
 atomColors = {'C' : chimera.MaterialColor (0.565,0.565,0.565),
             'Cbb' : chimera.MaterialColor (0.2,0.6,0.2),
             'S' : chimera.MaterialColor (1.000,1.000,0.188),
@@ -96,8 +97,18 @@ atomColors = {'C' : chimera.MaterialColor (0.565,0.565,0.565),
             'N' : chimera.MaterialColor (0.188,0.314,0.973),
             'P' : chimera.MaterialColor (1.0, 0.502, 0.0),
             'H' : chimera.MaterialColor (0.9,.9,.9),
-            ' ' : chimera.MaterialColor (0.2,1,.2)
-            }
+            ' ' : chimera.MaterialColor (0.2,1,.2),
+            "MG" : chimera.MaterialColor (.4,.4,.6),
+            "NA" : chimera.MaterialColor (.7,.4,.9),
+            "CL" : chimera.MaterialColor (0,1,0),
+            "CA" : chimera.MaterialColor (.4,.4,.6),
+            "ZN" : chimera.MaterialColor (.4,.4,.6),
+            "MN" : chimera.MaterialColor (.4,.4,.6),
+            "FE" : chimera.MaterialColor (.4,.4,.6),
+            "CO" : chimera.MaterialColor (.4,.4,.6),
+            "NI" : chimera.MaterialColor (.4,.4,.6)
+}
+
 
 
 
@@ -312,11 +323,17 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             ff = Tkinter.Frame(f)
             ff.grid(column=0, row=row, sticky='w', pady=0, padx=0)
 
+            b = Tkinter.Label(ff, text=" Res:")
+            b.grid (column=0, row=0, sticky='w', padx=0, pady=5)
+
+            e = Tkinter.Entry(ff, width=3, textvariable=self.mapRes)
+            e.grid(column=1, row=0, sticky='w', padx=0, pady=5)
+
             #fff = Tkinter.Frame(ff, borderwidth=1, padx=2, pady=2, relief=Tkinter.GROOVE)
             #fff.grid(column=10, row=0, sticky='e', pady=0, padx=5)
 
             l = Tkinter.Label(ff, text=' Q-scores:', anchor=Tkinter.W, font = 'TkCaptionFont')
-            l.grid(column=1, row=0, sticky='w')
+            l.grid(column=2, row=0, sticky='w')
 
 
             #b = Tkinter.Button(fff, text="Sigma", command=self.CalcAllSigma )
@@ -333,28 +350,23 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             else :
 
                 b = Tkinter.Button(ff, text="Calc", command=self.CalcAllQ )
-                b.grid (column=2, row=0, sticky='w', padx=5)
-
-                b = Tkinter.Button(ff, text="Calc(P)", command=self.CalcAllQp )
-                b.grid (column=3, row=0, sticky='w', padx=5)
-
-                b = Tkinter.Button(ff, text="Load", command=self.GetQsFromFile )
-                b.grid (column=4, row=0, sticky='w', padx=5)
-
-                b = Tkinter.Button(ff, text="Sel", command=self.CalcSelQ )
                 b.grid (column=5, row=0, sticky='w', padx=5)
 
-                #b = Tkinter.Button(fff, text="R", command=self.CalcAllR )
-                #b.grid (column=5, row=0, sticky='w', padx=5)
+                b = Tkinter.Button(ff, text="Calc(P)", command=self.CalcAllQp )
+                b.grid (column=6, row=0, sticky='w', padx=5)
+
+                b = Tkinter.Button(ff, text="Load", command=self.GetQsFromFile )
+                b.grid (column=7, row=0, sticky='w', padx=5)
+
+                b = Tkinter.Button(ff, text="Sel", command=self.CalcSelQ )
+                b.grid (column=8, row=0, sticky='w', padx=5)
 
                 #b = Tkinter.Button(fff, text="R", command=self.CalcAllR )
                 #b.grid (column=5, row=0, sticky='w', padx=5)
 
-                b = Tkinter.Label(ff, text="Res:")
-                b.grid (column=6, row=0, sticky='w', padx=0, pady=5)
+                #b = Tkinter.Button(fff, text="R", command=self.CalcAllR )
+                #b.grid (column=5, row=0, sticky='w', padx=5)
 
-                e = Tkinter.Entry(ff, width=3, textvariable=self.mapRes)
-                e.grid(column=7, row=0, sticky='w', padx=0, pady=5)
 
 
 
@@ -1190,7 +1202,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 for at in r.atoms :
                     #at.color = r.ribbonColor
                     try :
-                        at.color = atomColors[at.name[0]]
+                        at.color = atomColors[at.element.name.upper()]
                     except :
                         at.color = atomColors[' ']
 
@@ -1203,7 +1215,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 for at in r.atoms :
                     #at.color = r.ribbonColor
                     try :
-                        at.color = atomColors[at.name[0]]
+                        at.color = atomColors[at.element.name.upper()]
                     except :
                         at.color = atomColors[' ']
 
@@ -1337,8 +1349,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         at.display = True
                         atMap[at] = 1
                         at.drawMode = at.EndCap
-                        if at.element.name in atomColors :
-                            at.color = atomColors[at.element.name]
+                        if at.element.name.upper() in atomColors :
+                            at.color = atomColors[at.element.name.upper()]
                         else :
                             at.color = atomColors[" "]
             else :
@@ -1485,8 +1497,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if res.isProt or res.isNA :
                     at.drawMode = at.EndCap
                     at.display = True # not showRibbon
-                    if at.element.name in atomColors :
-                        at.color = atomColors[at.element.name]
+                    if at.element.name.upper() in atomColors :
+                        at.color = atomColors[at.element.name.upper()]
                     else :
                         at.color = atomColors[" "]
                     atMap[at] = 1
@@ -1518,8 +1530,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         at.display = True # not showRibbon
                         if showH == False and at.element.name == "H" :
                             at.display = False
-                        if at.element.name in atomColors :
-                            at.color = atomColors[at.element.name]
+                        if at.element.name.upper() in atomColors :
+                            at.color = atomColors[at.element.name.upper()]
                         else :
                             at.color = atomColors[" "]
                         atMap[at] = 1
@@ -1554,7 +1566,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                             at.drawMode = at.EndCap
                             at.display = True
                             try :
-                                at.color = atomColors[at.name[0]]
+                                at.color = atomColors[at.element.name.upper()]
                             except :
                                 at.color = atomColors[" "]
 
@@ -1581,7 +1593,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     at.display = at.isBB and not at.isSugar
 
                 #try :
-                #    at.color = atomColors[at.name[0]]
+                #    at.color = atomColors[at.element.name.upper()]
                 #except :
                 #    at.color = atomColors[" "]
 
@@ -1602,7 +1614,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 #at.drawMode = at.EndCap
                 at.display = True
                 try :
-                    at.color = atomColors[at.name[0]]
+                    at.color = atomColors[at.element.name.upper()]
                 except :
                     at.color = atomColors[" "]
 
@@ -1647,8 +1659,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             for at in r.atoms :
                 #at.drawMode = at.EndCap
                 at.display = True
-                if at.name in atomColors :
-                    at.color = atomColors[at.name[0]]
+                if at.element.name.upper() in atomColors :
+                    at.color = atomColors[at.element.name.upper()]
 
 
 
@@ -1836,8 +1848,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     atsMap[at] = 1
                     if show :
                         at.drawMode = at.EndCap
-                        if at.element.name in atomColors :
-                            at.color = atomColors[at.element.name]
+                        if at.element.name.upper() in atomColors :
+                            at.color = atomColors[at.element.name.upper()]
                         else :
                             at.color = atomColors[" "]
         for bond in m.bonds :
@@ -2484,10 +2496,11 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         umsg ( "Calculating Q-scores - see bottom of main window for status or to cancel..." )
 
         Qavg = qscores.CalcQ (self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, allAtTree=allAtTree, log=True )
-        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, float(self.mapRes.get()) )
+        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
         self.ShowQScores ()
 
-        umsg ( "Average Q-score for %s: %.2f" % (self.cur_mol.name, Qavg) )
+        #umsg ( "Average Q-score for %s: %.2f" % (self.cur_mol.name, Qavg) )
+        umsg ( "Done Q-scores for %s" % (self.cur_mol.name) )
 
 
 
@@ -2533,7 +2546,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
         qscores.CalcQp (self.cur_mol, cid, self.cur_dmap, gSigma, allAtTree=None )
-        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, float(self.mapRes.get()) )
+        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
 
         self.ShowQScores ()
 
@@ -2564,22 +2577,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #bbRes = (self.avgScore - 6.1234) / -0.9191
 
 
-        try :
-            scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
-            bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
+        #try :
+        scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
+        bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
 
 
-            print "Average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
-            print "Average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
+        print "Average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
+        print "Average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
 
 
-            self.minScore1, self.maxScore1 = 0.0,1.0
-            self.minScore2, self.maxScore2 = 0.0,1.0
+        self.GetMaxScores()
+        self.UpdateSeq ()
 
-            self.UpdateSeq ()
-
-        except :
-            pass
+        #except :
+        #    pass
 
 
 
@@ -2655,7 +2666,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
         self.UpdateSeq ()
-        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, float(self.mapRes.get()) )
+        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
 
 
 
@@ -2784,7 +2795,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         fin.close ()
 
         qscores.QStats1 (self.cur_mol, chainId)
-        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, float(self.mapRes.get()) )
+        qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
 
 
 
@@ -2827,6 +2838,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 self.minScore2, self.maxScore2 = 0.0,max(scBB)
 
             self.UpdateSeq ()
+
+
+        self.ShowQScores ()
 
 
         #self.QStats ()
@@ -3488,6 +3502,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #self.UpdateSeqSel ()
 
 
+    def GetMaxScores ( self ) :
+
+        RES = float(self.mapRes.get())
+
+        avgQrna = -0.1574 * RES + 1.0673 # rna
+        avgQprot = -0.1794 * RES + 1.1244 # protein
+        avgQIon =  -0.1103 * RES + 1.0795 # ion
+        avgQWater =  -0.0895 * RES + 1.0001 # water
+
+        print " - res %.2f - exp Q-score: %.2f" % (RES, avgQprot)
+
+        self.minScore1, self.maxScore1 = 0.0,avgQprot
+        self.minScore2, self.maxScore2 = 0.0,avgQprot
+
 
 
     def UpdateSeq ( self ) :
@@ -3495,6 +3523,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if not hasattr ( self, 'seq' ) :
             print " - update seq - no seq"
             return
+
+        if not hasattr ( self, 'maxScore1' ) :
+            self.GetMaxScores ()
 
         x_at = self.seqX
         y_at = self.seqY + self.seqH/2
@@ -4068,11 +4099,11 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         if at.element.name == "H" :
                             continue
                         if at.isBB :
-                            at.color = atomColors[at.element.name]
+                            at.color = atomColors[at.element.name.upper()]
                             #if at.element.name == "C" :
                             #    at.color = atomColors['Cbb']
                         else :
-                            at.color = atomColors[at.element.name]
+                            at.color = atomColors[at.element.name.upper()]
 
             else :
                 r.ribbonDisplay = False
@@ -4097,8 +4128,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         for at in r.atoms :
                             at.display = True
                             atMap[at] = 1
-                            if at.element.name in atomColors :
-                                at.color = atomColors[at.element.name]
+                            if at.element.name.upper() in atomColors :
+                                at.color = atomColors[at.element.name.upper()]
                             atoms.append ( at )
                             ligAts.append ( at )
                     else :
@@ -4823,7 +4854,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 print " - sigma: %.3f, Q-score Pt: %.3f, time: %f" % ( gSigma, qs, (end - start) )
 
 
-            if 0 :
+            if 1 :
                 print "Atoms in %d.%s %s" % (selAtom.residue.id.position, selAtom.residue.id.chainId, selAtom.residue.type)
                 #print "-"
 
@@ -5063,26 +5094,12 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 at.bfactor = at.Q
                 avg += at.Q
 
-                end = time.time()
-                totSec = end - start
-
-                leftTime = ""
-                leftSec = 0.0
-                iPerSec = float(ai) / totSec
-                if iPerSec > 0 :
-                    leftSec = float ( len(atoms) - ai ) / iPerSec
-                    leftHour = numpy.floor ( leftSec / 60.0 / 60.0 )
-                    leftSec = leftSec - leftHour * 60.0 * 60.0
-                    leftMin = numpy.floor ( leftSec / 60.0 )
-                    leftSec = leftSec - leftMin * 60.0
-                    leftTime = "%.0f:%.0f:%.0f" % (leftHour, leftMin, leftSec)
-
                 if (ai+1) % 10 == 0 :
+                    leftTime = qscores.TimeLeftStr (ai, len(atoms), time.time() - start)
                     status ( "Calculating Q scores - atom %d/%d - eta: %s" % (ai+1, len(atoms), leftTime) )
                     print ".",
-
-                #task.updateStatus( "Calculating Q scores - atom %d/%d - %s in %s.%d.%s - eta: %s" % (ai+1, len(atoms), at.name, at.residue.type, at.residue.id.position, at.residue.id.chainId, leftTime) )
-                task.updateStatus( "Calculating Q scores - atom %d/%d - eta: %s" % (ai+1, len(atoms), leftTime) )
+                    #task.updateStatus( "Calculating Q scores - atom %d/%d - %s in %s.%d.%s - eta: %s" % (ai+1, len(atoms), at.name, at.residue.type, at.residue.id.position, at.residue.id.chainId, leftTime) )
+                    task.updateStatus( "Calculating Q scores - atom %d/%d - eta: %s" % (ai+1, len(atoms), leftTime) )
 
         except Exception, err:
             umsg ( "Something went wrong..." )
@@ -6590,7 +6607,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         for at in nmol.atoms :
             #at.drawMode = 3
-            if at.element.name in atomColors : at.color = atomColors[at.element.name]
+            if at.element.name.upper() in atomColors : at.color = atomColors[at.element.name.upper()]
             #at.radius = at.radius * 0.8
 
         mname = dmap.name + "_%s_%d" % (r.type, r.id.position)
@@ -6624,7 +6641,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         for at in nmol.atoms :
             at.drawMode = 3
-            if at.element.name in atomColors : at.color = atomColors[at.element.name]
+            if at.element.name.upper() in atomColors : at.color = atomColors[at.element.name.upper()]
             at.radius = at.radius * 0.8
 
         mname = dmap.name + "_%s_%d_ext" % (r.type, r.id.position)
@@ -6740,8 +6757,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
             for at in nmol.atoms:
                 at.drawMode = 3
-                if at.element.name in atomColors :
-                    at.color = atomColors[at.element.name]
+                if at.element.name.upper() in atomColors :
+                    at.color = atomColors[at.element.name.upper()]
                     at.radius = at.radius * 0.8
 
         nres = nmol.residues
@@ -8716,8 +8733,8 @@ def SetBBAts ( mol ) :
         r.isProt = r.type in protein3to1
         r.isNA = r.type in nucleic3to1
 
-        r.score1 = None
-        r.score2 = None
+        #r.score1 = None
+        #r.score2 = None
 
         if r.isProt :
             r.rtype = "prot"
