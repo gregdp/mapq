@@ -1892,7 +1892,7 @@ def CalcResQ (r, dmap, sigma, allAtTree=None, numPts=8, toRAD=2.0, dRAD=0.1, min
         if at.element.name == "H" :
             continue
 
-        if not hasattr ( 'isBB' ) :
+        if not hasattr ( at, 'isBB' ) :
             SetBBAts ( at.molecule )
 
         if not hasattr ( at, 'Q' ) or not useOld :
