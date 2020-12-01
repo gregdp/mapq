@@ -1888,8 +1888,12 @@ def CalcResQ (r, dmap, sigma, allAtTree=None, numPts=8, toRAD=2.0, dRAD=0.1, min
 
     scQ, bbQ, Q, numSC, numBB = 0.0, 0.0, 0.0, 0.0, 0.0
     for at in r.atoms :
+
         if at.element.name == "H" :
             continue
+
+        if not hasattr ( 'isBB' ) :
+            SetBBAts ( at.molecule )
 
         if not hasattr ( at, 'Q' ) or not useOld :
             #qs = Qscore ( [at], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=numPts, toRAD=toRAD, dRAD=dRAD, minD=minD, maxD=maxD )
@@ -2652,6 +2656,7 @@ def SetBBAts ( mol ) :
         from chimera.resCode import nucleic3to1
         from chimera.resCode import protein3to1
         protein3to1['HSD'] = protein3to1['HIS']
+        protein3to1['HSE'] = protein3to1['HIS']
 
         r.isProt = r.type in protein3to1
         r.isNA = r.type in nucleic3to1
@@ -2705,13 +2710,14 @@ def SetBBAts ( mol ) :
                 if a.element.name == "H" :
                     a.isBB, a.isSC = False, False
                     continue
+
                 n = a.name
 
                 a.isBB = n=="P" or n=="O1P" or n=="O2P" or n=="OP1" or n=="OP2" or n=="O5'" or n=="C5'" or n=="O3'"
                 a.isSugar = n=="C1'" or n=="C2'" or n=="O4'" or n=="O2'" or n=="C3'" or n=="C4'"
                 a.isBB = a.isBB or a.isSugar
 
-                a.isBase = False
+                a.isBase = not a.isBB
 
                 if nucleic3to1[r.type] == "G" :
                     a.isBase = n=="N9" or n=="C8" or n=="N7" or n=="C5" or n=="C4" or n=="C6" or n=="O6" or n=="N1" or n=="C2" or n=="N2" or n=="N3"
