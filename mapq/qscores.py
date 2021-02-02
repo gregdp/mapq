@@ -2140,6 +2140,7 @@ def QsFromFile ( mol, nname ) :
     return True
 
 
+
 def QScoreFileName ( mol, dmap ) :
 
     molPath = os.path.splitext(mol.openedAs[0])[0]
@@ -2646,7 +2647,7 @@ def SetBBAts ( mol ) :
     #    return
     #mol.bbats = True
 
-    print " - setting bbAts in %s" % mol.name
+    #print " - setting bbAts in %s" % mol.name
     for r in mol.residues :
 
         #r.isProt = "C" in r.atomsMap and "CA" in r.atomsMap and "N" in r.atomsMap
