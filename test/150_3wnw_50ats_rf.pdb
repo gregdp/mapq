@@ -1,0 +1,102 @@
+REMARK   3
+REMARK   3 REFINEMENT.
+REMARK   3   PROGRAM     : PHENIX (1.12_2829: phenix.real_space_refine)
+REMARK   3   AUTHORS     : Adams,Afonine,Bunkoczi,Burnley,Chen,Dar,Davis,
+REMARK   3               : Draizen,Echols,Gildea,Gros,Grosse-Kunstleve,Headd,
+REMARK   3               : Hintze,Hung,Ioerger,Liebschner,McCoy,McKee,Moriarty,
+REMARK   3               : Oeffner,Poon,Read,Richardson,Richardson,Sacchettini,
+REMARK   3               : Sauter,Sobolev,Storoni,Terwilliger,Williams,Zwart
+REMARK   3
+REMARK   3
+REMARK   3  SCATTERING TABLE: ELECTRON
+REMARK   3
+REMARK   3  REFINEMENT TARGET: REAL-SPACE (WEIGHTED MAP SUM AT ATOM CENTERS)
+REMARK   3
+REMARK   3  MODEL TO MAP FIT.
+REMARK   3    CC_mask  : 0.8130
+REMARK   3    CC_volume: 0.7192
+REMARK   3    CC_peaks : 0.3001
+REMARK   3
+REMARK   3
+HELIX    1   1 GLN F   14  PHE F   41  1                                  28
+HELIX    2   2 LYS F   49  GLN F   75  1                                  27
+HELIX    3   3 GLY F   96  ASP F  123  1                                  28
+HELIX    4   4 PRO F  127  MET F  158  1                                  32
+HELIX    5   5 GLY F  164  HIS F  173  1                                  10
+CRYST1  222.750  222.750  222.750  90.00  90.00  90.00 P 1
+SCALE1      0.004489  0.000000  0.000000        0.00000
+SCALE2      0.000000  0.004489  0.000000        0.00000
+SCALE3      0.000000  0.000000  0.004489        0.00000
+
+
+    ALLOWED  : 1.16  %
+    CIS-PROLINE     : 25.0
+    CIS-GENERAL     : 0.0
+    FAVORED  : 98.84 %
+    OUTLIERS : 0.00  %
+    TWISTED PROLINE : 0.0
+    TWISTED GENERAL : 0.0
+  ALL-ATOM CLASHSCORE : 0.00
+  ANGLE     :  0.792   8.382   1971
+  BOND      :  0.005   0.033   1464
+  CBETA DEVIATIONS : 0
+  CHIRALITY :  0.041   0.172    205
+  DIHEDRAL  :  2.284  24.043   1249
+  MIN NONBONDED DISTANCE : 2.096 
+  PEPTIDE PLANE:
+  PLANARITY :  0.005   0.036    260
+  RAMACHANDRAN PLOT:
+  ROTAMER OUTLIERS : 0.00 %
+DEVIATIONS FROM IDEAL VALUES.
+GEOMETRY RESTRAINTS LIBRARY: CDL v1.2
+MOLPROBITY STATISTICS.
+ATOM    478  N   GLU F  61      85.123 106.176 144.363  1.00  3.75           N
+ATOM    479  CA  GLU F  61      85.050 104.745 144.070  1.00  3.75           C
+ATOM    480  C   GLU F  61      83.753 104.129 144.584  1.00  3.75           C
+ATOM    481  O   GLU F  61      83.166 103.276 143.913  1.00  3.75           O
+ATOM    482  CB  GLU F  61      86.249 104.006 144.665  1.00  3.75           C
+ATOM    483  CG  GLU F  61      87.576 104.321 143.995  1.00  3.75           C
+ATOM    484  CD  GLU F  61      87.712 103.684 142.632  1.00  3.75           C
+ATOM    485  OE1 GLU F  61      87.379 104.346 141.626  1.00  3.75           O
+ATOM    486  OE2 GLU F  61      88.153 102.517 142.560  1.00  3.75           O
+ATOM    487  N   GLU F  62      83.295 104.543 145.773  1.00  3.47           N
+ATOM    488  CA  GLU F  62      82.044 104.007 146.304  1.00  3.47           C
+ATOM    489  C   GLU F  62      80.852 104.463 145.474  1.00  3.47           C
+ATOM    490  O   GLU F  62      79.864 103.734 145.350  1.00  3.47           O
+ATOM    491  CB  GLU F  62      81.831 104.430 147.757  1.00  3.47           C
+ATOM    492  CG  GLU F  62      82.847 103.950 148.770  1.00  3.47           C
+ATOM    493  CD  GLU F  62      83.137 102.472 148.699  1.00  3.47           C
+ATOM    494  OE1 GLU F  62      84.326 102.092 148.747  1.00  3.47           O
+ATOM    495  OE2 GLU F  62      82.185 101.680 148.631  1.00  3.47           O
+ATOM    496  N   ARG F  63      80.919 105.680 144.924  1.00  3.51           N
+ATOM    497  C   ARG F  63      79.847 105.282 142.747  1.00  3.51           C
+ATOM    498  O   ARG F  63      78.770 104.940 142.244  1.00  3.51           O
+ATOM    499  CA AARG F  63      79.880 106.141 144.008  0.50  3.51           C
+ATOM    500  CA BARG F  63      79.872 106.133 144.014  0.50  3.51           C
+ATOM    501  CB AARG F  63      80.115 107.611 143.657  0.50  3.51           C
+ATOM    502  CB BARG F  63      80.070 107.610 143.668  0.50  3.51           C
+ATOM    503  CG AARG F  63      79.250 108.139 142.530  0.50  3.51           C
+ATOM    504  CG BARG F  63      79.051 108.161 142.667  0.50  3.51           C
+ATOM    505  CD AARG F  63      77.785 108.158 142.898  0.50  3.51           C
+ATOM    506  CD BARG F  63      79.600 109.357 141.890  0.50  3.51           C
+ATOM    507  NE AARG F  63      77.004 108.797 141.846  0.50  3.51           N
+ATOM    508  NE BARG F  63      81.037 109.239 141.658  0.50  3.51           N
+ATOM    509  CZ AARG F  63      76.521 110.031 141.924  0.50  3.51           C
+ATOM    510  CZ BARG F  63      81.595 108.521 140.684  0.50  3.51           C
+ATOM    511  NH1AARG F  63      76.725 110.758 143.015  0.50  3.51           N
+ATOM    512  NH1BARG F  63      80.839 107.852 139.817  0.50  3.51           N
+ATOM    513  NH2AARG F  63      75.826 110.536 140.919  0.50  3.51           N
+ATOM    514  NH2BARG F  63      82.912 108.472 140.580  0.50  3.51           N
+ATOM    515  N   GLU F  64      81.027 104.916 142.229  1.00  4.00           N
+ATOM    516  CA  GLU F  64      81.096 104.016 141.078  1.00  4.00           C
+ATOM    517  C   GLU F  64      80.565 102.632 141.418  1.00  4.00           C
+ATOM    518  O   GLU F  64      79.969 101.969 140.565  1.00  4.00           O
+ATOM    519  CB  GLU F  64      82.530 103.899 140.570  1.00  4.00           C
+ATOM    520  CG  GLU F  64      83.107 105.190 140.083  1.00  4.00           C
+ATOM    521  CD  GLU F  64      84.486 105.034 139.484  1.00  4.00           C
+ATOM    522  OE1 GLU F  64      84.846 103.906 139.093  1.00  4.00           O
+ATOM    523  OE2 GLU F  64      85.218 106.044 139.415  1.00  4.00           O
+TER    1434      HIS F 177
+HETATM 1435 MG   MG  F 201      81.929  99.728 147.760  1.00  5.50          Mg
+HETATM 1528  O   HOH F 393      83.466  99.407 149.196  1.00  5.10           O
+END

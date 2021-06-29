@@ -1,2 +1,2 @@
 showDevTools = False    # some new also under-development tools
-mapqVersion = '1.6.4'
+mapqVersion = '1.6.5'

@@ -1,0 +1,21 @@
+Chain	Q_chain	Est.Res.	ExpectedQ@1.50
+F	0.86	1.46	=-0.1775 * 1.50 + 1.1192	(Water,Ion,Protein)
+
+Sigma: 0.6
+
+Protein: expectedQ = -0.1775 * RES + 1.1192
+Nucleic: expectedQ = -0.1377 * RES + 0.9973
+Ion: expectedQ = -0.1103 * RES + 1.0795
+Water: expectedQ = -0.0895 * RES + 1.0001
+
+Protein - Chain F								Average over 3 residues					Average over 5 residues					Average over 7 residues					Average over 11 residues
+
+Chain	Res	Res #	Q_backBone	Q_sideChain	Q_residue	ExpectedQ@1.50		Q_backBone(avg-3)	Q_sideChain(avg-3)	Q_residue(avg-3)	ExpectedQ@1.50		Q_backBone(avg-5)	Q_sideChain(avg-5)	Q_residue(avg-5)	ExpectedQ@1.50		Q_backBone(avg-7)	Q_sideChain(avg-7)	Q_residue(avg-7)	ExpectedQ@1.50		Q_backBone(avg-11)	Q_sideChain(avg-11)	Q_residue(avg-11)	ExpectedQ@1.50	
+F	GLU	61	0.948321	0.834465	0.885068	0.855300		0.958340	0.875247	0.912177	0.855300		0.963140	0.840331	0.882692	0.855300		0.952998	0.812422	0.865734	0.855300		0.635332	0.541614	0.886047	0.855300
+F	GLU	62	0.968359	0.916030	0.939287	0.855300		0.963140	0.840331	0.882692	0.855300		0.952998	0.812422	0.865734	0.855300		0.762398	0.649937	0.887290	0.855300		0.635332	0.541614	0.886047	0.855300
+F	ARG	63	0.972742	0.770499	0.823720	0.855300		0.954557	0.805074	0.859289	0.855300		0.762398	0.649937	0.887290	0.855300		0.635332	0.541614	0.886047	0.855300		0.635332	0.541614	0.886047	0.855300
+F	GLU	64	0.922570	0.728693	0.814861	0.855300		0.631771	0.499731	0.870698	0.855300		0.572734	0.483044	0.886243	0.855300		0.635332	0.541614	0.886047	0.855300		0.635332	0.541614	0.886047	0.855300
+F	MG	201			0.973514	0.914050
+F	HOH	393			0.879835	0.865850
+
+
