@@ -37,7 +37,7 @@ print ("Found parameters:")
 
 for arg in sys.argv :
 
-    print ("  %s" % arg),
+    print (": %s" % arg),
 
     if "mapq_cmd.py" in arg :
         print ( " -> this script" )
@@ -63,7 +63,10 @@ for arg in sys.argv :
 
     elif os.path.isfile(arg) :
         print ( " -> map or model" )
-        mods.append ( arg )
+        if arg[0:2] == '..' :
+            print ( " -X- please do not use relatives, i.e. .., in path (sorry)" )
+        else :
+            mods.append ( arg )
 
     else :
         tokens = arg.split("=")
@@ -126,8 +129,9 @@ print ("")
 
 if ok :
 
-    scriptPath = os.path.dirname(os.path.realpath(__file__))
-    newScript = os.path.join ( scriptPath, "mapqScript.py" )
+    #scriptPath = os.path.dirname(os.path.realpath(__file__))
+    scriptPath = os.path.dirname ( mods[0] )
+    newScript = os.path.join ( scriptPath, "_mapqScript.py" )
 
     print ("Creating Chimera script in %s" % newScript)
     print ("")
@@ -147,10 +151,16 @@ if ok :
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
     for mod in mods :
-        cmd += "%s " % mod
+        cmd += '"%s" ' % mod
     cmd += "%s" % newScript
 
     print (" : " + cmd)
     print ("")
 
     os.system(cmd)
+
+    print ( "Removing temp Chimera script ")
+    print ( " - %s" % newScript )
+    os.remove ( newScript )
+    print ( " - %s" % (newScript+"c") )
+    os.remove ( newScript + "c" )

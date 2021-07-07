@@ -2593,12 +2593,15 @@ def SaveQFile ( mol, cid, dmap, sigma ) :
     except :
         pass
 
-    fpo.write ( "REMARK   0 Q-scores in B-factor column calculated with MapQ v.%s\n" % ver )
+    fpo.write ( "REMARK   0 Q-scores in B-factor column calculated with MapQ\n" )
     fpo.write ( "REMARK   0 Q-scores sigma %.1f\n" % sigma )
     fpo.write ( "REMARK   0   - more info: github.com/gregdp/mapq\n"  )
     fpo.write ( "REMARK   0 Q-scores for model: %s\n" % mol.name )
-    fpo.write ( "REMARK   0   - for chain(s): %s\n" % cid )
-    fpo.write ( "REMARK   0   - other chains will have original B-factor values\n" )
+    if cid == None :
+        fpo.write ( "REMARK   0   - for all chains: %s\n" % cid )
+    else :
+        fpo.write ( "REMARK   0   - for chain: %s\n" % cid )
+        fpo.write ( "REMARK   0   - other chains will have original B-factor values\n" )
     fpo.write ( "REMARK   0 Q-scores in map: %s\n" % dmap.name )
     for l in fpi :
         fpo.write (l)
