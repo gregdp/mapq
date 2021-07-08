@@ -1660,9 +1660,6 @@ def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, num
         print ""
         print " ------------ ", chimeraPath
         print ""
-        #mapQPPath = os.path.join ( chimeraPath, 'Segger' )
-        #mapQPPath = os.path.join ( chimeraPath, 'mapqp.py' )
-        #print " -- path to mapQ script:", mapQPPath
 
         # for Mac
         chimeraPath, share = os.path.split ( chimeraPath )
@@ -1675,6 +1672,9 @@ def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, num
             chimeraPath += ".exe"
 
     print " -- path to Chimera:", chimeraPath
+    if not os.path.isfile ( chimeraPath ) :
+        print " - not found..."
+        return
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     inDir = os.path.split(dir_path)[0]
