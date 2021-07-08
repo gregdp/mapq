@@ -1,9 +1,8 @@
-REMARK   0 Q-scores in B-factor column calculated with MapQ v.
+REMARK   0 Q-scores in B-factor column calculated with MapQ
 REMARK   0 Q-scores sigma 0.6
 REMARK   0   - more info: github.com/gregdp/mapq
 REMARK   0 Q-scores for model: 150_3wnw_50ats_rf.pdb
-REMARK   0   - for chain(s): None
-REMARK   0   - other chains will have original B-factor values
+REMARK   0   - for all chains: None
 REMARK   0 Q-scores in map: 150_emd_9865_z4.mrc
 REMARK   3
 REMARK   3 REFINEMENT.

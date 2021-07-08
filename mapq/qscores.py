@@ -1468,7 +1468,7 @@ def Calc ( chimeraPath, numProc, res=3.0, bfactorF=-1, sigma=0.6 ) :
         if numProc == 1 :
             CalcQ ( mol, None, dmap, sigma, allAtTree=allAtTree )
         else :
-            CalcQp ( mol, None, dmap, sigma, allAtTree=allAtTree, numProc=numProc )
+            CalcQp ( mol, None, dmap, sigma, allAtTree=allAtTree, numProc=numProc, chimeraPath=chimeraPath )
 
         SaveQStats ( mol, "All", dmap, sigma, res )
 
@@ -1598,7 +1598,7 @@ def CalcQForOpenModelsRess () :
 
 
 
-def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, numProc=None ) :
+def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, numProc=None, chimeraPath=None ) :
 
 
     molPath = os.path.splitext(mol.openedAs[0])[0]
@@ -1654,29 +1654,27 @@ def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, num
         print arg,
     print ""
 
-    # '/Users/greg/_mol/Chimera.app/Contents/Resources/share/__main__.py'
-    chiPath = os.path.split ( sys.argv[0] )[0]
-    #mapQPPath = os.path.join ( chiPath, 'Segger' )
-    #mapQPPath = os.path.join ( chiPath, 'mapqp.py' )
-    #print " -- path to mapQ script:", mapQPPath
+    if chimeraPath == None :
+        # '/Users/greg/_mol/Chimera.app/Contents/Resources/share/__main__.py'
+        chimeraPath = os.path.split ( sys.argv[0] )[0]
+        print ""
+        print " ------------ ", chimeraPath
+        print ""
+        #mapQPPath = os.path.join ( chimeraPath, 'Segger' )
+        #mapQPPath = os.path.join ( chimeraPath, 'mapqp.py' )
+        #print " -- path to mapQ script:", mapQPPath
 
-    # for Mac
-    chiPath, share = os.path.split ( chiPath )
-    #print chiPath, share
-    chiPath2, resOrChim = os.path.split ( chiPath )
-    #print chiPath, resOrChim
-    if "Chimera" in resOrChim :
-        print " -- on unix"
-        chiPath = os.path.join ( chiPath, 'bin' )
-        chiPath = os.path.join ( chiPath, 'chimera' )
-    else :
-        print " -- on mac"
-        #chiPath2, contents = os.path.split ( chiPath2 )
-        #print chiPath2, contents
-        chiPath = os.path.join ( chiPath2, 'MacOS' )
-        chiPath = os.path.join ( chiPath, 'chimera' )
+        # for Mac
+        chimeraPath, share = os.path.split ( chimeraPath )
+        chimeraPath = os.path.join ( chimeraPath, 'bin' )
+        chimeraPath = os.path.join ( chimeraPath, 'chimera' )
+        if os.path.isfile ( chimeraPath ) :
+            print " -- on unix/mac"
+        else :
+            print " -- on windows"
+            chimeraPath += ".exe"
 
-    print " -- path to Chimera:", chiPath
+    print " -- path to Chimera:", chimeraPath
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     inDir = os.path.split(dir_path)[0]
@@ -1708,7 +1706,7 @@ def CalcQp ( mol, cid, dmap, sigma, allAtTree=None, useOld=False, log=False, num
         nmap = MaskMapResize ( atoms1, 4.0, dmap, nmap_path )
         #nmap.write_file ( nmap_path , "mrc" )
 
-        args = [chiPath, '--nogui', '--silent', '--nostatus', mol.openedAs[0], nmap_path, mapQPPath]
+        args = [chimeraPath, '--nogui', '--silent', '--nostatus', mol.openedAs[0], nmap_path, mapQPPath]
         if mi == 0 :
             print "running proc:",
             for arg in args :
