@@ -8,7 +8,7 @@ import sys
 print sys.argv[1]
 fromPath = sys.argv[1]
 
-files = ["mapq.py", "qscores.py"]
+files = ["mapq.py", "qscores.py", "mmcif.py"]
 
 for f in files :
     print f,

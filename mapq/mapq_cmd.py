@@ -100,7 +100,7 @@ for arg in sys.argv :
 print ("")
 
 ok = True
-if len(mods) == 0 or chimeraPath == None :
+if len(mods) <= 1 or chimeraPath == None :
     print ("")
     print ("mapq_cmd.py")
     print ("  - Calculate Q-scores from command line")
@@ -144,23 +144,30 @@ if ok :
 
     fp.write ( "import mapq\n" )
     fp.write ( "import mapq.qscores\n" )
-    fp.write ( "mapq.qscores.Calc('%s',%d,%f,%f,%f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
-    fp.close()
+    fp.write ( "from mapq.mmcif import LoadMol as CifLoadMol\n" )
 
 
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
     for mod in mods :
-        cmd += '"%s" ' % mod
-    cmd += "%s" % newScript
+        if os.path.splitext(mod)[1] == ".cif" :
+            fp.write ( "CifLoadMol('%s')\n" % mod )
+        else :
+            cmd += '"%s" ' % mod
+
+    cmd += "'%s'" % newScript
 
     print (" : " + cmd)
     print ("")
 
+    fp.write ( "mapq.qscores.Calc('%s',%d,%f,%f,%f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
+    fp.close()
+
     os.system(cmd)
 
-    print ( "Removing temp Chimera script ")
-    print ( " - %s" % newScript )
-    os.remove ( newScript )
-    print ( " - %s" % (newScript+"c") )
-    os.remove ( newScript + "c" )
+    if 1 :
+        print ( "Removing temp Chimera script ")
+        print ( " - %s" % newScript )
+        os.remove ( newScript )
+        print ( " - %s" % (newScript+"c") )
+        os.remove ( newScript + "c" )

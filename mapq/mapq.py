@@ -65,7 +65,7 @@ except :
 
 
 gSigma = 0.6
-mapqVersion = "1.6.7"
+mapqVersion = "1.7.0"
 showDevTools = False
 
 
@@ -185,6 +185,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         #l = Tkinter.Label(f, text='  ')
         #l.grid(column=0, row=row, sticky='w')
+
+
+        if 0 :
+            menubar = Tkinter.Menu(parent, type = 'menubar', tearoff = False)
+            tw.config(menu = menubar)
+
+            file_menu_entries = (
+                ('Load Model...', self.LoadModel),
+                ('Save Model...', self.SaveModel)
+                )
+            fmenu = Hybrid.cascade_menu(menubar, 'File', file_menu_entries)
+
+            from chimera.tkgui import aquaMenuBar
+            aquaMenuBar(menubar, parent, row = 0, columnspan=3)
 
 
 
@@ -400,6 +414,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 b = Tkinter.Button(ff, text="Sel", command=self.CalcSelQ )
                 b.grid (column=8, row=0, sticky='w', padx=2)
 
+                b = Tkinter.Button(ff, text="O", command=self.CalcSelQOpen )
+                b.grid (column=9, row=0, sticky='w', padx=2)
+
                 #b = Tkinter.Button(fff, text="R", command=self.CalcAllR )
                 #b.grid (column=5, row=0, sticky='w', padx=2)
 
@@ -517,6 +534,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
             b = Tkinter.Button(ff, text="!", command=self.SelReLoad)
             b.grid (column=46, row=0, sticky='w', padx=0)
+
+            b = Tkinter.Button(ff, text=" ", command=self.HideSel)
+            b.grid (column=47, row=0, sticky='w', padx=0)
 
             if 0 and showDevTools :
 
@@ -1068,9 +1088,13 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
     def DoSeq ( self ) :
-        print "after 100"
+        #print "after 100"
+
         self.GetSeq ()
         self.ZoomBegin ()
+
+        if self.cur_mol != None :
+            self.ShowQScores ()
 
 
     def ChainSelected ( self, ch ) :
@@ -1095,6 +1119,48 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             self.chainMB.menu.add_radiobutton ( label=ch, variable=self.chain, command=lambda ch=ch: self.ChainSelected(ch) )
 
         self.chainMB.menu.add_radiobutton ( label="All", variable=self.chain, command=lambda ch="All": self.ChainSelected("All") )
+
+
+
+
+    def LoadModel ( self ) :
+
+        import mmcif
+        reload (mmcif)
+
+        fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec.cif"
+        fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec__Q__emd_30342.cif"
+        print "Loading %s" % fpath
+
+        mol, chainColors = mmcif.ReadMol ( fpath, log=True )
+
+        print " - got mol!"
+
+        chimera.openModels.add  ( [ mol ] )
+
+        for at in mol.atoms :
+            at.display = True
+            at.drawMode = at.Sphere
+            at.color = chainColors[at.residue.id.chainId]
+
+
+
+
+    def SaveModel ( self ) :
+        print "save"
+
+        mol = None
+        for m in chimera.openModels.list() :
+            if type(m) == chimera.Molecule :
+                mol = m
+
+        import mmcif
+        reload (mmcif)
+
+        fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec_Q.cif"
+        print "Writing %s -> %s" % (mol.name, fpath)
+
+        mmcif.WriteMol ( mol, fpath )
 
 
 
@@ -1661,7 +1727,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         for mod in chimera.openModels.list() :
             if type(mod) == chimera.Molecule and mod.display == True :
-
                 for res in mod.residues :
                     #if res.id.position in rs and res.id.chainId == cid :
                     if res.id.position in rs :
@@ -1695,7 +1760,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if not hasattr (at, 'isBB') :
                     SetBBAts (at.molecule)
 
-                at.display = at.isBB
+                if self.showingAtoms :
+                    at.display = at.isBB
+                else :
+                    at.display = at.isBB and not at.isSugar
                 #if at.residue.isNA : at.display = at.isBB
 
                 #try :
@@ -2661,7 +2729,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         scBB, scSC = [], []
 
         for r in self.cur_mol.residues :
-            if cid == None or cid == "All" or r.id.chainId == cid :
+            #if cid == None or cid == "All" or r.id.chainId == cid :
+            if r.id.chainId == cid :
+                qscores.CalcResQ ( r )
                 if r.isProt or r.isNA :
                     r.score1 = r.scQ
                     r.score2 = r.bbQ
@@ -2791,11 +2861,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if not ok :
             return
 
-
         umsg ( "Loading..." )
-
         chainId = self.chain.get()
-
 
         if 0 :
             for r in self.cur_mol.residues :
@@ -2840,7 +2907,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         maxD = min ( numpy.average(M)+numpy.std(M)*10, maxM )
         minD = max ( numpy.average(M)-numpy.std(M)*1, minM )
-
 
         # http://www.wwpdb.org/documentation/file-format-content/format33/sect9.html#ATOM
         fin = open ( nname, "r" )
@@ -4174,6 +4240,12 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     self.PtsToMap ( points, dmap, R, dmap.name + label + "_mesh", True )
 
 
+    def HideSel ( self ) :
+
+        for r in chimera.selection.currentResidues() :
+            r.ribbonDisplay = False
+            for at in r.atoms :
+                at.display = False
 
 
     def ShowSel ( self ) :
@@ -4925,22 +4997,31 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         allAtTree = None
         #print "-"
-
         if 1 :
             points = _multiscale.get_atom_coordinates ( ats, transformed = False )
             print " - search tree: %d/%d ats" % ( len(ats), len(r.molecule.atoms) )
             allAtTree = AdaptiveTree ( points.tolist(), ats, 1.0)
 
-        import grid
-        reload(grid)
+        allPtsTree = None
+        if 1 :
+            allPts = [None] * len(ats) # numpy.array.zeros ( [numAts,3] )
+            ati = 0
+            for at in ats :
+                p = at.coord()
+                allPts[ati] = [ p.x, p.y, p.z ]
+                ati += 1
 
-        agrid = grid.Grid ()
-        agrid.FromAtomsLocal ( ats, 2.0 )
+            print " - %d pts tree" % len(ats)
+            allPtTree = AdaptiveTree ( allPts, allPts, 1.0)
 
+
+        #import grid
+        #reload(grid)
+        #agrid = grid.Grid ()
+        #agrid.FromAtomsLocal ( ats, 2.0 )
 
         import time
         start = time.time()
-
 
         if 0 :
             print "_sigma____________________________"
@@ -4951,8 +5032,31 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             end = time.time()
             print "%s - sigma: %.3f, res: %.3f, time: %f" % ( selAtom.name, sigma, res, (end - start) )
 
-
         elif 1 :
+            print ""
+            print "_Q_score____________________________"
+
+            minD, maxD = qscores.MinMaxD ( dmap )
+            print " - mind: %.3f, maxd: %.3f" % (minD, maxD)
+
+            start = time.time()
+            qs = 0
+            qs = qscores.Qscore ( [selAtom], dmap, gSigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+            #qs, yds, err = qs
+            end = time.time()
+            print " - sigma (at): %.3f, Q-score: %.3f, time: %f" % ( gSigma, qs, (end - start) )
+
+            start = time.time()
+            atPt = selAtom.coord()
+            atPt = [atPt.x, atPt.y, atPt.z]
+            xfI = selAtom.molecule.openState.xform
+            qs = qscores.QscorePt2 ( atPt, xfI, dmap, gSigma, allPtTree=allPtTree, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+            end = time.time()
+            print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( gSigma, qs, (end - start) )
+
+
+
+        elif 0 :
             print ""
             print "_Q_score____________________________"
 
@@ -5252,6 +5356,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         allAtTree = AdaptiveTree ( points.tolist(), ats, 1.0)
 
         minD, maxD = qscores.MinMaxD ( dmap )
+        print " - minD %.3f, maxD %.3f" % (minD, maxD)
 
         import time
         start = time.time()
@@ -5264,11 +5369,15 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         import traceback
 
-
+        nonhatoms = []
         try :
 
             for ai, at in enumerate ( atoms ) :
 
+                if at.element.name == "H" :
+                    continue
+
+                nonhatoms.append ( at )
                 at.Q = qscores.Qscore ( [at], dmap, gSigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
                 at.bfactor = at.Q
                 avg += at.Q
@@ -5298,22 +5407,81 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             task.finished()
 
 
-        cc = ResCC ( mol, atoms, 4.0, dmap )
-        print " - CC: %.3f" % cc
-
-        for at in atoms :
-            print " - atom: %s %d.%s %s : %.2f" % (at.residue.type, at.residue.id.position, at.residue.id.chainId, at.name, at.Q)
+        for at in nonhatoms :
+            print " - atom: %s %d.%s %s : %.3f" % (at.residue.type, at.residue.id.position, at.residue.id.chainId, at.name, at.Q)
 
         if numBB > 0 :
             print "%d backbone atoms, Q=%.2f" % (numBB, avgBB/float(numBB))
         if numSC > 0 :
             print "%d sidechain atoms, Q=%.2f" % (numSC, avgSC/float(numSC))
 
-        avgq = avg / float(len(atoms))
+        avgq = avg / float(len(nonhatoms))
         if len(atoms) > 1 :
-            umsg ( "Q-score of %d atoms: %.2f" % (len(atoms), avgq) )
+            umsg ( "Q-score of %d atoms: %.3f" % (len(nonhatoms), avgq) )
         else :
-            umsg ( "Q-score of %d atom: %.2f" % (len(atoms), avgq) )
+            umsg ( "Q-score of %d atom: %.3f" % (len(nonhatoms), avgq) )
+
+        res = float(self.mapRes.get())
+        cc1, cc2 = ResCC ( mol, atoms, res, dmap )
+
+        cc1_, cc2_ = ResCC ( mol, nonhatoms, res, dmap )
+
+
+        numClash = 0.0
+        if 1 and allAtTree :
+            for at in nonhatoms :
+                anear = allAtTree.searchTree ( at.coord().data(), 2.0 )
+                for nat in anear :
+                    if nat.residue != at.residue :
+                        v = at.coord() - nat.coord()
+                        if v.length < 1.8 :
+                            numClash += 1.0
+                            break
+
+        clashScore = numClash / float(len(nonhatoms))
+
+
+        R = atoms[0].residue
+        rid = "%s.%d.%s" % (R.type, R.id.position, R.id.chainId)
+
+        #print mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, res
+
+        print "\nMol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes"
+        print "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f (%.2f)\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash, res)
+
+        if not os.path.isfile ("/Users/greg/Desktop/txt.txt") :
+            fp = open ( "/Users/greg/Desktop/txt.txt", "a" )
+            fp.write ( "Mol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes\n" )
+            fp.close()
+        fp = open ( "/Users/greg/Desktop/txt.txt", "a" )
+        fp.write ( "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash) )
+        fp.close()
+
+
+    def CalcSelQOpen ( self ) :
+
+        for m in chimera.openModels.list() :
+
+            if type(m) != chimera.Molecule :
+                continue
+
+            resN = None
+            for r in m.residues :
+
+                if r.type == "PTQ" :
+                #if r.type == "PEE" or r.type == "ACB" :
+                #if r.type == "F86" :
+                    resN = r
+                    break
+
+            if resN :
+
+                print "\n\n-------------- %s -------- %s.%d.%s" % (m.name, resN.type, resN.id.position, resN.id.chainId)
+
+                chimera.selection.clearCurrent ()
+                chimera.selection.addCurrent ( resN.atoms )
+                self.CalcSelQ ()
+
 
 
 
@@ -8465,7 +8633,7 @@ def MyMolMap ( m0, atoms, resolution, step ) :
     cutoff_range = 5 # in standard deviations
     sigma_factor = 1/(pi*sqrt(2)) # standard deviation / resolution
     transforms,csys = [], None
-    display_threshold = 0.95
+    #display_threshold = 0.95
 
     return molecule_grid_data(m0, atoms, resolution, step, pad, None, cutoff_range, sigma_factor, transforms, csys)
 
@@ -8530,14 +8698,14 @@ def ResCC ( mol, rats, resolution, dmap ) :
     #    chimera.openModels.close ( [fmap] )
     #else :
 
-    fpoints, fpoint_weights = fit_points_g ( molg )
+    fpoints, fpoint_weights = fit_points_g ( molg, 0.1 )
     map_values = dmap.interpolated_values ( fpoints, mol.openState.xform )
     olap, corr1, corr2 = FitMap.overlap_and_correlation ( fpoint_weights, map_values )
-    return corr1
+    return corr1, corr2
 
 
 
-def fit_points_g (fdata, threshold = 1e-5) :
+def fit_points_g (fdata, threshold = 0.3) :
 
     mat = fdata.full_matrix()
 
@@ -9296,13 +9464,9 @@ def SetBBAts ( mol ) :
         r.isProt = r.type in protein3to1
         r.isNA = r.type in nucleic3to1
 
-        if r.isProt :
-            r.rtype = "prot"
-        elif r.isNA :
-            r.rtype = "na"
-        else :
-            r.rtype = "?"
-
+        #if r.isProt : r.rtype = "prot"
+        #lif r.isNA : r.rtype = "na"
+        #else : r.rtype = "?"
 
         if 0 and r.isNA :
             try :
@@ -9330,11 +9494,8 @@ def SetBBAts ( mol ) :
                 n = a.name
                 a.isBB = n=="C" or n=="CA" or n=="O" or n=="N" or n=="OT1" or n=="OT2"
                 a.isSC = not a.isBB
-                if a.isBB :
-                    r.bbAtoms.append ( a )
-                else :
-                    r.scAtoms.append ( a )
-
+                if a.isBB : r.bbAtoms.append ( a )
+                else : r.scAtoms.append ( a )
                 a.isSugar, a.isBase = False, False
 
         elif r.isNA :
@@ -9375,10 +9536,8 @@ def SetBBAts ( mol ) :
                 #    r.isBase = n=="" or n=="" or n=="" or n=="" or n=="" or n=="" or n=="" or n=="" or n="" or n="" or n=""
                 #    r.baseAt = r.atomsMap["N9"][0]
 
-                if a.isBB :
-                    r.bbAtoms.append ( a )
-                else :
-                    r.scAtoms.append ( a )
+                if a.isBB : r.bbAtoms.append ( a )
+                else : r.scAtoms.append ( a )
 
         else :
             for a in r.atoms :
