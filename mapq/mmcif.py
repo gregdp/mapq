@@ -2,6 +2,7 @@
 
 
 
+
 # execfile ( "Segger/mmcif.py" ); r = ReadCif ( "/Users/greg/Box Sync/_data/problems/emd_30342/7cec_s.cif" )
 
 def ReadCif ( fpath, log=False ) :
@@ -71,7 +72,7 @@ def ReadCif ( fpath, log=False ) :
 
     fp.close()
 
-    print ( " - read %d lines, %.1fs" % (li, time.time()-start) )
+    print ( " - done CIF - %d lines -- %.1fs" % (li, time.time()-start) )
 
     if log :
         print ""
@@ -277,6 +278,12 @@ def splitm ( li, l ) :
     if addTo :
         print " - ? %d - unmatched '" % li
         tsr += addTo
+
+    #t2 = []
+    for i,t in enumerate(tsr) :
+        if t[0] == '"' and t[-1] == '"' :
+            tsr[i] = t[1:-1]
+
     return tsr
 
 
@@ -328,31 +335,478 @@ def WriteCif ( cif, fout ) :
 
 
 
-def LoadMol ( fpath, log=False ) :
 
+try :
     import chimera
-    mol = ReadMol ( fpath, log )
-    chimera.openModels.add ( [mol] )
-    #return mol
-
-
-def ReadMol ( fpath, log=False ) :
-
-    from random import random
-    import chimera
+    import numpy
 
     from chimera.resCode import nucleic3to1
     from chimera.resCode import protein3to1, protein1to3
     protein3to1['HSD'] = protein3to1['HIS']
     protein3to1['HSE'] = protein3to1['HIS']
 
+    nucleic1to3 = { 'T':'THY', 'C':'CYT', 'G':'GUA', 'A':'ADE', 'U':'URA'}
+    nucleic3to1['GDP'] = nucleic3to1['GUA']
+
+    atomColors = {'C' : chimera.MaterialColor (0.565,0.565,0.565),
+                'Cbb' : chimera.MaterialColor (0.2,0.6,0.2),
+                'S' : chimera.MaterialColor (1.000,1.000,0.188),
+                'O' : chimera.MaterialColor (1.000,0.051,0.051),
+                'N' : chimera.MaterialColor (0.188,0.314,0.973),
+                'P' : chimera.MaterialColor (1.0, 0.502, 0.0),
+                'H' : chimera.MaterialColor (0.9,.9,.9),
+                ' ' : chimera.MaterialColor (0.2,1,.2),
+                "MG" : chimera.MaterialColor (0,1,0),
+                "NA" : chimera.MaterialColor (.6,.3,.6),
+                "CL" : chimera.MaterialColor (.2,.6,.2),
+                "CA" : chimera.MaterialColor (.4,.4,.6),
+                "ZN" : chimera.MaterialColor (.2,.8,.2),
+                "MN" : chimera.MaterialColor (.4,.4,.6),
+                "FE" : chimera.MaterialColor (.4,.4,.6),
+                "CO" : chimera.MaterialColor (.4,.4,.6),
+                "NI" : chimera.MaterialColor (.4,.4,.6)
+    }
+
+
+except :
+    pass
+
+
+
+def LoadMol ( fpath, log=False ) :
+
+    mol = ReadMol ( fpath, log )
+
+    chimera.openModels.add ( [mol] )
+    #return mol
+
+    print " - got %s" % mol.name
+
+    for at in mol.atoms :
+        at.display = True
+        at.drawMode = at.Sphere
+        at.color = mol.chainColors[at.residue.id.chainId]
+
+    for res in mol.residues :
+        res.ribbonDisplay = False # drawRib
+        res.ribbonDrawMode = 2
+        res.ribbonColor = mol.chainColors[at.residue.id.chainId]
+
+    #if hasattr ( mol, 'chainDescr' ) :
+    #    for cid, descr in mol.chainDescr.iteritems() :
+    #        print " - %s - %s" % (cid, ", ".join(descr))
+
+    return mol
+
+
+def GetResMol ( rtype ) :
+
+    ppath = "/Users/greg/Dropbox/_mol/Segger/_param/"
+    fname = ppath + "%s.pdb" % rtype
+    from os import path
+    if not path.isfile(fname) :
+        print " - did not find %s" % fname
+
+        #args = ["/Users/greg/_mol/phenix-1.19.2-4158/build/bin/phenix.elbow", "--chemical_component", rtype]
+        args = ["/Users/greg/_mol/phenix-1.18.2-3874/build/bin/phenix.elbow", "--chemical_component", rtype]
+
+        print "Running elbow:"
+        print args
+
+        fout = open ( ppath + "_%s.log" % rtype, "w" )
+        foute = open ( ppath + "_%s_err.log" % rtype, "w" )
+        import subprocess
+        p = subprocess.Popen(args, stdout=fout, stderr=foute, cwd=ppath)
+
+        print " - waiting..."
+        p.wait()
+        fout.close()
+        foute.close()
+
+        if not path.isfile(fname) :
+            print " - elbow file not found %s" % fname
+            return None
+
+    import chimera
+    nmol = chimera.PDBio().readPDBfile ( fname )[0]
+    #print " - read %s - %d atoms - %d res" % ( fname, len(nmol.atoms), len(nmol.residues) )
+    #addRes = nmol.residues[0]
+    return nmol
+
+
+def LoadMol2 ( fpath, log=False ) :
+
+    if 0 :
+        from chimera import tasks, CancelOperation
+        task = tasks.Task('...', modal = True)
+
+        try :
+            mol = LoadMol2_ ( fpath, log, task )
+            #mol = LoadMolCh_ ( fpath, log, task )
+
+        except Exception, err:
+            #umsg ( "Something went wrong..." )
+            print Exception, err
+            traceback.print_exc()
+            return
+
+        finally :
+            task.finished()
+
+        return mol
+    else :
+        mol = LoadMol2_ ( fpath, log, None )
+        #mol = LoadMolCh_ ( fpath, log, None )
+        return mol
+
+
+
+
+def LoadMol2_ ( fpath, log=False, task=None ) :
+
+    mol = ReadMol ( fpath, log=False )
+
+    crmap = {}
+    rmolmap = {}
+
+    print " - %d residues" % len(mol.residues)
+
+    import time
+    start = time.time()
+
+    for r in mol.residues :
+        if not r.id.chainId in crmap :
+            crmap[r.id.chainId] = { r.id.position : r }
+        else :
+            crmap[r.id.chainId][r.id.position] = r
+
+    bonds = []
+    for ri, r in enumerate ( mol.residues ) :
+        if task :
+            if ri % 100 == 0 :
+                task.updateStatus( "%s - residue %d/%d" % ( mol.name, ri, len(mol.residues) ) )
+
+        rmol = None
+
+        rtype = r.type.upper()
+        #if rtype in nucleic1to3 :
+        #    rtype = nucleic1to3[rtype]
+        #    #print r.type, "->", rtype
+
+        #print "%d %d.%s %s" % (ri, r.id.position, r.id.chainId, r.type)
+
+        if rtype.lower() in rmolmap :
+            rmol = rmolmap[ rtype.lower() ]
+        else :
+            rmol = GetResMol ( rtype.lower() )
+            if rmol != None :
+                rmolmap[rtype.lower()] = rmol
+
+        if 1 and rmol != None :
+            for b in rmol.bonds :
+                a1n, a2n = b.atoms[0].name, b.atoms[1].name
+                if a1n in r.atomsMap and a2n in r.atomsMap :
+                    for a1 in r.atomsMap[a1n] :
+                        for a2 in r.atomsMap[a2n] :
+                            #print "%s - %s" % ( At(a1), At(a2) )
+                            #nb = mol.newBond ( a1, a2 )
+                            bonds.append ( [a1,a2] )
+                            pass
+
+        if 1 :
+            if r.type.upper() in protein3to1 :
+                if r.id.position-1 in crmap[r.id.chainId] :
+                    pres = crmap[r.id.chainId][r.id.position-1]
+                    if pres.type.upper() in protein3to1 :
+                        #GetSS ( pres, r )
+                        if "C" in pres.atomsMap and "N" in r.atomsMap :
+                            for a1 in pres.atomsMap["C"] :
+                                for a2 in r.atomsMap["N"] :
+                                    #print a1.name, pres.id.position, a2.name, r.id.position
+                                    #nb = mol.newBond ( a1, a2 )
+                                    bonds.append ( [a1,a2] )
+                                    pass
+
+            if r.type.upper() in nucleic1to3 or r.type.upper() in nucleic3to1 :
+                if r.id.position-1 in crmap[r.id.chainId] :
+                    pres = crmap[r.id.chainId][r.id.position-1]
+                    if pres.type.upper() in nucleic1to3 or pres.type.upper() in nucleic3to1 :
+                        if "O3'" in pres.atomsMap and "P" in r.atomsMap :
+                            for a1 in pres.atomsMap["O3'"] :
+                                for a2 in r.atomsMap["P"] :
+                                    #print a1.name, pres.id.position, a2.name, r.id.position
+                                    #nb = mol.newBond ( a1, a2 )
+                                    bonds.append ( [a1,a2] )
+                                    pass
+
+    print ( " - %d bonds, %.1fs" % (len(bonds), time.time()-start)  )
+
+    start = time.time()
+    for a1, a2 in bonds :
+        nb = mol.newBond ( a1, a2 )
+
+    print ( " - added bonds in %.1fs" % (time.time()-start)  )
+
+    start = time.time()
+    chimera.openModels.add ( [mol] )
+    print " - added mol, %.1fs" % (time.time()-start)
+
+    return mol
+
+
+def ColorMol ( mol ) :
+
+    if not hasattr ( mol, 'chainColors' ) :
+        from random import random
+        mol.chainColors = {}
+        for r in mol.residues :
+            if not r.id.chainId in mol.chainColors :
+                clr = chimera.MaterialColor ( random(), random(), random(), 1.0 )
+                mol.chainColors[r.id.chainId] = clr
+
+    for r in mol.residues :
+        rt = r.type.upper()
+        if rt in protein3to1 or rt in nucleic3to1 or rt in nucleic1to3 :
+            r.ribbonDisplay = True
+            r.ribbonDrawMode = 2
+            r.ribbonColor = mol.chainColors[r.id.chainId]
+            for at in r.atoms :
+                at.display = False
+                at.drawMode = at.EndCap
+                if at.element.name.upper() in atomColors :
+                    at.color = atomColors[at.element.name.upper()]
+                else :
+                    at.color = mol.chainColors[r.id.chainId]
+        else :
+            for at in r.atoms :
+                at.display = True
+                at.drawMode = at.EndCap
+                if at.element.name.upper() in atomColors :
+                    at.color = atomColors[at.element.name.upper()]
+                else :
+                    at.color = mol.chainColors[r.id.chainId]
+
+    for b in mol.bonds :
+        b.drawMode = b.Stick
+        b.display = b.Smart
+
+
+def At ( at ) :
+    return "%d.%s(%s)_%s" % (at.residue.id.position, at.residue.id.chainId, at.residue.type, at.name)
+
+
+
+# this makes one molecule for each chains
+# probably useless, but was useful to see why adding bonds was crazy slow
+def LoadMolCh_ ( fpath, log=False, task=None ) :
+
+    mol = ReadMol ( fpath, log=False )
+
+    from chimera.resCode import nucleic3to1
+    from chimera.resCode import protein3to1, protein1to3
+    protein3to1['HSD'] = protein3to1['HIS']
+    protein3to1['HSE'] = protein3to1['HIS']
+
+    nucleic1to3 = { 'T':'THY', 'C':'CYT', 'G':'GUA', 'A':'ADE', 'U':'URA'}
+    nucleic3to1['GDP'] = nucleic3to1['GUA']
+
+    crmap = {}
+    rmolmap = {}
+
+    print " - adding bonds"
+
+    import time
+    start = time.time()
+
+    for r in mol.residues :
+        if not r.id.chainId in crmap :
+            crmap[r.id.chainId] = { r.id.position : r }
+        else :
+            crmap[r.id.chainId][r.id.position] = r
+
+    chains = mol.chainColors.keys()
+
+    print "%d residues - %d chains" % ( len(mol.residues), len(chains) )
+    from os.path import splitext
+
+    chMols = {}
+    for ch in chains :
+
+        start = time.time()
+
+        chMol = chimera.Molecule()
+        chMol.name = splitext ( mol.name )[0] + "_" + ch
+        rmap0 = crmap[ch]
+        chMols[ch] = chMol
+        print " - %s - %d residues" % (ch, len(rmap0)),
+
+        rmap = {}
+        for ri, res in rmap0.iteritems() :
+            nr = chMol.newResidue ( res.type, chimera.MolResId(ch, res.id.position) )
+            rmap[nr.id.position] = nr
+            for at in res.atoms :
+                nat = chMol.newAtom ( at.name, at.element )
+                nr.addAtom ( nat )
+                nat.setCoord ( at.coord() )
+
+        print ", %d atoms" % len(chMol.atoms),
+
+        for ri, r in rmap.iteritems() :
+            #if ri % 100 == 0 :
+            #    print "%d/%d" % ( ri, len(mol.residues) )
+            #    if task :
+            #        task.updateStatus( "%d/%d" % ( ri, len(mol.residues) ) )
+
+            rmol = None
+            rtype = r.type.upper()
+            if rtype.lower() in rmolmap :
+                rmol = rmolmap[ rtype.lower() ]
+            else :
+                rmol = GetResMol ( rtype.lower() )
+                if rmol != None :
+                    rmolmap[rtype.lower()] = rmol
+
+            if rmol != None :
+                for b in rmol.bonds :
+                    a1n, a2n = b.atoms[0].name, b.atoms[1].name
+                    if a1n in r.atomsMap and a2n in r.atomsMap :
+                        for a1 in r.atomsMap[a1n] :
+                            for a2 in r.atomsMap[a2n] :
+                                #print "%s - %s" % ( At(a1), At(a2) )
+                                nb = chMol.newBond ( a1, a2 )
+                                pass
+            else :
+                print " - rmol %s not found" % rtype
+
+            if 1 :
+                if r.type.upper() in protein3to1 :
+                    if r.id.position-1 in rmap :
+                        pres = rmap[r.id.position-1]
+                        if pres.type.upper() in protein3to1 :
+                            #GetSS ( pres, r )
+                            if "C" in pres.atomsMap and "N" in r.atomsMap :
+                                for a1 in pres.atomsMap["C"] :
+                                    for a2 in r.atomsMap["N"] :
+                                        #print a1.name, pres.id.position, a2.name, r.id.position
+                                        nb = chMol.newBond ( a1, a2 )
+                                        pass
+
+                if r.type.upper() in nucleic1to3 or r.type.upper() in nucleic3to1 :
+                    if r.id.position-1 in rmap :
+                        pres = rmap[r.id.position-1]
+                        if pres.type.upper() in nucleic1to3 or pres.type.upper() in nucleic3to1 :
+                            if "O3'" in pres.atomsMap and "P" in r.atomsMap :
+                                for a1 in pres.atomsMap["O3'"] :
+                                    for a2 in r.atomsMap["P"] :
+                                        #print a1.name, pres.id.position, a2.name, r.id.position
+                                        nb = chMol.newBond ( a1, a2 )
+                                        pass
+
+        print ( ", %d bonds, %.1fs" % (len(chMol.bonds), time.time()-start)  )
+
+        #start = time.time()
+        #chimera.openModels.add ( [chMol] )
+        #print " - added mol %ss, %.1fs" % (chMol.name, time.time()-start)
+
+        start = time.time()
+        for r in chMol.residues :
+            rt = r.type.upper()
+            if rt in protein3to1 or rt in nucleic3to1 or rt in nucleic1to3 :
+                r.ribbonDisplay = True
+                r.ribbonDrawMode = 2
+                r.ribbonColor = mol.chainColors[r.id.chainId]
+                for at in r.atoms :
+                    at.display = False
+                    at.drawMode = at.EndCap
+                    if at.element.name.upper() in atomColors :
+                        at.color = atomColors[at.element.name.upper()]
+                    else :
+                        at.color = mol.chainColors[r.id.chainId]
+            else :
+                for at in r.atoms :
+                    at.display = True
+                    at.drawMode = at.EndCap
+                    if at.element.name.upper() in atomColors :
+                        at.color = atomColors[at.element.name.upper()]
+                    else :
+                        at.color = mol.chainColors[r.id.chainId]
+
+        for b in mol.bonds :
+            b.drawMode = b.Stick
+            b.display = b.Smart
+
+        #print " - changed mol disp %s - %.1fs" % (chMol.name, time.time()-start)
+
+    return mol
+
+
+
+def GetSS ( pres, r ) :
+
+    if not "N" in r.atomsMap or not "CA" in r.atomsMap or not "C" in r.atomsMap :
+        return
+
+    n2 = r.atomsMap["N"][0]
+    ca2 = r.atomsMap["CA"][0]
+    c2 = r.atomsMap["C"][0]
+
+    if not "N" in pres.atomsMap or not "CA" in pres.atomsMap or not "C" in pres.atomsMap :
+        return
+
+    n1 = pres.atomsMap["N"][0]
+    ca1 = pres.atomsMap["CA"][0]
+    c1 = pres.atomsMap["C"][0]
+    #o1 = pres.atomsMap["O"][0]
+
+    phi = diha ( n1, ca1, c1, n2 )
+    om = diha ( ca1, c1, n2, ca2 )
+    psi = diha ( c1, n2, ca2, c2 )
+    #oo = diha ( n1, ca1, c1, o1 )
+
+    r.isHelix = phi > -90.0 and phi < -30.0 and psi > -80.0 and psi < -20.0
+    r.isHet = False
+    r.isSheet = False
+    r.isStrand = phi > -150.0 and phi < -90.0 and psi > 90 and psi < -150.0
+
+
+
+def diha ( a1, a2, a3, a4 ) :
+    #n1 = vnorm ( a1.coord(), a2.coord(), a3.coord() )
+    #n2 = vnorm ( a2.coord(), a3.coord(), a4.coord() )
+    #return numpy.arccos ( n2 * n1 * -1.0 ) * 180.0 / numpy.pi
+
+    # http://math.stackexchange.com/questions/47059/how-do-i-calculate-a-dihedral-angle-given-cartesian-coordinates
+    b1 = a2.coord() - a1.coord()
+    b2 = a3.coord() - a2.coord()
+    b3 = a4.coord() - a3.coord()
+
+    n1 = chimera.cross ( b1, b2 ); n1.normalize()
+    n2 = chimera.cross ( b2, b3 ); n2.normalize()
+    m1 = chimera.cross ( n1, b2 ); m1.normalize()
+
+    x = n1 * n2
+    y = m1 * n2
+
+    return -1.0 * numpy.arctan2 ( y, x) * 180.0 / numpy.pi
+
+
+
+
+def ReadMol ( fpath, log=False ) :
+
+    from random import random
 
     cif, loops = ReadCif ( fpath, log )
 
+    # descriptions by chain id:
     descrByEntityId = GetEntityDescr ( cif, loops )
 
-    atoms = loops['_atom_site']['data']
-    print " - %d atom records" % len(atoms)
+    try :
+        atoms = loops['_atom_site']['data']
+        print " - %d atom records" % len(atoms)
+    except :
+        print " - no atoms in cif?"
+        return None
 
     labels = loops['_atom_site']['labels']
     if 0 :
@@ -431,9 +885,6 @@ def ReadMol ( fpath, log=False ) :
         #aMap[at] = nat
         res.addAtom( nat )
         nat.setCoord ( chimera.Point( float(px), float(py), float(pz) ) )
-        nat.drawMode = nat.Sphere
-        nat.color = clr
-        nat.display = True # not drawRib
         nat.altLoc = altLoc
         nat.occupancy = float(occ)
         nat.bfactor = float(bfactor)
@@ -445,19 +896,8 @@ def ReadMol ( fpath, log=False ) :
             except :
                 pass
 
-        #res.isHelix = res.isHelix
-        #res.isHet = res.isHet
-        #res.isSheet = res.isSheet
-        #res.isStrand = res.isStrand
-        res.ribbonDisplay = False # drawRib
-        res.ribbonDrawMode = 2
-        res.ribbonColor = clr
-
-    #for bond in mol.bonds :
-    #    nb = nmol.newBond ( aMap[bond.atoms[0]], aMap[bond.atoms[1]] )
-    #    nb.display = nb.Smart
-
-    print " - created %d atoms, %.1fs" % ( len(nmol.atoms), time.time()-start )
+    end = time.time()
+    print " - created %d atoms, %.1fs" % ( len(nmol.atoms), end-start )
 
     return nmol
 
@@ -608,17 +1048,6 @@ def WriteMol ( mol, fout ) :
 
     UpdateAtoms ( mol.cif, mol )
     WriteCif ( mol.cif, fout )
-
-
-
-
-
-
-
-
-
-
-
 
 
 #

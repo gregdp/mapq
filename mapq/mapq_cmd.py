@@ -144,14 +144,14 @@ if ok :
 
     fp.write ( "import mapq\n" )
     fp.write ( "import mapq.qscores\n" )
-    fp.write ( "from mapq.mmcif import LoadMol as CifLoadMol\n" )
+    fp.write ( "from mapq.mmcif import LoadMol as LoadMol\n" )
 
 
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
     for mod in mods :
         if os.path.splitext(mod)[1] == ".cif" :
-            fp.write ( "CifLoadMol('%s')\n" % mod )
+            fp.write ( "LoadMol('%s')\n" % mod )
         else :
             cmd += '"%s" ' % mod
 

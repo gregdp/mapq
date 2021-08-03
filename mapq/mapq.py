@@ -65,7 +65,7 @@ except :
 
 
 gSigma = 0.6
-mapqVersion = "1.7.0"
+mapqVersion = "1.7.1"
 showDevTools = False
 
 
@@ -82,6 +82,9 @@ else :
 
 import qscores
 reload (qscores)
+
+import mmcif
+reload (mmcif)
 
 
 OML = chimera.openModels.list
@@ -192,7 +195,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             tw.config(menu = menubar)
 
             file_menu_entries = (
-                ('Load Model...', self.LoadModel),
+                ('Open Model...', self.LoadModel),
                 ('Save Model...', self.SaveModel)
                 )
             fmenu = Hybrid.cascade_menu(menubar, 'File', file_menu_entries)
@@ -295,7 +298,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             self.cur_chains = []
             self.SetVisMol ()
 
-
             l = Tkinter.Label(ff, text=" Chain:" )
             l.grid(column=4, row=0, sticky='w')
 
@@ -305,37 +307,40 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             self.chainMB.menu  =  Tkinter.Menu ( self.chainMB, tearoff=0, postcommand=self.ChainMenu )
             self.chainMB["menu"]  =  self.chainMB.menu
 
-            l = Tkinter.Label(ff, text=" Show:" )
-            l.grid(column=6, row=0, sticky='w')
+            b = Tkinter.Button(ff, text="...", command=self.LoadModel)
+            b.grid (column=6, row=0, sticky='w', padx=1)
+
+            #b = Tkinter.Button(ff, text="S", command=self.SaveModel)
+            #b.grid (column=7, row=0, sticky='w', padx=1)
+
+
+            #l = Tkinter.Label(ff, text=" Show:" )
+            #l.grid(column=12, row=0, sticky='w')
 
 
             b = Tkinter.Button(ff, text="Chain", command=self.AllChain)
-            b.grid (column=7, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="All", command=self.AllChains)
-            b.grid (column=8, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="Sel.", command=self.ShowOnlySel)
-            b.grid (column=9, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="At.", command=self.SetSelAtoms)
-            b.grid (column=10, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="Rib.", command=self.SetSelRibbon)
-            b.grid (column=11, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="SCs", command=self.ShowSCs)
-            b.grid (column=12, row=0, sticky='w', padx=1)
-
-            b = Tkinter.Button(ff, text="~SCs", command=self.HideSCs)
             b.grid (column=13, row=0, sticky='w', padx=1)
 
-            b = Tkinter.Button(ff, text="W", command=self.Wire)
+            b = Tkinter.Button(ff, text="All", command=self.AllChains)
             b.grid (column=14, row=0, sticky='w', padx=1)
 
+            b = Tkinter.Button(ff, text="Sel.", command=self.ShowOnlySel)
+            b.grid (column=15, row=0, sticky='w', padx=1)
 
+            b = Tkinter.Button(ff, text="At.", command=self.SetSelAtoms)
+            b.grid (column=16, row=0, sticky='w', padx=1)
 
+            b = Tkinter.Button(ff, text="Rib.", command=self.SetSelRibbon)
+            b.grid (column=17, row=0, sticky='w', padx=1)
 
+            b = Tkinter.Button(ff, text="SCs", command=self.ShowSCs)
+            b.grid (column=18, row=0, sticky='w', padx=1)
+
+            b = Tkinter.Button(ff, text="~SCs", command=self.HideSCs)
+            b.grid (column=19, row=0, sticky='w', padx=1)
+
+            b = Tkinter.Button(ff, text="W", command=self.Wire)
+            b.grid (column=20, row=0, sticky='w', padx=1)
 
 
         if 1 :
@@ -414,8 +419,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 b = Tkinter.Button(ff, text="Sel", command=self.CalcSelQ )
                 b.grid (column=8, row=0, sticky='w', padx=2)
 
-                b = Tkinter.Button(ff, text="O", command=self.CalcSelQOpen )
-                b.grid (column=9, row=0, sticky='w', padx=2)
+                #b = Tkinter.Button(ff, text="O", command=self.CalcSelQOpen )
+                #b.grid (column=9, row=0, sticky='w', padx=2)
 
                 #b = Tkinter.Button(fff, text="R", command=self.CalcAllR )
                 #b.grid (column=5, row=0, sticky='w', padx=2)
@@ -1027,8 +1032,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         self.cur_dmap = dmap
         print "Selected " + dmap.name
 
-        self.GetSeq ()
-        self.ZoomBegin ()
+        self.dmap.set( "[%d] %s" % (dmap.id, dmap.name) )
+
+        #self.GetSeq ()
+        #self.ZoomBegin ()
 
 
     def GetChains ( self, mol ) :
@@ -1091,7 +1098,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #print "after 100"
 
         self.GetSeq ()
-        self.ZoomBegin ()
+        #self.ZoomBegin ()
 
         if self.cur_mol != None :
             self.ShowQScores ()
@@ -1122,26 +1129,64 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
 
+    def loadFile ( self, path ) :
+
+        ext = os.path.splitext ( path )[1]
+        mol = None
+        if ext == ".cif" :
+            start = time.time()
+            mol = mmcif.LoadMol2 ( path, log=False )
+            print "Loaded %s in %.1fs" % (mol.name, time.time()-start)
+        elif ext == ".mrc" or ext == ".map" :
+            om = chimera.openModels.open ( path )
+        elif ext == ".pdb" :
+            mol = chimera.openModels.open ( path )[0]
+
+        if mol :
+            mmcif.ColorMol ( mol )
+            self.struc.set ( "[%d] %s" % (mol.id, mol.name) )
+            self.cur_mol = mol
+            if len(mol.chainColors) > 0 :
+                cids = mol.chainColors.keys()
+                cids.sort()
+                self.chain.set ( cids[0] )
+                self.GetSeq ()
+                self.ShowQScores ()
+
+    def load ( self, okay, dialog ):
+        if okay:
+            paths = dialog.getPaths ( )
+            print "%d files" % len(paths)
+            for path in paths :
+                umsg ( "Load: " + path )
+                self.loadFile ( path )
+                #self.parent.after(1000, self.MakeMol)
 
     def LoadModel ( self ) :
+        init = None
+        mol = None
+        for m in chimera.openModels.list() :
+            if type(m) == chimera.Molecule and m.display == True and hasattr ( m, 'openedAs' ) :
+                init = os.path.split ( m.openedAs[0] ) [0]
+                break
+            if type(m) == VolumeViewer.volume.Volume :
+                init = os.path.split( m.data.path ) [0]
 
-        import mmcif
-        reload (mmcif)
+        if init == None :
+            init = "/Users/greg/Box Sync/_data"
 
-        fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec.cif"
-        fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec__Q__emd_30342.cif"
-        print "Loading %s" % fpath
+        print "init: %s" % init
 
-        mol, chainColors = mmcif.ReadMol ( fpath, log=True )
+        if 1 :
+            from OpenSave import OpenModeless
+            OpenModeless ( title = 'Open Model',
+                           #filters = [('TXT', '*.txt', '.txt')],
+                           filters = [],
+                           initialfile = init, command = self.load )
 
-        print " - got mol!"
+        else :
+            fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec.cif"
 
-        chimera.openModels.add  ( [ mol ] )
-
-        for at in mol.atoms :
-            at.display = True
-            at.drawMode = at.Sphere
-            at.color = chainColors[at.residue.id.chainId]
 
 
 
@@ -1153,9 +1198,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         for m in chimera.openModels.list() :
             if type(m) == chimera.Molecule :
                 mol = m
-
-        import mmcif
-        reload (mmcif)
 
         fpath = "/Users/greg/Box Sync/_data/problems/emd_30342/7cec_Q.cif"
         print "Writing %s -> %s" % (mol.name, fpath)
@@ -2649,24 +2691,11 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if not ok :
             return
 
-
         cid = self.chain.get()
-
-        ats = [at for at in self.cur_mol.atoms if not at.element.name == "H"]
-        points = _multiscale.get_atom_coordinates ( ats, transformed = False )
-        print " - search tree: %d/%d ats" % ( len(ats), len(self.cur_mol.atoms) )
-        allAtTree = AdaptiveTree ( points.tolist(), ats, 1.0)
-
-        if 0 :
-            for r in self.cur_mol.residues :
-                if hasattr ( r, 'Q' ) : del r.Q
-                if hasattr ( r, 'scQ' ) : del r.scQ
-                if hasattr ( r, 'bbQ' ) : del r.bbQ
-
 
         umsg ( "Calculating Q-scores - see bottom of main window for status or to cancel..." )
 
-        Qavg = qscores.CalcQ (self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, allAtTree=allAtTree, log=True )
+        Qavg = qscores.CalcQ (self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, log=True )
         qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
         self.ShowQScores ()
 
@@ -2712,9 +2741,24 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if hasattr ( r, 'scQ' ) : del r.scQ
                 if hasattr ( r, 'bbQ' ) : del r.bbQ
 
+        if len(self.cur_dmap.data.path) == 0 :
+            umsg ( "No file for map - %s - must be saved first..." % (self.cur_dmap.name) )
+            return
+
+        if not os.path.isfile ( self.cur_dmap.data.path ) :
+            umsg ( "Map file not found - %s - must be saved first..." % (self.cur_dmap.data.path) )
+            return
+
+        if not hasattr (self.cur_mol, 'openedAs') :
+            umsg ( "No file for model %s - must be saved first..." % (self.cur_mol.name) )
+            return
+
+        if not os.path.isfile ( self.cur_mol.openedAs ) :
+            umsg ( "Model file not found - %s - must be saved first..." % (self.cur_mol.openedAs[0]) )
+            return
 
 
-        qscores.CalcQp (self.cur_mol, cid, self.cur_dmap, gSigma, allAtTree=None )
+        qscores.CalcQp (self.cur_mol, cid, self.cur_dmap, gSigma )
         qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
 
         self.ShowQScores ()
@@ -2804,7 +2848,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
 
-        CalcQp (self.cur_mol, cid, self.cur_dmap, gSigma, allAtTree=None )
+        CalcQp (self.cur_mol, cid, self.cur_dmap, gSigma)
 
 
 
@@ -2956,12 +3000,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                     #print " -xx- %d.%s " % (resi,cid)
                     continue
 
-
         fin.close ()
 
-
         umsg ( "Loading.." )
-
 
         qscores.QStats1 (self.cur_mol, chainId)
         qscores.SaveQStats ( self.cur_mol, self.chain.get(), self.cur_dmap, gSigma, float(self.mapRes.get()) )
@@ -2972,7 +3013,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 cids[r.id.chainId] = 1
             for cid in cids.keys() :
                 qscores.SaveQStats ( self.cur_mol, cid, self.cur_dmap, gSigma, float(self.mapRes.get()) )
-
 
             #return
 

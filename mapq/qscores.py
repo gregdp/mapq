@@ -1967,7 +1967,7 @@ def CalcQp ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chime
             foute.close()
 
         if 1 :
-            #print " - removing..."
+            print "Removing temp files",
             os.remove ( mapBase + "_%d_out.txt" % mi )
             try :
                 os.remove ( mapBase + "_%d_stat.txt" % mi )
@@ -2563,18 +2563,10 @@ def CalcResQ (r, dmap=None, sigma=0.6, allAtTree=None, numPts=8, toRAD=2.0, dRAD
 
     scQ, bbQ, Q, numSC, numBB = 0.0, 0.0, 0.0, 0.0, 0.0
     for at in r.atoms :
-
         if at.element.name == "H" :
             continue
-
         if not hasattr ( at, 'isBB' ) :
             SetBBAts ( at.molecule )
-
-        #if not hasattr ( at, 'Q' ) or not useOld :
-        #    #qs = Qscore ( [at], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=numPts, toRAD=toRAD, dRAD=dRAD, minD=minD, maxD=maxD )
-        #    at.Q = 0
-        #    at.CC = 0
-
         if hasattr (at, 'Q') :
             Q += at.Q
             if r.isProt or r.isNA :
@@ -2586,15 +2578,10 @@ def CalcResQ (r, dmap=None, sigma=0.6, allAtTree=None, numPts=8, toRAD=2.0, dRAD
                     numSC += 1.0
 
     if r.isProt or r.isNA :
-
-        #if int(numSC) != len(r.scAtoms) :
-        #    print " - res %d.%s.%s - %.0f/%d sc atoms" % (r.id.position,r.type,r.id.chainId, numSC, len(r.scAtoms))
-
         if numSC > 0 :
             r.scQ = scQ / numSC
         else :
             r.scQ = None
-
         if numBB > 0 :
             r.bbQ = bbQ / numBB
         else :
@@ -3376,6 +3363,8 @@ def MaskMapResize ( atoms, bound, dmap, fout=None ) :
 
     npoints = grid_indices ( (nn1, nn2, nn3), numpy.single)  # i,j,k indices
     transform_vertices ( npoints, ndata.ijk_to_xyz_transform )
+
+    # todo - don't interpolate
 
     dvals = dmap.interpolated_values ( npoints, dmap.openState.xform )
     #dvals = numpy.where ( dvals > threshold, dvals, numpy.zeros_like(dvals) )
