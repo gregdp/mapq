@@ -68,7 +68,7 @@ def ReadCif ( fpath, log=False ) :
 
         else :
             #cif.append ( atLine )
-            print " - ? %d -- %s" % (li, ls)
+            print " - ? %d -.- %s" % (li, ls)
 
     fp.close()
 
@@ -103,14 +103,21 @@ def GetLoop ( fp, atLine, ls, li ) :
             break
         li += 1
         ls = atLine.strip()
-        #print " _ %d %s" % (li, ls)
+        #print " _ %d %s %d" % (li, ls, len(ls))
 
         if len(ls) == 0 :
-            continue
+            #print " - done loop %s" % li
+            #print "[" + ls + "]"
+            getNext = False
+            break
 
         elif ls[0] == "_" :
             if getData :
-                print " - done loop?"
+                print " - done loop? / %d" % li, ls
+                print loopLabels
+                #print loopData
+                print loopName
+                print ""
                 getNext = False
                 break
             else :
@@ -120,7 +127,8 @@ def GetLoop ( fp, atLine, ls, li ) :
                 loopName = name
 
         elif ls[0] == "#" :
-            #print " - done loop"
+            #print " - done loop %s" % li
+            #print "[" + ls + "]"
             getNext = False
             break
 
@@ -205,7 +213,11 @@ def GetData1 ( fp, atLine, ls, li ) :
             data = ls
 
     else :
-        print " - ? %d - " % li, ls
+        print " - ? getdata1 line %d - " % li, ls
+        print " - %d tokens" % len(tsi)
+        print tsi
+        print ls.split()
+        print ""
 
     return li, name, data, lines
 
@@ -263,13 +275,14 @@ def splitm ( li, l ) :
     tsr = []
     addTo = None
     for t in ts :
-        if addTo :
+        #print " - %s, %d, %s" % (t, len(t), addTo)
+        if addTo != None :
             addTo += " " + t
             if t[-1] == "'" :
                 tsr.append ( addTo[0:-1] )
                 addTo = None
         elif t[0] == "'" :
-            if t[-1] == "'" :
+            if len(t)>1 and t[-1] == "'" :
                 tsr.append ( t[1:-1] )
             else :
                 addTo = t[1:]
@@ -281,6 +294,10 @@ def splitm ( li, l ) :
 
     #t2 = []
     for i,t in enumerate(tsr) :
+        if len(t) == 0 :
+            #print " - length 0 on line %d" % li
+            tsr[i] = t[1:-1]
+            continue
         if t[0] == '"' and t[-1] == '"' :
             tsr[i] = t[1:-1]
 
@@ -312,7 +329,7 @@ def WriteCif ( cif, fout ) :
 
             for d in data :
                 adata, mdata = d['asArray'], d['asMap']
-                first = True
+                first, lastWasLines = True, False
                 for di, dd in enumerate(adata) :
                     if type(dd) == dict :
                         # write original block starting with ; on start and end lines
@@ -320,6 +337,7 @@ def WriteCif ( cif, fout ) :
                             fp.write ( "\n" )
                         fp.write ( dd['lines'] )
                         first = True
+                        lastWasLines = True
                     else :
                         # write in columns
                         dd = "'%s'" % dd if ' ' in dd else dd
@@ -327,7 +345,9 @@ def WriteCif ( cif, fout ) :
                         padn = cws[di] - len(dd) + 1
                         fp.write ( "%s%s" % (dd, " "*padn) )
                         first = False
-                fp.write ("\n")
+                        lastWasLines = False
+                if not lastWasLines :
+                    fp.write ("\n")
         else :
             fp.write ( ls )
 
@@ -399,22 +419,49 @@ def LoadMol ( fpath, log=False ) :
     return mol
 
 
+def ParamPathPdb ( rtype ) :
+
+    #ppath = "/Users/greg/Dropbox/_mol/Segger/_param/"
+
+    from os import path
+    dir_path = path.dirname ( path.realpath(__file__) )
+    inDir = path.split(dir_path)[0]
+    #print " -- working dir:", inDir
+    #mapQPPath = os.path.join ( inDir, 'Segger' )
+    ppath = path.join ( dir_path, '_param' )
+    #print " -- path to param:", ppath
+    #fname = ppath + "%s.pdb" % rtype
+    fname = path.join ( ppath, "%s.pdb" % rtype )
+    return fname
+
+
 def GetResMol ( rtype ) :
 
-    ppath = "/Users/greg/Dropbox/_mol/Segger/_param/"
-    fname = ppath + "%s.pdb" % rtype
     from os import path
+    dir_path = path.dirname ( path.realpath(__file__) )
+    inDir = path.split(dir_path)[0]
+    ppath = path.join ( dir_path, '_param' )
+    fname = path.join ( ppath, "%s.pdb" % rtype )
+
     if not path.isfile(fname) :
         print " - did not find %s" % fname
 
+        phPath = "/Users/greg/_mol/phenix-1.18.2-3874/build/bin/phenix.elbow"
+        if not path.isfile ( phPath ) :
+            print " - %s - no phenix.elbow path..." % rtype
+            return None
+
         #args = ["/Users/greg/_mol/phenix-1.19.2-4158/build/bin/phenix.elbow", "--chemical_component", rtype]
-        args = ["/Users/greg/_mol/phenix-1.18.2-3874/build/bin/phenix.elbow", "--chemical_component", rtype]
+        args = [phPath, "--chemical_component", rtype]
 
         print "Running elbow:"
         print args
 
-        fout = open ( ppath + "_%s.log" % rtype, "w" )
-        foute = open ( ppath + "_%s_err.log" % rtype, "w" )
+        fname_log = path.join ( ppath, "%s.log" % rtype )
+        fname_err = path.join ( ppath, "%s_err.log" % rtype )
+
+        fout = open ( fname_log, "w" )
+        foute = open ( fname_err, "w" )
         import subprocess
         p = subprocess.Popen(args, stdout=fout, stderr=foute, cwd=ppath)
 
@@ -499,8 +546,8 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
             rmol = rmolmap[ rtype.lower() ]
         else :
             rmol = GetResMol ( rtype.lower() )
-            if rmol != None :
-                rmolmap[rtype.lower()] = rmol
+            #if rmol != None :
+            rmolmap[rtype.lower()] = rmol
 
         if 1 and rmol != None :
             for b in rmol.bonds :
@@ -510,8 +557,8 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
                         for a2 in r.atomsMap[a2n] :
                             #print "%s - %s" % ( At(a1), At(a2) )
                             #nb = mol.newBond ( a1, a2 )
-                            bonds.append ( [a1,a2] )
-                            pass
+                            if a1.altLoc == a2.altLoc :
+                                bonds.append ( [a1,a2] )
 
         if 1 :
             if r.type.upper() in protein3to1 :
@@ -524,8 +571,8 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
                                 for a2 in r.atomsMap["N"] :
                                     #print a1.name, pres.id.position, a2.name, r.id.position
                                     #nb = mol.newBond ( a1, a2 )
-                                    bonds.append ( [a1,a2] )
-                                    pass
+                                    if a1.altLoc == a2.altLoc :
+                                        bonds.append ( [a1,a2] )
 
             if r.type.upper() in nucleic1to3 or r.type.upper() in nucleic3to1 :
                 if r.id.position-1 in crmap[r.id.chainId] :
@@ -536,8 +583,8 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
                                 for a2 in r.atomsMap["P"] :
                                     #print a1.name, pres.id.position, a2.name, r.id.position
                                     #nb = mol.newBond ( a1, a2 )
-                                    bonds.append ( [a1,a2] )
-                                    pass
+                                    if a1.altLoc == a2.altLoc :
+                                        bonds.append ( [a1,a2] )
 
     print ( " - %d bonds, %.1fs" % (len(bonds), time.time()-start)  )
 
@@ -830,6 +877,7 @@ def ReadMol ( fpath, log=False ) :
     nmol.chainColors = {}
     nmol.chainDescr = {}
 
+    numQ = 0
     first = True
     for at in atoms :
         mp = at['asMap']
@@ -889,15 +937,17 @@ def ReadMol ( fpath, log=False ) :
         nat.occupancy = float(occ)
         nat.bfactor = float(bfactor)
 
-        if 'Q_score' in mp :
+        if 'Q-score' in mp :
             try :
-                Q = float ( mp['Q_score'] )
+                Q = float ( mp['Q-score'] )
                 nat.Q = Q
+                numQ += 1
             except :
+                print " - q score is",  mp['Q-score']
                 pass
 
     end = time.time()
-    print " - created %d atoms, %.1fs" % ( len(nmol.atoms), end-start )
+    print " - created %d atoms, %.1fs, %d q-scores" % ( len(nmol.atoms), end-start, numQ )
 
     return nmol
 
@@ -1003,13 +1053,13 @@ def UpdateAtoms ( cif, mol ) :
                     #print " -- %s - %d" % (l, i)
 
                 addQatI = None
-                if addQ and not 'Q_score' in ilabels :
+                if addQ and not 'Q-score' in ilabels :
                     if 'B_iso_or_equiv' in ilabels :
                         addQatI = ilabels['B_iso_or_equiv'] + 1
                     else :
                         addQatI = len (labels)
-                    labels.insert ( addQatI, "Q_score" )
-                    print " - added Q_score column %d" % addQatI
+                    labels.insert ( addQatI, "Q-score" )
+                    print " - added Q-score column %d" % addQatI
 
                 ilabels = {}
                 for i, l in enumerate ( labels ) :
@@ -1034,7 +1084,7 @@ def UpdateAtoms ( cif, mol ) :
                         if addQatI :
                             adata.insert ( addQatI, qs )
                         else :
-                            adata[ ilabels['Q_score'] ] = qs
+                            adata[ ilabels['Q-score'] ] = qs
                     else :
                         print " - atom %s in cif - not found in mol" % datId
 
