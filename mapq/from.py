@@ -18,3 +18,13 @@ for f in files :
         print "  - ok"
     except :
         print "?"
+
+
+for f in os.listdir ( fromPath + "/_param" ) :
+
+    fname, fext = os.path.splitext (f)
+    if fext == ".pdb" :
+        print f,
+        shutil.copy2 ( fromPath + "/_param/" + f, "./_param/" + f )
+
+print ""
