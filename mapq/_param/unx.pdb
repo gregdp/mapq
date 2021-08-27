@@ -1,0 +1,9 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:43:31 2021
+REMARK  99
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: *
+FORMUL   1  UNX    X 
+HETATM    1  UNK UNX A   1       0.049   0.040   0.011  1.00 20.00      A    X  
+END

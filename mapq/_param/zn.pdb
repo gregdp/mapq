@@ -1,0 +1,10 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Fri Jul 30 21:19:44 2021
+REMARK  99
+REMARK  99   Ligand name: zinc
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [Zn++]
+FORMUL   1  ZN    ZN  (2)
+HETATM    1 ZN    ZN A   1      10.000  10.000  10.000  1.00 20.00      A   ZN+2
+END

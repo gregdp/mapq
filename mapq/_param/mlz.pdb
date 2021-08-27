@@ -1,0 +1,64 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:42:33 2021
+REMARK  99
+REMARK  99   Ligand name: N~6~-methyl-L-lysine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CNCCCC[C@H](N)C(O)=O
+FORMUL   1  MLZ    C7 H15 N2 O2  (-1)
+HETATM    1  N   MLZ A   1       1.075  -0.256  -3.581  1.00 20.00      A    N  
+HETATM    2  CA  MLZ A   1       0.339   0.681  -2.752  1.00 20.00      A    C  
+HETATM    3  CB  MLZ A   1       0.874   0.626  -1.323  1.00 20.00      A    C  
+HETATM    4  CG  MLZ A   1      -0.180   0.009  -0.407  1.00 20.00      A    C  
+HETATM    5  CD  MLZ A   1       0.345  -0.021   1.027  1.00 20.00      A    C  
+HETATM    6  CE  MLZ A   1      -0.716  -0.625   1.945  1.00 20.00      A    C  
+HETATM    7  NZ  MLZ A   1      -0.200  -0.694   3.300  1.00 20.00      A    N  
+HETATM    8  CM  MLZ A   1      -1.039  -1.575   4.092  1.00 20.00      A    C  
+HETATM    9  C   MLZ A   1       0.509   2.094  -3.305  1.00 20.00      A    C  
+HETATM   10  O   MLZ A   1      -0.504   2.789  -3.579  1.00 20.00      A    O  
+HETATM   11  OXT MLZ A   1       1.663   2.563  -3.489  1.00 20.00      A    O-1
+HETATM   12  H   MLZ A   1       1.366   0.202  -4.424  1.00 20.00      A    H  
+HETATM   13  H2  MLZ A   1       0.487  -1.035  -3.809  1.00 20.00      A    H  
+HETATM   14  HA  MLZ A   1      -0.712   0.416  -2.754  1.00 20.00      A    H  
+HETATM   15  HB2 MLZ A   1       1.774   0.021  -1.297  1.00 20.00      A    H  
+HETATM   16  HB3 MLZ A   1       1.104   1.631  -0.984  1.00 20.00      A    H  
+HETATM   17  HG2 MLZ A   1      -1.087   0.603  -0.448  1.00 20.00      A    H  
+HETATM   18  HG3 MLZ A   1      -0.396  -1.003  -0.734  1.00 20.00      A    H  
+HETATM   19  HD2 MLZ A   1       0.571   0.989   1.350  1.00 20.00      A    H  
+HETATM   20  HD3 MLZ A   1       1.245  -0.625   1.069  1.00 20.00      A    H  
+HETATM   21  HE2 MLZ A   1      -1.605  -0.003   1.928  1.00 20.00      A    H  
+HETATM   22  HE3 MLZ A   1      -0.967  -1.623   1.601  1.00 20.00      A    H  
+HETATM   23  HZ  MLZ A   1      -0.201   0.221   3.705  1.00 20.00      A    H  
+HETATM   24 HCM1 MLZ A   1      -2.069  -1.233   4.045  1.00 20.00      A    H  
+HETATM   25 HCM2 MLZ A   1      -0.975  -2.586   3.700  1.00 20.00      A    H  
+HETATM   26 HCM3 MLZ A   1      -0.701  -1.565   5.124  1.00 20.00      A    H  
+CONECT    1    2   12   13
+CONECT    2    1    3    9   14
+CONECT    3    2    4   15   16
+CONECT    4    3    5   17   18
+CONECT    5    4    6   19   20
+CONECT    6    5    7   21   22
+CONECT    7    6    8   23
+CONECT    8    7   24   25   26
+CONECT    9    2   11
+CONECT    9   10
+CONECT    9   10
+CONECT   10    9
+CONECT   10    9
+CONECT   11    9
+CONECT   12    1
+CONECT   13    1
+CONECT   14    2
+CONECT   15    3
+CONECT   16    3
+CONECT   17    4
+CONECT   18    4
+CONECT   19    5
+CONECT   20    5
+CONECT   21    6
+CONECT   22    6
+CONECT   23    7
+CONECT   24    8
+CONECT   25    8
+CONECT   26    8
+END

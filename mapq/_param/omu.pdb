@@ -1,0 +1,92 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:29:20 2021
+REMARK  99
+REMARK  99   Ligand name: 2'-O-methyluridine 5'-(dihydrogen phosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CO[C@@H]1[C@H](O)[C@@H](CO[P](O)(O)=O)O[C@H]1N2C=CC(=O)NC2=O
+FORMUL   1  OMU    C10 H13 N2 O9 P  (-2)
+HETATM    1  N1  OMU A   1       0.833  -1.387   0.121  1.00 20.00      A    N  
+HETATM    2  C2  OMU A   1       2.312  -1.174   0.182  1.00 20.00      A    C  
+HETATM    3  N3  OMU A   1       3.055  -1.480   1.443  1.00 20.00      A    N  
+HETATM    4  C4  OMU A   1       2.340  -1.984   2.593  1.00 20.00      A    C  
+HETATM    5  C5  OMU A   1       0.877  -2.188   2.516  1.00 20.00      A    C  
+HETATM    6  C6  OMU A   1       0.142  -1.889   1.263  1.00 20.00      A    C  
+HETATM    7  O2  OMU A   1       2.890  -0.758  -0.759  1.00 20.00      A    O  
+HETATM    8  O4  OMU A   1       2.924  -2.226   3.600  1.00 20.00      A    O  
+HETATM    9  C1' OMU A   1       0.103  -1.083  -1.087  1.00 20.00      A    C  
+HETATM   10  C2' OMU A   1      -1.429  -0.733  -0.734  1.00 20.00      A    C  
+HETATM   11  O2' OMU A   1      -2.265  -0.914  -1.915  1.00 20.00      A    O  
+HETATM   12  CM2 OMU A   1      -3.175  -2.000  -1.813  1.00 20.00      A    C  
+HETATM   13  C3' OMU A   1      -1.430   0.520  -0.373  1.00 20.00      A    C  
+HETATM   14  C4' OMU A   1      -0.225   1.161  -1.105  1.00 20.00      A    C  
+HETATM   15  O3' OMU A   1      -2.687   1.171  -0.799  1.00 20.00      A    O  
+HETATM   16  O4' OMU A   1       0.591  -0.011  -1.663  1.00 20.00      A    O  
+HETATM   17  C5' OMU A   1       0.551   1.907  -0.213  1.00 20.00      A    C  
+HETATM   18  O5' OMU A   1       0.121   3.208  -0.204  1.00 20.00      A    O  
+HETATM   19  P   OMU A   1       1.214   4.394   0.165  1.00 20.00      A    P  
+HETATM   20  OP1 OMU A   1       0.506   5.720   0.264  1.00 20.00      A    O  
+HETATM   21  OP2 OMU A   1       1.870   4.079   1.475  1.00 20.00      A    O-1
+HETATM   22  OP3 OMU A   1       2.260   4.462  -0.915  1.00 20.00      A    O-1
+HETATM   23  HN3 OMU A   1       4.015  -1.345   1.488  1.00 20.00      A    H  
+HETATM   24  H5  OMU A   1       0.357  -2.556   3.352  1.00 20.00      A    H  
+HETATM   25  H6  OMU A   1      -0.915  -2.040   1.219  1.00 20.00      A    H  
+HETATM   26  H1' OMU A   1       0.143  -1.935  -1.784  1.00 20.00      A    H  
+HETATM   27  H2' OMU A   1      -1.779  -1.361   0.084  1.00 20.00      A    H  
+HETATM   28 HM21 OMU A   1      -3.821  -1.846  -0.967  1.00 20.00      A    H  
+HETATM   29 HM22 OMU A   1      -2.625  -2.915  -1.684  1.00 20.00      A    H  
+HETATM   30 HM23 OMU A   1      -3.785  -2.063  -2.740  1.00 20.00      A    H  
+HETATM   31  H3' OMU A   1      -1.303   0.600   0.706  1.00 20.00      A    H  
+HETATM   32  H4' OMU A   1      -0.578   1.789  -1.919  1.00 20.00      A    H  
+HETATM   33 HO3' OMU A   1      -3.136   1.510  -0.043  1.00 20.00      A    H  
+HETATM   34  H5' OMU A   1       1.588   1.874  -0.524  1.00 20.00      A    H  
+HETATM   35 H5'' OMU A   1       0.462   1.494   0.771  1.00 20.00      A    H  
+CONECT    1    2    6    9
+CONECT    2    1    3
+CONECT    2    7
+CONECT    2    7
+CONECT    3    2    4   23
+CONECT    4    3    5
+CONECT    4    8
+CONECT    4    8
+CONECT    5    4   24
+CONECT    5    6
+CONECT    5    6
+CONECT    6    1   25
+CONECT    6    5
+CONECT    6    5
+CONECT    7    2
+CONECT    7    2
+CONECT    8    4
+CONECT    8    4
+CONECT    9    1   10   16   26
+CONECT   10    9   11   13   27
+CONECT   11   10   12
+CONECT   12   11   28   29   30
+CONECT   13   10   14   15   31
+CONECT   14   13   16   17   32
+CONECT   15   13   33
+CONECT   16    9   14
+CONECT   17   14   18   34   35
+CONECT   18   17   19
+CONECT   19   18   21   22
+CONECT   19   20
+CONECT   19   20
+CONECT   20   19
+CONECT   20   19
+CONECT   21   19
+CONECT   22   19
+CONECT   23    3
+CONECT   24    5
+CONECT   25    6
+CONECT   26    9
+CONECT   27   10
+CONECT   28   12
+CONECT   29   12
+CONECT   30   12
+CONECT   31   13
+CONECT   32   14
+CONECT   33   15
+CONECT   34   17
+CONECT   35   17
+END

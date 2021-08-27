@@ -1,0 +1,33 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Thu Apr  1 10:29:38 2021
+REMARK  99
+REMARK  99   Ligand name: dihydrogen diphosphate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: O[P]([O-])(=O)O[P](O)([O-])=O
+FORMUL   1  POP    O7 P2  (-4)
+HETATM    1  P1  POP A   1       0.992   1.059  -0.101  1.00 20.00      A    P  
+HETATM    2  O1  POP A   1       2.101   0.147   0.367  1.00 20.00      A    O  
+HETATM    3  O2  POP A   1       1.253   2.462   0.392  1.00 20.00      A    O-1
+HETATM    4  O3  POP A   1       0.942   1.057  -1.610  1.00 20.00      A    O-1
+HETATM    5  O   POP A   1      -0.448   0.525   0.497  1.00 20.00      A    O  
+HETATM    6  P2  POP A   1      -1.068  -0.970   0.185  1.00 20.00      A    P  
+HETATM    7  O4  POP A   1      -0.115  -2.026   0.691  1.00 20.00      A    O  
+HETATM    8  O5  POP A   1      -1.258  -1.135  -1.304  1.00 20.00      A    O-1
+HETATM    9  O6  POP A   1      -2.400  -1.118   0.882  1.00 20.00      A    O-1
+CONECT    1    3    4    5
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1    6
+CONECT    6    5    8    9
+CONECT    6    7
+CONECT    6    7
+CONECT    7    6
+CONECT    7    6
+CONECT    8    6
+CONECT    9    6
+END

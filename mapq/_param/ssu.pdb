@@ -1,0 +1,90 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Thu Mar 18 20:24:04 2021
+REMARK  99
+REMARK  99   Ligand name: 5'-O-thiophosphonouridine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: O[C@H]1[C@@H](O)[C@@H](O[C@@H]1CO[P](O)(O)=S)N2C=CC(=O)NC2=O
+FORMUL   1  SSU    C9 H13 N2 O8 P S 
+HETATM    1  O2' SSU A   1      -2.998   1.196  -0.475  1.00 20.00      A    O  
+HETATM    2  C2' SSU A   1      -1.494   1.178  -0.544  1.00 20.00      A    C  
+HETATM    3  C1' SSU A   1      -0.887   1.161   0.911  1.00 20.00      A    C  
+HETATM    4  O4' SSU A   1      -0.372  -0.236   1.117  1.00 20.00      A    O  
+HETATM    5  C4' SSU A   1      -0.866  -0.936   0.135  1.00 20.00      A    C  
+HETATM    6  C5' SSU A   1       0.112  -2.011  -0.284  1.00 20.00      A    C  
+HETATM    7  O5' SSU A   1      -0.555  -3.258  -0.335  1.00 20.00      A    O  
+HETATM    8  P   SSU A   1       0.346  -4.624  -0.592  1.00 20.00      A    P  
+HETATM    9  S1P SSU A   1       1.885  -4.601   0.560  1.00 20.00      A    S  
+HETATM   10  OP2 SSU A   1      -0.570  -5.961  -0.260  1.00 20.00      A    O  
+HETATM   11  OP3 SSU A   1       0.840  -4.670  -2.179  1.00 20.00      A    O  
+HETATM   12  C3' SSU A   1      -1.101   0.116  -1.084  1.00 20.00      A    C  
+HETATM   13  O3' SSU A   1      -2.143  -0.403  -2.015  1.00 20.00      A    O  
+HETATM   14  N1  SSU A   1       0.112   2.053   1.013  1.00 20.00      A    N  
+HETATM   15  C6  SSU A   1      -0.085   3.421   0.569  1.00 20.00      A    C  
+HETATM   16  C5  SSU A   1       1.025   4.407   0.649  1.00 20.00      A    C  
+HETATM   17  C4  SSU A   1       2.336   4.016   1.219  1.00 20.00      A    C  
+HETATM   18  O4  SSU A   1       3.218   4.807   1.281  1.00 20.00      A    O  
+HETATM   19  N3  SSU A   1       2.543   2.649   1.692  1.00 20.00      A    N  
+HETATM   20  C2  SSU A   1       1.424   1.644   1.591  1.00 20.00      A    C  
+HETATM   21  O2  SSU A   1       1.587   0.527   1.973  1.00 20.00      A    O  
+HETATM   22 HO2' SSU A   1      -3.325   1.940  -0.953  1.00 20.00      A    H  
+HETATM   23  H2' SSU A   1      -1.125   2.038  -1.095  1.00 20.00      A    H  
+HETATM   24  H1' SSU A   1      -1.664   1.380   1.639  1.00 20.00      A    H  
+HETATM   25  H4' SSU A   1      -1.814  -1.379   0.434  1.00 20.00      A    H  
+HETATM   26  H5' SSU A   1       0.920  -2.063   0.432  1.00 20.00      A    H  
+HETATM   27 H5'' SSU A   1       0.509  -1.776  -1.258  1.00 20.00      A    H  
+HETATM   28  H2P SSU A   1      -0.066  -6.566   0.274  1.00 20.00      A    H  
+HETATM   29  H3P SSU A   1       0.979  -5.578  -2.443  1.00 20.00      A    H  
+HETATM   30  H3' SSU A   1      -0.170   0.289  -1.612  1.00 20.00      A    H  
+HETATM   31 HO3' SSU A   1      -1.855  -0.291  -2.901  1.00 20.00      A    H  
+HETATM   32  H6  SSU A   1      -1.040   3.718   0.150  1.00 20.00      A    H  
+HETATM   33  H5  SSU A   1       0.865   5.434   0.310  1.00 20.00      A    H  
+HETATM   34  H3  SSU A   1       3.429   2.378   2.080  1.00 20.00      A    H  
+CONECT    1    2   22
+CONECT    2    1    3   12   23
+CONECT    3    2    4   14   24
+CONECT    4    3    5
+CONECT    5    4    6   12   25
+CONECT    6    5    7   26   27
+CONECT    7    6    8
+CONECT    8    7   10   11
+CONECT    8    9
+CONECT    8    9
+CONECT    9    8
+CONECT    9    8
+CONECT   10    8   28
+CONECT   11    8   29
+CONECT   12    2    5   13   30
+CONECT   13   12   31
+CONECT   14    3   15   20
+CONECT   15   14   32
+CONECT   15   16
+CONECT   15   16
+CONECT   16   17   33
+CONECT   16   15
+CONECT   16   15
+CONECT   17   16   19
+CONECT   17   18
+CONECT   17   18
+CONECT   18   17
+CONECT   18   17
+CONECT   19   17   20   34
+CONECT   20   14   19
+CONECT   20   21
+CONECT   20   21
+CONECT   21   20
+CONECT   21   20
+CONECT   22    1
+CONECT   23    2
+CONECT   24    3
+CONECT   25    5
+CONECT   26    6
+CONECT   27    6
+CONECT   28   10
+CONECT   29   11
+CONECT   30   12
+CONECT   31   13
+CONECT   32   15
+CONECT   33   16
+CONECT   34   19
+END

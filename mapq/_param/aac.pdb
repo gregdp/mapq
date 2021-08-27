@@ -1,0 +1,43 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:42:16 2021
+REMARK  99
+REMARK  99   Ligand name: N-acetylglycine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(=O)NCC(O)=O
+FORMUL   1  AAC    C4 H6 N O3  (-1)
+HETATM    1  C1  AAC A   1      -0.613   1.758  -1.762  1.00 20.00      A    C  
+HETATM    2  C2  AAC A   1      -0.889   0.401  -1.118  1.00 20.00      A    C  
+HETATM    3  C3  AAC A   1       0.189  -1.063   0.619  1.00 20.00      A    C  
+HETATM    4  C4  AAC A   1       1.074  -1.218   1.854  1.00 20.00      A    C  
+HETATM    5  N1  AAC A   1      -0.072   0.257   0.074  1.00 20.00      A    N  
+HETATM    6  O1  AAC A   1      -1.315   2.756  -1.453  1.00 20.00      A    O-1
+HETATM    7  O2  AAC A   1       0.318   1.879  -2.601  1.00 20.00      A    O  
+HETATM    8  O3  AAC A   1      -0.281  -2.020   0.104  1.00 20.00      A    O  
+HETATM    9 HC21 AAC A   1      -1.937   0.336  -0.847  1.00 20.00      A    H  
+HETATM   10 HC22 AAC A   1      -0.646  -0.389  -1.820  1.00 20.00      A    H  
+HETATM   11 HC41 AAC A   1       0.911  -2.196   2.296  1.00 20.00      A    H  
+HETATM   12 HC42 AAC A   1       0.823  -0.447   2.577  1.00 20.00      A    H  
+HETATM   13 HC43 AAC A   1       2.117  -1.119   1.567  1.00 20.00      A    H  
+HETATM   14  HN1 AAC A   1       0.321   1.066   0.512  1.00 20.00      A    H  
+CONECT    1    2    6
+CONECT    1    7
+CONECT    1    7
+CONECT    2    1    5    9   10
+CONECT    3    4    5
+CONECT    3    8
+CONECT    3    8
+CONECT    4    3   11   12   13
+CONECT    5    2    3   14
+CONECT    6    1
+CONECT    7    1
+CONECT    7    1
+CONECT    8    3
+CONECT    8    3
+CONECT    9    2
+CONECT   10    2
+CONECT   11    4
+CONECT   12    4
+CONECT   13    4
+CONECT   14    5
+END

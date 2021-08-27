@@ -1,0 +1,43 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Tue Mar 16 21:45:51 2021
+REMARK  99
+REMARK  99   Ligand name: L-aspartic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](CC(O)=O)C(O)=O
+FORMUL   1  ASP    C4 H5 N O4  (-2)
+HETATM    1  N   ASP A   1      -1.834  -0.499   0.028  1.00 20.00      A    N  
+HETATM    2  CA  ASP A   1      -0.382  -0.477   0.037  1.00 20.00      A    C  
+HETATM    3  C   ASP A   1       0.118  -0.461   1.480  1.00 20.00      A    C  
+HETATM    4  O   ASP A   1      -0.258   0.447   2.266  1.00 20.00      A    O  
+HETATM    5  CB  ASP A   1       0.112   0.774  -0.687  1.00 20.00      A    C  
+HETATM    6  CG  ASP A   1       1.638   0.767  -0.730  1.00 20.00      A    C  
+HETATM    7  OD1 ASP A   1       2.242   0.010  -1.534  1.00 20.00      A    O  
+HETATM    8  OD2 ASP A   1       2.293   1.519   0.039  1.00 20.00      A    O-1
+HETATM    9  OXT ASP A   1       0.905  -1.357   1.882  1.00 20.00      A    O-1
+HETATM   10  H   ASP A   1      -2.158  -1.343   0.462  1.00 20.00      A    H  
+HETATM   11  H2  ASP A   1      -2.163  -0.463  -0.919  1.00 20.00      A    H  
+HETATM   12  HA  ASP A   1      -0.005  -1.358  -0.467  1.00 20.00      A    H  
+HETATM   13  HB2 ASP A   1      -0.231   1.657  -0.158  1.00 20.00      A    H  
+HETATM   14  HB3 ASP A   1      -0.278   0.784  -1.699  1.00 20.00      A    H  
+CONECT    1    2   10   11
+CONECT    2    1    3    5   12
+CONECT    3    2    9
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   13   14
+CONECT    6    5    8
+CONECT    6    7
+CONECT    6    7
+CONECT    7    6
+CONECT    7    6
+CONECT    8    6
+CONECT    9    3
+CONECT   10    1
+CONECT   11    1
+CONECT   12    2
+CONECT   13    5
+CONECT   14    5
+END

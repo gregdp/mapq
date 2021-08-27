@@ -1,0 +1,81 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.19.2-4158-
+REMARK  99   - file written: Thu Jul 29 19:44:57 2021
+REMARK  99
+REMARK  99   Ligand name: L-tryptophan
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](Cc1c[nH]c2ccccc12)C(O)=O
+FORMUL   1  TRP    C11 H11 N2 O2  (-1)
+HETATM    1  N   TRP A   1      -1.915   0.135   2.476  1.00 20.00      A    N  
+HETATM    2  CA  TRP A   1      -0.523  -0.227   2.277  1.00 20.00      A    C  
+HETATM    3  C   TRP A   1       0.150  -0.427   3.634  1.00 20.00      A    C  
+HETATM    4  O   TRP A   1       0.577  -1.564   3.964  1.00 20.00      A    O  
+HETATM    5  CB  TRP A   1       0.189   0.887   1.515  1.00 20.00      A    C  
+HETATM    6  CG  TRP A   1      -0.049   0.711   0.017  1.00 20.00      A    C  
+HETATM    7  CD1 TRP A   1      -1.043   1.524  -0.479  1.00 20.00      A    C  
+HETATM    8  CD2 TRP A   1       0.490   0.019  -1.029  1.00 20.00      A    C  
+HETATM    9  NE1 TRP A   1      -1.113   1.331  -1.821  1.00 20.00      A    N  
+HETATM   10  CE2 TRP A   1      -0.165   0.399  -2.168  1.00 20.00      A    C  
+HETATM   11  CE3 TRP A   1       1.509  -0.948  -1.095  1.00 20.00      A    C  
+HETATM   12  CZ2 TRP A   1       0.180  -0.176  -3.403  1.00 20.00      A    C  
+HETATM   13  CZ3 TRP A   1       1.850  -1.515  -2.313  1.00 20.00      A    C  
+HETATM   14  CH2 TRP A   1       1.185  -1.129  -3.467  1.00 20.00      A    C  
+HETATM   15  OXT TRP A   1       0.254   0.541   4.434  1.00 20.00      A    O-1
+HETATM   16  H   TRP A   1      -2.482  -0.691   2.454  1.00 20.00      A    H  
+HETATM   17  H2  TRP A   1      -2.019   0.588   3.365  1.00 20.00      A    H  
+HETATM   18  HA  TRP A   1      -0.468  -1.147   1.708  1.00 20.00      A    H  
+HETATM   19  HB2 TRP A   1      -0.200   1.849   1.833  1.00 20.00      A    H  
+HETATM   20  HB3 TRP A   1       1.253   0.842   1.720  1.00 20.00      A    H  
+HETATM   21  HD1 TRP A   1      -1.673   2.186   0.102  1.00 20.00      A    H  
+HETATM   22  HE1 TRP A   1      -1.745   1.788  -2.448  1.00 20.00      A    H  
+HETATM   23  HE3 TRP A   1       2.029  -1.249  -0.193  1.00 20.00      A    H  
+HETATM   24  HZ2 TRP A   1      -0.341   0.123  -4.305  1.00 20.00      A    H  
+HETATM   25  HZ3 TRP A   1       2.615  -2.279  -2.359  1.00 20.00      A    H  
+HETATM   26  HH2 TRP A   1       1.451  -1.572  -4.419  1.00 20.00      A    H  
+CONECT    1    2   16   17
+CONECT    2    1    3    5   18
+CONECT    3    2   15
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   19   20
+CONECT    6    5
+CONECT    6    7    8
+CONECT    7   21
+CONECT    7    6    9
+CONECT    8   11
+CONECT    8    6
+CONECT    8   10
+CONECT    8   10
+CONECT    9   22
+CONECT    9    7   10
+CONECT   10   12
+CONECT   10    9
+CONECT   10    8
+CONECT   10    8
+CONECT   11    8   23
+CONECT   11   13
+CONECT   11   13
+CONECT   12   10   24
+CONECT   12   14
+CONECT   12   14
+CONECT   13   14   25
+CONECT   13   11
+CONECT   13   11
+CONECT   14   13   26
+CONECT   14   12
+CONECT   14   12
+CONECT   15    3
+CONECT   16    1
+CONECT   17    1
+CONECT   18    2
+CONECT   19    5
+CONECT   20    5
+CONECT   21    7
+CONECT   22    9
+CONECT   23   11
+CONECT   24   12
+CONECT   25   13
+CONECT   26   14
+END

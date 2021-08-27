@@ -1,0 +1,92 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:41:20 2021
+REMARK  99
+REMARK  99   Ligand name: 3-methyluridine 5'-(dihydrogen phosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CN1C(=O)C=CN([C@@H]2O[C@H](CO[P](O)(O)=O)[C@@H](O)[C@H]2O)C1=O
+FORMUL   1  UR3    C10 H13 N2 O9 P  (-2)
+HETATM    1  P   UR3 A   1       4.414  -1.877   2.993  1.00 20.00      A    P  
+HETATM    2  OP1 UR3 A   1       3.652  -2.671   4.027  1.00 20.00      A    O  
+HETATM    3  OP2 UR3 A   1       4.863  -2.796   1.883  1.00 20.00      A    O-1
+HETATM    4  O5' UR3 A   1       3.439  -0.701   2.374  1.00 20.00      A    O  
+HETATM    5  C5' UR3 A   1       2.067  -0.955   2.280  1.00 20.00      A    C  
+HETATM    6  C4' UR3 A   1       1.359   0.274   1.707  1.00 20.00      A    C  
+HETATM    7  O4' UR3 A   1       1.257   0.169   0.404  1.00 20.00      A    O  
+HETATM    8  C1' UR3 A   1      -0.132   0.875   0.018  1.00 20.00      A    C  
+HETATM    9  N1  UR3 A   1      -0.613   0.367  -1.212  1.00 20.00      A    N  
+HETATM   10  C6  UR3 A   1      -0.602  -1.061  -1.464  1.00 20.00      A    C  
+HETATM   11  C2  UR3 A   1      -1.130   1.293  -2.251  1.00 20.00      A    C  
+HETATM   12  O2  UR3 A   1      -0.915   2.455  -2.173  1.00 20.00      A    O  
+HETATM   13  N3  UR3 A   1      -1.919   0.754  -3.390  1.00 20.00      A    N  
+HETATM   14  C3U UR3 A   1      -2.689   1.651  -4.233  1.00 20.00      A    C  
+HETATM   15  C4  UR3 A   1      -1.916  -0.675  -3.655  1.00 20.00      A    C  
+HETATM   16  O4  UR3 A   1      -2.434  -1.100  -4.632  1.00 20.00      A    O  
+HETATM   17  C5  UR3 A   1      -1.256  -1.604  -2.690  1.00 20.00      A    C  
+HETATM   18  C2' UR3 A   1      -0.991   0.567   1.017  1.00 20.00      A    C  
+HETATM   19  O2' UR3 A   1      -1.924   1.692   1.250  1.00 20.00      A    O  
+HETATM   20  C3' UR3 A   1      -0.125   0.346   2.243  1.00 20.00      A    C  
+HETATM   21  O3' UR3 A   1      -0.260   1.381   3.102  1.00 20.00      A    O  
+HETATM   22  OP3 UR3 A   1       5.622  -1.240   3.639  1.00 20.00      A    O-1
+HETATM   23  H5' UR3 A   1       1.671  -1.173   3.266  1.00 20.00      A    H  
+HETATM   24 H5'' UR3 A   1       1.900  -1.805   1.627  1.00 20.00      A    H  
+HETATM   25  H4' UR3 A   1       1.896   1.179   1.968  1.00 20.00      A    H  
+HETATM   26  H1' UR3 A   1      -0.000   1.949  -0.040  1.00 20.00      A    H  
+HETATM   27  H6  UR3 A   1      -0.123  -1.732  -0.762  1.00 20.00      A    H  
+HETATM   28 H3U1 UR3 A   1      -2.027   2.137  -4.943  1.00 20.00      A    H  
+HETATM   29 H3U2 UR3 A   1      -3.444   1.084  -4.770  1.00 20.00      A    H  
+HETATM   30 H3U3 UR3 A   1      -3.172   2.403  -3.615  1.00 20.00      A    H  
+HETATM   31  H5  UR3 A   1      -1.250  -2.671  -2.881  1.00 20.00      A    H  
+HETATM   32  H2' UR3 A   1      -1.536  -0.338   0.776  1.00 20.00      A    H  
+HETATM   33 HO2' UR3 A   1      -2.779   1.353   1.460  1.00 20.00      A    H  
+HETATM   34  H3' UR3 A   1      -0.392  -0.586   2.726  1.00 20.00      A    H  
+HETATM   35 HO3' UR3 A   1      -0.510   1.054   3.952  1.00 20.00      A    H  
+CONECT    1    3    4   22
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1    5
+CONECT    5    4    6   23   24
+CONECT    6    5    7   20   25
+CONECT    7    6    8
+CONECT    8    7    9   18   26
+CONECT    9    8   10   11
+CONECT   10    9   27
+CONECT   10   17
+CONECT   10   17
+CONECT   11    9   13
+CONECT   11   12
+CONECT   11   12
+CONECT   12   11
+CONECT   12   11
+CONECT   13   11   14   15
+CONECT   14   13   28   29   30
+CONECT   15   13   17
+CONECT   15   16
+CONECT   15   16
+CONECT   16   15
+CONECT   16   15
+CONECT   17   15   31
+CONECT   17   10
+CONECT   17   10
+CONECT   18    8   19   20   32
+CONECT   19   18   33
+CONECT   20    6   18   21   34
+CONECT   21   20   35
+CONECT   22    1
+CONECT   23    5
+CONECT   24    5
+CONECT   25    6
+CONECT   26    8
+CONECT   27   10
+CONECT   28   14
+CONECT   29   14
+CONECT   30   14
+CONECT   31   17
+CONECT   32   18
+CONECT   33   19
+CONECT   34   20
+CONECT   35   21
+END

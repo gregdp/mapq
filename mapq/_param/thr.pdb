@@ -1,0 +1,44 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Tue Mar 16 11:39:24 2021
+REMARK  99
+REMARK  99   Ligand name: L-threonine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: C[C@@H](O)[C@H](N)C(O)=O
+FORMUL   1  THR    C4 H8 N O3  (-1)
+HETATM    1  N   THR A   1      -1.623  -0.627   0.421  1.00 20.00      A    N  
+HETATM    2  CA  THR A   1      -0.171  -0.616   0.402  1.00 20.00      A    C  
+HETATM    3  C   THR A   1       0.358  -0.691   1.832  1.00 20.00      A    C  
+HETATM    4  O   THR A   1       1.187  -1.583   2.151  1.00 20.00      A    O  
+HETATM    5  CB  THR A   1       0.320   0.671  -0.256  1.00 20.00      A    C  
+HETATM    6  OG1 THR A   1      -0.736   1.587  -0.334  1.00 20.00      A    O  
+HETATM    7  CG2 THR A   1       0.831   0.362  -1.661  1.00 20.00      A    C  
+HETATM    8  OXT THR A   1      -0.036   0.139   2.693  1.00 20.00      A    O-1
+HETATM    9  H   THR A   1      -1.964  -1.112  -0.387  1.00 20.00      A    H  
+HETATM   10  H2  THR A   1      -1.942  -1.091   1.250  1.00 20.00      A    H  
+HETATM   11  HA  THR A   1       0.189  -1.469  -0.161  1.00 20.00      A    H  
+HETATM   12  HB  THR A   1       1.123   1.095   0.335  1.00 20.00      A    H  
+HETATM   13  HG1 THR A   1      -0.392   2.467  -0.304  1.00 20.00      A    H  
+HETATM   14 HG21 THR A   1       1.209   1.273  -2.117  1.00 20.00      A    H  
+HETATM   15 HG22 THR A   1       0.018  -0.033  -2.263  1.00 20.00      A    H  
+HETATM   16 HG23 THR A   1       1.629  -0.372  -1.603  1.00 20.00      A    H  
+CONECT    1    2    9   10
+CONECT    2    1    3    5   11
+CONECT    3    2    8
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6    7   12
+CONECT    6    5   13
+CONECT    7    5   14   15   16
+CONECT    8    3
+CONECT    9    1
+CONECT   10    1
+CONECT   11    2
+CONECT   12    5
+CONECT   13    6
+CONECT   14    7
+CONECT   15    7
+CONECT   16    7
+END

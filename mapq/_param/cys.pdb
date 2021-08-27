@@ -1,0 +1,38 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.19.2-4158-
+REMARK  99   - file written: Thu Jul 29 19:45:20 2021
+REMARK  99
+REMARK  99   Ligand name: L-cysteine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](CS)C(O)=O
+FORMUL   1  CYS    C3 H6 N O2 S  (-1)
+HETATM    1  N   CYS A   1      -1.683  -0.556  -0.004  1.00 20.00      A    N  
+HETATM    2  CA  CYS A   1      -0.235  -0.521  -0.088  1.00 20.00      A    C  
+HETATM    3  C   CYS A   1       0.362  -0.757   1.297  1.00 20.00      A    C  
+HETATM    4  O   CYS A   1      -0.071  -0.111   2.288  1.00 20.00      A    O  
+HETATM    5  CB  CYS A   1       0.212   0.843  -0.609  1.00 20.00      A    C  
+HETATM    6  SG  CYS A   1       1.962   1.105  -0.199  1.00 20.00      A    S  
+HETATM    7  OXT CYS A   1       1.286  -1.598   1.450  1.00 20.00      A    O-1
+HETATM    8  H   CYS A   1      -1.983  -1.488   0.215  1.00 20.00      A    H  
+HETATM    9  H2  CYS A   1      -2.076  -0.276  -0.883  1.00 20.00      A    H  
+HETATM   10  HA  CYS A   1       0.107  -1.295  -0.765  1.00 20.00      A    H  
+HETATM   11  HB2 CYS A   1       0.084   0.880  -1.685  1.00 20.00      A    H  
+HETATM   12  HB3 CYS A   1      -0.387   1.621  -0.147  1.00 20.00      A    H  
+HETATM   13  HG  CYS A   1       2.422   2.154  -0.869  1.00 20.00      A    H  
+CONECT    1    2    8    9
+CONECT    2    1    3    5   10
+CONECT    3    2    7
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   11   12
+CONECT    6    5   13
+CONECT    7    3
+CONECT    8    1
+CONECT    9    1
+CONECT   10    2
+CONECT   11    5
+CONECT   12    5
+CONECT   13    6
+END

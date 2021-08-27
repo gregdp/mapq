@@ -1,0 +1,102 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:31:19 2021
+REMARK  99
+REMARK  99   Ligand name: N-acetylcytidine 5'-(dihydrogen phosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(=O)NC1=NC(=O)N(C=C1)[C@@H]2O[C@H](CO[P](O)(O)=O)[C@@H](O)[C@H]2O
+FORMUL   1  4AC    C11 H14 N3 O9 P  (-2)
+HETATM    1  OP3 4AC A   1      -1.792   3.668   2.984  1.00 20.00      A    O-1
+HETATM    2  P   4AC A   1      -1.919   2.397   3.797  1.00 20.00      A    P  
+HETATM    3  OP1 4AC A   1      -3.363   2.192   4.189  1.00 20.00      A    O  
+HETATM    4  OP2 4AC A   1      -1.069   2.509   5.043  1.00 20.00      A    O-1
+HETATM    5  O5' 4AC A   1      -1.402   1.102   2.888  1.00 20.00      A    O  
+HETATM    6  C5' 4AC A   1      -0.069   1.109   2.390  1.00 20.00      A    C  
+HETATM    7  C4' 4AC A   1       0.578  -0.064   2.775  1.00 20.00      A    C  
+HETATM    8  O4' 4AC A   1      -0.123  -1.265   2.189  1.00 20.00      A    O  
+HETATM    9  C3' 4AC A   1       2.069  -0.099   2.179  1.00 20.00      A    C  
+HETATM   10  O3' 4AC A   1       3.073   0.077   3.288  1.00 20.00      A    O  
+HETATM   11  C2' 4AC A   1       2.193  -1.222   1.666  1.00 20.00      A    C  
+HETATM   12  O2' 4AC A   1       2.758  -2.170   2.651  1.00 20.00      A    O  
+HETATM   13  C1' 4AC A   1       0.659  -1.692   1.236  1.00 20.00      A    C  
+HETATM   14  N1  4AC A   1       0.291  -1.095  -0.007  1.00 20.00      A    N  
+HETATM   15  C2  4AC A   1      -1.138  -1.020  -0.406  1.00 20.00      A    C  
+HETATM   16  O2  4AC A   1      -1.989  -1.202   0.395  1.00 20.00      A    O  
+HETATM   17  N3  4AC A   1      -1.494  -0.710  -1.820  1.00 20.00      A    N  
+HETATM   18  C4  4AC A   1      -0.468  -0.252  -2.744  1.00 20.00      A    C  
+HETATM   19  N4  4AC A   1      -0.811   0.019  -4.148  1.00 20.00      A    N  
+HETATM   20  C5  4AC A   1       0.953  -0.164  -2.290  1.00 20.00      A    C  
+HETATM   21  C6  4AC A   1       1.316  -0.569  -0.897  1.00 20.00      A    C  
+HETATM   22  C7  4AC A   1      -2.216  -0.028  -4.583  1.00 20.00      A    C  
+HETATM   23  O7  4AC A   1      -3.068  -0.284  -3.805  1.00 20.00      A    O  
+HETATM   24  CM7 4AC A   1      -2.572   0.205  -6.064  1.00 20.00      A    C  
+HETATM   25  H5' 4AC A   1       0.463   1.964   2.792  1.00 20.00      A    H  
+HETATM   26 H5'' 4AC A   1      -0.088   1.172   1.307  1.00 20.00      A    H  
+HETATM   27  H4' 4AC A   1       0.608  -0.142   3.854  1.00 20.00      A    H  
+HETATM   28  H3' 4AC A   1       2.190   0.672   1.427  1.00 20.00      A    H  
+HETATM   29 HO3' 4AC A   1       3.610   0.823   3.107  1.00 20.00      A    H  
+HETATM   30  H2' 4AC A   1       2.827  -1.163   0.787  1.00 20.00      A    H  
+HETATM   31 HO2' 4AC A   1       3.378  -2.733   2.224  1.00 20.00      A    H  
+HETATM   32  H1' 4AC A   1       0.606  -2.773   1.168  1.00 20.00      A    H  
+HETATM   33  H4  4AC A   1      -0.094   0.288  -4.796  1.00 20.00      A    H  
+HETATM   34  H5  4AC A   1       1.714   0.229  -2.959  1.00 20.00      A    H  
+HETATM   35  H6  4AC A   1       2.355  -0.559  -0.582  1.00 20.00      A    H  
+HETATM   36 HM71 4AC A   1      -1.699   0.009  -6.682  1.00 20.00      A    H  
+HETATM   37 HM72 4AC A   1      -3.377  -0.463  -6.352  1.00 20.00      A    H  
+HETATM   38 HM73 4AC A   1      -2.890   1.236  -6.202  1.00 20.00      A    H  
+CONECT    1    2
+CONECT    2    1    4    5
+CONECT    2    3
+CONECT    2    3
+CONECT    3    2
+CONECT    3    2
+CONECT    4    2
+CONECT    5    2    6
+CONECT    6    5    7   25   26
+CONECT    7    6    8    9   27
+CONECT    8    7   13
+CONECT    9    7   10   11   28
+CONECT   10    9   29
+CONECT   11    9   12   13   30
+CONECT   12   11   31
+CONECT   13    8   11   14   32
+CONECT   14   13   15   21
+CONECT   15   14   17
+CONECT   15   16
+CONECT   15   16
+CONECT   16   15
+CONECT   16   15
+CONECT   17   15
+CONECT   17   18
+CONECT   17   18
+CONECT   18   19   20
+CONECT   18   17
+CONECT   18   17
+CONECT   19   18   22   33
+CONECT   20   18   34
+CONECT   20   21
+CONECT   20   21
+CONECT   21   14   35
+CONECT   21   20
+CONECT   21   20
+CONECT   22   19   24
+CONECT   22   23
+CONECT   22   23
+CONECT   23   22
+CONECT   23   22
+CONECT   24   22   36   37   38
+CONECT   25    6
+CONECT   26    6
+CONECT   27    7
+CONECT   28    9
+CONECT   29   10
+CONECT   30   11
+CONECT   31   12
+CONECT   32   13
+CONECT   33   19
+CONECT   34   20
+CONECT   35   21
+CONECT   36   24
+CONECT   37   24
+CONECT   38   24
+END

@@ -1,0 +1,68 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Tue Mar 16 21:43:33 2021
+REMARK  99
+REMARK  99   Ligand name: L-phenylalanine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](Cc1ccccc1)C(O)=O
+FORMUL   1  PHE    C9 H10 N O2  (-1)
+HETATM    1  N   PHE A   1      -0.987  -0.354   2.481  1.00 20.00      A    N  
+HETATM    2  CA  PHE A   1       0.151  -0.735   1.692  1.00 20.00      A    C  
+HETATM    3  C   PHE A   1       1.242  -1.257   2.601  1.00 20.00      A    C  
+HETATM    4  O   PHE A   1       1.458  -2.495   2.676  1.00 20.00      A    O  
+HETATM    5  CB  PHE A   1       0.675   0.497   0.913  1.00 20.00      A    C  
+HETATM    6  CG  PHE A   1       0.128   0.468  -0.535  1.00 20.00      A    C  
+HETATM    7  CD1 PHE A   1      -0.854   1.362  -0.920  1.00 20.00      A    C  
+HETATM    8  CD2 PHE A   1       0.697  -0.373  -1.468  1.00 20.00      A    C  
+HETATM    9  CE1 PHE A   1      -1.267   1.412  -2.244  1.00 20.00      A    C  
+HETATM   10  CE2 PHE A   1       0.285  -0.322  -2.790  1.00 20.00      A    C  
+HETATM   11  CZ  PHE A   1      -0.698   0.572  -3.175  1.00 20.00      A    C  
+HETATM   12  OXT PHE A   1       1.850  -0.470   3.363  1.00 20.00      A    O-1
+HETATM   13  H   PHE A   1      -1.731  -0.993   2.318  1.00 20.00      A    H  
+HETATM   14  H2  PHE A   1      -0.739  -0.371   3.453  1.00 20.00      A    H  
+HETATM   15  HA  PHE A   1      -0.138  -1.513   0.991  1.00 20.00      A    H  
+HETATM   16  HB2 PHE A   1       1.770   0.473   0.889  1.00 20.00      A    H  
+HETATM   17  HB3 PHE A   1       0.338   1.421   1.417  1.00 20.00      A    H  
+HETATM   18  HD1 PHE A   1      -1.304   2.023  -0.187  1.00 20.00      A    H  
+HETATM   19  HD2 PHE A   1       1.475  -1.079  -1.165  1.00 20.00      A    H  
+HETATM   20  HE1 PHE A   1      -2.047   2.121  -2.551  1.00 20.00      A    H  
+HETATM   21  HE2 PHE A   1       0.735  -0.989  -3.530  1.00 20.00      A    H  
+HETATM   22  HZ  PHE A   1      -1.037   0.602  -4.229  1.00 20.00      A    H  
+CONECT    1    2   13   14
+CONECT    2    1    3    5   15
+CONECT    3    2   12
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   16   17
+CONECT    6    5    8
+CONECT    6    7
+CONECT    6    7
+CONECT    7    9   18
+CONECT    7    6
+CONECT    7    6
+CONECT    8    6   19
+CONECT    8   10
+CONECT    8   10
+CONECT    9    7   20
+CONECT    9   11
+CONECT    9   11
+CONECT   10   11   21
+CONECT   10    8
+CONECT   10    8
+CONECT   11   10   22
+CONECT   11    9
+CONECT   11    9
+CONECT   12    3
+CONECT   13    1
+CONECT   14    1
+CONECT   15    2
+CONECT   16    5
+CONECT   17    5
+CONECT   18    7
+CONECT   19    8
+CONECT   20    9
+CONECT   21   10
+CONECT   22   11
+END

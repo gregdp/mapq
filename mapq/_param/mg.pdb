@@ -1,0 +1,10 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Fri Jul 30 21:19:08 2021
+REMARK  99
+REMARK  99   Ligand name: magnesium
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [Mg++]
+FORMUL   1  MG    MG  (2)
+HETATM    1 MG    MG A   1      10.000  10.000  10.000  1.00 20.00      A   MG+2
+END

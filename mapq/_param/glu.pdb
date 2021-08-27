@@ -1,0 +1,49 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.19.2-4158-
+REMARK  99   - file written: Thu Jul 29 19:42:03 2021
+REMARK  99
+REMARK  99   Ligand name: L-glutamic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](CCC(O)=O)C(O)=O
+FORMUL   1  GLU    C5 H7 N O4  (-2)
+HETATM    1  N   GLU A   1      -2.025  -0.689   0.643  1.00 20.00      A    N  
+HETATM    2  CA  GLU A   1      -0.573  -0.689   0.643  1.00 20.00      A    C  
+HETATM    3  C   GLU A   1      -0.064  -0.689   2.083  1.00 20.00      A    C  
+HETATM    4  O   GLU A   1       0.783  -1.545   2.452  1.00 20.00      A    O  
+HETATM    5  CB  GLU A   1      -0.064   0.557  -0.076  1.00 20.00      A    C  
+HETATM    6  CG  GLU A   1       0.934   0.149  -1.157  1.00 20.00      A    C  
+HETATM    7  CD  GLU A   1       1.424   1.394  -1.894  1.00 20.00      A    C  
+HETATM    8  OE1 GLU A   1       2.458   1.993  -1.498  1.00 20.00      A    O  
+HETATM    9  OE2 GLU A   1       0.795   1.821  -2.897  1.00 20.00      A    O-1
+HETATM   10  OXT GLU A   1      -0.492   0.166   2.902  1.00 20.00      A    O-1
+HETATM   11  H   GLU A   1      -2.359  -1.297   1.366  1.00 20.00      A    H  
+HETATM   12  H2  GLU A   1      -2.359  -1.011  -0.244  1.00 20.00      A    H  
+HETATM   13  HA  GLU A   1      -0.212  -1.574   0.133  1.00 20.00      A    H  
+HETATM   14  HB2 GLU A   1      -0.898   1.077  -0.533  1.00 20.00      A    H  
+HETATM   15  HB3 GLU A   1       0.423   1.212   0.636  1.00 20.00      A    H  
+HETATM   16  HG2 GLU A   1       1.777  -0.355  -0.699  1.00 20.00      A    H  
+HETATM   17  HG3 GLU A   1       0.452  -0.520  -1.860  1.00 20.00      A    H  
+CONECT    1    2   11   12
+CONECT    2    1    3    5   13
+CONECT    3    2   10
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   14   15
+CONECT    6    5    7   16   17
+CONECT    7    6    9
+CONECT    7    8
+CONECT    7    8
+CONECT    8    7
+CONECT    8    7
+CONECT    9    7
+CONECT   10    3
+CONECT   11    1
+CONECT   12    1
+CONECT   13    2
+CONECT   14    5
+CONECT   15    5
+CONECT   16    6
+CONECT   17    6
+END

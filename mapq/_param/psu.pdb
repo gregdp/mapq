@@ -1,0 +1,86 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:28:46 2021
+REMARK  99
+REMARK  99   Ligand name: (1S)-1,4-anhydro-1-(2,4-dioxo-1,2,3,4-tetrahydropyrimidin-5-yl)-5-O-phosphono-D-ribitol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: O[C@H]1[C@@H](O)[C@@H](O[C@@H]1CO[P](O)(O)=O)C2=CNC(=O)NC2=O
+FORMUL   1  PSU    C9 H11 N2 O9 P  (-2)
+HETATM    1  N1  PSU A   1       0.181   1.369  -3.172  1.00 20.00      A    N  
+HETATM    2  C2  PSU A   1       1.668   1.507  -3.158  1.00 20.00      A    C  
+HETATM    3  N3  PSU A   1       2.394   1.628  -1.846  1.00 20.00      A    N  
+HETATM    4  C4  PSU A   1       1.642   1.605  -0.597  1.00 20.00      A    C  
+HETATM    5  C5  PSU A   1       0.160   1.468  -0.628  1.00 20.00      A    C  
+HETATM    6  C6  PSU A   1      -0.554   1.349  -1.920  1.00 20.00      A    C  
+HETATM    7  O2  PSU A   1       2.274   1.521  -4.177  1.00 20.00      A    O  
+HETATM    8  O4  PSU A   1       2.211   1.700   0.445  1.00 20.00      A    O  
+HETATM    9  C1' PSU A   1      -0.647   1.527   0.697  1.00 20.00      A    C  
+HETATM   10  C2' PSU A   1      -1.983   0.705   0.558  1.00 20.00      A    C  
+HETATM   11  O2' PSU A   1      -3.025   1.418   1.058  1.00 20.00      A    O  
+HETATM   12  C3' PSU A   1      -1.773  -0.551   1.372  1.00 20.00      A    C  
+HETATM   13  C4' PSU A   1      -0.464  -0.579   1.654  1.00 20.00      A    C  
+HETATM   14  O3' PSU A   1      -2.567  -0.477   2.634  1.00 20.00      A    O  
+HETATM   15  O4' PSU A   1       0.017   0.952   1.651  1.00 20.00      A    O  
+HETATM   16  C5' PSU A   1       0.279  -1.362   0.594  1.00 20.00      A    C  
+HETATM   17  O5' PSU A   1       1.634  -1.577   1.018  1.00 20.00      A    O  
+HETATM   18  P   PSU A   1       2.210  -3.161   1.102  1.00 20.00      A    P  
+HETATM   19  OP1 PSU A   1       3.704  -3.142   1.380  1.00 20.00      A    O  
+HETATM   20  OP2 PSU A   1       1.953  -3.861  -0.208  1.00 20.00      A    O-1
+HETATM   21  OP3 PSU A   1       1.498  -3.898   2.217  1.00 20.00      A    O-1
+HETATM   22  HN1 PSU A   1      -0.311   1.287  -4.049  1.00 20.00      A    H  
+HETATM   23  HN3 PSU A   1       3.394   1.721  -1.831  1.00 20.00      A    H  
+HETATM   24  H6  PSU A   1      -1.626   1.233  -1.931  1.00 20.00      A    H  
+HETATM   25  H1' PSU A   1      -0.869   2.558   0.964  1.00 20.00      A    H  
+HETATM   26  H2' PSU A   1      -2.157   0.453  -0.469  1.00 20.00      A    H  
+HETATM   27 HO2' PSU A   1      -3.760   1.358   0.467  1.00 20.00      A    H  
+HETATM   28  H3' PSU A   1      -2.054  -1.431   0.790  1.00 20.00      A    H  
+HETATM   29  H4' PSU A   1      -0.302  -1.019   2.634  1.00 20.00      A    H  
+HETATM   30 HO3' PSU A   1      -3.191  -1.177   2.652  1.00 20.00      A    H  
+HETATM   31  H5' PSU A   1      -0.211  -2.324   0.444  1.00 20.00      A    H  
+HETATM   32 H5'' PSU A   1       0.275  -0.800  -0.344  1.00 20.00      A    H  
+CONECT    1    2    6   22
+CONECT    2    1    3
+CONECT    2    7
+CONECT    2    7
+CONECT    3    2    4   23
+CONECT    4    3    5
+CONECT    4    8
+CONECT    4    8
+CONECT    5    4    9
+CONECT    5    6
+CONECT    5    6
+CONECT    6    1   24
+CONECT    6    5
+CONECT    6    5
+CONECT    7    2
+CONECT    7    2
+CONECT    8    4
+CONECT    8    4
+CONECT    9    5   10   15   25
+CONECT   10    9   11   12   26
+CONECT   11   10   27
+CONECT   12   10   13   14   28
+CONECT   13   12   15   16   29
+CONECT   14   12   30
+CONECT   15    9   13
+CONECT   16   13   17   31   32
+CONECT   17   16   18
+CONECT   18   17   20   21
+CONECT   18   19
+CONECT   18   19
+CONECT   19   18
+CONECT   19   18
+CONECT   20   18
+CONECT   21   18
+CONECT   22    1
+CONECT   23    3
+CONECT   24    6
+CONECT   25    9
+CONECT   26   10
+CONECT   27   11
+CONECT   28   12
+CONECT   29   13
+CONECT   30   14
+CONECT   31   16
+CONECT   32   16
+END

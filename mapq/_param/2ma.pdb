@@ -1,0 +1,100 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Mon Aug 23 18:49:11 2021
+REMARK  99
+REMARK  99   Ligand name: 2-methyladenosine 5'-(dihydrogen phosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC1=Nc2n(cnc2C(=N)N1)[C@@H]3O[C@H](CO[P](O)(O)=O)[C@@H](O)[C@H]3O
+FORMUL   1  2MA    C11 H14 N5 O7 P  (-2)
+HETATM    1  P   2MA A   1      -0.098  -1.394   6.012  1.00 20.00      A    P  
+HETATM    2  OP1 2MA A   1       0.011  -2.857   5.784  1.00 20.00      A    O  
+HETATM    3  OP2 2MA A   1       0.703  -1.016   7.222  1.00 20.00      A    O-1
+HETATM    4  OP3 2MA A   1      -1.518  -1.032   6.226  1.00 20.00      A    O-1
+HETATM    5  O5' 2MA A   1       0.477  -0.594   4.708  1.00 20.00      A    O  
+HETATM    6  C5' 2MA A   1      -0.010  -0.953   3.430  1.00 20.00      A    C  
+HETATM    7  C4' 2MA A   1       1.008  -0.549   2.366  1.00 20.00      A    C  
+HETATM    8  O4' 2MA A   1       0.950  -1.351   1.352  1.00 20.00      A    O  
+HETATM    9  C3' 2MA A   1       0.633   0.960   1.770  1.00 20.00      A    C  
+HETATM   10  O3' 2MA A   1       1.192   2.021   2.665  1.00 20.00      A    O  
+HETATM   11  C2' 2MA A   1       1.160   1.021   0.663  1.00 20.00      A    C  
+HETATM   12  O2' 2MA A   1       2.523   1.594   0.787  1.00 20.00      A    O  
+HETATM   13  C1' 2MA A   1       1.248  -0.497   0.148  1.00 20.00      A    C  
+HETATM   14  N9  2MA A   1       0.332  -0.717  -0.820  1.00 20.00      A    N  
+HETATM   15  C8  2MA A   1       0.519  -2.057  -0.965  1.00 20.00      A    C  
+HETATM   16  N7  2MA A   1       0.103  -2.411  -2.225  1.00 20.00      A    N  
+HETATM   17  C5  2MA A   1      -0.339  -1.289  -2.851  1.00 20.00      A    C  
+HETATM   18  C6  2MA A   1      -1.038  -1.067  -4.218  1.00 20.00      A    C  
+HETATM   19  N6  2MA A   1      -1.297  -2.039  -4.951  1.00 20.00      A    N  
+HETATM   20  N1  2MA A   1      -1.433   0.254  -4.612  1.00 20.00      A    N  
+HETATM   21  C2  2MA A   1      -1.176   1.369  -3.729  1.00 20.00      A    C  
+HETATM   22  CM2 2MA A   1      -1.642   2.791  -4.116  1.00 20.00      A    C  
+HETATM   23  N3  2MA A   1      -0.505   1.142  -2.422  1.00 20.00      A    N  
+HETATM   24  C4  2MA A   1      -0.197  -0.236  -1.977  1.00 20.00      A    C  
+HETATM   25  H5' 2MA A   1      -0.947  -0.439   3.245  1.00 20.00      A    H  
+HETATM   26 H5'' 2MA A   1      -0.170  -2.013   3.393  1.00 20.00      A    H  
+HETATM   27  H4' 2MA A   1       2.069  -0.548   2.805  1.00 20.00      A    H  
+HETATM   28  H3' 2MA A   1      -0.509   1.074   1.669  1.00 20.00      A    H  
+HETATM   29 HO3' 2MA A   1       0.515   2.583   2.933  1.00 20.00      A    H  
+HETATM   30  H2' 2MA A   1       0.550   1.616  -0.017  1.00 20.00      A    H  
+HETATM   31 HO2' 2MA A   1       2.658   2.179   0.138  1.00 20.00      A    H  
+HETATM   32  H1' 2MA A   1       2.270  -0.709  -0.231  1.00 20.00      A    H  
+HETATM   33  H8  2MA A   1       0.892  -2.738  -0.198  1.00 20.00      A    H  
+HETATM   34  HN6 2MA A   1      -1.789  -1.894  -5.832  1.00 20.00      A    H  
+HETATM   35  HN1 2MA A   1      -1.876   0.412  -5.532  1.00 20.00      A    H  
+HETATM   36 HM21 2MA A   1      -1.571   3.452  -3.238  1.00 20.00      A    H  
+HETATM   37 HM22 2MA A   1      -2.689   2.754  -4.466  1.00 20.00      A    H  
+HETATM   38 HM23 2MA A   1      -1.009   3.176  -4.912  1.00 20.00      A    H  
+CONECT    1    3    4    5
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1    6
+CONECT    6    5    7   25   26
+CONECT    7    6    8    9   27
+CONECT    8    7   13
+CONECT    9    7   10   11   28
+CONECT   10    9   29
+CONECT   11    9   12   13   30
+CONECT   12   11   31
+CONECT   13    8   11   14   32
+CONECT   14   13
+CONECT   14   15   24
+CONECT   15   33
+CONECT   15   14   16
+CONECT   16   15   17
+CONECT   17   18
+CONECT   17   16   24
+CONECT   18   17   20
+CONECT   18   19
+CONECT   18   19
+CONECT   19   34
+CONECT   19   18
+CONECT   19   18
+CONECT   20   18   21   35
+CONECT   21   20   22
+CONECT   21   23
+CONECT   21   23
+CONECT   22   21   36   37   38
+CONECT   23   24
+CONECT   23   21
+CONECT   23   21
+CONECT   24   23
+CONECT   24   14   17
+CONECT   25    6
+CONECT   26    6
+CONECT   27    7
+CONECT   28    9
+CONECT   29   10
+CONECT   30   11
+CONECT   31   12
+CONECT   32   13
+CONECT   33   15
+CONECT   34   19
+CONECT   35   20
+CONECT   36   22
+CONECT   37   22
+CONECT   38   22
+END

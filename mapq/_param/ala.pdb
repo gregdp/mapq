@@ -1,0 +1,36 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.12-2829-
+REMARK  99   - file written: Wed Mar 17 13:15:18 2021
+REMARK  99
+REMARK  99   Ligand name: L-alanine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: C[C@H](N)C(O)=O
+FORMUL   1  ALA    C3 H6 N O2  (-1)
+HETATM    1  N   ALA A   1      -1.425  -0.343  -0.103  1.00 20.00      A    N  
+HETATM    2  CA  ALA A   1       0.026  -0.343  -0.103  1.00 20.00      A    C  
+HETATM    3  C   ALA A   1       0.535  -0.343   1.337  1.00 20.00      A    C  
+HETATM    4  O   ALA A   1       0.066   0.475   2.170  1.00 20.00      A    O  
+HETATM    5  CB  ALA A   1       0.535   0.904  -0.823  1.00 20.00      A    C  
+HETATM    6  OXT ALA A   1       1.425  -1.161   1.690  1.00 20.00      A    O-1
+HETATM    7  H   ALA A   1      -1.759  -0.460  -1.039  1.00 20.00      A    H  
+HETATM    8  H2  ALA A   1      -1.759  -1.095   0.466  1.00 20.00      A    H  
+HETATM    9  HA  ALA A   1       0.388  -1.228  -0.614  1.00 20.00      A    H  
+HETATM   10  HB1 ALA A   1       0.016   1.776  -0.446  1.00 20.00      A    H  
+HETATM   11  HB2 ALA A   1       1.599   1.013  -0.648  1.00 20.00      A    H  
+HETATM   12  HB3 ALA A   1       0.353   0.807  -1.886  1.00 20.00      A    H  
+CONECT    1    2    7    8
+CONECT    2    1    3    5    9
+CONECT    3    2    6
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2   10   11   12
+CONECT    6    3
+CONECT    7    1
+CONECT    8    1
+CONECT    9    2
+CONECT   10    5
+CONECT   11    5
+CONECT   12    5
+END

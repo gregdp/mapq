@@ -1,0 +1,101 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Wed Aug 18 19:30:01 2021
+REMARK  99
+REMARK  99   Ligand name: 2'-O-methylguanosine 5'-(dihydrogen phosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CO[C@@H]1[C@H](O)[C@@H](CO[P](O)(O)=O)O[C@H]1n2cnc3C(=O)NC(=Nc23)N
+FORMUL   1  OMG    C11 H14 N5 O8 P  (-2)
+HETATM    1  P   OMG A   1       3.819   1.892   2.775  1.00 20.00      A    P  
+HETATM    2  OP1 OMG A   1       4.293   2.125   4.189  1.00 20.00      A    O  
+HETATM    3  OP2 OMG A   1       3.489   3.206   2.139  1.00 20.00      A    O-1
+HETATM    4  OP3 OMG A   1       4.907   1.211   1.986  1.00 20.00      A    O-1
+HETATM    5  O5' OMG A   1       2.417   0.897   2.799  1.00 20.00      A    O  
+HETATM    6  C5' OMG A   1       1.639   0.757   1.575  1.00 20.00      A    C  
+HETATM    7  C4' OMG A   1       0.312   0.440   1.899  1.00 20.00      A    C  
+HETATM    8  O4' OMG A   1      -0.612   0.833   0.773  1.00 20.00      A    O  
+HETATM    9  C3' OMG A   1       0.142  -1.153   2.065  1.00 20.00      A    C  
+HETATM   10  O3' OMG A   1      -0.083  -1.503   3.520  1.00 20.00      A    O  
+HETATM   11  C2' OMG A   1      -0.854  -1.447   1.404  1.00 20.00      A    C  
+HETATM   12  O2' OMG A   1      -2.058  -1.410   2.260  1.00 20.00      A    O  
+HETATM   13  CM2 OMG A   1      -2.839  -2.585   2.195  1.00 20.00      A    C  
+HETATM   14  C1' OMG A   1      -0.965  -0.282   0.211  1.00 20.00      A    C  
+HETATM   15  N9  OMG A   1      -0.076  -0.592  -0.872  1.00 20.00      A    N  
+HETATM   16  C8  OMG A   1       0.413  -1.781  -1.244  1.00 20.00      A    C  
+HETATM   17  N7  OMG A   1       0.477  -1.803  -2.583  1.00 20.00      A    N  
+HETATM   18  C5  OMG A   1       0.030  -0.633  -3.035  1.00 20.00      A    C  
+HETATM   19  C6  OMG A   1      -0.126  -0.065  -4.469  1.00 20.00      A    C  
+HETATM   20  O6  OMG A   1       0.100  -0.752  -5.404  1.00 20.00      A    O  
+HETATM   21  N1  OMG A   1      -0.648   1.259  -4.664  1.00 20.00      A    N  
+HETATM   22  C2  OMG A   1      -1.021   2.053  -3.524  1.00 20.00      A    C  
+HETATM   23  N2  OMG A   1      -1.575   3.392  -3.719  1.00 20.00      A    N  
+HETATM   24  N3  OMG A   1      -0.871   1.511  -2.174  1.00 20.00      A    N  
+HETATM   25  C4  OMG A   1      -0.313   0.118  -1.971  1.00 20.00      A    C  
+HETATM   26  H5' OMG A   1       2.056  -0.028   0.975  1.00 20.00      A    H  
+HETATM   27 H5'' OMG A   1       1.663   1.688   1.019  1.00 20.00      A    H  
+HETATM   28  H4' OMG A   1       0.023   0.931   2.794  1.00 20.00      A    H  
+HETATM   29  H3' OMG A   1       1.022  -1.670   1.673  1.00 20.00      A    H  
+HETATM   30 HO3' OMG A   1       0.641  -2.045   3.834  1.00 20.00      A    H  
+HETATM   31  H2' OMG A   1      -0.728  -2.450   0.951  1.00 20.00      A    H  
+HETATM   32 HM21 OMG A   1      -3.179  -2.732   1.173  1.00 20.00      A    H  
+HETATM   33 HM22 OMG A   1      -2.231  -3.448   2.509  1.00 20.00      A    H  
+HETATM   34 HM23 OMG A   1      -3.702  -2.487   2.858  1.00 20.00      A    H  
+HETATM   35  H1' OMG A   1      -2.039  -0.208  -0.165  1.00 20.00      A    H  
+HETATM   36  H8  OMG A   1       0.772  -2.559  -0.577  1.00 20.00      A    H  
+HETATM   37  HN1 OMG A   1      -0.770   1.614  -5.578  1.00 20.00      A    H  
+HETATM   38 HN21 OMG A   1      -1.639   3.786  -4.659  1.00 20.00      A    H  
+HETATM   39 HN22 OMG A   1      -1.886   3.919  -2.938  1.00 20.00      A    H  
+CONECT    1    3    4    5
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1    6
+CONECT    6    5    7   26   27
+CONECT    7    6    8    9   28
+CONECT    8    7   14
+CONECT    9    7   10   11   29
+CONECT   10    9   30
+CONECT   11    9   12   14   31
+CONECT   12   11   13
+CONECT   13   12   32   33   34
+CONECT   14    8   11   15   35
+CONECT   15   14
+CONECT   15   16   25
+CONECT   16   36
+CONECT   16   15   17
+CONECT   17   16   18
+CONECT   18   19
+CONECT   18   17   25
+CONECT   19   18   21
+CONECT   19   20
+CONECT   19   20
+CONECT   20   19
+CONECT   20   19
+CONECT   21   19   22   37
+CONECT   22   21   23
+CONECT   22   24
+CONECT   22   24
+CONECT   23   22   38   39
+CONECT   24   25
+CONECT   24   22
+CONECT   24   22
+CONECT   25   24
+CONECT   25   15   18
+CONECT   26    6
+CONECT   27    6
+CONECT   28    7
+CONECT   29    9
+CONECT   30   10
+CONECT   31   11
+CONECT   32   13
+CONECT   33   13
+CONECT   34   13
+CONECT   35   14
+CONECT   36   16
+CONECT   37   21
+CONECT   38   23
+CONECT   39   23
+END

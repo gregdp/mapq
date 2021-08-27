@@ -1,0 +1,15 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.19.2-4158-
+REMARK  99   - file written: Fri Jul 30 12:06:10 2021
+REMARK  99
+REMARK  99   Ligand name: water
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: O
+FORMUL   1  HOH    H2 O 
+HETATM    1  O   HOH A   1      -0.210   0.000  -0.296  1.00 20.00      A    O  
+HETATM    2  H1  HOH A   1       0.733   0.000  -0.296  1.00 20.00      A    H  
+HETATM    3  H2  HOH A   1      -0.524   0.000   0.593  1.00 20.00      A    H  
+CONECT    1    2    3
+CONECT    2    1
+CONECT    3    1
+END
