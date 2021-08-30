@@ -16,7 +16,7 @@ class MapQ_Dialog_EMO ( EMO ):
       'Volume Data': 'Evaluate map & model',
     }
   def icon(self):
-    return None #self.path('volseg.png')
+    return self.path('mapq.png')
   def activate(self):
     # self.module('volumedialog').show_volume_dialog()
     d = self.module('mapq').show_dialog()
