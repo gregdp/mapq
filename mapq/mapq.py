@@ -610,7 +610,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             b = Tkinter.Button(ff, text="<", command=self.KeepBack)
             b.grid (column=45, row=0, sticky='w', padx=0)
 
-            b = Tkinter.Button(ff, text="R", command=self.SelReLoad)
+            b = Tkinter.Button(ff, text="Redo", command=self.SelReLoad)
             b.grid (column=46, row=0, sticky='w', padx=0)
 
             if 0 and showDevTools :
@@ -618,11 +618,11 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 b = Tkinter.Button(ff, text="L", command=self.SelLoad)
                 b.grid (column=47, row=0, sticky='w', padx=2)
 
-            b = Tkinter.Button(ff, text="Nr", command=self.ShowNear)
+            b = Tkinter.Button(ff, text="Near", command=self.ShowNear)
             b.grid (column=47, row=0, sticky='w', padx=2)
 
 
-            if 1 :
+            if 0 :
                 b = Tkinter.Button(ff, text="Zone", command=self.Zone)
                 b.grid (column=48, row=0, sticky='w', padx=1, pady=1)
 
