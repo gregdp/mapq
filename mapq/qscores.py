@@ -2500,7 +2500,10 @@ def SaveQStats ( mol, chainId, dmap, sigma, RES=3.0 ) :
 
         for rtype, atoms in type_ats.iteritems() :
 
-            avgQ = numpy.average ( [at.Q for at in atoms if at.element.name != "H"] )
+            qs = [at.Q for at in atoms if (at.element.name != "H" and hasattr(at,'Q'))]
+            if len(qs) == 0 :
+                continue
+            avgQ = numpy.average ( qs )
             numR = len ( type_ress[rtype] )
 
             formula, estRes = None, None
@@ -2559,7 +2562,11 @@ def SaveQStats ( mol, chainId, dmap, sigma, RES=3.0 ) :
 
             ress.append (r)
 
-            r.Q = numpy.average ( [at.Q for at in r.atoms if at.element.name != "H"] )
+            qs = [at.Q for at in r.atoms if (at.element.name != "H" and hasattr(at,'Q'))]
+            if len(qs) == 0 :
+                continue
+
+            r.Q = numpy.average ( qs )
 
             r.qBB, r.qSC, r.qSugar = 0, 0, 0
             if len(r.bbAtoms) > 0 :
@@ -2600,6 +2607,9 @@ def SaveQStats ( mol, chainId, dmap, sigma, RES=3.0 ) :
 
         last_i = None
         for i, r in enumerate ( ress ) :
+
+            if not hasattr ( r, 'Q' ) or not hasattr (r, 'qBB') :
+                 continue
 
             # fills in missing residues in proteins and rna
             if (r.isNA or r.isProt) and last_i != None :

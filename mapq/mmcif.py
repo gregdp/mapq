@@ -943,7 +943,7 @@ def ReadMol ( fpath, log=False ) :
                 nat.Q = Q
                 numQ += 1
             except :
-                print " - q score is",  mp['Q-score']
+                #print " - q score is",  mp['Q-score']
                 pass
 
     end = time.time()
