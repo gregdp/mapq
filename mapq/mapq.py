@@ -65,8 +65,8 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.8.1"
-showDevTools = False
+mapqVersion = "1.8.2"
+showDevTools = True
 
 
 try :
@@ -502,7 +502,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             b = Tkinter.Button(ff, text="RibD", command=self.RibD)
             b.grid (column=45, row=0, sticky='w', padx=2)
 
-            self.selPanel.set(showDevTools)
+            self.selPanel.set(True)
 
 
 
@@ -4997,22 +4997,23 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         clashScore = numClash / float(len(nonhatoms))
 
+        if 0 :
+            # for some ligands stats...
+            R = atoms[0].residue
+            rid = "%s.%d.%s" % (R.type, R.id.position, R.id.chainId)
 
-        R = atoms[0].residue
-        rid = "%s.%d.%s" % (R.type, R.id.position, R.id.chainId)
+            #print mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, res
 
-        #print mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, res
+            print "\nMol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes"
+            print "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f (%.2f)\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash, res)
 
-        print "\nMol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes"
-        print "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f (%.2f)\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash, res)
-
-        if not os.path.isfile ("/Users/greg/Desktop/txt.txt") :
+            if not os.path.isfile ("/Users/greg/Desktop/txt.txt") :
+                fp = open ( "/Users/greg/Desktop/txt.txt", "a" )
+                fp.write ( "Mol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes\n" )
+                fp.close()
             fp = open ( "/Users/greg/Desktop/txt.txt", "a" )
-            fp.write ( "Mol Name\tRes Id\tQ\tCC\tCCm\tCC(noh)\tCCm(noh)\tClash\tClashes\n" )
+            fp.write ( "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash) )
             fp.close()
-        fp = open ( "/Users/greg/Desktop/txt.txt", "a" )
-        fp.write ( "%s\t%s\t%.3f\t%.3f\t%.3f\t%.3f\t%.3f\t%.2f\t%.0f\n" % (mol.name, rid, avgq, cc1, cc2, cc1_, cc2_, clashScore, numClash) )
-        fp.close()
 
 
     def CalcSelQOpen ( self ) :
