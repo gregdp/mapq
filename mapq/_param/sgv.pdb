@@ -1,0 +1,103 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:09:24 2021
+REMARK  99
+REMARK  99   Ligand name: 4-amino-7-(beta-D-ribofuranosyl)-7H-pyrrolo[2,3-d]pyrimidine-5-carboxamide
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC(=O)c1cn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c3ncnc(N)c13
+FORMUL   1  SGV    C12 H15 N5 O5 
+HETATM    1  N1  SGV A   1      -1.831   0.162  -3.984  1.00 20.00      A    N  
+HETATM    2  C2  SGV A   1      -0.473   0.123  -3.967  1.00 20.00      A    C  
+HETATM    3  N3  SGV A   1       0.195   0.152  -2.784  1.00 20.00      A    N  
+HETATM    4  C4  SGV A   1      -0.489   0.219  -1.623  1.00 20.00      A    C  
+HETATM    5  C5  SGV A   1      -1.830   0.257  -1.639  1.00 20.00      A    C  
+HETATM    6  C6  SGV A   1      -2.508   0.227  -2.848  1.00 20.00      A    C  
+HETATM    7  N6  SGV A   1      -3.762   0.361  -3.580  1.00 20.00      A    N  
+HETATM    8  C7  SGV A   1      -2.267   0.323  -0.337  1.00 20.00      A    C  
+HETATM    9  C8  SGV A   1      -1.163   0.325   0.482  1.00 20.00      A    C  
+HETATM   10  N9  SGV A   1      -0.072   0.262  -0.292  1.00 20.00      A    N  
+HETATM   11  C1' SGV A   1       1.288   0.012  -0.010  1.00 20.00      A    C  
+HETATM   12  C10 SGV A   1      -3.640   0.617   0.283  1.00 20.00      A    C  
+HETATM   13  N11 SGV A   1      -4.496  -0.496   0.738  1.00 20.00      A    N  
+HETATM   14  O12 SGV A   1      -4.039   1.733   0.337  1.00 20.00      A    O  
+HETATM   15  C2' SGV A   1       1.836   1.061   0.606  1.00 20.00      A    C  
+HETATM   16  O2' SGV A   1       2.498   1.933  -0.377  1.00 20.00      A    O  
+HETATM   17  C3' SGV A   1       2.885   0.467   1.580  1.00 20.00      A    C  
+HETATM   18  O3' SGV A   1       4.131   0.699   1.122  1.00 20.00      A    O  
+HETATM   19  C4' SGV A   1       2.597  -1.090   1.620  1.00 20.00      A    C  
+HETATM   20  O4' SGV A   1       1.434  -1.246   1.038  1.00 20.00      A    O  
+HETATM   21  C5' SGV A   1       2.531  -1.583   3.087  1.00 20.00      A    C  
+HETATM   22  O5' SGV A   1       2.548  -3.002   3.111  1.00 20.00      A    O  
+HETATM   23  H2  SGV A   1       0.087   0.068  -4.912  1.00 20.00      A    H  
+HETATM   24  HN6 SGV A   1      -3.832   0.020  -4.526  1.00 20.00      A    H  
+HETATM   25 HN6A SGV A   1      -4.582   0.756  -3.118  1.00 20.00      A    H  
+HETATM   26  H8  SGV A   1      -1.174   0.355   1.568  1.00 20.00      A    H  
+HETATM   27  H1' SGV A   1       1.837  -0.206  -0.941  1.00 20.00      A    H  
+HETATM   28 HN11 SGV A   1      -5.428  -0.313   1.061  1.00 20.00      A    H  
+HETATM   29 HN1A SGV A   1      -4.146  -1.439   0.719  1.00 20.00      A    H  
+HETATM   30  H2' SGV A   1       1.086   1.606   1.156  1.00 20.00      A    H  
+HETATM   31 HO2' SGV A   1       2.351   2.827  -0.152  1.00 20.00      A    H  
+HETATM   32  H3' SGV A   1       2.757   0.903   2.590  1.00 20.00      A    H  
+HETATM   33 HO3' SGV A   1       4.584   1.254   1.721  1.00 20.00      A    H  
+HETATM   34  H4' SGV A   1       3.361  -1.624   1.076  1.00 20.00      A    H  
+HETATM   35  H5' SGV A   1       3.394  -1.198   3.642  1.00 20.00      A    H  
+HETATM   36 H5'A SGV A   1       1.610  -1.222   3.552  1.00 20.00      A    H  
+HETATM   37 HO5' SGV A   1       2.721  -3.304   4.001  1.00 20.00      A    H  
+CONECT    1    2
+CONECT    1    6
+CONECT    1    6
+CONECT    2    1   23
+CONECT    2    3
+CONECT    2    3
+CONECT    3    4
+CONECT    3    2
+CONECT    3    2
+CONECT    4    3
+CONECT    4   10
+CONECT    4    5
+CONECT    4    5
+CONECT    5    6
+CONECT    5    8
+CONECT    5    4
+CONECT    5    4
+CONECT    6    5    7
+CONECT    6    1
+CONECT    6    1
+CONECT    7    6   24   25
+CONECT    8   12
+CONECT    8    5    9
+CONECT    9   26
+CONECT    9    8   10
+CONECT   10   11
+CONECT   10    4    9
+CONECT   11   10   15   20   27
+CONECT   12    8   13
+CONECT   12   14
+CONECT   12   14
+CONECT   13   12   28   29
+CONECT   14   12
+CONECT   14   12
+CONECT   15   11   16   17   30
+CONECT   16   15   31
+CONECT   17   15   18   19   32
+CONECT   18   17   33
+CONECT   19   17   20   21   34
+CONECT   20   11   19
+CONECT   21   19   22   35   36
+CONECT   22   21   37
+CONECT   23    2
+CONECT   24    7
+CONECT   25    7
+CONECT   26    9
+CONECT   27   11
+CONECT   28   13
+CONECT   29   13
+CONECT   30   15
+CONECT   31   16
+CONECT   32   17
+CONECT   33   18
+CONECT   34   19
+CONECT   35   21
+CONECT   36   21
+CONECT   37   22
+END

@@ -191,8 +191,10 @@ def GetData1 ( fp, atLine, ls, li ) :
         lines += atLine
         li += 1
         ls = atLine.strip ()
-        if ls[0] == ';' :
-            data = ls[1:]
+        if len(ls) == 0 :
+            data = ""
+        elif ls[0] == ';' :
+            data = atLine
 
             # look for end ;
             while 1 :
@@ -204,11 +206,13 @@ def GetData1 ( fp, atLine, ls, li ) :
                 li += 1
                 lines += atLine
                 ls = atLine.strip ()
-                if ls[0] == ';' :
+                if len(ls) == 0 :
+                    data += atLine
+                elif ls[0] == ';' :
                     # done
                     break
                 else :
-                    data += " " + ls
+                    data += atLine
         else :
             data = ls
 
@@ -229,7 +233,11 @@ def GetData ( fp, atLine, ls, li, labels ) :
     liStart = li
 
     while 1 :
-        if ls[0] == ';' :
+
+        if len(ls) == 0 :
+            print " - blank line %d" % li, atLine
+
+        elif ls[0] == ';' :
             block = atLine
             t = ls[1:]
             while 1 :
@@ -257,6 +265,7 @@ def GetData ( fp, atLine, ls, li, labels ) :
         if len(data) >= len(labels) :
             # done
             break
+
         else :
             # keep going...
             atLine, getNext = fp.readline(), True
@@ -274,11 +283,12 @@ def splitm ( li, l ) :
     ts = l.split()
     tsr = []
     addTo = None
+    endChar = None
     for t in ts :
         #print " - %s, %d, %s" % (t, len(t), addTo)
         if addTo != None :
             addTo += " " + t
-            if t[-1] == "'" :
+            if t[-1] == endChar :
                 tsr.append ( addTo[0:-1] )
                 addTo = None
         elif t[0] == "'" :
@@ -286,6 +296,13 @@ def splitm ( li, l ) :
                 tsr.append ( t[1:-1] )
             else :
                 addTo = t[1:]
+                endChar = "'"
+        elif t[0] == '"' :
+            if len(t)>1 and t[-1] == '"' :
+                tsr.append ( t[1:-1] )
+            else :
+                addTo = t[1:]
+                endChar = '"'
         else :
             tsr.append ( t )
     if addTo :
@@ -319,6 +336,7 @@ def WriteCif ( cif, fout ) :
             for label in labels :
                 fp.write ( "%s.%s\n" % (name, label) )
 
+            # array of column widths - each entry has the max width for the column
             cws = [0] * len(labels)
             for d in data :
                 adata, mdata = d['asArray'], d['asMap']
@@ -392,15 +410,18 @@ except :
     pass
 
 
-
+# this makes a molecule model but does not add bonds
 def LoadMol ( fpath, log=False ) :
 
     mol = ReadMol ( fpath, log )
 
+    from time import time
+    startt = time()
+
     chimera.openModels.add ( [mol] )
     #return mol
 
-    print " - got %s" % mol.name
+    print " - added %s in %.2f sec" % (mol.name, time() - startt)
 
     for at in mol.atoms :
         at.display = True
@@ -446,9 +467,9 @@ def GetResMol ( rtype ) :
     if not path.isfile(fname) :
         print " - did not find %s" % fname
 
-        phPath = "/Users/greg/_mol/phenix-1.18.2-3874/build/bin/phenix.elbow"
+        phPath = "/Users/greg/_mol/phenix-installer-1.19.2-4158-mac-intel-osx-x86_64/build/bin/phenix.elbow"
         if not path.isfile ( phPath ) :
-            print " - %s - no phenix.elbow path..." % rtype
+            print " - %s - phenix.elbow not found" % rtype
             return None
 
         #args = ["/Users/greg/_mol/phenix-1.19.2-4158/build/bin/phenix.elbow", "--chemical_component", rtype]
@@ -481,6 +502,7 @@ def GetResMol ( rtype ) :
     return nmol
 
 
+
 def LoadMol2 ( fpath, log=False ) :
 
     if 0 :
@@ -501,6 +523,7 @@ def LoadMol2 ( fpath, log=False ) :
             task.finished()
 
         return mol
+
     else :
         mol = LoadMol2_ ( fpath, log, None )
         #mol = LoadMolCh_ ( fpath, log, None )
@@ -508,6 +531,7 @@ def LoadMol2 ( fpath, log=False ) :
 
 
 
+# make molecule model and add bonds using phenix.elbow
 
 def LoadMol2_ ( fpath, log=False, task=None ) :
 
@@ -588,6 +612,7 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
 
     print ( " - %d bonds, %.1fs" % (len(bonds), time.time()-start)  )
 
+    # adding bonds at end was faster?
     start = time.time()
     for a1, a2 in bonds :
         nb = mol.newBond ( a1, a2 )
@@ -603,6 +628,26 @@ def LoadMol2_ ( fpath, log=False, task=None ) :
 
 def ColorMol ( mol ) :
 
+    resDisp = {}
+
+    if hasattr ( mol, "cifLoops" ) :
+        if  "_mapq_comp_display_attributes" in mol.cifLoops :
+            print " - found res disp"
+            rcols = mol.cifLoops['_mapq_comp_display_attributes']['data']
+            for d in rcols :
+                mp = d['asMap']
+                cid = mp["label_asym_id"]
+                rpos = mp["label_seq_id"]
+                rdisp = int ( mp["ribbonDisplay"] )
+                r = float ( mp["ribbonColor_R"] )
+                g = float ( mp["ribbonColor_G"] )
+                b = float ( mp["ribbonColor_B"] )
+                a = float ( mp["ribbonColor_A"] )
+                resDisp[cid+rpos] = [ True if rdisp==1 else False, (r,g,b,a) ]
+
+
+
+
     if not hasattr ( mol, 'chainColors' ) :
         from random import random
         mol.chainColors = {}
@@ -613,10 +658,16 @@ def ColorMol ( mol ) :
 
     for r in mol.residues :
         rt = r.type.upper()
+        rid = "%s%d" % (r.id.chainId,r.id.position)
         if rt in protein3to1 or rt in nucleic3to1 or rt in nucleic1to3 :
-            r.ribbonDisplay = True
             r.ribbonDrawMode = 2
-            r.ribbonColor = mol.chainColors[r.id.chainId]
+            if rid in resDisp :
+                rd = resDisp[rid]
+                r.ribbonDisplay = rd[0]
+                r.ribbonColor = chimera.MaterialColor( *rd[1] )
+            else :
+                r.ribbonDisplay = True
+                r.ribbonColor = mol.chainColors[r.id.chainId]
             for at in r.atoms :
                 at.display = False
                 at.drawMode = at.EndCap
@@ -643,8 +694,7 @@ def At ( at ) :
 
 
 
-# this makes one molecule for each chains
-# probably useless, but was useful to see why adding bonds was crazy slow
+# this makes one molecule for each chain
 def LoadMolCh_ ( fpath, log=False, task=None ) :
 
     mol = ReadMol ( fpath, log=False )
@@ -843,7 +893,12 @@ def ReadMol ( fpath, log=False ) :
 
     from random import random
 
-    cif, loops = ReadCif ( fpath, log )
+    res = ReadCif ( fpath, log )
+    if res == None :
+        print " - could not read cif"
+        return
+
+    cif, loops = res
 
     # descriptions by chain id:
     descrByEntityId = GetEntityDescr ( cif, loops )
@@ -860,6 +915,7 @@ def ReadMol ( fpath, log=False ) :
         print "Labels:"
         for l in labels :
             print " : ", l
+
 
     import time
     start = time.time()
@@ -914,6 +970,7 @@ def ReadMol ( fpath, log=False ) :
         if not ris in rmap :
             res = nmol.newResidue ( rtype, chimera.MolResId(chainId, resId) )
             rmap[ris] = res
+            res.chainEId = chainEId
         else :
             res = rmap[ris]
 
@@ -947,7 +1004,7 @@ def ReadMol ( fpath, log=False ) :
                 pass
 
     end = time.time()
-    print " - created %d atoms, %.1fs, %d q-scores" % ( len(nmol.atoms), end-start, numQ )
+    print " - created mol with %d atoms, %.1fs, %d q-scores" % ( len(nmol.atoms), end-start, numQ )
 
     return nmol
 
@@ -1025,7 +1082,7 @@ def ConnectAtoms () :
 
 
 
-def UpdateAtoms ( cif, mol ) :
+def UpdateAtoms ( cif, mol, dmap=None ) :
 
     print "Updating atoms in cif - %s" % mol.name
 
@@ -1053,20 +1110,21 @@ def UpdateAtoms ( cif, mol ) :
                     #print " -- %s - %d" % (l, i)
 
                 addQatI = None
-                if addQ and not 'Q-score' in ilabels :
-                    if 'B_iso_or_equiv' in ilabels :
-                        addQatI = ilabels['B_iso_or_equiv'] + 1
-                    else :
-                        addQatI = len (labels)
-                    labels.insert ( addQatI, "Q-score" )
-                    print " - added Q-score column %d" % addQatI
+                if addQ :
+                    if not 'Q-score' in ilabels :
+                        if 'B_iso_or_equiv' in ilabels :
+                            addQatI = ilabels['B_iso_or_equiv'] + 1
+                        else :
+                            addQatI = len (labels)
+                        labels.insert ( addQatI, "Q-score" )
+                        print " - added Q-score column %d" % addQatI
+                        ilabels = {}
+                        for i, l in enumerate ( labels ) :
+                            ilabels [ l ] = i
+                            #print " -- %s - %d" % (l, i)
 
-                ilabels = {}
-                for i, l in enumerate ( labels ) :
-                    ilabels [ l ] = i
-                    #print " -- %s - %d" % (l, i)
-
-                for d in data :
+                deli = []
+                for di, d in enumerate ( data ) :
                     adata, mp = d['asArray'], d['asMap']
 
                     resId = ResId ( mp )
@@ -1080,24 +1138,217 @@ def UpdateAtoms ( cif, mol ) :
                     if datId in amap :
                         at = amap[datId]
                         #adata[ ilabels['B_iso_or_equiv'] ] = "%.3f" % at.bfactor
-                        qs = ("%.3f" % at.Q) if hasattr ( at, 'Q' ) else "?"
-                        if addQatI :
-                            adata.insert ( addQatI, qs )
-                        else :
-                            adata[ ilabels['Q-score'] ] = qs
+
+                        if addQ :
+                            qs = ("%.3f" % at.Q) if hasattr ( at, 'Q' ) else "?"
+                            if addQatI :
+                                adata.insert ( addQatI, qs )
+                            else :
+                                adata[ ilabels['Q-score'] ] = qs
+
+                        C = at.coord()
+                        if dmap != None :
+                            C = dmap.openState.xform.inverse().apply ( at.xformCoord() )
+                        adata[ ilabels['Cartn_x'] ] = "%.3f" % C.x
+                        adata[ ilabels['Cartn_y'] ] = "%.3f" % C.y
+                        adata[ ilabels['Cartn_z'] ] = "%.3f" % C.z
+
                     else :
-                        print " - atom %s in cif - not found in mol" % datId
+                        #print " - atom %s in cif - not found in mol" % datId
+                        deli.append ( di )
+
+                if len(deli) > 0 :
+                    deli.sort()
+                    deli.reverse()
+                    for di in deli :
+                        del data[di]
 
 
 
-def WriteMol ( mol, fout ) :
+def WriteMol ( mol, fout, dmap = None ) :
 
-    if not hasattr (mol, 'cif') :
-        print " - cif not found in %s" % mol.name
-        return
+    if 0 and hasattr (mol, 'cif') :
+        UpdateAtoms ( mol.cif, mol, dmap )
+        WriteCif ( mol.cif, fout )
 
-    UpdateAtoms ( mol.cif, mol )
-    WriteCif ( mol.cif, fout )
+    else :
+        print " ---------- making cif for %s ---------- " % mol.name
+        #return
+        mol.openedAs = [ fout, [] ]
+        mol.cif = []
+        mol.cifLoops = {}
+
+        from os.path import splitext
+        mol.cif.append ( "data_%s\n" % splitext(mol.name)[0] )
+        mol.cif.append ( "#\n" )
+        mol.cif.append ( "_entry.id %s\n" % splitext(mol.name)[0] )
+        mol.cif.append ( "#\n" )
+
+        AddAtoms ( mol.cif, mol.cifLoops, mol, dmap )
+        if 1 :
+            AddResDisplay ( mol.cif, mol.cifLoops, mol )
+        WriteCif ( mol.cif, fout )
+
+
+
+def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
+
+    name = "_atom_site"
+
+    labels = []
+    labels.append ( "group_PDB" )
+    labels.append ( "id" )
+    labels.append ( "type_symbol" )
+    labels.append ( "label_atom_id" )
+    labels.append ( "label_alt_id" )
+    labels.append ( "label_comp_id" )
+    labels.append ( "label_asym_id" )
+    labels.append ( "label_entity_id" )
+    labels.append ( "label_seq_id" )
+    labels.append ( "pdbx_PDB_ins_code" )
+    labels.append ( "Cartn_x" )
+    labels.append ( "Cartn_y" )
+    labels.append ( "Cartn_z" )
+    labels.append ( "occupancy" )
+    labels.append ( "B_iso_or_equiv" )
+    labels.append ( "Q-score" )
+    labels.append ( "pdbx_formal_charge" )
+    labels.append ( "auth_seq_id" )
+    labels.append ( "auth_comp_id" )
+    labels.append ( "auth_asym_id" )
+    labels.append ( "auth_atom_id" )
+    labels.append ( "pdbx_PDB_model_num" )
+
+    data = []
+
+    cress = {}
+    for r in mol.residues :
+        if r.id.chainId in cress :
+            cress[r.id.chainId].append ( [r.id.position, r] )
+        else :
+            cress[r.id.chainId] = [ [r.id.position, r] ]
+
+    cids = cress.keys()
+    print "- adding %d chains" % len(cids)
+    cids.sort()
+
+    chainEIds = {}
+    for i, cid in enumerate ( cids ) :
+        chainEIds[cid] = "%d" % (i+1)
+
+    ati = 1
+
+    for cid in cids :
+        ress = cress[cid]
+        ress.sort()
+        entityId = chainEIds [cid]
+        print ". %s - %d res - entity %s" % (cid, len(ress), entityId)
+
+        for ri, r in ress :
+
+            for at in r.atoms :
+
+                aname = at.name
+                #if '"' in aname : aname = "'" + aname + "'"
+                #elif "'" in aname or " " in aname : aname = '"' + aname + '"'
+
+                apos = at.coord()
+                if dmap :
+                    apos = dmap.openState.xform.inverse().apply ( at.xformCoord() )
+
+                adata, mdata = [None] * len(labels), {}
+
+                qstr = "?"
+                if hasattr ( at, "Q" ) :
+                    qstr = "%.3f" % at.Q
+
+                mdata["group_PDB"]          = adata[0] = "ATOM"
+                mdata["id"]                 = adata[1] = "%d" % ati
+                mdata["type_symbol"]        = adata[2] = at.element.name
+                mdata["label_atom_id"]      = adata[3] = aname
+                mdata["label_alt_id"]       = adata[4] = "." if len(at.altLoc) == 0 else at.altLoc
+                mdata["label_comp_id"]      = adata[5] = r.type
+                mdata["label_asym_id"]      = adata[6] = r.id.chainId
+                mdata["label_entity_id"]    = adata[7] = entityId
+                mdata["label_seq_id"]       = adata[8] = "%d" % r.id.position
+                mdata["pdbx_PDB_ins_code"]  = adata[9] = "?"
+                mdata["Cartn_x"]            = adata[10] = "%.3f" % apos.x
+                mdata["Cartn_y"]            = adata[11] = "%.3f" % apos.y
+                mdata["Cartn_z"]            = adata[12] = "%.3f" % apos.z
+                mdata["occupancy"]          = adata[13] = "%.3f" % at.occupancy
+                if hasattr ( at, 'bfactor0' ) :
+                    mdata["B_iso_or_equiv"]     = adata[14] = "%.3f" % at.bfactor0
+                else :
+                    mdata["B_iso_or_equiv"]     = adata[14] = "%.3f" % at.bfactor
+                mdata["Q-score"]            = adata[15] = qstr
+                mdata["pdbx_formal_charge"] = adata[16] = "?"
+                mdata["auth_seq_id"]        = adata[17] = "%d" % r.id.position
+                mdata["auth_comp_id"]       = adata[18] = r.type
+                mdata["auth_asym_id"]       = adata[19] = r.id.chainId
+                mdata["auth_atom_id"]       = adata[20] = aname
+                mdata["pdbx_PDB_model_num"] = adata[21] = "1"
+
+                data.append ( {'asArray':adata, 'asMap':mdata} )
+                ati += 1
+
+    cif.append ( [name, labels, data] )
+    cif.append ( "#\n" )
+
+
+
+
+
+
+def AddResDisplay ( cif, cifLoops, mol ) :
+
+    name = "_mapq_comp_display_attributes"
+
+    labels = []
+    labels.append ( "label_asym_id" ) # chain id
+    labels.append ( "label_seq_id" ) # position
+    labels.append ( "ribbonDisplay" )
+    labels.append ( "ribbonColor_R" )
+    labels.append ( "ribbonColor_G" )
+    labels.append ( "ribbonColor_B" )
+    labels.append ( "ribbonColor_A" )
+
+    data = []
+
+    cress = {}
+    for r in mol.residues :
+        if r.id.chainId in cress :
+            cress[r.id.chainId].append ( [r.id.position, r] )
+        else :
+            cress[r.id.chainId] = [ [r.id.position, r] ]
+
+    print " - adding res display, %d residues" % len(mol.residues)
+
+    cids = cress.keys()
+    cids.sort()
+
+    for cid in cids :
+        ress = cress[cid]
+        ress.sort()
+
+        for ri, r in ress :
+
+            if hasattr ( r, 'ribbonDisplay' ) and hasattr ( r, 'ribbonColor' ) and r.ribbonColor != None :
+                adata, mdata = [None] * len(labels), {}
+                C = r.ribbonColor.rgba()
+
+                #mdata["label_comp_id"]     = adata[5] = r.type
+                mdata["label_asym_id"]      = adata[0] = r.id.chainId
+                mdata["label_seq_id"]       = adata[1] = "%d" % r.id.position
+                mdata["ribbonDisplay"]      = adata[2] = "%d" % (1 if r.ribbonDisplay else 0)
+                mdata["ribbonColor_R"]      = adata[3] = "%.3f" % C[0]
+                mdata["ribbonColor_G"]      = adata[4] = "%.3f" % C[1]
+                mdata["ribbonColor_B"]      = adata[5] = "%.3f" % C[2]
+                mdata["ribbonColor_A"]      = adata[6] = "%.3f" % C[3]
+
+                data.append ( {'asArray':adata, 'asMap':mdata} )
+
+    cif.append ( [name, labels, data] )
+    cif.append ( "#\n" )
 
 
 #

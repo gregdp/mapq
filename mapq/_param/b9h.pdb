@@ -1,0 +1,113 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Thu Sep 23 16:46:45 2021
+REMARK  99
+REMARK  99   Ligand name: [(2~{R},3~{R},4~{R},5~{R})-5-(4-azanyl-2-oxidanylidene-3-propyl-4~{H}-pyrimidin-1-yl)-4-methoxy-3-oxidanyl-oxolan-2-yl]methyl dihydrogen phosphate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCN1[C@@H](N)C=CN([C@@H]2O[C@H](CO[P](O)(O)=O)[C@@H](O)[C@H]2OC)C1=O
+FORMUL   1  B9H    C13 H22 N3 O8 P  (-2)
+HETATM    1  C2  B9H A   1      -0.359   1.556   0.315  1.00 20.00      A    C  
+HETATM    2  C4  B9H A   1      -2.421   1.031   1.586  1.00 20.00      A    C  
+HETATM    3  C5  B9H A   1      -2.721  -0.085   0.680  1.00 20.00      A    C  
+HETATM    4  C6  B9H A   1      -1.980  -0.167  -0.602  1.00 20.00      A    C  
+HETATM    5  C32 B9H A   1      -0.177   0.656   3.945  1.00 20.00      A    C  
+HETATM    6  C1' B9H A   1      -0.190   0.819  -2.129  1.00 20.00      A    C  
+HETATM    7  C2' B9H A   1       1.348   0.576  -1.977  1.00 20.00      A    C  
+HETATM    8  C3' B9H A   1       1.599  -0.789  -2.541  1.00 20.00      A    C  
+HETATM    9  C31 B9H A   1      -0.243   1.813   2.932  1.00 20.00      A    C  
+HETATM   10  C33 B9H A   1       0.387   1.154   5.250  1.00 20.00      A    C  
+HETATM   11  C4' B9H A   1       0.370  -1.347  -2.704  1.00 20.00      A    C  
+HETATM   12  C5' B9H A   1      -0.017  -2.137  -1.470  1.00 20.00      A    C  
+HETATM   13  N1  B9H A   1      -0.847   0.738  -0.810  1.00 20.00      A    N  
+HETATM   14  N3  B9H A   1      -0.922   1.341   1.670  1.00 20.00      A    N  
+HETATM   15  N4  B9H A   1      -3.121   2.218   1.110  1.00 20.00      A    N  
+HETATM   16  O2  B9H A   1       0.470   2.377   0.139  1.00 20.00      A    O  
+HETATM   17  O2' B9H A   1       2.068   1.538  -2.697  1.00 20.00      A    O  
+HETATM   18  O3' B9H A   1       2.286  -0.678  -3.859  1.00 20.00      A    O  
+HETATM   19  O4' B9H A   1      -0.624  -0.142  -2.915  1.00 20.00      A    O  
+HETATM   20  O5' B9H A   1       0.732  -3.346  -1.433  1.00 20.00      A    O  
+HETATM   21  OP1 B9H A   1      -1.098  -4.899  -2.586  1.00 20.00      A    O  
+HETATM   22  OP2 B9H A   1      -0.879  -4.929  -0.095  1.00 20.00      A    O-1
+HETATM   23  P   B9H A   1      -0.109  -4.827  -1.390  1.00 20.00      A    P  
+HETATM   24  C21 B9H A   1       3.370   1.823  -2.146  1.00 20.00      A    C  
+HETATM   25  H1  B9H A   1      -2.801   0.767   2.627  1.00 20.00      A    H  
+HETATM   26  H2  B9H A   1      -3.245  -0.939   1.044  1.00 20.00      A    H  
+HETATM   27  H3  B9H A   1      -2.411  -0.742  -1.462  1.00 20.00      A    H  
+HETATM   28  H4  B9H A   1       0.486  -0.161   3.539  1.00 20.00      A    H  
+HETATM   29  H5  B9H A   1      -1.207   0.253   4.114  1.00 20.00      A    H  
+HETATM   30  H6  B9H A   1      -0.370   1.777  -2.583  1.00 20.00      A    H  
+HETATM   31  H7  B9H A   1       1.615   0.599  -0.965  1.00 20.00      A    H  
+HETATM   32  H8  B9H A   1       2.215  -1.405  -1.822  1.00 20.00      A    H  
+HETATM   33  H9  B9H A   1      -0.801   2.625   3.353  1.00 20.00      A    H  
+HETATM   34  H10 B9H A   1       0.808   2.160   2.687  1.00 20.00      A    H  
+HETATM   35  H11 B9H A   1       0.707   0.304   5.854  1.00 20.00      A    H  
+HETATM   36  H12 B9H A   1       1.289   1.839   5.041  1.00 20.00      A    H  
+HETATM   37  H13 B9H A   1      -0.368   1.704   5.780  1.00 20.00      A    H  
+HETATM   38  H14 B9H A   1       0.365  -1.985  -3.578  1.00 20.00      A    H  
+HETATM   39  H15 B9H A   1      -1.084  -2.371  -1.508  1.00 20.00      A    H  
+HETATM   40  H16 B9H A   1       0.186  -1.569  -0.609  1.00 20.00      A    H  
+HETATM   41  H17 B9H A   1      -4.052   2.242   1.511  1.00 20.00      A    H  
+HETATM   42  H18 B9H A   1      -3.189   2.186   0.133  1.00 20.00      A    H  
+HETATM   43  H20 B9H A   1       2.947  -1.329  -3.917  1.00 20.00      A    H  
+HETATM   44  H23 B9H A   1       4.070   2.111  -2.964  1.00 20.00      A    H  
+HETATM   45  H24 B9H A   1       3.287   2.666  -1.412  1.00 20.00      A    H  
+HETATM   46  H25 B9H A   1       3.742   0.956  -1.651  1.00 20.00      A    H  
+HETATM   47  OP3 B9H A   1       0.890  -5.984  -1.483  1.00 20.00      A    O-1
+CONECT    1   13   14
+CONECT    1   16
+CONECT    1   16
+CONECT    2    3   14   15   25
+CONECT    3    2   26
+CONECT    3    4
+CONECT    3    4
+CONECT    4   13   27
+CONECT    4    3
+CONECT    4    3
+CONECT    5    9   10   28   29
+CONECT    6   19    7   13   30
+CONECT    7   17    6    8   31
+CONECT    8   11   18    7   32
+CONECT   10    5   35   36   37
+CONECT   11   12   19    8   38
+CONECT   12   11   20   39   40
+CONECT   13    6    4    1
+CONECT   14    1    2    9
+CONECT   15    2   41   42
+CONECT   16    1
+CONECT   16    1
+CONECT   17   24    7
+CONECT   18    8   43
+CONECT   19   11    6
+CONECT   20   12   23
+CONECT   21   23
+CONECT   21   23
+CONECT   22   23
+CONECT   23   22   20   47
+CONECT   23   21
+CONECT   23   21
+CONECT   24   17   44   45   46
+CONECT   25    2
+CONECT   26    3
+CONECT   27    4
+CONECT   28    5
+CONECT   29    5
+CONECT   30    6
+CONECT   31    7
+CONECT   32    8
+CONECT   33    9
+CONECT   34    9
+CONECT   35   10
+CONECT   36   10
+CONECT   37   10
+CONECT   38   11
+CONECT   39   12
+CONECT   40   12
+CONECT   41   15
+CONECT   42   15
+CONECT   43   18
+CONECT   44   24
+CONECT   45   24
+CONECT   46   24
+CONECT   47   23
+CONECT    9   14    5   33   34
+END

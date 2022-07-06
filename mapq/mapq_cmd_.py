@@ -32,7 +32,6 @@ bfactor = -1
 gSigma = 0.6
 
 
-
 print ("")
 print ("Found parameters:")
 
@@ -65,7 +64,7 @@ for arg in sys.argv :
     elif os.path.isfile(arg) :
         print ( " -> map or model" )
         if arg[0:2] == '..' :
-            print ( " -X- please do not use relative paths, i.e. ../, in path" )
+            print ( " -X- please do not use relatives, i.e. .., in path (sorry)" )
         else :
             mods.append ( arg )
 
@@ -116,12 +115,12 @@ if len(mods) <= 1 or chimeraPath == None :
     print ("  sigma=# (optional)")
     print ("      sigma of reference Gaussian, default is 0.6")
     print ("  res=# (optional)")
-    print ("      resolution of map, e.g. res=3.2, default=3.0")
+    print ("      resolution of map, e.g. res=3.2")
     print ("      only used in output of Q-scores/residue as comparison")
     print ("  bfactor=f (optional, f=50,100,200,...)")
     print ("      if specified, Q-scores are converted to Bfactors")
     print ("      using the formula bfactor=f*(1.0-Qscore)")
-    print ("  np=# (optional, #=1,2,3,4,..., default=1")
+    print ("  np=# (optional, #=1,2,3,4,...")
     print ("      number of processors to use")
 
     ok = False
@@ -143,59 +142,30 @@ if ok :
         print ( " - could not write script for Chimera, check if you have write permission in %s" % scriptPath )
         exit ( 0 )
 
-    fp.write ( "import chimera\n" )
-    fp.write ( "import VolumeViewer\n" )
-    fp.write ( "try:\n" )
-    fp.write ( "    from mapq import qscores\n" )
-    fp.write ( "    from mapq import mmcif\n" )
-    fp.write ( "except:\n" )
-    fp.write ( "    from Segger import qscores\n" )
-    fp.write ( "    from Segger import mmcif\n" )
+    fp.write ( "import mapq\n" )
+    fp.write ( "import mapq.qscores\n" )
+    fp.write ( "from mapq.mmcif import LoadMol as LoadMol\n" )
 
 
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
     for mod in mods :
         if os.path.splitext(mod)[1] == ".cif" :
-            # load cif files from script to avoid creating the atomic model - can take a lot of time for large models
-            # fp.write ( "mmcif.LoadMol('%s')\n" % mod )
-            fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
-        elif os.path.splitext(mod)[1] == ".pdb" :
-            cmd += '"%s" ' % mod
-            fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
-        elif os.path.splitext(mod)[1] == ".ent" :
-            cmd += '"%s" ' % mod
-            fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
+            fp.write ( "LoadMol('%s')\n" % mod )
         else :
-            # load model from command line
             cmd += '"%s" ' % mod
-
-        fp.write ( "dmap = chimera.openModels.list (modelTypes = [VolumeViewer.volume.Volume])[0]\n" )
 
     cmd += "'%s'" % newScript
 
     print (" : " + cmd)
     print ("")
 
-    if 0 :
-        fp.write ( "qscores.Calc('%s',%d,%f,%f,%f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
-
-    else :
-        if numProc == 1 :
-            #CalcQ ( mol, None, dmap, sigma, log=True )
-            fp.write ( "qscores.CalcQ ( mol, 'All', dmap, %f )\n" % ( gSigma) )
-        else :
-            #CalcQp ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath )
-            #CalcQpn ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath, closeMap=True )
-            fp.write ( "qscores.CalcQpn ( mol, 'All', dmap, %f, useOld=False, numProc=%d, chimeraPath='%s', closeMap=True )\n" % ( gSigma, numProc, chimeraPath) )
-
-
-
+    fp.write ( "mapq.qscores.Calc('%s',%d,%f,%f,%f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
     fp.close()
 
     os.system(cmd)
 
-    if 0 :
+    if 1 :
         print ( "Removing temp Chimera script ")
         print ( " - %s" % newScript )
         os.remove ( newScript )

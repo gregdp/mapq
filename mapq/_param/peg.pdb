@@ -1,0 +1,43 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:31:02 2021
+REMARK  99
+REMARK  99   Ligand name: 2,2'-oxydiethanol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OCCOCCO
+FORMUL   1  PEG    C4 H10 O3 
+HETATM    1  C1  PEG A   1       0.150  -0.963  -2.221  1.00 20.00      A    C  
+HETATM    2  O1  PEG A   1      -0.312  -2.124  -2.854  1.00 20.00      A    O  
+HETATM    3  C2  PEG A   1      -0.350  -0.936  -0.779  1.00 20.00      A    C  
+HETATM    4  O2  PEG A   1       0.134   0.210  -0.139  1.00 20.00      A    O  
+HETATM    5  C3  PEG A   1      -0.212   0.292   1.214  1.00 20.00      A    C  
+HETATM    6  C4  PEG A   1       0.377   1.568   1.813  1.00 20.00      A    C  
+HETATM    7  O4  PEG A   1      -0.024   1.683   3.150  1.00 20.00      A    O  
+HETATM    8  H11 PEG A   1      -0.221  -0.091  -2.749  1.00 20.00      A    H  
+HETATM    9  H12 PEG A   1       1.235  -0.955  -2.228  1.00 20.00      A    H  
+HETATM   10  HO1 PEG A   1      -0.040  -2.119  -3.758  1.00 20.00      A    H  
+HETATM   11  H21 PEG A   1       0.004  -1.818  -0.257  1.00 20.00      A    H  
+HETATM   12  H22 PEG A   1      -1.435  -0.922  -0.772  1.00 20.00      A    H  
+HETATM   13  H31 PEG A   1       0.181  -0.570   1.741  1.00 20.00      A    H  
+HETATM   14  H32 PEG A   1      -1.293   0.313   1.310  1.00 20.00      A    H  
+HETATM   15  H41 PEG A   1       1.460   1.524   1.763  1.00 20.00      A    H  
+HETATM   16  H42 PEG A   1       0.023   2.427   1.254  1.00 20.00      A    H  
+HETATM   17  HO4 PEG A   1       0.323   2.483   3.514  1.00 20.00      A    H  
+CONECT    1    2    3    8    9
+CONECT    2    1   10
+CONECT    3    1    4   11   12
+CONECT    4    3    5
+CONECT    5    4    6   13   14
+CONECT    6    5    7   15   16
+CONECT    7    6   17
+CONECT    8    1
+CONECT    9    1
+CONECT   10    2
+CONECT   11    3
+CONECT   12    3
+CONECT   13    5
+CONECT   14    5
+CONECT   15    6
+CONECT   16    6
+CONECT   17    7
+END

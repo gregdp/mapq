@@ -1,0 +1,29 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:30:57 2021
+REMARK  99
+REMARK  99   Ligand name: 2-sulfanylethanol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OCCS
+FORMUL   1  BME    C2 H6 O S 
+HETATM    1  C1  BME A   1      -0.841  -0.207  -0.286  1.00 20.00      A    C  
+HETATM    2  C2  BME A   1       0.683  -0.157  -0.373  1.00 20.00      A    C  
+HETATM    3  O1  BME A   1      -1.237  -0.067   1.050  1.00 20.00      A    O  
+HETATM    4  S2  BME A   1       1.317   1.065   0.811  1.00 20.00      A    S  
+HETATM    5  H11 BME A   1      -1.264   0.601  -0.875  1.00 20.00      A    H  
+HETATM    6  H12 BME A   1      -1.195  -1.158  -0.670  1.00 20.00      A    H  
+HETATM    7  H21 BME A   1       0.978   0.125  -1.378  1.00 20.00      A    H  
+HETATM    8  H22 BME A   1       1.090  -1.135  -0.138  1.00 20.00      A    H  
+HETATM    9  HO1 BME A   1      -2.175  -0.161   1.112  1.00 20.00      A    H  
+HETATM   10  HS2 BME A   1       2.643   1.095   0.748  1.00 20.00      A    H  
+CONECT    1    2    3    5    6
+CONECT    2    1    4    7    8
+CONECT    3    1    9
+CONECT    4    2   10
+CONECT    5    1
+CONECT    6    1
+CONECT    7    2
+CONECT    8    2
+CONECT    9    3
+CONECT   10    4
+END

@@ -1,0 +1,124 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 14:54:53 2021
+REMARK  99
+REMARK  99   Ligand name: 5'-O-[(S)-hydroxy{[(S)-hydroxy(thiophosphonooxy)phosphoryl]oxy}phosphoryl]adenosine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: Nc1ncnc2n(cnc12)[C@@H]3O[C@H](CO[P](O)(=O)O[P](O)(=O)O[P](O)(O)=S)[C@@H](O)[C@H]3O
+FORMUL   1  AGS    C10 H14 N5 O12 P3 S  (-2)
+HETATM    1  PG  AGS A   1      -2.280  -6.105  -2.799  1.00 20.00      A    P  
+HETATM    2  S1G AGS A   1      -3.953  -6.776  -2.162  1.00 20.00      A    S  
+HETATM    3  O2G AGS A   1      -2.546  -4.804  -3.777  1.00 20.00      A    O  
+HETATM    4  O3G AGS A   1      -1.503  -7.284  -3.651  1.00 20.00      A    O  
+HETATM    5  PB  AGS A   1      -1.963  -5.126  -0.072  1.00 20.00      A    P  
+HETATM    6  O1B AGS A   1      -3.234  -4.347  -0.320  1.00 20.00      A    O  
+HETATM    7  O2B AGS A   1      -2.266  -6.319   0.804  1.00 20.00      A    O-1
+HETATM    8  O3B AGS A   1      -1.346  -5.646  -1.515  1.00 20.00      A    O  
+HETATM    9  PA  AGS A   1      -1.244  -3.093   1.892  1.00 20.00      A    P  
+HETATM   10  O1A AGS A   1      -2.661  -2.607   1.701  1.00 20.00      A    O  
+HETATM   11  O2A AGS A   1      -1.126  -3.789   3.230  1.00 20.00      A    O-1
+HETATM   12  O3A AGS A   1      -0.857  -4.153   0.682  1.00 20.00      A    O  
+HETATM   13  O5' AGS A   1      -0.209  -1.803   1.848  1.00 20.00      A    O  
+HETATM   14  C5' AGS A   1      -0.715  -0.528   2.147  1.00 20.00      A    C  
+HETATM   15  C4' AGS A   1       0.412   0.445   2.239  1.00 20.00      A    C  
+HETATM   16  O4' AGS A   1       0.863   0.724   1.049  1.00 20.00      A    O  
+HETATM   17  C3' AGS A   1      -0.127   1.888   2.869  1.00 20.00      A    C  
+HETATM   18  O3' AGS A   1      -0.133   1.825   4.345  1.00 20.00      A    O  
+HETATM   19  C2' AGS A   1       0.681   2.744   2.483  1.00 20.00      A    C  
+HETATM   20  O2' AGS A   1       1.774   2.916   3.501  1.00 20.00      A    O  
+HETATM   21  C1' AGS A   1       1.291   2.170   1.111  1.00 20.00      A    C  
+HETATM   22  N9  AGS A   1       0.803   2.836   0.079  1.00 20.00      A    N  
+HETATM   23  C8  AGS A   1      -0.050   3.834  -0.166  1.00 20.00      A    C  
+HETATM   24  N7  AGS A   1       0.290   4.392  -1.333  1.00 20.00      A    N  
+HETATM   25  C5  AGS A   1       1.357   3.737  -1.811  1.00 20.00      A    C  
+HETATM   26  C6  AGS A   1       2.119   3.915  -2.943  1.00 20.00      A    C  
+HETATM   27  N6  AGS A   1       2.095   4.796  -4.097  1.00 20.00      A    N  
+HETATM   28  N1  AGS A   1       3.163   3.134  -3.167  1.00 20.00      A    N  
+HETATM   29  C2  AGS A   1       3.484   2.160  -2.283  1.00 20.00      A    C  
+HETATM   30  N3  AGS A   1       2.738   1.984  -1.170  1.00 20.00      A    N  
+HETATM   31  C4  AGS A   1       1.674   2.775  -0.939  1.00 20.00      A    C  
+HETATM   32 HOG2 AGS A   1      -3.291  -4.974  -4.331  1.00 20.00      A    H  
+HETATM   33  H21 AGS A   1      -2.074  -8.027  -3.751  1.00 20.00      A    H  
+HETATM   34 H5'1 AGS A   1      -1.397  -0.217   1.363  1.00 20.00      A    H  
+HETATM   35 H5'2 AGS A   1      -1.243  -0.561   3.094  1.00 20.00      A    H  
+HETATM   36  H4' AGS A   1       1.210   0.044   2.855  1.00 20.00      A    H  
+HETATM   37  H3' AGS A   1      -1.118   2.113   2.492  1.00 20.00      A    H  
+HETATM   38 HO3' AGS A   1      -0.934   2.199   4.672  1.00 20.00      A    H  
+HETATM   39  H2' AGS A   1       0.173   3.685   2.304  1.00 20.00      A    H  
+HETATM   40 HO2' AGS A   1       2.158   3.774   3.409  1.00 20.00      A    H  
+HETATM   41  H1' AGS A   1       2.374   2.237   1.128  1.00 20.00      A    H  
+HETATM   42  H8  AGS A   1      -0.887   4.124   0.458  1.00 20.00      A    H  
+HETATM   43 HN61 AGS A   1       2.719   4.632  -4.866  1.00 20.00      A    H  
+HETATM   44 HN62 AGS A   1       1.441   5.554  -4.135  1.00 20.00      A    H  
+HETATM   45  H2  AGS A   1       4.337   1.524  -2.467  1.00 20.00      A    H  
+CONECT    1    3    4    8
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1   32
+CONECT    4    1   33
+CONECT    5    7    8   12
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5
+CONECT    8    1    5
+CONECT    9   11   12   13
+CONECT    9   10
+CONECT    9   10
+CONECT   10    9
+CONECT   10    9
+CONECT   11    9
+CONECT   12    5    9
+CONECT   13    9   14
+CONECT   14   13   15   34   35
+CONECT   15   14   16   17   36
+CONECT   16   15   21
+CONECT   17   15   18   19   37
+CONECT   18   17   38
+CONECT   19   17   20   21   39
+CONECT   20   19   40
+CONECT   21   16   19   22   41
+CONECT   22   21
+CONECT   22   23   31
+CONECT   23   42
+CONECT   23   22   24
+CONECT   24   23   25
+CONECT   25   26
+CONECT   25   24
+CONECT   25   31
+CONECT   25   31
+CONECT   26   25   27
+CONECT   26   28
+CONECT   26   28
+CONECT   27   26   43   44
+CONECT   28   29
+CONECT   28   26
+CONECT   28   26
+CONECT   29   28   45
+CONECT   29   30
+CONECT   29   30
+CONECT   30   31
+CONECT   30   29
+CONECT   30   29
+CONECT   31   30
+CONECT   31   22
+CONECT   31   25
+CONECT   31   25
+CONECT   32    3
+CONECT   33    4
+CONECT   34   14
+CONECT   35   14
+CONECT   36   15
+CONECT   37   17
+CONECT   38   18
+CONECT   39   19
+CONECT   40   20
+CONECT   41   21
+CONECT   42   23
+CONECT   43   27
+CONECT   44   27
+CONECT   45   29
+END

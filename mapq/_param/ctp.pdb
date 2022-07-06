@@ -1,0 +1,111 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:12:44 2021
+REMARK  99
+REMARK  99   Ligand name: cytidine 5'-(tetrahydrogen triphosphate)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC1=NC(=O)N(C=C1)[C@@H]2O[C@H](CO[P@@](O)(=O)O[P@@](O)(=O)O[P](O)(O)=O)[C@@H](O)[C@H]2O
+FORMUL   1  CTP    C9 H12 N3 O14 P3  (-4)
+HETATM    1  N1  CTP A   1      -0.635  -1.475   2.822  1.00 20.00      A    N  
+HETATM    2  C2  CTP A   1       0.695  -0.803   2.813  1.00 20.00      A    C  
+HETATM    3  N3  CTP A   1       1.517  -0.776   4.058  1.00 20.00      A    N  
+HETATM    4  C4  CTP A   1       1.022  -1.399   5.271  1.00 20.00      A    C  
+HETATM    5  C5  CTP A   1      -0.361  -1.938   5.316  1.00 20.00      A    C  
+HETATM    6  C6  CTP A   1      -1.196  -1.947   4.080  1.00 20.00      A    C  
+HETATM    7  O2  CTP A   1       1.099  -0.295   1.823  1.00 20.00      A    O  
+HETATM    8  N4  CTP A   1       1.858  -1.443   6.456  1.00 20.00      A    N  
+HETATM    9  C1' CTP A   1      -1.303  -1.642   1.692  1.00 20.00      A    C  
+HETATM   10  C2' CTP A   1      -2.646  -0.899   1.746  1.00 20.00      A    C  
+HETATM   11  O2' CTP A   1      -3.730  -1.774   1.256  1.00 20.00      A    O  
+HETATM   12  C3' CTP A   1      -2.504   0.154   0.936  1.00 20.00      A    C  
+HETATM   13  C4' CTP A   1      -1.383  -0.286  -0.172  1.00 20.00      A    C  
+HETATM   14  O4' CTP A   1      -0.509  -1.002   0.475  1.00 20.00      A    O  
+HETATM   15  O3' CTP A   1      -3.744   0.446   0.289  1.00 20.00      A    O  
+HETATM   16  C5' CTP A   1      -0.720   0.941  -0.759  1.00 20.00      A    C  
+HETATM   17  O5' CTP A   1       0.155   0.554  -1.793  1.00 20.00      A    O  
+HETATM   18  PA  CTP A   1       0.522   1.663  -2.979  1.00 20.00      A    P  
+HETATM   19  O1A CTP A   1      -0.709   1.933  -3.814  1.00 20.00      A    O  
+HETATM   20  O2A CTP A   1       0.989   2.949  -2.339  1.00 20.00      A    O-1
+HETATM   21  O3A CTP A   1       1.728   1.057  -3.951  1.00 20.00      A    O  
+HETATM   22  PB  CTP A   1       2.445   1.921  -5.181  1.00 20.00      A    P  
+HETATM   23  O1B CTP A   1       1.392   2.718  -5.917  1.00 20.00      A    O  
+HETATM   24  O2B CTP A   1       3.475   2.863  -4.601  1.00 20.00      A    O-1
+HETATM   25  O3B CTP A   1       3.182   0.876  -6.233  1.00 20.00      A    O  
+HETATM   26  PG  CTP A   1       3.969   1.360  -7.606  1.00 20.00      A    P  
+HETATM   27  O1G CTP A   1       4.650   0.170  -8.242  1.00 20.00      A    O  
+HETATM   28  O2G CTP A   1       2.972   1.947  -8.577  1.00 20.00      A    O-1
+HETATM   29  O3G CTP A   1       5.002   2.403  -7.254  1.00 20.00      A    O-1
+HETATM   30  H5  CTP A   1      -0.783  -2.275   6.258  1.00 20.00      A    H  
+HETATM   31  H6  CTP A   1      -2.190  -2.378   4.101  1.00 20.00      A    H  
+HETATM   32 HN41 CTP A   1       2.789  -1.075   6.426  1.00 20.00      A    H  
+HETATM   33 HN42 CTP A   1       1.502  -1.840   7.306  1.00 20.00      A    H  
+HETATM   34  H1' CTP A   1      -1.472  -2.698   1.507  1.00 20.00      A    H  
+HETATM   35  H2' CTP A   1      -2.850  -0.567   2.760  1.00 20.00      A    H  
+HETATM   36 HO2' CTP A   1      -4.422  -1.806   1.897  1.00 20.00      A    H  
+HETATM   37  H3' CTP A   1      -2.156   1.015   1.499  1.00 20.00      A    H  
+HETATM   38  H4' CTP A   1      -1.845  -0.880  -0.954  1.00 20.00      A    H  
+HETATM   39 HO3' CTP A   1      -4.168   1.166   0.731  1.00 20.00      A    H  
+HETATM   40 H5'1 CTP A   1      -0.161   1.455   0.014  1.00 20.00      A    H  
+HETATM   41 H5'2 CTP A   1      -1.480   1.607  -1.159  1.00 20.00      A    H  
+CONECT    1    2    6    9
+CONECT    2    1    3
+CONECT    2    7
+CONECT    2    7
+CONECT    3    2
+CONECT    3    4
+CONECT    3    4
+CONECT    4    5    8
+CONECT    4    3
+CONECT    4    3
+CONECT    5    4   30
+CONECT    5    6
+CONECT    5    6
+CONECT    6    1   31
+CONECT    6    5
+CONECT    6    5
+CONECT    7    2
+CONECT    7    2
+CONECT    8    4   32   33
+CONECT    9    1   10   14   34
+CONECT   10    9   11   12   35
+CONECT   11   10   36
+CONECT   12   10   13   15   37
+CONECT   13   12   14   16   38
+CONECT   14    9   13
+CONECT   15   12   39
+CONECT   16   13   17   40   41
+CONECT   17   16   18
+CONECT   18   17   20   21
+CONECT   18   19
+CONECT   18   19
+CONECT   19   18
+CONECT   19   18
+CONECT   20   18
+CONECT   21   18   22
+CONECT   22   21   24   25
+CONECT   22   23
+CONECT   22   23
+CONECT   23   22
+CONECT   23   22
+CONECT   24   22
+CONECT   25   22   26
+CONECT   26   25   28   29
+CONECT   26   27
+CONECT   26   27
+CONECT   27   26
+CONECT   27   26
+CONECT   28   26
+CONECT   29   26
+CONECT   30    5
+CONECT   31    6
+CONECT   32    8
+CONECT   33    8
+CONECT   34    9
+CONECT   35   10
+CONECT   36   11
+CONECT   37   12
+CONECT   38   13
+CONECT   39   15
+CONECT   40   16
+CONECT   41   16
+END

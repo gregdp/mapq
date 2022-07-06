@@ -1,0 +1,10 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:54:54 2021
+REMARK  99
+REMARK  99   Ligand name: nickel(2+)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [Ni++]
+FORMUL   1  NI    NI  (2)
+HETATM    1 NI    NI A   1      10.000  10.000  10.000  1.00 20.00      A   NI+2
+END

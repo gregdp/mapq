@@ -1,0 +1,164 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:54:09 2021
+REMARK  99
+REMARK  99   Ligand name: [(2R,4S,5R,10S,11R,13R,18R,19S)-4,8,18-trihydroxy-18,24-dimethyl-8-oxido-15,17,22-trioxo-7,9,12,26-tetraoxa-1,14,16,21-tetraaza-8-phosphapentacyclo[18.2.2.1~2,5~.1~10,13~.0~14,19~]hexacosa-20,23-dien-11-yl]methyl dihydrogen phosphate (non-preferred name)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: P(=O)(OC[C@@H]1[C@H]2OP(OC[C@@H]3[C@H](C[C@H](N4C(N=C([C@H]5[C@@](C(NC(N5[C@H](O1)C2)=O)=O)(C)O)C(=C4)C)=O)O3)O)(=O)O)(O)O
+FORMUL   1  T64    C20 H25 N4 O15 P2  (-3)
+HETATM    1  OP3 T64 A   1      -2.734   1.988  -6.344  1.00 20.00      A    O-1
+HETATM    2  P   T64 A   1      -2.302   3.217  -5.567  1.00 20.00      A    P  
+HETATM    3  N1  T64 A   1       2.151   0.732  -0.656  1.00 20.00      A    N  
+HETATM    4  C2  T64 A   1       3.038   1.234  -1.774  1.00 20.00      A    C  
+HETATM    5  O2  T64 A   1       2.578   1.890  -2.654  1.00 20.00      A    O  
+HETATM    6  N3  T64 A   1       4.533   0.891  -1.771  1.00 20.00      A    N  
+HETATM    7  C4  T64 A   1       5.074  -0.001  -0.730  1.00 20.00      A    C  
+HETATM    8  O4  T64 A   1       6.184  -0.417  -0.818  1.00 20.00      A    O  
+HETATM    9  C5  T64 A   1       4.208  -0.379   0.459  1.00 20.00      A    C  
+HETATM   10  C6  T64 A   1       2.754   0.080   0.514  1.00 20.00      A    C  
+HETATM   11  PB  T64 A   1      -2.151   2.144   0.678  1.00 20.00      A    P  
+HETATM   12  C1' T64 A   1       0.667   0.881  -0.749  1.00 20.00      A    C  
+HETATM   13  C1R T64 A   1      -2.106  -2.840   1.029  1.00 20.00      A    C  
+HETATM   14  N1T T64 A   1      -0.688  -2.816   1.159  1.00 20.00      A    N  
+HETATM   15  C2' T64 A   1       0.280   2.221  -0.299  1.00 20.00      A    C  
+HETATM   16  C2R T64 A   1      -2.743  -2.870   2.374  1.00 20.00      A    C  
+HETATM   17  C2T T64 A   1       0.289  -3.046   0.032  1.00 20.00      A    C  
+HETATM   18  O2T T64 A   1       0.200  -4.016  -0.645  1.00 20.00      A    O  
+HETATM   19  C3' T64 A   1      -3.842  -1.845   2.337  1.00 20.00      A    C  
+HETATM   20  O3' T64 A   1      -5.076  -2.459   2.552  1.00 20.00      A    O  
+HETATM   21  C3R T64 A   1      -0.642   2.744  -1.323  1.00 20.00      A    C  
+HETATM   22  O3R T64 A   1      -1.890   3.091  -0.727  1.00 20.00      A    O  
+HETATM   23  N3T T64 A   1       1.369  -2.051  -0.224  1.00 20.00      A    N  
+HETATM   24  C4' T64 A   1      -3.800  -1.235   0.950  1.00 20.00      A    C  
+HETATM   25  O4' T64 A   1       0.252   0.692  -2.112  1.00 20.00      A    O  
+HETATM   26  O4P T64 A   1      -3.080   2.927   1.582  1.00 20.00      A    O  
+HETATM   27  C4R T64 A   1      -0.838   1.618  -2.329  1.00 20.00      A    C  
+HETATM   28  O4R T64 A   1      -2.569  -1.621   0.392  1.00 20.00      A    O  
+HETATM   29  C4T T64 A   1       1.853  -1.224   0.850  1.00 20.00      A    C  
+HETATM   30  O4T T64 A   1       4.849   0.115   1.619  1.00 20.00      A    O  
+HETATM   31  C5' T64 A   1      -0.786   2.152  -3.706  1.00 20.00      A    C  
+HETATM   32  O5' T64 A   1      -1.998   2.799  -4.005  1.00 20.00      A    O  
+HETATM   33  C5A T64 A   1       4.199  -1.988   0.544  1.00 20.00      A    C  
+HETATM   34  C5M T64 A   1       2.092  -0.848   3.421  1.00 20.00      A    C  
+HETATM   35  O5P T64 A   1      -0.950   1.782   1.500  1.00 20.00      A    O-1
+HETATM   36  C5R T64 A   1      -3.880   0.285   1.043  1.00 20.00      A    C  
+HETATM   37  O5R T64 A   1      -3.046   0.880   0.016  1.00 20.00      A    O  
+HETATM   38  C5T T64 A   1       1.320  -1.410   2.202  1.00 20.00      A    C  
+HETATM   39  C6T T64 A   1       0.103  -2.256   2.410  1.00 20.00      A    C  
+HETATM   40  OP1 T64 A   1      -1.052   3.788  -6.186  1.00 20.00      A    O-1
+HETATM   41  OP2 T64 A   1      -3.404   4.252  -5.607  1.00 20.00      A    O  
+HETATM   42  HN3 T64 A   1       5.143   1.278  -2.473  1.00 20.00      A    H  
+HETATM   43  H6  T64 A   1       2.666   0.771   1.349  1.00 20.00      A    H  
+HETATM   44  H1' T64 A   1       0.186   0.140  -0.123  1.00 20.00      A    H  
+HETATM   45  H1R T64 A   1      -2.420  -3.706   0.449  1.00 20.00      A    H  
+HETATM   46  H2' T64 A   1       1.157   2.856  -0.229  1.00 20.00      A    H  
+HETATM   47 H2'A T64 A   1      -0.222   2.161   0.657  1.00 20.00      A    H  
+HETATM   48  H2R T64 A   1      -3.159  -3.855   2.568  1.00 20.00      A    H  
+HETATM   49 H2RA T64 A   1      -2.020  -2.610   3.132  1.00 20.00      A    H  
+HETATM   50  H3' T64 A   1      -3.664  -1.083   3.082  1.00 20.00      A    H  
+HETATM   51 HO3' T64 A   1      -5.380  -2.261   3.429  1.00 20.00      A    H  
+HETATM   52  H3R T64 A   1      -0.201   3.611  -1.814  1.00 20.00      A    H  
+HETATM   53  H4' T64 A   1      -4.618  -1.622   0.348  1.00 20.00      A    H  
+HETATM   54  H4R T64 A   1      -1.782   1.125  -2.152  1.00 20.00      A    H  
+HETATM   55 HO4T T64 A   1       5.691   0.498   1.379  1.00 20.00      A    H  
+HETATM   56  H5' T64 A   1      -0.630   1.344  -4.398  1.00 20.00      A    H  
+HETATM   57 H5'A T64 A   1       0.032   2.860  -3.788  1.00 20.00      A    H  
+HETATM   58  H5A T64 A   1       5.219  -2.360   0.484  1.00 20.00      A    H  
+HETATM   59 H5AA T64 A   1       3.619  -2.390  -0.280  1.00 20.00      A    H  
+HETATM   60 H5AB T64 A   1       3.755  -2.299   1.484  1.00 20.00      A    H  
+HETATM   61  H5M T64 A   1       1.526  -1.045   4.333  1.00 20.00      A    H  
+HETATM   62 H5MA T64 A   1       3.065  -1.329   3.487  1.00 20.00      A    H  
+HETATM   63 H5MB T64 A   1       2.226   0.225   3.302  1.00 20.00      A    H  
+HETATM   64  H5R T64 A   1      -4.911   0.603   0.902  1.00 20.00      A    H  
+HETATM   65 H5RA T64 A   1      -3.534   0.604   2.017  1.00 20.00      A    H  
+HETATM   66  H6T T64 A   1      -0.155  -2.599   3.416  1.00 20.00      A    H  
+CONECT    1    2
+CONECT    2    1   32   40
+CONECT    2   41
+CONECT    2   41
+CONECT    3    4   10   12
+CONECT    4    3    6
+CONECT    4    5
+CONECT    4    5
+CONECT    5    4
+CONECT    5    4
+CONECT    6    4    7   42
+CONECT    7    6    9
+CONECT    7    8
+CONECT    7    8
+CONECT    8    7
+CONECT    8    7
+CONECT    9    7   10   30   33
+CONECT   10    3    9   29   43
+CONECT   11   22   35   37
+CONECT   11   26
+CONECT   11   26
+CONECT   12    3   15   25   44
+CONECT   13   14   16   28   45
+CONECT   14   13   17   39
+CONECT   15   12   21   46   47
+CONECT   16   13   19   48   49
+CONECT   17   14   23
+CONECT   17   18
+CONECT   17   18
+CONECT   18   17
+CONECT   18   17
+CONECT   19   16   20   24   50
+CONECT   20   19   51
+CONECT   21   15   22   27   52
+CONECT   22   11   21
+CONECT   23   17
+CONECT   23   29
+CONECT   23   29
+CONECT   24   19   28   36   53
+CONECT   25   12   27
+CONECT   26   11
+CONECT   26   11
+CONECT   27   21   25   31   54
+CONECT   28   13   24
+CONECT   29   10   38
+CONECT   29   23
+CONECT   29   23
+CONECT   30    9   55
+CONECT   31   27   32   56   57
+CONECT   32    2   31
+CONECT   33    9   58   59   60
+CONECT   35   11
+CONECT   36   24   37   64   65
+CONECT   37   11   36
+CONECT   38   29   34
+CONECT   38   39
+CONECT   38   39
+CONECT   39   14   66
+CONECT   39   38
+CONECT   39   38
+CONECT   40    2
+CONECT   41    2
+CONECT   41    2
+CONECT   42    6
+CONECT   43   10
+CONECT   44   12
+CONECT   45   13
+CONECT   46   15
+CONECT   47   15
+CONECT   48   16
+CONECT   49   16
+CONECT   50   19
+CONECT   51   20
+CONECT   52   21
+CONECT   53   24
+CONECT   54   27
+CONECT   55   30
+CONECT   56   31
+CONECT   57   31
+CONECT   58   33
+CONECT   59   33
+CONECT   60   33
+CONECT   61   34
+CONECT   62   34
+CONECT   63   34
+CONECT   64   36
+CONECT   65   36
+CONECT   66   39
+CONECT   34   38   61   62   63
+END

@@ -1,0 +1,29 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:30:51 2021
+REMARK  99
+REMARK  99   Ligand name: ethane-1,2-diol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OCCO
+FORMUL   1  EDO    C2 H6 O2 
+HETATM    1  C1  EDO A   1       0.004  -0.117  -0.809  1.00 20.00      A    C  
+HETATM    2  O1  EDO A   1       1.404  -0.117  -0.809  1.00 20.00      A    O  
+HETATM    3  C2  EDO A   1      -0.505  -0.117   0.631  1.00 20.00      A    C  
+HETATM    4  O2  EDO A   1       0.182   0.855   1.369  1.00 20.00      A    O  
+HETATM    5  H11 EDO A   1      -0.357   0.768  -1.319  1.00 20.00      A    H  
+HETATM    6  H12 EDO A   1      -0.357  -1.001  -1.319  1.00 20.00      A    H  
+HETATM    7  HO1 EDO A   1       1.719  -0.198  -1.694  1.00 20.00      A    H  
+HETATM    8  H21 EDO A   1      -1.565   0.107   0.640  1.00 20.00      A    H  
+HETATM    9  H22 EDO A   1      -0.338  -1.091   1.073  1.00 20.00      A    H  
+HETATM   10  HO2 EDO A   1      -0.187   0.911   2.235  1.00 20.00      A    H  
+CONECT    1    2    3    5    6
+CONECT    2    1    7
+CONECT    3    1    4    8    9
+CONECT    4    3   10
+CONECT    5    1
+CONECT    6    1
+CONECT    7    2
+CONECT    8    3
+CONECT    9    3
+CONECT   10    4
+END

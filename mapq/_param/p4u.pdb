@@ -1,0 +1,105 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Thu Sep 23 16:44:28 2021
+REMARK  99
+REMARK  99   Ligand name: [(2~{R},3~{S},4~{R},5~{R})-3,4-bis(oxidanyl)-5-(2-oxidanylidene-4-propoxy-pyrimidin-1-yl)oxolan-2-yl]methyl dihydrogen phosphate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCOC1=NC(=O)N(C=C1)[C@@H]2O[C@H](CO[P](O)(O)=O)[C@@H](O)[C@H]2O
+FORMUL   1  P4U    C12 H17 N2 O9 P  (-2)
+HETATM    1  C1' P4U A   1       0.594  -2.063  -0.507  1.00 20.00      A    C  
+HETATM    2  C2  P4U A   1      -0.647  -0.056   0.094  1.00 20.00      A    C  
+HETATM    3  C2' P4U A   1       2.190  -2.092  -0.506  1.00 20.00      A    C  
+HETATM    4  C3' P4U A   1       2.516  -2.100   0.684  1.00 20.00      A    C  
+HETATM    5  C4  P4U A   1      -0.595   1.921  -1.503  1.00 20.00      A    C  
+HETATM    6  C4' P4U A   1       1.238  -2.797   1.493  1.00 20.00      A    C  
+HETATM    7  C5  P4U A   1       0.096   1.071  -2.515  1.00 20.00      A    C  
+HETATM    8  C5' P4U A   1       1.247  -2.367   2.942  1.00 20.00      A    C  
+HETATM    9  C6  P4U A   1       0.462  -0.336  -2.176  1.00 20.00      A    C  
+HETATM   10  N1  P4U A   1       0.158  -0.867  -0.858  1.00 20.00      A    N  
+HETATM   11  N3  P4U A   1      -0.902   1.379  -0.194  1.00 20.00      A    N  
+HETATM   12  O2  P4U A   1      -1.083  -0.552   1.078  1.00 20.00      A    O  
+HETATM   13  O2' P4U A   1       2.687  -3.345  -1.188  1.00 20.00      A    O  
+HETATM   14  O3' P4U A   1       3.738  -2.912   0.870  1.00 20.00      A    O  
+HETATM   15  O4  P4U A   1      -0.864   3.264  -1.785  1.00 20.00      A    O  
+HETATM   16  O4' P4U A   1       0.180  -2.376   0.919  1.00 20.00      A    O  
+HETATM   17  O5' P4U A   1       0.073  -2.803   3.564  1.00 20.00      A    O  
+HETATM   18  OP1 P4U A   1       0.703  -4.338   5.539  1.00 20.00      A    O  
+HETATM   19  OP2 P4U A   1      -1.338  -2.966   5.718  1.00 20.00      A    O-1
+HETATM   20  P   P4U A   1       0.080  -3.005   5.200  1.00 20.00      A    P  
+HETATM   21  C41 P4U A   1      -2.217   3.533  -2.022  1.00 20.00      A    C  
+HETATM   22  C42 P4U A   1      -2.419   5.040  -2.163  1.00 20.00      A    C  
+HETATM   23  C43 P4U A   1      -3.904   5.338  -2.356  1.00 20.00      A    C  
+HETATM   24  H1  P4U A   1       0.208  -2.820  -1.182  1.00 20.00      A    H  
+HETATM   25  H2  P4U A   1       2.582  -1.207  -0.997  1.00 20.00      A    H  
+HETATM   26  H3  P4U A   1       2.674  -1.085   1.036  1.00 20.00      A    H  
+HETATM   27  H4  P4U A   1       1.297  -3.877   1.419  1.00 20.00      A    H  
+HETATM   28  H5  P4U A   1       0.258   1.446  -3.518  1.00 20.00      A    H  
+HETATM   29  H6  P4U A   1       2.105  -2.802   3.443  1.00 20.00      A    H  
+HETATM   30  H7  P4U A   1       1.306  -1.285   2.998  1.00 20.00      A    H  
+HETATM   31  H8  P4U A   1       0.964  -0.958  -2.909  1.00 20.00      A    H  
+HETATM   32  H9  P4U A   1       3.295  -3.112  -1.870  1.00 20.00      A    H  
+HETATM   33  H10 P4U A   1       4.472  -2.343   1.034  1.00 20.00      A    H  
+HETATM   34  H13 P4U A   1      -2.528   3.039  -2.937  1.00 20.00      A    H  
+HETATM   35  H14 P4U A   1      -2.809   3.164  -1.192  1.00 20.00      A    H  
+HETATM   36  H15 P4U A   1      -2.064   5.538  -1.267  1.00 20.00      A    H  
+HETATM   37  H16 P4U A   1      -1.863   5.401  -3.021  1.00 20.00      A    H  
+HETATM   38  H17 P4U A   1      -4.477   4.847  -1.575  1.00 20.00      A    H  
+HETATM   39  H18 P4U A   1      -4.068   6.411  -2.305  1.00 20.00      A    H  
+HETATM   40  H19 P4U A   1      -4.224   4.969  -3.326  1.00 20.00      A    H  
+HETATM   41  OP3 P4U A   1       0.881  -1.897   5.841  1.00 20.00      A    O-1
+CONECT    1   16    3   10   24
+CONECT    2   10   11
+CONECT    2   12
+CONECT    2   12
+CONECT    3    4   13    1   25
+CONECT    4   14    6    3   26
+CONECT    5    7   15
+CONECT    5   11
+CONECT    5   11
+CONECT    6    8    4   16   27
+CONECT    7    5   28
+CONECT    7    9
+CONECT    7    9
+CONECT    8   17    6   29   30
+CONECT    9   10   31
+CONECT    9    7
+CONECT    9    7
+CONECT   10    1    9    2
+CONECT   11    2
+CONECT   11    5
+CONECT   11    5
+CONECT   12    2
+CONECT   12    2
+CONECT   13    3   32
+CONECT   14    4   33
+CONECT   15    5   21
+CONECT   16    6    1
+CONECT   17    8   20
+CONECT   18   20
+CONECT   18   20
+CONECT   19   20
+CONECT   20   19   17   41
+CONECT   20   18
+CONECT   20   18
+CONECT   21   15   22   34   35
+CONECT   22   21   23   36   37
+CONECT   23   22   38   39   40
+CONECT   24    1
+CONECT   25    3
+CONECT   26    4
+CONECT   27    6
+CONECT   28    7
+CONECT   29    8
+CONECT   30    8
+CONECT   31    9
+CONECT   32   13
+CONECT   33   14
+CONECT   34   21
+CONECT   35   21
+CONECT   36   22
+CONECT   37   22
+CONECT   38   23
+CONECT   39   23
+CONECT   40   23
+CONECT   41   20
+END

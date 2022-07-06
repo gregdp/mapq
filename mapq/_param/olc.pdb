@@ -1,0 +1,146 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:54:53 2021
+REMARK  99
+REMARK  99   Ligand name: (2R)-2,3-dihydroxypropyl (9Z)-octadec-9-enoate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCCCCCC\C=C/CCCCCCCC(=O)OC[C@H](O)CO
+FORMUL   1  OLC    C21 H40 O4 
+HETATM    1  C18 OLC A   1     -12.358   1.730   0.339  1.00 20.00      A    C  
+HETATM    2  C10 OLC A   1      -2.752   0.103  -1.611  1.00 20.00      A    C  
+HETATM    3  C9  OLC A   1      -1.494   0.439  -1.803  1.00 20.00      A    C  
+HETATM    4  C17 OLC A   1     -10.990   2.405   0.267  1.00 20.00      A    C  
+HETATM    5  C11 OLC A   1      -3.801   1.183  -1.359  1.00 20.00      A    C  
+HETATM    6  C8  OLC A   1      -0.444  -0.641  -2.055  1.00 20.00      A    C  
+HETATM    7  C24 OLC A   1      11.337  -0.330   2.967  1.00 20.00      A    C  
+HETATM    8  C16 OLC A   1      -9.904   1.341   0.130  1.00 20.00      A    C  
+HETATM    9  C12 OLC A   1      -5.101   0.530  -0.892  1.00 20.00      A    C  
+HETATM   10  C7  OLC A   1       0.931  -0.121  -1.641  1.00 20.00      A    C  
+HETATM   11  C15 OLC A   1      -8.555   2.017  -0.103  1.00 20.00      A    C  
+HETATM   12  C13 OLC A   1      -6.173   1.603  -0.713  1.00 20.00      A    C  
+HETATM   13  C6  OLC A   1       1.975  -1.212  -1.865  1.00 20.00      A    C  
+HETATM   14  C14 OLC A   1      -7.466   0.954  -0.226  1.00 20.00      A    C  
+HETATM   15  C5  OLC A   1       3.012  -1.162  -0.745  1.00 20.00      A    C  
+HETATM   16  C4  OLC A   1       4.355  -1.661  -1.271  1.00 20.00      A    C  
+HETATM   17  C3  OLC A   1       5.259  -2.027  -0.095  1.00 20.00      A    C  
+HETATM   18  C2  OLC A   1       6.707  -1.688  -0.442  1.00 20.00      A    C  
+HETATM   19  C21 OLC A   1       9.421  -1.709   2.165  1.00 20.00      A    C  
+HETATM   20  C1  OLC A   1       7.616  -2.089   0.718  1.00 20.00      A    C  
+HETATM   21  C22 OLC A   1       9.856  -0.644   3.168  1.00 20.00      A    C  
+HETATM   22  O19 OLC A   1       7.581  -3.195   1.143  1.00 20.00      A    O  
+HETATM   23  O25 OLC A   1      11.700   0.751   3.781  1.00 20.00      A    O  
+HETATM   24  O23 OLC A   1       9.102   0.519   2.970  1.00 20.00      A    O  
+HETATM   25  O20 OLC A   1       8.502  -1.157   1.267  1.00 20.00      A    O  
+HETATM   26  H18 OLC A   1     -12.555   1.210  -0.594  1.00 20.00      A    H  
+HETATM   27 H18A OLC A   1     -12.367   1.017   1.159  1.00 20.00      A    H  
+HETATM   28 H18B OLC A   1     -13.125   2.481   0.504  1.00 20.00      A    H  
+HETATM   29  H10 OLC A   1      -3.041  -0.941  -1.625  1.00 20.00      A    H  
+HETATM   30  H9  OLC A   1      -1.203   1.483  -1.781  1.00 20.00      A    H  
+HETATM   31  H17 OLC A   1     -10.822   2.979   1.172  1.00 20.00      A    H  
+HETATM   32 H17A OLC A   1     -10.959   3.066  -0.592  1.00 20.00      A    H  
+HETATM   33  H11 OLC A   1      -3.982   1.733  -2.276  1.00 20.00      A    H  
+HETATM   34 H11A OLC A   1      -3.443   1.863  -0.594  1.00 20.00      A    H  
+HETATM   35  H8  OLC A   1      -0.433  -0.894  -3.110  1.00 20.00      A    H  
+HETATM   36  H8A OLC A   1      -0.687  -1.524  -1.474  1.00 20.00      A    H  
+HETATM   37  H24 OLC A   1      11.930  -1.198   3.234  1.00 20.00      A    H  
+HETATM   38 H24A OLC A   1      11.515  -0.076   1.928  1.00 20.00      A    H  
+HETATM   39  H16 OLC A   1      -9.860   0.750   1.038  1.00 20.00      A    H  
+HETATM   40 H16A OLC A   1     -10.134   0.695  -0.711  1.00 20.00      A    H  
+HETATM   41  H12 OLC A   1      -4.933   0.026   0.054  1.00 20.00      A    H  
+HETATM   42 H12A OLC A   1      -5.430  -0.190  -1.632  1.00 20.00      A    H  
+HETATM   43  H7  OLC A   1       0.913   0.152  -0.591  1.00 20.00      A    H  
+HETATM   44  H7A OLC A   1       1.183   0.749  -2.237  1.00 20.00      A    H  
+HETATM   45  H15 OLC A   1      -8.596   2.601  -1.016  1.00 20.00      A    H  
+HETATM   46 H15A OLC A   1      -8.329   2.670   0.734  1.00 20.00      A    H  
+HETATM   47  H13 OLC A   1      -6.352   2.097  -1.662  1.00 20.00      A    H  
+HETATM   48 H13A OLC A   1      -5.837   2.332   0.017  1.00 20.00      A    H  
+HETATM   49  H6  OLC A   1       2.467  -1.051  -2.819  1.00 20.00      A    H  
+HETATM   50  H6A OLC A   1       1.491  -2.182  -1.867  1.00 20.00      A    H  
+HETATM   51  H14 OLC A   1      -7.780   0.196  -0.936  1.00 20.00      A    H  
+HETATM   52 H14A OLC A   1      -7.298   0.494   0.742  1.00 20.00      A    H  
+HETATM   53  H5  OLC A   1       2.687  -1.794   0.076  1.00 20.00      A    H  
+HETATM   54  H5A OLC A   1       3.117  -0.141  -0.395  1.00 20.00      A    H  
+HETATM   55  H4  OLC A   1       4.198  -2.537  -1.892  1.00 20.00      A    H  
+HETATM   56  H4A OLC A   1       4.825  -0.880  -1.860  1.00 20.00      A    H  
+HETATM   57  H3  OLC A   1       4.956  -1.464   0.781  1.00 20.00      A    H  
+HETATM   58  H3A OLC A   1       5.174  -3.088   0.109  1.00 20.00      A    H  
+HETATM   59  H2  OLC A   1       7.001  -2.230  -1.335  1.00 20.00      A    H  
+HETATM   60  H2A OLC A   1       6.797  -0.622  -0.620  1.00 20.00      A    H  
+HETATM   61  H21 OLC A   1      10.288  -2.068   1.620  1.00 20.00      A    H  
+HETATM   62 H21A OLC A   1       8.958  -2.536   2.694  1.00 20.00      A    H  
+HETATM   63  H22 OLC A   1       9.698  -1.010   4.175  1.00 20.00      A    H  
+HETATM   64 HO25 OLC A   1      12.627   0.909   3.700  1.00 20.00      A    H  
+HETATM   65 HO23 OLC A   1       9.025   0.987   3.787  1.00 20.00      A    H  
+CONECT    1    4   26   27   28
+CONECT    2    5   29
+CONECT    2    3
+CONECT    2    3
+CONECT    3    6   30
+CONECT    3    2
+CONECT    3    2
+CONECT    4    1    8   31   32
+CONECT    5    2    9   33   34
+CONECT    6    3   10   35   36
+CONECT    7   21   23   37   38
+CONECT    8    4   11   39   40
+CONECT    9    5   12   41   42
+CONECT   10    6   13   43   44
+CONECT   11    8   14   45   46
+CONECT   12    9   14   47   48
+CONECT   13   10   15   49   50
+CONECT   14   11   12   51   52
+CONECT   15   13   16   53   54
+CONECT   16   15   17   55   56
+CONECT   17   16   18   57   58
+CONECT   18   17   20   59   60
+CONECT   19   21   25   61   62
+CONECT   20   18   25
+CONECT   20   22
+CONECT   20   22
+CONECT   21    7   19   24   63
+CONECT   22   20
+CONECT   22   20
+CONECT   24   21   65
+CONECT   25   19   20
+CONECT   26    1
+CONECT   27    1
+CONECT   28    1
+CONECT   29    2
+CONECT   30    3
+CONECT   31    4
+CONECT   32    4
+CONECT   33    5
+CONECT   34    5
+CONECT   35    6
+CONECT   36    6
+CONECT   37    7
+CONECT   38    7
+CONECT   39    8
+CONECT   40    8
+CONECT   41    9
+CONECT   42    9
+CONECT   43   10
+CONECT   44   10
+CONECT   45   11
+CONECT   46   11
+CONECT   47   12
+CONECT   48   12
+CONECT   49   13
+CONECT   50   13
+CONECT   51   14
+CONECT   52   14
+CONECT   53   15
+CONECT   54   15
+CONECT   55   16
+CONECT   56   16
+CONECT   57   17
+CONECT   58   17
+CONECT   59   18
+CONECT   60   18
+CONECT   61   19
+CONECT   62   19
+CONECT   63   21
+CONECT   64   23
+CONECT   65   24
+CONECT   23    7   64
+END

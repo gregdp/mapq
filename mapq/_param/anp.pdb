@@ -1,0 +1,122 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.18.2-3874-
+REMARK  99   - file written: Sun Dec 19 15:26:28 2021
+REMARK  99
+REMARK  99   Ligand name: 5'-O-[(S)-hydroxy{[(R)-hydroxy(phosphonoamino)phosphoryl]oxy}phosphoryl]adenosine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: Nc1ncnc2n(cnc12)[C@@H]3O[C@H](CO[P](O)(=O)O[P](O)(=O)N[P](O)(O)=O)[C@@H](O)[C@H]3O
+FORMUL   1  ANP    C10 H13 N6 O12 P3  (-4)
+HETATM    1  PG  ANP A   1       7.670  -3.526  -1.179  1.00 20.00      A    P  
+HETATM    2  O1G ANP A   1       7.110  -4.776  -1.814  1.00 20.00      A    O  
+HETATM    3  O2G ANP A   1       9.015  -3.832  -0.566  1.00 20.00      A    O-1
+HETATM    4  O3G ANP A   1       7.828  -2.454  -2.231  1.00 20.00      A    O-1
+HETATM    5  PB  ANP A   1       6.449  -1.310   0.339  1.00 20.00      A    P  
+HETATM    6  O1B ANP A   1       7.623  -0.837   1.162  1.00 20.00      A    O  
+HETATM    7  O2B ANP A   1       6.417  -0.559  -0.970  1.00 20.00      A    O-1
+HETATM    8  N3B ANP A   1       6.605  -2.979   0.033  1.00 20.00      A    N  
+HETATM    9  PA  ANP A   1       4.033   0.226   0.846  1.00 20.00      A    P  
+HETATM   10  O1A ANP A   1       4.338   1.371   1.782  1.00 20.00      A    O  
+HETATM   11  O2A ANP A   1       4.227   0.677  -0.582  1.00 20.00      A    O-1
+HETATM   12  O3A ANP A   1       5.050  -1.032   1.167  1.00 20.00      A    O  
+HETATM   13  O5' ANP A   1       2.473  -0.261   1.062  1.00 20.00      A    O  
+HETATM   14  C5' ANP A   1       1.444   0.595   0.650  1.00 20.00      A    C  
+HETATM   15  C4' ANP A   1       0.081  -0.137   0.775  1.00 20.00      A    C  
+HETATM   16  O4' ANP A   1      -0.870   0.723   1.023  1.00 20.00      A    O  
+HETATM   17  C3' ANP A   1      -0.296  -0.792  -0.572  1.00 20.00      A    C  
+HETATM   18  O3' ANP A   1      -0.213  -2.142  -0.475  1.00 20.00      A    O  
+HETATM   19  C2' ANP A   1      -1.754  -0.366  -0.846  1.00 20.00      A    C  
+HETATM   20  O2' ANP A   1      -2.578  -1.560  -1.206  1.00 20.00      A    O  
+HETATM   21  C1' ANP A   1      -2.182   0.152   0.273  1.00 20.00      A    C  
+HETATM   22  N9  ANP A   1      -3.103   1.226   0.001  1.00 20.00      A    N  
+HETATM   23  C8  ANP A   1      -2.851   2.438  -0.498  1.00 20.00      A    C  
+HETATM   24  N7  ANP A   1      -3.980   3.151  -0.443  1.00 20.00      A    N  
+HETATM   25  C5  ANP A   1      -4.933   2.377   0.092  1.00 20.00      A    C  
+HETATM   26  C6  ANP A   1      -6.265   2.605   0.364  1.00 20.00      A    C  
+HETATM   27  N6  ANP A   1      -7.157   3.719   0.098  1.00 20.00      A    N  
+HETATM   28  N1  ANP A   1      -7.005   1.646   0.896  1.00 20.00      A    N  
+HETATM   29  C2  ANP A   1      -6.455   0.441   1.173  1.00 20.00      A    C  
+HETATM   30  N3  ANP A   1      -5.148   0.215   0.908  1.00 20.00      A    N  
+HETATM   31  C4  ANP A   1      -4.392   1.188   0.367  1.00 20.00      A    C  
+HETATM   32 HNB1 ANP A   1       6.092  -3.639   0.583  1.00 20.00      A    H  
+HETATM   33 H5'1 ANP A   1       1.606   0.885  -0.382  1.00 20.00      A    H  
+HETATM   34 H5'2 ANP A   1       1.438   1.481   1.277  1.00 20.00      A    H  
+HETATM   35  H4' ANP A   1       0.120  -0.887   1.558  1.00 20.00      A    H  
+HETATM   36  H3' ANP A   1       0.353  -0.426  -1.358  1.00 20.00      A    H  
+HETATM   37 HO3' ANP A   1       0.238  -2.485  -1.231  1.00 20.00      A    H  
+HETATM   38  H2' ANP A   1      -1.786   0.374  -1.638  1.00 20.00      A    H  
+HETATM   39 HO2' ANP A   1      -2.638  -1.630  -2.144  1.00 20.00      A    H  
+HETATM   40  H1' ANP A   1      -2.656  -0.611   0.880  1.00 20.00      A    H  
+HETATM   41  H8  ANP A   1      -1.904   2.776  -0.900  1.00 20.00      A    H  
+HETATM   42 HN61 ANP A   1      -8.124   3.660   0.355  1.00 20.00      A    H  
+HETATM   43 HN62 ANP A   1      -6.809   4.544  -0.354  1.00 20.00      A    H  
+HETATM   44  H2  ANP A   1      -7.106  -0.228   1.723  1.00 20.00      A    H  
+CONECT    1    3    4    8
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    7    8   12
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5
+CONECT    8    1    5   32
+CONECT    9   11   12   13
+CONECT    9   10
+CONECT    9   10
+CONECT   10    9
+CONECT   10    9
+CONECT   11    9
+CONECT   12    5    9
+CONECT   13    9   14
+CONECT   14   13   15   33   34
+CONECT   15   14   16   17   35
+CONECT   16   15   21
+CONECT   17   15   18   19   36
+CONECT   18   17   37
+CONECT   19   17   20   21   38
+CONECT   20   19   39
+CONECT   21   16   19   22   40
+CONECT   22   21
+CONECT   22   23   31
+CONECT   23   41
+CONECT   23   22   24
+CONECT   24   23   25
+CONECT   25   26
+CONECT   25   24
+CONECT   25   31
+CONECT   25   31
+CONECT   26   25   27
+CONECT   26   28
+CONECT   26   28
+CONECT   27   26   42   43
+CONECT   28   29
+CONECT   28   26
+CONECT   28   26
+CONECT   29   28   44
+CONECT   29   30
+CONECT   29   30
+CONECT   30   31
+CONECT   30   29
+CONECT   30   29
+CONECT   31   30
+CONECT   31   22
+CONECT   31   25
+CONECT   31   25
+CONECT   32    8
+CONECT   33   14
+CONECT   34   14
+CONECT   35   15
+CONECT   36   17
+CONECT   37   18
+CONECT   38   19
+CONECT   39   20
+CONECT   40   21
+CONECT   41   23
+CONECT   42   27
+CONECT   43   27
+CONECT   44   29
+END
