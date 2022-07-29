@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.0"
+mapqVersion = "1.9.1"
 #showDevTools = True
 
 showDevTools = False
@@ -1212,7 +1212,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if fext == ".cif" :
                     mmcif.WriteMol ( self.cur_mol, path, dmap = self.cur_dmap )
                     self.cur_mol.name = fname
-                    self.openedAs = [ [path], [] ]
+                    self.openedAs = [ path, [] ]
                     self.struc.set ( "[%d] %s" % (self.cur_mol.id, fname) )
 
                 elif fext == ".pdb" or fext == ".ent" :
@@ -1231,7 +1231,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
                     print "."
                     self.cur_mol.name = fname
-                    self.cur_mol.openedAs = [ [path], [] ]
+                    self.cur_mol.openedAs = [ path, [] ]
                     self.struc.set ( "[%d] %s" % (self.cur_mol.id, fname) )
 
 
@@ -3207,7 +3207,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         qscores.SaveQStats ( self.cur_mol, chainId, self.cur_dmap.name, sigma, float(self.mapRes.get()) )
 
         #qscores.QStatsProt ( self.cur_mol, self.cur_dmap, chainId )
-        qscores.QStatsRNA ( self.cur_mol, self.cur_dmap, chainId )
+        #qscores.QStatsRNA ( self.cur_mol, self.cur_dmap, chainId )
         #qscores.QStats1 (self.cur_mol, chainId)
 
         umsg ( "Showing Q-scores for chain %s" % chainId )
@@ -6316,7 +6316,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             for r in mol.residues :
                 rmap[r.id.position] = r
                 r.dms = None
-                r.ribbonColor = chimera.MaterialColor ( .4, .4, .4, 1.0 )
+                r.ribbonColor = chimera.MaterialColor ( .8, .8, .8, 1.0 )
 
             dms = []
             #fp = open ( "/Users/greg/GDriveS/_data/Ribozyme2/sec.txt" )

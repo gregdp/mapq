@@ -949,6 +949,7 @@ def ReadMol ( fpath, log=False ) :
         atName = mp['label_atom_id']
         rtype = mp['label_comp_id']
         chainId = mp['label_asym_id']
+        authChainId = mp['auth_asym_id']
         chainEId = mp['label_entity_id']
         px = mp['Cartn_x']
         py = mp['Cartn_y']
@@ -969,6 +970,7 @@ def ReadMol ( fpath, log=False ) :
         res = None
         if not ris in rmap :
             res = nmol.newResidue ( rtype, chimera.MolResId(chainId, resId) )
+            res.authChainId = authChainId
             rmap[ris] = res
             res.chainEId = chainEId
         else :
@@ -1185,7 +1187,7 @@ def WriteMol ( mol, fout, dmap = None ) :
         mol.cif.append ( "#\n" )
 
         AddAtoms ( mol.cif, mol.cifLoops, mol, dmap )
-        if 1 :
+        if 0 :
             AddResDisplay ( mol.cif, mol.cifLoops, mol )
         WriteCif ( mol.cif, fout )
 
@@ -1284,7 +1286,10 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
                 mdata["pdbx_formal_charge"] = adata[16] = "?"
                 mdata["auth_seq_id"]        = adata[17] = "%d" % r.id.position
                 mdata["auth_comp_id"]       = adata[18] = r.type
-                mdata["auth_asym_id"]       = adata[19] = r.id.chainId
+                if hasattr ( r, 'authChainId' ) :
+                    mdata["auth_asym_id"]       = adata[19] = r.authChainId
+                else :
+                    mdata["auth_asym_id"]       = adata[19] = r.id.chainId
                 mdata["auth_atom_id"]       = adata[20] = aname
                 mdata["pdbx_PDB_model_num"] = adata[21] = "1"
 

@@ -92,7 +92,7 @@ for arg in sys.argv :
         elif len(tokens) == 2 and tokens[0] == "sigma" :
             try :
                 gSigma = float ( tokens[1] )
-                print ( " -> sigma: %.0f" % gSigma )
+                print ( " -> sigma: %.1f" % gSigma )
             except :
                 print ( " -> specify a number" )
         else :
@@ -177,8 +177,8 @@ if ok :
     print (" : " + cmd)
     print ("")
 
-    if 0 :
-        fp.write ( "qscores.Calc('%s',%d,%f,%f,%f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
+    if 1 :
+        fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
 
     else :
         if numProc == 1 :

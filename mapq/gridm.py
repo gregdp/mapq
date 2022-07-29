@@ -254,7 +254,13 @@ class Grid (object) :
 
 
 
-    def AtsNearPt ( self, C ) :
+    def AtsNearPt ( self, C, D = None ) :
+
+        if D == None :
+            D = self.D
+        else :
+            if D > self.D :
+                print "grid: asking for D larger than box size"
 
         #startt = time.time()
 
@@ -283,7 +289,7 @@ class Grid (object) :
 
                     for at in atsInBox :
                         v = at.xformCoord() - C
-                        if v.length < self.D :
+                        if v.length < D :
                             ats.append ( [at, v] )
                             #atsByDist.append ( [v.length, at] )
 
