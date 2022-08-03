@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.1"
+mapqVersion = "1.9.2"
 #showDevTools = True
 
 showDevTools = False
@@ -1454,8 +1454,14 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #cH = numpy.array( [0.19,0.53,0.87] ) # [0.0,1.0,0.0]
         #cL = numpy.array( [1.0,0.0,0.0] )
 
-        cH = numpy.array( [50.0/255.0,250.0/255.0,50.0/255.0] )
-        cL = numpy.array( [250.0/255.0,50.0/255.0,50.0/255.0] )
+        cH = numpy.array ( [.33,.56,.88] )
+        cL = numpy.array ( [.99,.99,.3] )
+
+        if 0 : # qRedGreen :
+            cH = numpy.array( [50.0/255.0,250.0/255.0,50.0/255.0] )
+            cL = numpy.array( [250.0/255.0,50.0/255.0,50.0/255.0] )
+
+
 
 
         for ri, r in enumerate ( ress ) :
@@ -3175,24 +3181,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         chainId = self.chain.get()
         umsg ( "Loading Q-scores for chain %s..." % chainId )
 
-        molPath, molExt = os.path.splitext(self.cur_mol.openedAs[0])
+        #molPath, molExt = os.path.splitext(self.cur_mol.openedAs[0])
+        #mapName = os.path.splitext(self.cur_dmap.name)[0]
 
-        if molExt == ".pdb" or molExt == ".ent" :
-            mapName = os.path.splitext(self.cur_dmap.name)[0]
-            nname = molPath + "__Q__" + mapName + ".pdb"
-            if not os.path.isfile ( nname ) :
-                print nname
-                umsg ( "Q scores not found for this map and file" )
-                return
-            qscores.QsFromPdbFile ( self.cur_mol, nname )
-        else :
-            mapName = os.path.splitext(self.cur_dmap.name)[0]
-            nname = molPath + "__Q__" + mapName + ".cif"
-            if not os.path.isfile ( nname ) :
-                print nname
-                umsg ( "Q scores not found for this map and file" )
-                return
+        nname = qscores.QScoreFileName ( self.cur_mol, self.cur_dmap )
+        if not os.path.isfile ( nname ) :
+            print nname
+            umsg ( "Q scores not found for this map and file" )
+            return
+
+        if hasattr ( self.cur_mol, 'cif' ) :
             qscores.QsFromCifFile ( self.cur_mol, nname )
+        else :
+            qscores.QsFromPdbFile ( self.cur_mol, nname )
+
 
         if 0 :
             umsg ( "Saving files with Q-score B-factor" )
@@ -3879,6 +3881,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
             cH = numpy.array( [50,250,50] )
             cL = numpy.array( [250,50,50] )
+
+            # qcolor
+            cH = numpy.array ( [.33*255.0,.56*255.0,.88*255.0] )
+            cL = numpy.array ( [.99*255.0,.99*255.0,.3*255.0] )
 
             for si in range ( len(self.seq) ) :
                 #if i >= len ( self.seqt ) :

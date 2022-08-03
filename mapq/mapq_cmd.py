@@ -31,10 +31,14 @@ res = 3.0
 bfactor = -1
 gSigma = 0.6
 
-
+pdbs = []
+cifs = []
+maps = []
 
 print ("")
 print ("Found parameters:")
+
+ok = True
 
 for arg in sys.argv :
 
@@ -64,8 +68,9 @@ for arg in sys.argv :
 
     elif os.path.isfile(arg) :
         print ( " -> map or model" )
-        if arg[0:2] == '..' :
+        if '../' in arg or "./" in arg :
             print ( " -X- please do not use relative paths, i.e. ../, in path" )
+            ok = False
         else :
             mods.append ( arg )
 
@@ -95,20 +100,64 @@ for arg in sys.argv :
                 print ( " -> sigma: %.1f" % gSigma )
             except :
                 print ( " -> specify a number" )
+
+        elif len(tokens) == 2 and tokens[0] == "map" :
+            print ( " -> map" )
+            if os.path.isfile( tokens[1] ) :
+                if '../' in tokens[1] or "./" in tokens[1] :
+                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
+                    ok = False
+                else :
+                    maps.append ( tokens[1] )
+            else :
+                print " -X- map - file not found"
+                ok = False
+
+        elif len(tokens) == 2 and tokens[0] == "pdb" :
+            print ( " -> pdb" )
+            if os.path.isfile( tokens[1] ) :
+                if '../' in tokens[1] or "./" in tokens[1] :
+                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
+                    ok = False
+                else :
+                    pdbs.append ( tokens[1] )
+            else :
+                print " -X- pdb - file not found"
+                ok = False
+
+        elif len(tokens) == 2 and tokens[0] == "cif" :
+            print ( " -> cif" )
+            if os.path.isfile( tokens[1] ) :
+                if '../' in tokens[1] or "./" in tokens[1] :
+                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
+                    ok = False
+                else :
+                    cifs.append ( tokens[1] )
+            else :
+                print " -X- cif - file not found"
         else :
             print ( " -> unknown" )
 
 print ("")
 
-ok = True
-if len(mods) <= 1 or chimeraPath == None :
+allMods = mods+maps+pdbs+cifs
+if len(allMods) < 2 :
+    print " -X- need a map and model"
+    ok = False
+
+
+if chimeraPath == None :
+    print " -X- please specify a path to Chimera"
+    ok = False
+
+if not ok :
     print ("")
     print ("mapq_cmd.py")
     print ("  - Calculate Q-scores from command line")
     print ("")
     print ("Parameters:")
     print ("  [path to model or map file]")
-    print ("      one map and at least one model should be specified")
+    print ("      specify a map or model - will try to autodetect type based on extension")
     print ("  [path to Chimera]")
     print ("      e.g.: ~/Chimera.app (Mac)")
     print ("          ~/Chimera (Unix)")
@@ -123,15 +172,19 @@ if len(mods) <= 1 or chimeraPath == None :
     print ("      using the formula bfactor=f*(1.0-Qscore)")
     print ("  np=# (optional, #=1,2,3,4,..., default=1")
     print ("      number of processors to use")
-
-    ok = False
+    print ("  pdb=<path to PDB file>")
+    print ("      specify a model with PDB format")
+    print ("  cif=<path to mmCIF file>")
+    print ("      specify a model with mmCIF format")
+    print ("  map=<path to map (ccp4 format) file>")
+    print ("      specify a MAP with ccp4 format")
 
 print ("")
 
 if ok :
 
     #scriptPath = os.path.dirname(os.path.realpath(__file__))
-    scriptPath = os.path.dirname ( mods[0] )
+    scriptPath = os.path.dirname ( allMods[0] )
     newScript = os.path.join ( scriptPath, "_mapqScript.py" )
 
     print ("Creating Chimera script in %s" % newScript)
@@ -156,21 +209,26 @@ if ok :
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
     for mod in mods :
-        if os.path.splitext(mod)[1] == ".cif" :
-            # load cif files from script to avoid creating the atomic model - can take a lot of time for large models
-            # fp.write ( "mmcif.LoadMol('%s')\n" % mod )
+        ext = os.path.splitext(mod)[1]
+        if ext == ".cif" :
             fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
-        elif os.path.splitext(mod)[1] == ".pdb" :
-            cmd += '"%s" ' % mod
-            fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
-        elif os.path.splitext(mod)[1] == ".ent" :
-            cmd += '"%s" ' % mod
-            fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
+        elif ext == ".pdb" or ext == ".ent" :
+            fp.write ( "mol = chimera.openModels.open ( '%s', type='PDB' )[0]\n" % mod )
+        elif ext == ".map" or ext == ".mrc" :
+            fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % mod )
         else :
             # load model from command line
-            cmd += '"%s" ' % mod
+            #cmd += '"%s" ' % mod
+            pass
+            #fp.write ( "dmap = chimera.openModels.list (modelTypes = [VolumeViewer.volume.Volume])[0]\n" )
+            #fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
 
-        fp.write ( "dmap = chimera.openModels.list (modelTypes = [VolumeViewer.volume.Volume])[0]\n" )
+    for mod in pdbs :
+        fp.write ( "mol = chimera.openModels.open ( '%s', type='PDB' )[0]\n" % mod )
+    for mod in cifs :
+        fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
+    for mod in maps :
+        fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % mod )
 
     cmd += "'%s'" % newScript
 

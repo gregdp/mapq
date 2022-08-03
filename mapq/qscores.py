@@ -2329,13 +2329,13 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
 
     if useOld :
         SetBBAts ( mol )
-        nname = molPath + "__Q__" + mapName + ".pdb"
+        nname = mol.openedAs[0] + "__Q__" + dmap.name + ".pdb"
         if QsFromPdbFile ( mol, nname ) :
             #Qavg = QStats1 ( mol, cid )
             #return Qavg
             print " - got Q from %s" % nname
             gotQ = True
-        nname = molPath + "__Q__" + mapName + ".cif"
+        nname = mol.openedAs[0] + "__Q__" + dmap.name + ".cif"
         if QsFromCifFile ( mol, nname ) :
             #Qavg = QStats1 ( mol, cid )
             #return Qavg
@@ -2360,7 +2360,7 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         import time
         start = time.time()
 
-        tempPath = mapBase + "__Q-scores__temp__"
+        tempPath = dmap.data.path + "__Q-scores__mp__calculation__files__"
         print " - making temp path: %s" % tempPath
         try :
             os.mkdir(tempPath)
@@ -2644,11 +2644,11 @@ def CalcQp ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chime
 
     if useOld :
         SetBBAts ( mol )
-        nname = molPath + "__Q__" + mapName + ".pdb"
+        nname = mol.openedAs[0] + "__Q__" + dmap.name + ".pdb"
         if QsFromPdbFile ( mol, nname ) :
             Qavg = QStats1 ( mol, cid )
             return Qavg
-        nname = molPath + "__Q__" + mapName + ".cif"
+        nname = mol.openedAs[0] + "__Q__" + dmap.name + ".cif"
         if QsFromCifFile ( mol, nname ) :
             Qavg = QStats1 ( mol, cid )
             return Qavg
@@ -3286,8 +3286,13 @@ def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
 
     molPath = os.path.splitext(mol.openedAs[0])[0]
     mapName = os.path.splitext(dmap_name)[0]
-    nname = molPath + "__Q__" + mapName + "_" + chainId + ".txt"
+
+    nname = mol.openedAs[0] + "__Q__" + dmap_name + "_" + chainId + ".txt"
     #nname = molPath + "__Q__" + mapName + "_" + cid + ".txt"
+
+    if hasattr ( mol, 'cif' ) :
+        # cif file name updated to have the __Q__ already
+        nname = mol.openedAs[0] + "_" + chainId + ".txt"
 
     print ""
     print "Saving per-chain & per-residue Q-scores:"
@@ -3965,24 +3970,20 @@ def SaveQFile ( mol, cid, dmap_name, sigma ) :
         print ""
         return
 
-    molPath, molExt = os.path.splitext(mol.openedAs[0])
-    mapName = os.path.splitext(dmap_name)[0]
-
-    if hasattr ( mol, 'cif' ) and molExt == '.cif' :
-        import mmcif
-        reload ( mmcif )
-        fout = molPath + "__Q__" + mapName + ".cif"
-        mmcif.WriteMol ( mol, fout )
+    if hasattr ( mol, 'cif' ) : # and molExt == '.cif' :
+        from mmcif import WriteMol
+        fout = mol.openedAs[0] + "__Q__" + dmap_name + ".cif"
+        WriteMol ( mol, fout )
 
     else :
-        nname_ = molPath + "__Q__" + mapName + "_.pdb"
+        nname_ = mol.openedAs[0] + "__Q__" + dmap_name + "_temp_.pdb"
         try :
             chimera.PDBio().writePDBfile ( [mol], nname_ )
         except :
             print " - could not save Q-scores file"
             return
 
-        nname = molPath + "__Q__" + mapName + ".pdb"
+        nname = mol.openedAs[0] + "__Q__" + dmap_name + ".pdb"
 
         fpo = open ( nname, "w" )
         fpi = open ( nname_ )
@@ -4133,9 +4134,27 @@ def QsFromCifFile ( mol, qfpath ) :
 
 def QScoreFileName ( mol, dmap ) :
 
-    molPath = os.path.splitext(mol.openedAs[0])[0]
-    mapName = os.path.splitext(dmap.name)[0]
-    qfpath = molPath + "__Q__" + mapName + ".pdb"
+    molPath = mol.openedAs[0]
+    mapName = dmap.name
+
+    qfpath = ""
+    if hasattr ( mol, 'cif' ) :
+        qfpath = molPath + "__Q__" + mapName + ".cif"
+    elif ".pdb" in molPath :
+        qfpath = molPath + "__Q__" + mapName + ".pdb"
+    elif ".ent" in molPath :
+        qfpath = molPath + "__Q__" + mapName + ".ent"
+
+    if not os.path.isfile ( qfpath ) :
+        #print "-xxx-", qfpath
+        molPath = os.path.splitext(mol.openedAs[0])[0]
+        mapName = os.path.splitext(dmap.name)[0]
+        if hasattr ( mol, 'cif' ) :
+            qfpath = molPath + "__Q__" + mapName + ".cif"
+        elif ".pdb" in mol.openedAs[0] :
+            qfpath = molPath + "__Q__" + mapName + ".pdb"
+        elif ".ent" in mol.openedAs[0] :
+            qfpath = molPath + "__Q__" + mapName + ".ent"
 
     return qfpath
 
