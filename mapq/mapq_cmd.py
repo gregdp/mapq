@@ -20,11 +20,8 @@
 # THE SOFTWARE.
 
 
-
-
 import sys, os
 
-mods = []
 chimeraPath = None
 numProc = 1
 res = 3.0
@@ -67,12 +64,24 @@ for arg in sys.argv :
 
 
     elif os.path.isfile(arg) :
-        print ( " -> map or model" )
         if '../' in arg or "./" in arg :
+            print ""
             print ( " -X- please do not use relative paths, i.e. ../, in path" )
             ok = False
         else :
-            mods.append ( arg )
+            if ".pdb" in arg or ".ent" in arg :
+                print ( " -> PDB model" )
+                pdbs.append ( arg )
+            elif ".cif" in arg :
+                print ( " -> mmCIF model" )
+                cifs.append ( arg )
+            elif ".mrc" in arg or ".map" in arg :
+                print ( " -> map" )
+                maps.append ( arg )
+            else :
+                print " -X- extension not recognized (please report if common)"
+                print " --- meanwhile, use map=[] or pdb=[] or cif=[] instead"
+                ok = False
 
     else :
         tokens = arg.split("=")
@@ -140,12 +149,15 @@ for arg in sys.argv :
 
 print ("")
 
-allMods = mods+maps+pdbs+cifs
-if len(allMods) < 2 :
-    print " -X- need a map and model"
+
+
+mods = pdbs+cifs
+if len(mods) == 0 :
+    print " -X- need at least one model"
     ok = False
-
-
+if len(maps) != 1 :
+    print " -X- need only/atleast one map"
+    ok = False
 if chimeraPath == None :
     print " -X- please specify a path to Chimera"
     ok = False
@@ -184,7 +196,7 @@ print ("")
 if ok :
 
     #scriptPath = os.path.dirname(os.path.realpath(__file__))
-    scriptPath = os.path.dirname ( allMods[0] )
+    scriptPath = os.path.dirname ( maps[0] )
     newScript = os.path.join ( scriptPath, "_mapqScript.py" )
 
     print ("Creating Chimera script in %s" % newScript)
@@ -208,37 +220,30 @@ if ok :
 
     print ("Running:")
     cmd = "%s --nogui --silent --nostatus " % chimeraPath
-    for mod in mods :
-        ext = os.path.splitext(mod)[1]
-        if ext == ".cif" :
-            fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
-        elif ext == ".pdb" or ext == ".ent" :
-            fp.write ( "mol = chimera.openModels.open ( '%s', type='PDB' )[0]\n" % mod )
-        elif ext == ".map" or ext == ".mrc" :
-            fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % mod )
-        else :
-            # load model from command line
-            #cmd += '"%s" ' % mod
-            pass
-            #fp.write ( "dmap = chimera.openModels.list (modelTypes = [VolumeViewer.volume.Volume])[0]\n" )
-            #fp.write ( "mol = chimera.openModels.list (modelTypes = [chimera.Molecule])[0]\n" )
 
     for mod in pdbs :
+        fp.write ( "\n" )
+        fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % maps[0] )
         fp.write ( "mol = chimera.openModels.open ( '%s', type='PDB' )[0]\n" % mod )
+        fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
+        fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
+
     for mod in cifs :
+        fp.write ( "\n" )
+        fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % maps[0] )
         fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
-    for mod in maps :
-        fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % mod )
+        fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
+        fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
 
     cmd += "'%s'" % newScript
 
     print (" : " + cmd)
     print ("")
 
-    if 1 :
+    if 0 :
         fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
 
-    else :
+    elif 0 :
         if numProc == 1 :
             #CalcQ ( mol, None, dmap, sigma, log=True )
             fp.write ( "qscores.CalcQ ( mol, 'All', dmap, %f )\n" % ( gSigma) )
