@@ -3334,7 +3334,7 @@ def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
         eqn = "no eqn sigma=%.2f" % sigma
 
     fp.write ( "expectedQ = %s\n" % eqn )
-    print " -- eqn: ", eqn
+    print " -- Using expected-Q equation: ", eqn
 
     #fp.write ( "Chain\tType\t# residues\tAvg. Q\tExpectedQ@%.2f\tEst.Res.\n" % RES )
     fp.write ( "Chain\tType\t# residues\tAvg. Q\tExpectedQ@%.2f\n" % RES )

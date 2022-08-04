@@ -32,6 +32,13 @@ pdbs = []
 cifs = []
 maps = []
 
+mapqVersion = "1.9.4"
+
+#scriptPath = os.path.dirname(os.path.realpath(__file__))
+#fp = os.open ( os.path.join(scriptPath, "mapq.py" ) )
+
+print ("")
+print ("Command Line Script - MapQ Version %s" % mapqVersion)
 print ("")
 print ("Found parameters:")
 
@@ -46,6 +53,8 @@ for arg in sys.argv :
 
     elif os.path.isdir(arg) :
         #print ( " -> Chimera path" )
+
+        arg = os.path.abspath(arg)
 
         cp = os.path.join ( os.path.join ( arg, 'bin' ), 'chimera' )
         if os.path.isfile(cp) :
@@ -63,25 +72,27 @@ for arg in sys.argv :
             chimeraPath = cp
 
 
-    elif os.path.isfile(arg) :
-        if '../' in arg or "./" in arg :
-            print ""
-            print ( " -X- please do not use relative paths, i.e. ../, in path" )
-            ok = False
+    elif os.path.isfile( arg ) :
+
+        arg = os.path.abspath(arg)
+
+        if ".pdb" in arg or ".ent" in arg :
+            print ( " -> PDB model" )
+            pdbs.append ( arg )
+        elif ".cif" in arg :
+            print ( " -> mmCIF model" )
+            cifs.append ( arg )
+        elif ".mrc" in arg or ".map" in arg :
+            print ( " -> map" )
+            maps.append ( arg )
         else :
-            if ".pdb" in arg or ".ent" in arg :
-                print ( " -> PDB model" )
-                pdbs.append ( arg )
-            elif ".cif" in arg :
-                print ( " -> mmCIF model" )
-                cifs.append ( arg )
-            elif ".mrc" in arg or ".map" in arg :
-                print ( " -> map" )
-                maps.append ( arg )
-            else :
-                print " -X- extension not recognized (please report if common)"
-                print " --- meanwhile, use map=[] or pdb=[] or cif=[] instead"
-                ok = False
+            print ( " -X- extension not recognized" )
+            print ( " --- use map=[] or pdb=[] or cif=[] to specify type of file" )
+            ok = False
+
+    elif arg[0:2] == "-v" or arg[0:len('--version')] == "--version" :
+        print ("\n\nCommand Line Script - MapQ Version: %s\n\n" % mapqVersion)
+        sys.exit(0)
 
     else :
         tokens = arg.split("=")
@@ -112,40 +123,32 @@ for arg in sys.argv :
 
         elif len(tokens) == 2 and tokens[0] == "map" :
             print ( " -> map" )
-            if os.path.isfile( tokens[1] ) :
-                if '../' in tokens[1] or "./" in tokens[1] :
-                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
-                    ok = False
-                else :
-                    maps.append ( tokens[1] )
+            fpath = os.path.abspath( tokens[1] )
+            if os.path.isfile( fpath ) :
+                maps.append ( fpath )
             else :
-                print " -X- map - file not found"
+                print ( " -X- map - file not found" )
                 ok = False
 
         elif len(tokens) == 2 and tokens[0] == "pdb" :
             print ( " -> pdb" )
-            if os.path.isfile( tokens[1] ) :
-                if '../' in tokens[1] or "./" in tokens[1] :
-                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
-                    ok = False
-                else :
-                    pdbs.append ( tokens[1] )
+            fpath = os.path.abspath( tokens[1] )
+            if os.path.isfile( fpath ) :
+                pdbs.append ( fpath )
             else :
-                print " -X- pdb - file not found"
+                print ( " -X- pdb - file not found" )
                 ok = False
 
         elif len(tokens) == 2 and tokens[0] == "cif" :
             print ( " -> cif" )
-            if os.path.isfile( tokens[1] ) :
-                if '../' in tokens[1] or "./" in tokens[1] :
-                    print ( " -X- please do not use relative paths, i.e. ../, in path" )
-                    ok = False
-                else :
-                    cifs.append ( tokens[1] )
+            fpath = os.path.abspath( tokens[1] )
+            if os.path.isfile( fpath ) :
+                cifs.append ( fpath )
             else :
-                print " -X- cif - file not found"
+                print ( " -X- cif - file not found" )
+
         else :
-            print ( " -> unknown" )
+            print ( " -> file/path not found or parameter not recognized" )
 
 print ("")
 
@@ -153,13 +156,13 @@ print ("")
 
 mods = pdbs+cifs
 if len(mods) == 0 :
-    print " -X- need at least one model"
+    print ( " -X- need at least one model" )
     ok = False
 if len(maps) != 1 :
-    print " -X- need only/atleast one map"
+    print ( " -X- need one map (only)" )
     ok = False
 if chimeraPath == None :
-    print " -X- please specify a path to Chimera"
+    print ( " -X- please specify a path to Chimera" )
     ok = False
 
 if not ok :
