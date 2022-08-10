@@ -3268,6 +3268,21 @@ def eQ_water ( RES, sigma=0.6) :
         return None, "no eqn for water with sigma=%.2f" % sigma
 
 
+def ExpectedQScore (RES, sigma) :
+
+    expQ = 1.0
+    eqn = "1.0"
+    x = RES
+    if abs(sigma-0.6) < 1e-5 :
+        expQ = -0.0000027257*pow(RES,6) + 0.0002420020*pow(RES,5) - 0.0058960622*pow(RES,4) + 0.0611398758*pow(RES,3) - 0.2790872603*pow(RES,2) + 0.3548162472*RES + 0.8108389026
+        eqn = "-0.0000027257*POWER(RES,6) + 0.0002420020*POWER(RES,5) - 0.0058960622*POWER(RES,4) + 0.0611398758*POWER(RES,3) - 0.2790872603*POWER(RES,2) + 0.3548162472*RES + 0.8108389026"
+    elif abs(sigma-0.4) < 1e-5 :
+        expQ = 0.0000121733*pow(x,6) - 0.0003668610*pow(x,5) + 0.0040966965*pow(x,4) - 0.0225427321*pow(x,3) + 0.0930645229*pow(x,2) - 0.4500934403*x + 1.3652087689
+        eqn = "0.0000121733*POWER(RES,6) - 0.0003668610*POWER(RES,5) + 0.0040966965*POWER(RES,4) - 0.0225427321*POWER(RES,3) + 0.0930645229*POWER(RES,2) - 0.4500934403*RES + 1.3652087689"
+        # o	y = 0.0000121733x6 - 0.0003668610x5 + 0.0040966965x4 - 0.0225427321x3 + 0.0930645229x2 - 0.4500934403x + 1.3652087689
+
+    return expQ, eqn
+
 
 def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
 
@@ -3320,19 +3335,7 @@ def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
     #fp.write ( "Water: expectedQ = %s\n" % eq_water )
     #fp.write ( "\n" )
 
-    expQ = -2.0
-    eqn = ""
-    x = RES
-    if abs(sigma-0.6) < 1e-5 :
-        expQ = 1E-05*pow(x,6) - 0.0004*pow(x,5) + 0.0038*pow(x,4) - 0.013*pow(x,3) + 0.023*pow(x,2) - 0.2588*x + 1.2921
-        eqn = "1E-05*POWER(RES,6) - 0.0004*POWER(RES,5) + 0.0038*POWER(RES,4) - 0.013*POWER(RES,3) + 0.023*POWER(RES,2) - 0.2588*RES + 1.2921"
-    elif abs(sigma-0.4) < 1e-5 :
-        expQ = 1E-05*pow(x,6) - 0.0004*pow(x,5) + 0.0041*pow(x,4) - 0.0225*pow(x,3) + 0.0931*pow(x,2) - 0.4501*x + 1.3652
-        eqn = "1E-05*POWER(RES,6) - 0.0004*POWER(RES,5) + 0.0041*POWER(RES,4) - 0.0225*POWER(RES,3) + 0.0931*POWER(RES,2) - 0.4501*RES + 1.3652"
-    else :
-        expQ = -2.0
-        eqn = "no eqn sigma=%.2f" % sigma
-
+    expQ, eqn = ExpectedQScore (RES, sigma)
     fp.write ( "expectedQ = %s\n" % eqn )
     print " -- Using expected-Q equation: ", eqn
 

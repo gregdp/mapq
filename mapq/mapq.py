@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.4"
+mapqVersion = "1.9.5"
 #showDevTools = True
 
 showDevTools = False
@@ -3838,22 +3838,32 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
     def GetMaxScores ( self ) :
 
+        self.minScore1, self.maxScore1 = 0.0,1.0
+        self.minScore2, self.maxScore2 = 0.0,1.0
+
         try :
             RES = float(self.mapRes.get())
         except :
             umsg ( "Please enter a numeric value for Resolution in Options" )
-            self.minScore1, self.maxScore1 = 0.0,1.0
-            self.minScore2, self.maxScore2 = 0.0,1.0
+            return
 
-        avgQrna = -0.1574 * RES + 1.0673 # rna
-        avgQprot = -0.1794 * RES + 1.1244 # protein
-        avgQIon =  -0.1103 * RES + 1.0795 # ion
-        avgQWater =  -0.0895 * RES + 1.0001 # water
+        try :
+            sigma = float(self.sigma.get())
+        except :
+            umsg ( "Please enter a numeric value for sigma in Options" )
+            return
 
-        print " - res %.2f - exp Q-score: %.2f" % (RES, avgQprot)
+        #avgQrna = -0.1574 * RES + 1.0673 # rna
+        #avgQprot = -0.1794 * RES + 1.1244 # protein
+        #avgQIon =  -0.1103 * RES + 1.0795 # ion
+        #avgQWater =  -0.0895 * RES + 1.0001 # water
 
-        self.minScore1, self.maxScore1 = 0.0,avgQprot
-        self.minScore2, self.maxScore2 = 0.0,avgQprot
+        expQScore, eqn = qscores.ExpectedQScore ( RES, sigma )
+
+        print " - res %.2f - exp Q-score: %.2f" % (RES, expQScore)
+
+        self.minScore1, self.maxScore1 = 0.0,expQScore
+        self.minScore2, self.maxScore2 = 0.0,expQScore
 
 
 

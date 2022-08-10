@@ -32,7 +32,7 @@ pdbs = []
 cifs = []
 maps = []
 
-mapqVersion = "1.9.4"
+mapqVersion = "1.9.5"
 
 #scriptPath = os.path.dirname(os.path.realpath(__file__))
 #fp = os.open ( os.path.join(scriptPath, "mapq.py" ) )
