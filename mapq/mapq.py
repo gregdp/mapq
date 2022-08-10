@@ -304,10 +304,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             self.chainMB.menu  =  Tkinter.Menu ( self.chainMB, tearoff=0, postcommand=self.ChainMenu )
             self.chainMB["menu"]  =  self.chainMB.menu
 
-            if showDevTools :
-                b = Tkinter.Button(ff, text="...", command=self.LoadModel)
-                b.grid (column=6, row=0, sticky='w', padx=1)
+            b = Tkinter.Button(ff, text="...", command=self.LoadModel)
+            b.grid (column=6, row=0, sticky='w', padx=1)
 
+            if showDevTools :
                 b = Tkinter.Button(ff, text="^", command=self.SaveModel)
                 b.grid (column=7, row=0, sticky='w', padx=1)
 
@@ -1457,7 +1457,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         cH = numpy.array ( [.33,.56,.88] )
         cL = numpy.array ( [.99,.99,.3] )
 
-        if 0 : # qRedGreen :
+        if 1 : # qRedGreen :
             cH = numpy.array( [50.0/255.0,250.0/255.0,50.0/255.0] )
             cL = numpy.array( [250.0/255.0,50.0/255.0,50.0/255.0] )
 
@@ -3879,12 +3879,13 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             y0 = self.seqY+5
             y1 = self.seqY+self.seqH-5
 
-            cH = numpy.array( [50,250,50] )
-            cL = numpy.array( [250,50,50] )
-
-            # qcolor
             cH = numpy.array ( [.33*255.0,.56*255.0,.88*255.0] )
             cL = numpy.array ( [.99*255.0,.99*255.0,.3*255.0] )
+
+            # qRedGreen
+            if 1 :
+                cH = numpy.array( [50,250,50] )
+                cL = numpy.array( [250,50,50] )
 
             for si in range ( len(self.seq) ) :
                 #if i >= len ( self.seqt ) :
