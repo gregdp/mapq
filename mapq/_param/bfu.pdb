@@ -1,0 +1,125 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Aug 12 09:32:07 2022
+REMARK  99
+REMARK  99   Ligand name: 1-(5-bromopyridin-2-yl)-3-[(1S,2S)-2-(6-fluoro-2-hydroxy-3-propanoylphenyl)cyclopropyl]urea
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCC(=O)c1ccc(F)c([C@@H]2C[C@@H]2NC(=O)Nc3ccc(Br)cn3)c1O
+FORMUL   1  BFU    C18 H17 N3 O3 BR F 
+HETATM    1 BR   BFU A   1       3.566  -5.245  -7.563  1.00 20.00      A   BR  
+HETATM    2  C2  BFU A   1       2.712  -4.475  -5.997  1.00 20.00      A    C  
+HETATM    3  C3  BFU A   1       2.512  -3.102  -5.919  1.00 20.00      A    C  
+HETATM    4  N4  BFU A   1       1.900  -2.566  -4.834  1.00 20.00      A    N  
+HETATM    5  C5  BFU A   1       1.482  -3.367  -3.826  1.00 20.00      A    C  
+HETATM    6  C6  BFU A   1       1.681  -4.741  -3.901  1.00 20.00      A    C  
+HETATM    7  C7  BFU A   1       2.294  -5.280  -4.986  1.00 20.00      A    C  
+HETATM    8  N8  BFU A   1       0.843  -2.782  -2.642  1.00 20.00      A    N  
+HETATM    9  C9  BFU A   1       1.657  -2.102  -1.630  1.00 20.00      A    C  
+HETATM   10  O10 BFU A   1       2.835  -2.025  -1.769  1.00 20.00      A    O  
+HETATM   11  N11 BFU A   1       1.024  -1.569  -0.413  1.00 20.00      A    N  
+HETATM   12  C12 BFU A   1       1.850  -0.941   0.630  1.00 20.00      A    C  
+HETATM   13  C13 BFU A   1       1.790   0.586   0.688  1.00 20.00      A    C  
+HETATM   14  C14 BFU A   1       1.077  -0.249   1.761  1.00 20.00      A    C  
+HETATM   15  C15 BFU A   1      -0.308   0.377   2.076  1.00 20.00      A    C  
+HETATM   16  C16 BFU A   1      -1.419  -0.444   2.235  1.00 20.00      A    C  
+HETATM   17  F   BFU A   1      -1.302  -1.795   2.054  1.00 20.00      A    F  
+HETATM   18  C18 BFU A   1      -2.634   0.099   2.645  1.00 20.00      A    C  
+HETATM   19  C19 BFU A   1      -2.736   1.463   2.895  1.00 20.00      A    C  
+HETATM   20  C20 BFU A   1      -1.626   2.285   2.737  1.00 20.00      A    C  
+HETATM   21  C21 BFU A   1      -0.412   1.743   2.327  1.00 20.00      A    C  
+HETATM   22  O22 BFU A   1       0.735   2.558   2.262  1.00 20.00      A    O  
+HETATM   23  C23 BFU A   1      -1.751   3.809   2.979  1.00 20.00      A    C  
+HETATM   24  O24 BFU A   1      -0.802   4.512   2.843  1.00 20.00      A    O  
+HETATM   25  C25 BFU A   1      -3.124   4.426   3.330  1.00 20.00      A    C  
+HETATM   26  C26 BFU A   1      -3.243   5.822   2.681  1.00 20.00      A    C  
+HETATM   27  H3  BFU A   1       2.847  -2.458  -6.728  1.00 20.00      A    H  
+HETATM   28  H6  BFU A   1       1.345  -5.386  -3.088  1.00 20.00      A    H  
+HETATM   29  H7  BFU A   1       2.450  -6.355  -5.046  1.00 20.00      A    H  
+HETATM   30  HN8 BFU A   1      -0.152  -2.846  -2.525  1.00 20.00      A    H  
+HETATM   31  H11 BFU A   1       0.036  -1.679  -0.272  1.00 20.00      A    H  
+HETATM   32  H12 BFU A   1       2.803  -1.384   0.915  1.00 20.00      A    H  
+HETATM   33 H131 BFU A   1       2.706   1.081   1.009  1.00 20.00      A    H  
+HETATM   34 H132 BFU A   1       1.141   1.059  -0.047  1.00 20.00      A    H  
+HETATM   35  H14 BFU A   1       1.684  -0.260   2.666  1.00 20.00      A    H  
+HETATM   36  H18 BFU A   1      -3.503  -0.544   2.769  1.00 20.00      A    H  
+HETATM   37  H19 BFU A   1      -3.685   1.887   3.215  1.00 20.00      A    H  
+HETATM   38  H22 BFU A   1       0.671   3.133   1.512  1.00 20.00      A    H  
+HETATM   39 H251 BFU A   1      -3.916   3.783   2.955  1.00 20.00      A    H  
+HETATM   40 H252 BFU A   1      -3.214   4.520   4.413  1.00 20.00      A    H  
+HETATM   41 H261 BFU A   1      -4.287   6.130   2.673  1.00 20.00      A    H  
+HETATM   42 H262 BFU A   1      -2.656   6.540   3.253  1.00 20.00      A    H  
+HETATM   43 H263 BFU A   1      -2.869   5.780   1.660  1.00 20.00      A    H  
+CONECT    1    2
+CONECT    2    1    3
+CONECT    2    7
+CONECT    2    7
+CONECT    3    2   27
+CONECT    3    4
+CONECT    3    4
+CONECT    4    5
+CONECT    4    3
+CONECT    4    3
+CONECT    5    4    8
+CONECT    5    6
+CONECT    5    6
+CONECT    6    7   28
+CONECT    6    5
+CONECT    6    5
+CONECT    7    6   29
+CONECT    7    2
+CONECT    7    2
+CONECT    8    5    9   30
+CONECT    9    8   11
+CONECT    9   10
+CONECT    9   10
+CONECT   10    9
+CONECT   10    9
+CONECT   11    9   12   31
+CONECT   12   11   13   14   32
+CONECT   13   12   14   33   34
+CONECT   14   12   13   15   35
+CONECT   15   14   16
+CONECT   15   21
+CONECT   15   21
+CONECT   16   15   17
+CONECT   16   18
+CONECT   16   18
+CONECT   17   16
+CONECT   18   19   36
+CONECT   18   16
+CONECT   18   16
+CONECT   19   18   37
+CONECT   19   20
+CONECT   19   20
+CONECT   20   21   23
+CONECT   20   19
+CONECT   20   19
+CONECT   21   20   22
+CONECT   21   15
+CONECT   21   15
+CONECT   22   21   38
+CONECT   23   20   25
+CONECT   23   24
+CONECT   23   24
+CONECT   24   23
+CONECT   24   23
+CONECT   25   23   26   39   40
+CONECT   26   25   41   42   43
+CONECT   27    3
+CONECT   28    6
+CONECT   29    7
+CONECT   30    8
+CONECT   31   11
+CONECT   32   12
+CONECT   33   13
+CONECT   34   13
+CONECT   35   14
+CONECT   36   18
+CONECT   37   19
+CONECT   38   22
+CONECT   39   25
+CONECT   40   25
+CONECT   41   26
+CONECT   42   26
+CONECT   43   26
+END

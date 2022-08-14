@@ -1,0 +1,148 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Aug 12 09:33:04 2022
+REMARK  99
+REMARK  99   Ligand name: 2-amino-5-[3-(piperazin-1-yl)phenyl]-N-(pyridin-4-yl)pyridine-3-carboxamide
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: Nc1ncc(cc1C(=O)Nc2ccncc2)c3cccc(c3)N4CCNCC4
+FORMUL   1  AFU    C21 H22 N6 O 
+HETATM    1  CAA AFU A   1       0.195   2.250   7.494  1.00 20.00      A    C  
+HETATM    2  CAC AFU A   1      -1.777   3.142   6.597  1.00 20.00      A    C  
+HETATM    3  CAD AFU A   1      -1.579   2.415   5.434  1.00 20.00      A    C  
+HETATM    4  CAE AFU A   1      -0.493   1.612   5.314  1.00 20.00      A    C  
+HETATM    5  CAF AFU A   1       0.396   1.522   6.332  1.00 20.00      A    C  
+HETATM    6  CAH AFU A   1      -0.848  -0.511   4.009  1.00 20.00      A    C  
+HETATM    7  CAI AFU A   1      -0.637  -1.339   2.735  1.00 20.00      A    C  
+HETATM    8  CAK AFU A   1      -1.163  -2.618   2.645  1.00 20.00      A    C  
+HETATM    9  CAM AFU A   1      -0.334  -2.807   0.460  1.00 20.00      A    C  
+HETATM   10  CAN AFU A   1       0.193  -1.529   0.547  1.00 20.00      A    C  
+HETATM   11  CAO AFU A   1       0.035  -0.808   1.684  1.00 20.00      A    C  
+HETATM   12  CAQ AFU A   1       0.894  -0.908  -0.662  1.00 20.00      A    C  
+HETATM   13  CAR AFU A   1       2.270  -0.742  -0.652  1.00 20.00      A    C  
+HETATM   14  CAS AFU A   1       2.924  -0.309  -1.794  1.00 20.00      A    C  
+HETATM   15  CAT AFU A   1       2.204  -0.042  -2.946  1.00 20.00      A    C  
+HETATM   16  CAU AFU A   1       0.828  -0.208  -2.958  1.00 20.00      A    C  
+HETATM   17  CAV AFU A   1       0.173  -0.641  -1.816  1.00 20.00      A    C  
+HETATM   18  CAX AFU A   1       0.139   1.383  -4.575  1.00 20.00      A    C  
+HETATM   19  CAY AFU A   1      -0.513   1.631  -5.934  1.00 20.00      A    C  
+HETATM   20  CBA AFU A   1      -0.030  -0.638  -6.580  1.00 20.00      A    C  
+HETATM   21  CBB AFU A   1       0.622  -0.886  -5.221  1.00 20.00      A    C  
+HETATM   22  NAB AFU A   1      -0.888   3.050   7.612  1.00 20.00      A    N  
+HETATM   23  NAG AFU A   1      -0.297   0.829   4.104  1.00 20.00      A    N  
+HETATM   24  NAL AFU A   1      -1.005  -3.336   1.509  1.00 20.00      A    N  
+HETATM   25  NAP AFU A   1      -1.919  -3.171   3.753  1.00 20.00      A    N  
+HETATM   26  NAW AFU A   1       0.085  -0.015  -4.191  1.00 20.00      A    N  
+HETATM   27  NAZ AFU A   1       0.025   0.761  -6.964  1.00 20.00      A    N  
+HETATM   28  OAJ AFU A   1      -1.457  -0.966   4.917  1.00 20.00      A    O  
+HETATM   29  H1  AFU A   1       0.906   2.177   8.308  1.00 20.00      A    H  
+HETATM   30  H2  AFU A   1      -2.644   3.783   6.693  1.00 20.00      A    H  
+HETATM   31  H3  AFU A   1      -2.291   2.488   4.621  1.00 20.00      A    H  
+HETATM   32  H4  AFU A   1       1.264   0.881   6.238  1.00 20.00      A    H  
+HETATM   33  H5  AFU A   1      -0.209  -3.384  -0.448  1.00 20.00      A    H  
+HETATM   34  H6  AFU A   1       0.447   0.192   1.753  1.00 20.00      A    H  
+HETATM   35  H7  AFU A   1       2.834  -0.950   0.250  1.00 20.00      A    H  
+HETATM   36  H8  AFU A   1       4.000  -0.179  -1.785  1.00 20.00      A    H  
+HETATM   37  H9  AFU A   1       2.716   0.296  -3.839  1.00 20.00      A    H  
+HETATM   38  H10 AFU A   1      -0.902  -0.771  -1.825  1.00 20.00      A    H  
+HETATM   50  H11 AFU A   1       1.178   1.694  -4.622  1.00 20.00      A    H  
+HETATM   39  H12 AFU A   1      -0.377   1.973  -3.826  1.00 20.00      A    H  
+HETATM   40  H13 AFU A   1      -0.341   2.663  -6.222  1.00 20.00      A    H  
+HETATM   41  H14 AFU A   1      -1.580   1.457  -5.848  1.00 20.00      A    H  
+HETATM   42  H15 AFU A   1       0.486  -1.228  -7.330  1.00 20.00      A    H  
+HETATM   43  H16 AFU A   1      -1.068  -0.948  -6.533  1.00 20.00      A    H  
+HETATM   44  H17 AFU A   1       1.689  -0.711  -5.307  1.00 20.00      A    H  
+HETATM   45  H18 AFU A   1       0.450  -1.919  -4.933  1.00 20.00      A    H  
+HETATM   46  H19 AFU A   1       0.225   1.210   3.340  1.00 20.00      A    H  
+HETATM   47  H20 AFU A   1      -2.420  -4.032   3.638  1.00 20.00      A    H  
+HETATM   48  H21 AFU A   1      -1.917  -2.708   4.640  1.00 20.00      A    H  
+HETATM   49  H22 AFU A   1      -0.488   0.894  -7.814  1.00 20.00      A    H  
+CONECT    1   22   29
+CONECT    1    5
+CONECT    1    5
+CONECT    2    3   30
+CONECT    2   22
+CONECT    2   22
+CONECT    3    2   31
+CONECT    3    4
+CONECT    3    4
+CONECT    4    5   23
+CONECT    4    3
+CONECT    4    3
+CONECT    5    4   32
+CONECT    5    1
+CONECT    5    1
+CONECT    6   23    7
+CONECT    6   28
+CONECT    6   28
+CONECT    7    6    8
+CONECT    7   11
+CONECT    7   11
+CONECT    8    7   25
+CONECT    8   24
+CONECT    8   24
+CONECT    9   24   33
+CONECT    9   10
+CONECT    9   10
+CONECT   10   11   12
+CONECT   10    9
+CONECT   10    9
+CONECT   11   10   34
+CONECT   11    7
+CONECT   11    7
+CONECT   12   10   13
+CONECT   12   17
+CONECT   12   17
+CONECT   13   12   35
+CONECT   13   14
+CONECT   13   14
+CONECT   14   15   36
+CONECT   14   13
+CONECT   14   13
+CONECT   15   14   37
+CONECT   15   16
+CONECT   15   16
+CONECT   16   26   17
+CONECT   16   15
+CONECT   16   15
+CONECT   17   16   38
+CONECT   17   12
+CONECT   17   12
+CONECT   18   19   26   39   40
+CONECT   19   27   18   41   42
+CONECT   20   27   21   43   44
+CONECT   21   20   26   45   46
+CONECT   22    1
+CONECT   22    2
+CONECT   22    2
+CONECT   23    4    6   47
+CONECT   24    9
+CONECT   24    8
+CONECT   24    8
+CONECT   25    8   48   49
+CONECT   26   18   21   16
+CONECT   27   19   20   50
+CONECT   28    6
+CONECT   28    6
+CONECT   29    1
+CONECT   30    2
+CONECT   31    3
+CONECT   32    5
+CONECT   33    9
+CONECT   34   11
+CONECT   35   13
+CONECT   36   14
+CONECT   37   15
+CONECT   38   17
+CONECT   40   18
+CONECT   41   19
+CONECT   42   19
+CONECT   43   20
+CONECT   44   20
+CONECT   45   21
+CONECT   46   21
+CONECT   47   23
+CONECT   48   25
+CONECT   49   25
+CONECT   50   27
+CONECT   39   18
+END
