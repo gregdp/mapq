@@ -1285,7 +1285,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
                 mdata["group_PDB"]          = adata[0] = "ATOM" if not hasattr(at, 'cifAtomLabel') else at.cifAtomLabel
                 mdata["id"]                 = adata[1] = ("%d" % ati) if not hasattr(at, 'cifAtId') else at.cifAtId
                 mdata["type_symbol"]        = adata[2] = at.element.name
-                mdata["label_atom_id"]      = adata[3] = aname
+                mdata["label_atom_id"]      = adata[3] = FS ( aname )
                 mdata["label_alt_id"]       = adata[4] = "." if len(at.altLoc) == 0 else at.altLoc
                 mdata["label_comp_id"]      = adata[5] = r.type
                 mdata["label_asym_id"]      = adata[6] = r.id.chainId
@@ -1302,7 +1302,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
                 mdata["auth_seq_id"]        = adata[17] = "%d" % r.id.position
                 mdata["auth_comp_id"]       = adata[18] = r.type
                 mdata["auth_asym_id"]       = adata[19] = r.id.chainId if not hasattr ( r, 'authChainId' ) else r.authChainId
-                mdata["auth_atom_id"]       = adata[20] = aname
+                mdata["auth_atom_id"]       = adata[20] = FS ( aname )
                 mdata["pdbx_PDB_model_num"] = adata[21] = "1" if not hasattr ( at, 'cifModelNum' ) else at.cifModelNum
 
                 data.append ( {'asArray':adata, 'asMap':mdata} )
@@ -1312,7 +1312,12 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
     cif.append ( "#\n" )
 
 
+def FS ( str ) :
 
+    if "'" in str :
+        return '"' + str + '"'
+
+    return str
 
 
 
