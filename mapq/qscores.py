@@ -2383,7 +2383,8 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         print " - all atoms -> %s" % allAtsFilePath
         fout.write ( "%.3f %f %f %d\n" % (sigma, minD, maxD, len(allAtoms)) )
         for at in allAtoms :
-            atId = "%d.%s.%s.%s" % (at.residue.id.position,at.residue.id.chainId,at.name,at.altLoc)
+            ic = "?" if at.residue.id.insertionCode == " " else at.residue.id.insertionCode
+            atId = "%d.%s.%s.%s.%s" % (at.residue.id.position,at.residue.id.chainId,ic,at.name,at.altLoc)
             p = at.coord()
             fout.write ( "%s %f %f %f\n" % (atId,p.x,p.y,p.z) )
         fout.close()
@@ -2442,7 +2443,8 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
             P.atomsPath = os.path.join ( tempPath, "%d_atoms.txt" % P.i )
             fout = open ( P.atomsPath, "w" )
             for at in P.atoms :
-                fout.write ( "%d.%s.%s.%s\n" % (at.residue.id.position,at.residue.id.chainId,at.name,at.altLoc) )
+                ic = "?" if at.residue.id.insertionCode == " " else at.residue.id.insertionCode
+                fout.write ( "%d.%s.%s.%s.%s\n" % (at.residue.id.position,at.residue.id.chainId,ic,at.name,at.altLoc) )
             fout.close()
 
             P.dmapPath = os.path.join ( tempPath, "%d_map.mrc" % P.i )
@@ -2500,7 +2502,8 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         atids = {}
         for r in mol.residues :
             for at in r.atoms :
-                atids["%d.%s.%s.%s" % (at.residue.id.position,at.residue.id.chainId,at.name,at.altLoc)] = at
+                ic = "?" if at.residue.id.insertionCode == " " else at.residue.id.insertionCode
+                atids["%d.%s.%s.%s.%s" % (at.residue.id.position,at.residue.id.chainId,ic,at.name,at.altLoc)] = at
 
         print ""
         print "Getting...",

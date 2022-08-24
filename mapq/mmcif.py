@@ -945,18 +945,11 @@ def ReadMol ( fpath, log=False ) :
 
         first = False
 
-        atLabel = mp["group_PDB"]
-        atId = mp["id"]
         atType = mp['type_symbol']
         atName = mp['label_atom_id']
-        rtype = mp['label_comp_id']
-        chainId = mp['label_asym_id']
-        chainEId = mp['label_entity_id']
-        authSeqId = mp['auth_seq_id']
-        seqId = mp['label_seq_id'] if 'label_seq_id' in mp else "."
-        #authCompId = mp['auth_comp_id']
-        authChainId = mp['auth_asym_id']
-        #authAtomId = mp['auth_atom_id']
+        #chainId = mp['label_asym_id']
+        rtype = mp['auth_comp_id']
+        chainId = mp['auth_asym_id']
         px = mp['Cartn_x']
         py = mp['Cartn_y']
         pz = mp['Cartn_z']
@@ -964,25 +957,32 @@ def ReadMol ( fpath, log=False ) :
         bfactor = mp['B_iso_or_equiv']
         altLoc = mp['label_alt_id']
         if altLoc == "." : altLoc = ''
-        modelNum = mp['pdbx_PDB_model_num'] if 'pdbx_PDB_model_num' in mp else "1"
 
         #print atLabel, atId, chainId, chainEId
 
+        chainEId = mp['label_entity_id']
         if chainEId in descrByEntityId :
             nmol.chainDescr [chainId] = descrByEntityId [chainEId]
 
-        resId = ResId ( mp )
-        if resId == None :
-            continue
+        resI = int ( mp['auth_seq_id'] )
+        insertCode = mp['pdbx_PDB_ins_code']
 
-        ris = "%s%d" % (chainId, resId)
+        ris = "%s%d%s" % (chainId, resI, insertCode)
+
         res = None
         if not ris in rmap :
-            res = nmol.newResidue ( rtype, chimera.MolResId(chainId, resId) )
-            res.authChainId = authChainId
+            if insertCode == "?" :
+                res = nmol.newResidue ( rtype, chimera.MolResId(chainId, resI) )
+            else :
+                res = nmol.newResidue ( rtype, chimera.MolResId(chainId, resI, insert=insertCode) )
+
             rmap[ris] = res
-            res.chainEId = chainEId
-            res.seqId = seqId
+
+            res.cif_label_entity_id = mp ["label_entity_id"]
+            res.cif_label_seq_id = mp ["label_seq_id"]
+            #res.cif_auth_seq_id = mp['auth_seq_id']
+            #res.cif_pdbx_PDB_ins_code = mp['pdbx_PDB_ins_code']
+
         else :
             res = rmap[ris]
 
@@ -1005,11 +1005,13 @@ def ReadMol ( fpath, log=False ) :
         nat.altLoc = altLoc
         nat.occupancy = float(occ)
         nat.bfactor = float(bfactor)
-        nat.cifbfactor = float(bfactor)
 
-        nat.cifAtomLabel = atLabel
-        nat.cifAtId = atId
-        nat.cifModelNum = modelNum
+        nat.cifGroup = mp["group_PDB"]
+        nat.cifId = mp["id"]
+        nat.cifBFactor = mp ["B_iso_or_equiv"]
+        nat.cifCharge = mp ["pdbx_formal_charge"]
+        nat.cifModelNum = mp ["pdbx_PDB_model_num"]
+
 
         if 'Q-score' in mp :
             try :
@@ -1072,23 +1074,6 @@ def GetEntityDescr ( cif, loops ) :
 
     return descrByEntityId
 
-
-def ResId ( mp ) :
-
-    resId = mp['label_seq_id']
-    try :
-        resId = int(resId)
-    except :
-        resId = None
-
-    if resId == None :
-        try :
-            resId = int( mp['auth_seq_id'] )
-        except :
-            print " - atom resId not numeric: %s/%s" % ( mp['label_seq_id'], mp['auth_seq_id'] )
-            resId = None
-
-    return resId
 
 
 def ConnectAtoms () :
@@ -1257,66 +1242,59 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
 
     ati = 1
 
-    for cid in cids :
-        ress = cress[cid]
-        ress.sort()
-        #entityId = chainEIds [cid]
-        #print ". %s - %d res - entity %s" % (cid, len(ress), entityId)
-        print ". %s - %d res" % (cid, len(ress))
+    for r in mol.residues :
 
-        for ri, r in ress :
+        entityId = chainEIds [r.id.chainId]
 
-            for at in r.atoms :
+        for at in r.atoms :
 
-                aname = at.name
-                #if '"' in aname : aname = "'" + aname + "'"
-                #elif "'" in aname or " " in aname : aname = '"' + aname + '"'
+            aname = at.name
+            #if '"' in aname : aname = "'" + aname + "'"
+            #elif "'" in aname or " " in aname : aname = '"' + aname + '"'
 
-                apos = at.coord()
-                if dmap :
-                    apos = dmap.openState.xform.inverse().apply ( at.xformCoord() )
+            apos = at.coord()
+            if dmap :
+                apos = dmap.openState.xform.inverse().apply ( at.xformCoord() )
 
-                adata, mdata = [None] * len(labels), {}
+            adata, mdata = [None] * len(labels), {}
 
-                qstr = "?"
-                if hasattr ( at, "Q" ) :
-                    qstr = "%.3f" % at.Q
+            qstr = "?"
+            if hasattr ( at, "Q" ) :
+                qstr = "%.3f" % at.Q
 
-                mdata["group_PDB"]          = adata[0] = "ATOM" if not hasattr(at, 'cifAtomLabel') else at.cifAtomLabel
-                mdata["id"]                 = adata[1] = ("%d" % ati) if not hasattr(at, 'cifAtId') else at.cifAtId
-                mdata["type_symbol"]        = adata[2] = at.element.name
-                mdata["label_atom_id"]      = adata[3] = FS ( aname )
-                mdata["label_alt_id"]       = adata[4] = "." if len(at.altLoc) == 0 else at.altLoc
-                mdata["label_comp_id"]      = adata[5] = r.type
-                mdata["label_asym_id"]      = adata[6] = r.id.chainId
-                mdata["label_entity_id"]    = adata[7] = entityId if not hasattr (r, 'chainEId') else r.chainEId
-                mdata["label_seq_id"]       = adata[8] = ("." if not hasattr ( r, 'seqId' ) else r.seqId)
-                mdata["pdbx_PDB_ins_code"]  = adata[9] = "?"
-                mdata["Cartn_x"]            = adata[10] = "%.3f" % apos.x
-                mdata["Cartn_y"]            = adata[11] = "%.3f" % apos.y
-                mdata["Cartn_z"]            = adata[12] = "%.3f" % apos.z
-                mdata["occupancy"]          = adata[13] = "%.3f" % at.occupancy
-                mdata["B_iso_or_equiv"]     = adata[14] = "%.3f" % (at.cifbfactor if hasattr (at,'cifbfactor') else at.bfactor)
-                mdata["Q-score"]            = adata[15] = qstr
-                mdata["pdbx_formal_charge"] = adata[16] = "?"
-                mdata["auth_seq_id"]        = adata[17] = "%d" % r.id.position
-                mdata["auth_comp_id"]       = adata[18] = r.type
-                mdata["auth_asym_id"]       = adata[19] = r.id.chainId if not hasattr ( r, 'authChainId' ) else r.authChainId
-                mdata["auth_atom_id"]       = adata[20] = FS ( aname )
-                mdata["pdbx_PDB_model_num"] = adata[21] = "1" if not hasattr ( at, 'cifModelNum' ) else at.cifModelNum
+            mdata["group_PDB"]          = adata[0] = "ATOM" if not hasattr(at, 'cifGroup') else at.cifGroup
+            mdata["id"]                 = adata[1] = ("%d" % ati) if not hasattr(at, 'cifId') else at.cifId
+            mdata["type_symbol"]        = adata[2] = at.element.name
+            mdata["label_atom_id"]      = adata[3] = FS ( aname )
+            mdata["label_alt_id"]       = adata[4] = "." if len(at.altLoc) == 0 else at.altLoc
+            mdata["label_comp_id"]      = adata[5] = r.type
+            mdata["label_asym_id"]      = adata[6] = r.id.chainId
+            mdata["label_entity_id"]    = adata[7] = entityId if not hasattr (r, 'cif_label_entity_id') else r.cif_label_entity_id
+            mdata["label_seq_id"]       = adata[8] = "." if not hasattr ( r, 'cif_label_seq_id' ) else r.cif_label_seq_id
+            mdata["pdbx_PDB_ins_code"]  = adata[9] = "?" if r.id.insertionCode == ' ' else r.id.insertionCode
+            mdata["Cartn_x"]            = adata[10] = "%.3f" % apos.x
+            mdata["Cartn_y"]            = adata[11] = "%.3f" % apos.y
+            mdata["Cartn_z"]            = adata[12] = "%.3f" % apos.z
+            mdata["occupancy"]          = adata[13] = "%.3f" % at.occupancy
+            mdata["B_iso_or_equiv"]     = adata[14] = ("%.3f" % at.bfactor) if not hasattr ( at, 'cifBFactor' ) else at.cifBFactor
+            mdata["Q-score"]            = adata[15] = qstr
+            mdata["pdbx_formal_charge"] = adata[16] = "?" if not hasattr ( at, 'cifCharge' ) else at.cifCharge
+            mdata["auth_seq_id"]        = adata[17] = ("%d" % r.id.position) # if not hasattr ( r, 'cif_auth_seq_id' ) else r.cif_auth_seq_id
+            mdata["auth_comp_id"]       = adata[18] = FS ( r.type )
+            mdata["auth_asym_id"]       = adata[19] = r.id.chainId
+            mdata["auth_atom_id"]       = adata[20] = FS ( aname )
+            mdata["pdbx_PDB_model_num"] = adata[21] = "1" if not hasattr ( at, 'cifModelNum' ) else at.cifModelNum
 
-                data.append ( {'asArray':adata, 'asMap':mdata} )
-                ati += 1
+            data.append ( {'asArray':adata, 'asMap':mdata} )
+            ati += 1
 
     cif.append ( [name, labels, data] )
     cif.append ( "#\n" )
 
 
 def FS ( str ) :
-
     if "'" in str :
         return '"' + str + '"'
-
     return str
 
 
