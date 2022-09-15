@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.9"
+mapqVersion = "1.9.10"
 #showDevTools = True
 
 showDevTools = False
@@ -1470,9 +1470,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 continue
             #sc = self.scores[ri] if colorSC else self.scores2[ri]
             if colorMod == "sc" :
-                sc = r.scQ if hasattr (r, 'scQ') else 0
+                sc = r.qSC if hasattr (r, 'qSC') else 0
             elif colorMod == "bb" :
-                sc = r.bbQ if hasattr (r, 'bbQ') else 0
+                sc = r.qBB if hasattr (r, 'qBB') else 0
             else :
                 sc = r.Q if hasattr (r, 'Q') else 0
 
@@ -2718,7 +2718,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
                     r.bbZ = zscore
                     r.CCS = ccs
-                    r.bbQ = zscore
                     self.scores2[scoreI] = zscore
                     scoreI += 1
 
@@ -3035,8 +3034,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if 0 :
             for r in self.cur_mol.residues :
                 if hasattr ( r, 'Q' ) : del r.Q
-                if hasattr ( r, 'scQ' ) : del r.scQ
-                if hasattr ( r, 'bbQ' ) : del r.bbQ
+                if hasattr ( r, 'qSC' ) : del r.qSC
+                if hasattr ( r, 'qBB' ) : del r.qBB
 
         if len(self.cur_dmap.data.path) == 0 :
             umsg ( "No file for map - %s - must be saved first..." % (self.cur_dmap.name) )
@@ -3067,19 +3066,22 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
     def ShowQScores (self) :
 
         cid = self.chain.get()
-        scBB, scSC = [], []
+        bbScores, scScores = [], []
         for r in self.cur_mol.residues :
             #if cid == None or cid == "All" or r.id.chainId == cid :
             if r.id.chainId == cid :
                 qscores.CalcResQ ( r )
                 if r.isProt or r.isNA :
-                    r.score1 = r.scQ
-                    r.score2 = r.bbQ
-                    if r.scQ != None : scSC.append ( r.scQ )
-                    if r.bbQ != None : scBB.append ( r.bbQ )
+                    r.score1 = r.qSC
+                    r.score2 = r.qBB
+                    if r.qSC != None : scScores.append ( r.qSC )
+                    if r.qBB != None : bbScores.append ( r.qBB )
                 else :
                     r.score1 = r.Q
                     r.score2 = r.Q
+                    if r.Q != None :
+                        scScores.append ( r.Q )
+                        bbScores.append ( r.Q )
 
 
         #bbRes = numpy.power ( numpy.e, (self.avgScore2 - 8.0334) / -4.128 ) # y = -4.128ln(x) + 8.0334
@@ -3089,12 +3091,13 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
 
         #try :
-        if len(scSC) > 0 and len(scBB) > 0 :
-            scMin, scMax, scAvg = min(scSC), max(scSC), numpy.average(scSC)
-            bbMin, bbMax, bbAvg = min(scBB), max(scBB), numpy.average(scBB)
+        if len(scScores) > 0 and len(bbScores) > 0 :
+            scMin, scMax, scAvg = min(scScores), max(scScores), numpy.average(scScores)
+            bbMin, bbMax, bbAvg = min(bbScores), max(bbScores), numpy.average(bbScores)
             print "Average Q sc : %.2f - %.2f, avg %.2f" % (scMin, scMax, scAvg )
             print "Average Q bb : %.2f - %.2f, avg %.2f" % (bbMin, bbMax, bbAvg )
-            self.GetMaxScores()
+
+        self.GetMaxScores()
 
         #except :
         #    pass
@@ -3126,8 +3129,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if 0 :
             for r in self.cur_mol.residues :
                 if hasattr ( r, 'Q' ) : del r.Q
-                if hasattr ( r, 'scQ' ) : del r.scQ
-                if hasattr ( r, 'bbQ' ) : del r.bbQ
+                if hasattr ( r, 'qSC' ) : del r.qSC
+                if hasattr ( r, 'qBB' ) : del r.qBB
 
 
         sigma = float(self.sigma.get())
@@ -3140,10 +3143,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         for r in self.cur_mol.residues :
             if cid == None or r.id.chainId == cid :
                 if r.isProt or r.isNA :
-                    r.score1 = r.scQ
-                    r.score2 = r.bbQ
-                    if r.bbQ != None : scBB.append ( r.bbQ )
-                    if r.scQ != None : scSC.append ( r.scQ )
+                    r.score1 = r.qSC
+                    r.score2 = r.qBB
+                    if r.qBB != None : scBB.append ( r.qBB )
+                    if r.qSC != None : scSC.append ( r.qSC )
                 else :
                     r.score1 = r.Q
                     r.score2 = r.Q
@@ -3211,6 +3214,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #qscores.QStatsProt ( self.cur_mol, self.cur_dmap, chainId )
         #qscores.QStatsRNA ( self.cur_mol, self.cur_dmap, chainId )
         #qscores.QStats1 (self.cur_mol, chainId)
+        qscores.QStats1 (self.cur_mol)
 
         umsg ( "Showing Q-scores for chain %s" % chainId )
         self.ShowQScores ()
@@ -3589,8 +3593,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
                     r.SAArea = 4 * numpy.pi * numpy.power ( vdwRadii[at.element.name], 2.0  ) * numPtsOnSAS / tryPts
 
-                if hasattr (r, 'scQ') and r.scQ != None :
-                    fp.write ( "%s\t%d\t%f\t%f\n" % (r.type, r.id.position, r.scQ, r.SAArea) )
+                if hasattr (r, 'qSC') and r.qSC != None :
+                    fp.write ( "%s\t%d\t%f\t%f\n" % (r.type, r.id.position, r.qSC, r.SAArea) )
                 elif hasattr (r, 'Q') and r.Q != None :
                     fp.write ( "%s\t%d\t%f\t%f\n" % (r.type, r.id.position, r.Q, r.SAArea) )
 
@@ -3860,7 +3864,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         expQScore, eqn = qscores.ExpectedQScore ( RES, sigma )
 
-        print " - res %.2f - exp Q-score: %.2f" % (RES, expQScore)
+        print " - res %.2f - expected Q-score: %.2f" % (RES, expQScore)
 
         self.minScore1, self.maxScore1 = 0.0,expQScore
         self.minScore2, self.maxScore2 = 0.0,expQScore
@@ -5395,8 +5399,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 fp = open ( "/Users/greg/Desktop/ssQ.txt", "a" )
                 fp.write ( "%s\t%s\t%.3f\t%.3f\n" % (m.name, res, ssQ, ssQMax) )
                 fp.close()
-
-
 
         qscores.sseQscores ( self.cur_mol, self.cur_dmap, 3.0 )
 
@@ -8028,7 +8030,7 @@ def CalcRotaZ ( dmap, mol, ress ) :
             else :
                 print "?_%d.%s_%s" % (res.id.position, res.id.chainId, res.type)
                 res.scZ = 0
-            res.scQ = res.scZ
+            res.qSC = res.scZ
 
         else :
             res.scZ = zShakeSC ( mol, res, resolution, dmap, show=False )

@@ -2875,7 +2875,7 @@ def QStats1 ( mol, chainId='All', doCalcResQ=True ) :
         if r.id.chainId == chainId or chainId == "All" :
 
             if doCalcResQ :
-                CalcResQ (r, None, None, useOld=True )
+                CalcResQ ( r )
 
             for at in r.atoms :
                 if at.element.name == "H" :
@@ -3452,13 +3452,15 @@ def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
 
             r.Q = numpy.average ( qs )
 
-            r.qBB, r.qSC, r.qSugar = 0, 0, 0
+            r.qBB, r.qSC, r.qSugar, r.qResidue = 0, 0, 0, 0
             if len(r.bbAtoms) > 0 :
                 r.qBB = numpy.average ( [at.Q for at in r.bbAtoms if at.element.name != "H"] )
             if len(r.scAtoms) > 0 :
                 r.qSC = numpy.average ( [at.Q for at in r.scAtoms if at.element.name != "H"] )
             if len(r.sugarAtoms) > 0 :
                 r.qSugar = numpy.average ( [at.Q for at in r.sugarAtoms if at.element.name != "H"] )
+            r.qResidue = numpy.average ( [at.Q for at in r.atoms if at.element.name != "H"] )
+
             Qs.append ( [r.qBB, r.qSC, r.Q, r.qSugar] )
 
             if 0 :
@@ -3745,35 +3747,29 @@ def CalcSigma ( mol, cid, dmap, allAtTree, useOld=False, log=False ) :
     return numpy.average(scoresBB), numpy.average(scoresSC)
 
 
-def CalcResQ (r, dmap=None, sigma=0.6, allAtTree=None, numPts=8, toRAD=2.0, dRAD=0.1, minD=0.0, maxD=1.0, useOld=False ) :
+def CalcResQ ( r ) :
 
-    scQ, bbQ, Q, numSC, numBB = 0.0, 0.0, 0.0, 0.0, 0.0
-    for at in r.atoms :
-        if at.element.name == "H" :
-            continue
-        if not hasattr ( at, 'isBB' ) :
-            SetBBAts ( at.molecule )
-        if hasattr (at, 'Q') :
-            Q += at.Q
-            if r.isProt or r.isNA :
-                if at.isBB :
-                    bbQ += at.Q
-                    numBB += 1.0
-                else :
-                    scQ += at.Q
-                    numSC += 1.0
+    if not hasattr ( r, 'isProt' ) :
+        SetBBAts ( r.atoms[0].molecule )
 
-    if r.isProt or r.isNA :
-        if numSC > 0 :
-            r.scQ = scQ / numSC
-        else :
-            r.scQ = None
-        if numBB > 0 :
-            r.bbQ = bbQ / numBB
-        else :
-            r.bbQ = None
+    r.Q, r.qBB, r.qSC, r.qSugar = None, None, None, None
 
-    r.Q = Q / float ( len(r.atoms) )
+    qs = [at.Q for at in r.atoms if (at.element.name != "H" and hasattr(at,'Q'))]
+    if len(qs) == 0 :
+        return
+
+    r.Q = numpy.average ( qs )
+
+    if len(r.bbAtoms) > 0 :
+        r.qBB = numpy.average ( [at.Q for at in r.bbAtoms if at.element.name != "H"] )
+
+    if len(r.scAtoms) > 0 :
+        r.qSC = numpy.average ( [at.Q for at in r.scAtoms if at.element.name != "H"] )
+
+    if len(r.sugarAtoms) > 0 :
+        r.qSugar = numpy.average ( [at.Q for at in r.sugarAtoms if at.element.name != "H"] )
+
+    r.qResidue = r.Q
 
 
 
@@ -3810,7 +3806,7 @@ def CalcQ_ ( mol, cid, dmap, sigma=0.5, allAtTree=None, useOld=False, log=False 
         def run(self):
             print "run - %d - %d" % (self.ti, len(ress))
             for ri, r in enumerate ( self.ress ) :
-                #CalcResQ (r, dmap, sigma, allAtTree=allAtTree, numPts=2, toRAD=2.0, dRAD=0.2 )
+                #CalcResQ ( r )
                 #print "%d-%d/%d" % (ti,ri/len(self.ress)),
                 for at in r.atoms :
                     if at.element.name != "H" :
