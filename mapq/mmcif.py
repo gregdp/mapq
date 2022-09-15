@@ -947,7 +947,6 @@ def ReadMol ( fpath, log=False ) :
 
         atType = mp['type_symbol']
         atName = mp['label_atom_id']
-        #chainId = mp['label_asym_id']
         rtype = mp['auth_comp_id']
         chainId = mp['auth_asym_id']
         px = mp['Cartn_x']
@@ -980,6 +979,7 @@ def ReadMol ( fpath, log=False ) :
 
             res.cif_label_entity_id = mp ["label_entity_id"]
             res.cif_label_seq_id = mp ["label_seq_id"]
+            res.cif_label_asym_id = mp['label_asym_id']
             #res.cif_auth_seq_id = mp['auth_seq_id']
             #res.cif_pdbx_PDB_ins_code = mp['pdbx_PDB_ins_code']
 
@@ -1268,7 +1268,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
             mdata["label_atom_id"]      = adata[3] = FS ( aname )
             mdata["label_alt_id"]       = adata[4] = "." if len(at.altLoc) == 0 else at.altLoc
             mdata["label_comp_id"]      = adata[5] = r.type
-            mdata["label_asym_id"]      = adata[6] = r.id.chainId
+            mdata["label_asym_id"]      = adata[6] = r.cif_label_asym_id
             mdata["label_entity_id"]    = adata[7] = entityId if not hasattr (r, 'cif_label_entity_id') else r.cif_label_entity_id
             mdata["label_seq_id"]       = adata[8] = "." if not hasattr ( r, 'cif_label_seq_id' ) else r.cif_label_seq_id
             mdata["pdbx_PDB_ins_code"]  = adata[9] = "?" if r.id.insertionCode == ' ' else r.id.insertionCode
