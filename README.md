@@ -6,6 +6,7 @@ A plugin for <a href="https://www.cgl.ucsf.edu/chimera/">UCSF Chimera</a> to cal
 * <a href="https://github.com/gregdp/mapq/wiki/MapQ-Install">Install the latest version</a>
 * [Tutorials](https://github.com/gregdp/mapq/tree/master/tutorials)
 * [Report an issue or ask a question](https://github.com/gregdp/mapq/issues)
+* An important note if using Google Drive: when calculating Q-scores with multiple processes, the process fails if the map and model files are on a Google Drive path. Please copy them to a non Google Drive location for this to work.
 
 
 More details:
