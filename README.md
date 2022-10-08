@@ -7,7 +7,7 @@ A plugin for <a href="https://www.cgl.ucsf.edu/chimera/">UCSF Chimera</a> to cal
 * [Tutorials](https://github.com/gregdp/mapq/tree/master/tutorials)
 * [Report an issue or ask a question](https://github.com/gregdp/mapq/issues)
 * An important note if using Google Drive: when calculating Q-scores with multiple processes, the process fails if the map and model files are on a Google Drive path. Please copy them to a non Google Drive location for this to work.
-
+* A video that shows how to genreate a color key for displaying Q-scores on a model ribbon: https://www.youtube.com/watch?v=lxy3reAXLKI
 
 More details:
 * (2020) Measurement of atom resolvability in cryo-EM maps with Q-scores <a href="https://www.nature.com/articles/s41592-020-0731-1" target="_blank">Nature Methods</a>, <a href="https://www.biorxiv.org/content/10.1101/722991v2" target="_blank">BioRXiv</a>
