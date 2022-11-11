@@ -1565,6 +1565,7 @@ def QscorePt2 ( atPt, xfI, dmap, sigma, allPtTree = None, log=0, numPts=8, toRAD
 
 
 # calculate Q-score given a point (rather than atom), and using a 'points grid' rather than 'atoms tree'
+# (points grid is much faster than atoms tree)
 
 def QscorePt3 ( atPt, xfI, dmap, sigma, ptGrid=None, log=0, numPts=8, toRAD=2.0, dRAD=0.5, minD=None, maxD=None, fitg=0 ) :
 
@@ -1630,8 +1631,8 @@ def QscorePt3 ( atPt, xfI, dmap, sigma, ptGrid=None, log=0, numPts=8, toRAD=2.0,
 
         if len (pts) < 1 :
             if log :
-                print " - no points for RAD %.1f - %d.%s - " % (RAD, atoms[0].residue.id.position, atoms[0].residue.type),
-                print "SC" if atoms[0].isSC else "BB"
+                print " - no points for RAD %.1f - " % RAD,
+                #print "SC" if atoms[0].isSC else "BB"
 
             r_avg.append ( [RAD,0,0] )
 

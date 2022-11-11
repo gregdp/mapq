@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.10"
+mapqVersion = "1.9.11"
 #showDevTools = True
 
 showDevTools = False
@@ -5129,7 +5129,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         dmap = self.cur_dmap
 
-
         selAtom = selAts[0]
         r = selAtom.residue
         print ""
@@ -5146,7 +5145,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             if "RAD points" in m.name :
                 removeMods.append ( m )
         #chimera.openModels.remove ( removeMods )
-
 
         ats = [at for at in self.cur_mol.atoms if not at.element.name == "H"]
 
@@ -5193,6 +5191,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         #agrid.FromAtomsLocal ( ats, 2.0 )
         sigma = float(self.sigma.get())
 
+        minD, maxD = qscores.MinMaxD ( dmap )
+        print " - mind: %.3f, maxd: %.3f" % (minD, maxD)
+
         import time
         start = time.time()
 
@@ -5205,41 +5206,46 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             end = time.time()
             print "%s - sigma: %.3f, res: %.3f, time: %f" % ( selAtom.name, sigma, res, (end - start) )
 
+        elif 0 :
+            at.Q = qscores.Qscore ( [selAtom], dmap, sigma, allAtTree=allAtTree, show=0, log=1, numPts=8, toRAD=3.0, dRAD=0.1, minD=minD, maxD=maxD )
+            print " - %s : %.2f" % (selAtom.name, selAtom.Q)
+
+
         elif 1 :
             print ""
             print "_Q_score____________________________"
 
-            minD, maxD = qscores.MinMaxD ( dmap )
-            print " - mind: %.3f, maxd: %.3f" % (minD, maxD)
 
-            atPt = selAtom.coord()
-            atPt = [atPt.x, atPt.y, atPt.z]
-            xfI = selAtom.molecule.openState.xform
-            start = time.time()
-            qs = qscores.QscorePt3 ( atPt, xfI, dmap, sigma, ptGrid=ptGrid, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
-            end = time.time()
-            print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
+            if 1 :
+                atPt = selAtom.coord()
+                atPt = [atPt.x, atPt.y, atPt.z]
+                xfI = selAtom.molecule.openState.xform
+                start = time.time()
+                #qs = qscores.QscorePt3 ( atPt, xfI, dmap, sigma, ptGrid=ptGrid, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+                qs = qscores.QscorePt3 ( atPt, xfI, dmap, sigma, ptGrid=ptGrid, log=1, numPts=8, toRAD=3.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=1 )
+                end = time.time()
+                print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
 
+            if 0 :
+                start = time.time()
+                at.Q = qscores.QscoreG ( [at], dmap, sigma, agrid=atGrid, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+                end = time.time()
+                print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
 
-            start = time.time()
-            at.Q = qscores.QscoreG ( [at], dmap, sigma, agrid=atGrid, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
-            end = time.time()
-            print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
+                start = time.time()
+                qs = 0
+                qs = qscores.Qscore ( [selAtom], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+                #qs, yds, err = qs
+                end = time.time()
+                print " - sigma (at): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
 
-            start = time.time()
-            qs = 0
-            qs = qscores.Qscore ( [selAtom], dmap, sigma, allAtTree=allAtTree, show=0, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
-            #qs, yds, err = qs
-            end = time.time()
-            print " - sigma (at): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
-
-            atPt = selAtom.coord()
-            atPt = [atPt.x, atPt.y, atPt.z]
-            xfI = selAtom.molecule.openState.xform
-            start = time.time()
-            qs = qscores.QscorePt2 ( atPt, xfI, dmap, sigma, allPtTree=allPtTree, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
-            end = time.time()
-            print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
+                atPt = selAtom.coord()
+                atPt = [atPt.x, atPt.y, atPt.z]
+                xfI = selAtom.molecule.openState.xform
+                start = time.time()
+                qs = qscores.QscorePt2 ( atPt, xfI, dmap, sigma, allPtTree=allPtTree, log=0, numPts=8, toRAD=2.0, dRAD=0.1, minD=minD, maxD=maxD, fitg=0 )
+                end = time.time()
+                print " - sigma (pt): %.3f, Q-score: %.3f, time: %f" % ( sigma, qs, (end - start) )
 
 
 
@@ -6333,7 +6339,10 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         if mfrom == None :
             rmap = {}
             for r in mol.residues :
-                rmap[r.id.position] = r
+                if r.id.position in rmap :
+                    rmap[r.id.position].append ( r )
+                else :
+                    rmap[r.id.position] = [r]
                 r.dms = None
                 r.ribbonColor = chimera.MaterialColor ( .8, .8, .8, 1.0 )
 
@@ -6361,8 +6370,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                         if not i in rmap :
                             print " - res %d not in rmap" % i
                         else :
-                            r = rmap[i]
-                            r.ribbonColor = chimera.MaterialColor ( C[0], C[1], C[2], 1.0 )
+                            for r in rmap[i] :
+                                r.ribbonColor = chimera.MaterialColor ( C[0], C[1], C[2], 1.0 )
 
                 print ""
 

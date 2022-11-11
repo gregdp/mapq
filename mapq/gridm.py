@@ -221,6 +221,19 @@ class Grid (object) :
             box2.append ( at )
 
 
+    def MoveAtomLocal1 ( self, at, newPos ) :
+
+        box1 = self.GetBox ( at.coord1 )
+        box2 = self.GetBox ( newPos )
+        if box1 == box2 :
+            at.coord1 = chimera.Point(newPos[0],newPos[1],newPos[2])
+        else :
+            box1.remove ( at )
+            at.coord1 = chimera.Point(newPos[0],newPos[1],newPos[2])
+            box2.append ( at )
+
+
+
     def RemoveAtomLocal (self, at) :
 
         #C = at.xformCoord() - minP
@@ -367,6 +380,47 @@ class Grid (object) :
 
         return ats
 
+
+
+    def AtsNearPtLocal1 ( self, C, D = None, excludeAt = None ) :
+
+        #startt = time.time()
+        ats = []
+        #atsByDist = []
+
+        if D == None :
+            D = self.D
+        else :
+            if D > self.D :
+                print "grid: asking for D larger than box size"
+
+        i = int ( numpy.floor ( C[0]/self.D ) )
+        j = int ( numpy.floor ( C[1]/self.D ) )
+        k = int ( numpy.floor ( C[2]/self.D ) )
+
+        for kk in (k-1, k, k+1) :
+
+            if not kk in self.boxes : continue
+            jboxes = self.boxes[kk]
+
+            for jj in (j-1, j, j+1) :
+
+                if not jj in jboxes : continue
+                iboxes = jboxes[jj]
+
+                for ii in (i-1, i, i+1) :
+
+                    if not ii in iboxes : continue
+                    atsInBox = iboxes[ii]
+                    #ats.extend ( atsInBox )
+
+                    for at in atsInBox :
+                        v = at.coord1 - C
+                        if v.length < D :
+                            ats.append ( [at, v] )
+                            #atsByDist.append ( [v.length, at] )
+
+        return ats
 
 
 

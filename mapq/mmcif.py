@@ -892,6 +892,8 @@ def diha ( a1, a2, a3, a4 ) :
 def ReadMol ( fpath, log=False ) :
 
     from random import random
+    from chimera.resCode import nucleic3to1
+    chargedIons = { "MG":2, "NA":1, "CL":-1, "CA":2, "ZN":2, "MN":2, "FE":3, "CO":2, "NI":2, "K":1 }
 
     res = ReadCif ( fpath, log )
     if res == None :
@@ -966,7 +968,14 @@ def ReadMol ( fpath, log=False ) :
         resI = int ( mp['auth_seq_id'] )
         insertCode = mp['pdbx_PDB_ins_code']
 
-        ris = "%s%d%s" % (chainId, resI, insertCode)
+        ris = "%s_%d_%s" % (chainId, resI, insertCode)
+
+        # load only nucleic ?
+        if 0 :
+            if rtype in nucleic3to1 : pass
+            elif rtype.upper() in chargedIons : pass
+            elif rtype.upper() == "HOH" : pass
+            else : continue
 
         res = None
         if not ris in rmap :
@@ -997,6 +1006,8 @@ def ReadMol ( fpath, log=False ) :
 
         nat = nmol.newAtom ( atName, chimera.Element(atType) )
 
+
+
         drawRib = rtype in protein3to1 or rtype in nucleic3to1
 
         #aMap[at] = nat
@@ -1011,7 +1022,10 @@ def ReadMol ( fpath, log=False ) :
         nat.cifBFactor = mp ["B_iso_or_equiv"]
         nat.cifCharge = mp ["pdbx_formal_charge"]
         nat.cifModelNum = mp ["pdbx_PDB_model_num"]
+        nat.cifAuthAtomId = mp ["auth_atom_id"] if "auth_atom_id" in mp else atName
 
+        #if chainId == "M1" or chainId == "M" :
+        #    print "%d - %s %s - %s %s" % (resI, chainId, res.id.chainId, atName, nat.cifId)
 
         if 'Q-score' in mp :
             try :
@@ -1261,6 +1275,9 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
             qstr = "?"
             if hasattr ( at, "Q" ) :
                 qstr = "%.3f" % at.Q
+
+            if not hasattr ( r, 'cif_label_asym_id' ) :
+                r.cif_label_asym_id = r.id.chainId
 
             mdata["group_PDB"]          = adata[0] = "ATOM" if not hasattr(at, 'cifGroup') else at.cifGroup
             mdata["id"]                 = adata[1] = ("%d" % ati) if not hasattr(at, 'cifId') else at.cifId
