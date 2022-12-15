@@ -958,6 +958,7 @@ def ReadMol ( fpath, log=False ) :
         bfactor = mp['B_iso_or_equiv']
         altLoc = mp['label_alt_id']
         if altLoc == "." : altLoc = ''
+        modelNum = mp ["pdbx_PDB_model_num"]
 
         #print atLabel, atId, chainId, chainEId
 
@@ -1021,7 +1022,7 @@ def ReadMol ( fpath, log=False ) :
         nat.cifId = mp["id"]
         nat.cifBFactor = mp ["B_iso_or_equiv"]
         nat.cifCharge = mp ["pdbx_formal_charge"]
-        nat.cifModelNum = mp ["pdbx_PDB_model_num"]
+        nat.cifModelNum = modelNum
         nat.cifAuthAtomId = mp ["auth_atom_id"] if "auth_atom_id" in mp else atName
 
         #if chainId == "M1" or chainId == "M" :
@@ -1274,7 +1275,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
 
             qstr = "?"
             if hasattr ( at, "Q" ) :
-                qstr = "%.3f" % at.Q
+                qstr = "%f" % at.Q
 
             if not hasattr ( r, 'cif_label_asym_id' ) :
                 r.cif_label_asym_id = r.id.chainId
