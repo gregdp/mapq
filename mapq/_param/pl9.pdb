@@ -1,0 +1,329 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:40:07 2023
+REMARK  99
+REMARK  99   Ligand name: 2,3-dimethyl-5-(3,7,11,15,19,23,27,31,35-nonamethylhexatriaconta-2,6,10,14,18,22,26,30,34-nonaen-1-yl)cyclohexa-2,5-diene-1,4-dione
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCCC(C)=CCC1=CC(=O)C(=C(C)C1=O)C
+FORMUL   1  PL9    C53 H80 O2 
+HETATM    1  C2  PL9 A   1       5.506   7.394  -1.072  1.00 20.00      A    C  
+HETATM    2  C3  PL9 A   1       4.973   8.117   0.167  1.00 20.00      A    C  
+HETATM    3  C4  PL9 A   1       4.937   9.645   0.205  1.00 20.00      A    C  
+HETATM    4  C5  PL9 A   1       5.413  10.444  -1.006  1.00 20.00      A    C  
+HETATM    5  C6  PL9 A   1       5.925   9.718  -2.257  1.00 20.00      A    C  
+HETATM    6  C1  PL9 A   1       5.963   8.196  -2.294  1.00 20.00      A    C  
+HETATM    7  C7  PL9 A   1       4.333   7.311   1.305  1.00 20.00      A    C  
+HETATM    8  C8  PL9 A   1       5.346   7.143   2.446  1.00 20.00      A    C  
+HETATM    9  C9  PL9 A   1       4.891   6.330   3.416  1.00 20.00      A    C  
+HETATM   10  C10 PL9 A   1       5.977   5.319   2.921  1.00 20.00      A    C  
+HETATM   11  C11 PL9 A   1       4.737   4.943   4.089  1.00 20.00      A    C  
+HETATM   12  C12 PL9 A   1       4.099   3.943   3.079  1.00 20.00      A    C  
+HETATM   13  C13 PL9 A   1       2.536   4.081   3.119  1.00 20.00      A    C  
+HETATM   14  C14 PL9 A   1       2.046   4.707   2.017  1.00 20.00      A    C  
+HETATM   15  C15 PL9 A   1       1.260   4.729   0.684  1.00 20.00      A    C  
+HETATM   16  C16 PL9 A   1       1.878   3.255   1.409  1.00 20.00      A    C  
+HETATM   17  C17 PL9 A   1       0.342   2.953   1.178  1.00 20.00      A    C  
+HETATM   18  C18 PL9 A   1      -0.425   3.057   2.549  1.00 20.00      A    C  
+HETATM   19  C19 PL9 A   1      -1.729   3.259   2.382  1.00 20.00      A    C  
+HETATM   20  C20 PL9 A   1      -3.221   2.810   2.449  1.00 20.00      A    C  
+HETATM   21  C21 PL9 A   1      -1.870   1.651   2.454  1.00 20.00      A    C  
+HETATM   22  C22 PL9 A   1      -0.494   0.988   2.118  1.00 20.00      A    C  
+HETATM   23  C23 PL9 A   1       0.083   0.300   3.403  1.00 20.00      A    C  
+HETATM   24  C24 PL9 A   1      -0.055  -1.070   3.366  1.00 20.00      A    C  
+HETATM   25  C25 PL9 A   1       0.509  -2.499   3.258  1.00 20.00      A    C  
+HETATM   26  C26 PL9 A   1       1.406  -1.084   2.733  1.00 20.00      A    C  
+HETATM   27  C27 PL9 A   1       1.308  -0.862   1.183  1.00 20.00      A    C  
+HETATM   28  C28 PL9 A   1       2.740  -0.674   0.594  1.00 20.00      A    C  
+HETATM   29  C29 PL9 A   1       2.717  -0.397  -0.735  1.00 20.00      A    C  
+HETATM   30  C30 PL9 A   1       3.323  -1.816  -0.926  1.00 20.00      A    C  
+HETATM   31  C31 PL9 A   1       2.758  -0.811  -2.232  1.00 20.00      A    C  
+HETATM   32  C32 PL9 A   1       1.612  -1.807  -2.523  1.00 20.00      A    C  
+HETATM   33  C33 PL9 A   1       2.183  -3.235  -2.614  1.00 20.00      A    C  
+HETATM   34  C34 PL9 A   1       1.494  -3.992  -3.437  1.00 20.00      A    C  
+HETATM   35  C35 PL9 A   1       1.021  -4.761  -2.151  1.00 20.00      A    C  
+HETATM   36  C36 PL9 A   1       0.384  -5.000  -3.751  1.00 20.00      A    C  
+HETATM   37  C37 PL9 A   1      -0.928  -4.535  -3.096  1.00 20.00      A    C  
+HETATM   38  C38 PL9 A   1      -2.092  -5.316  -3.679  1.00 20.00      A    C  
+HETATM   39  C39 PL9 A   1      -3.239  -4.662  -3.570  1.00 20.00      A    C  
+HETATM   40  C40 PL9 A   1      -4.649  -4.456  -2.976  1.00 20.00      A    C  
+HETATM   41  C41 PL9 A   1      -3.421  -5.439  -2.220  1.00 20.00      A    C  
+HETATM   42  C42 PL9 A   1      -3.942  -6.870  -2.513  1.00 20.00      A    C  
+HETATM   43  C43 PL9 A   1      -3.731  -7.760  -1.265  1.00 20.00      A    C  
+HETATM   44  C44 PL9 A   1      -4.620  -7.495  -0.299  1.00 20.00      A    C  
+HETATM   45  C45 PL9 A   1      -5.222  -8.893  -0.627  1.00 20.00      A    C  
+HETATM   46  C46 PL9 A   1      -5.968  -7.733   0.443  1.00 20.00      A    C  
+HETATM   47  C47 PL9 A   1      -7.142  -7.300  -0.469  1.00 20.00      A    C  
+HETATM   48  C48 PL9 A   1      -8.280  -6.723   0.397  1.00 20.00      A    C  
+HETATM   49  C49 PL9 A   1      -9.100  -5.790  -0.108  1.00 20.00      A    C  
+HETATM   50  C50 PL9 A   1     -10.238  -5.214   0.760  1.00 20.00      A    C  
+HETATM   51  C51 PL9 A   1      -8.906  -5.291  -1.561  1.00 20.00      A    C  
+HETATM   52  C52 PL9 A   1       5.373  11.968  -0.976  1.00 20.00      A    C  
+HETATM   53  C53 PL9 A   1       6.299  10.526  -3.515  1.00 20.00      A    C  
+HETATM   54  O1  PL9 A   1       4.539  10.210   1.175  1.00 20.00      A    O  
+HETATM   55  O2  PL9 A   1       6.360   7.633  -3.265  1.00 20.00      A    O  
+HETATM   56  HC2 PL9 A   1       5.531   6.306  -1.096  1.00 20.00      A    H  
+HETATM   57 HC71 PL9 A   1       4.041   6.340   0.938  1.00 20.00      A    H  
+HETATM   58 HC72 PL9 A   1       3.455   7.838   1.674  1.00 20.00      A    H  
+HETATM   59  HC8 PL9 A   1       6.065   6.649   1.799  1.00 20.00      A    H  
+HETATM   60 H101 PL9 A   1       6.970   5.691   3.187  1.00 20.00      A    H  
+HETATM   61 H102 PL9 A   1       5.907   5.212   1.833  1.00 20.00      A    H  
+HETATM   62 H103 PL9 A   1       5.814   4.349   3.393  1.00 20.00      A    H  
+HETATM   63 H111 PL9 A   1       4.095   5.034   4.965  1.00 20.00      A    H  
+HETATM   64 H112 PL9 A   1       5.719   4.575   4.395  1.00 20.00      A    H  
+HETATM   65 H121 PL9 A   1       4.457   4.163   2.076  1.00 20.00      A    H  
+HETATM   66 H122 PL9 A   1       4.381   2.923   3.350  1.00 20.00      A    H  
+HETATM   67  H13 PL9 A   1       2.391   3.008   3.078  1.00 20.00      A    H  
+HETATM   68 H151 PL9 A   1       0.191   4.802   0.893  1.00 20.00      A    H  
+HETATM   69 H152 PL9 A   1       1.574   5.589   0.090  1.00 20.00      A    H  
+HETATM   70 H153 PL9 A   1       1.459   3.815   0.132  1.00 20.00      A    H  
+HETATM   71 H161 PL9 A   1       2.409   3.196   0.454  1.00 20.00      A    H  
+HETATM   72 H162 PL9 A   1       2.290   2.526   2.097  1.00 20.00      A    H  
+HETATM   73 H171 PL9 A   1       0.226   1.947   0.770  1.00 20.00      A    H  
+HETATM   74 H172 PL9 A   1      -0.071   3.683   0.472  1.00 20.00      A    H  
+HETATM   75  H18 PL9 A   1      -0.201   2.033   2.809  1.00 20.00      A    H  
+HETATM   76 H201 PL9 A   1      -3.857   3.682   2.645  1.00 20.00      A    H  
+HETATM   77 H202 PL9 A   1      -3.346   2.085   3.247  1.00 20.00      A    H  
+HETATM   78 H203 PL9 A   1      -3.509   2.356   1.496  1.00 20.00      A    H  
+HETATM   79 H211 PL9 A   1      -2.615   1.321   1.738  1.00 20.00      A    H  
+HETATM   80 H212 PL9 A   1      -2.178   1.359   3.458  1.00 20.00      A    H  
+HETATM   81 H221 PL9 A   1       0.190   1.738   1.777  1.00 20.00      A    H  
+HETATM   82 H222 PL9 A   1      -0.631   0.245   1.342  1.00 20.00      A    H  
+HETATM   83  H23 PL9 A   1       1.085   0.613   3.181  1.00 20.00      A    H  
+HETATM   84 H251 PL9 A   1       1.447  -2.564   3.815  1.00 20.00      A    H  
+HETATM   85 H252 PL9 A   1      -0.205  -3.201   3.670  1.00 20.00      A    H  
+HETATM   86 H253 PL9 A   1       0.690  -2.738   2.214  1.00 20.00      A    H  
+HETATM   87 H261 PL9 A   1       2.004  -0.284   3.178  1.00 20.00      A    H  
+HETATM   88 H262 PL9 A   1       1.887  -2.059   2.935  1.00 20.00      A    H  
+HETATM   89 H271 PL9 A   1       0.835  -1.729   0.721  1.00 20.00      A    H  
+HETATM   90 H272 PL9 A   1       0.712   0.028   0.981  1.00 20.00      A    H  
+HETATM   91  H28 PL9 A   1       3.011  -1.708   0.793  1.00 20.00      A    H  
+HETATM   92 H301 PL9 A   1       4.325  -1.851  -0.472  1.00 20.00      A    H  
+HETATM   93 H302 PL9 A   1       3.399  -2.040  -1.991  1.00 20.00      A    H  
+HETATM   94 H303 PL9 A   1       2.679  -2.555  -0.444  1.00 20.00      A    H  
+HETATM   95 H311 PL9 A   1       3.716  -1.283  -2.454  1.00 20.00      A    H  
+HETATM   96 H312 PL9 A   1       2.636   0.077  -2.860  1.00 20.00      A    H  
+HETATM   97 H321 PL9 A   1       1.136  -1.547  -3.466  1.00 20.00      A    H  
+HETATM   98 H322 PL9 A   1       0.874  -1.760  -1.717  1.00 20.00      A    H  
+HETATM   99  H33 PL9 A   1       1.951  -3.447  -1.566  1.00 20.00      A    H  
+HETATM  100 H351 PL9 A   1       0.532  -5.692  -2.443  1.00 20.00      A    H  
+HETATM  101 H352 PL9 A   1       0.317  -4.140  -1.594  1.00 20.00      A    H  
+HETATM  102 H353 PL9 A   1       1.884  -4.986  -1.523  1.00 20.00      A    H  
+HETATM  103 H361 PL9 A   1       0.661  -5.980  -3.358  1.00 20.00      A    H  
+HETATM  104 H362 PL9 A   1       0.249  -5.066  -4.829  1.00 20.00      A    H  
+HETATM  105 H371 PL9 A   1      -0.877  -4.708  -2.018  1.00 20.00      A    H  
+HETATM  106 H372 PL9 A   1      -1.073  -3.473  -3.287  1.00 20.00      A    H  
+HETATM  107  H38 PL9 A   1      -1.998  -6.105  -2.937  1.00 20.00      A    H  
+HETATM  108 H401 PL9 A   1      -5.231  -3.814  -3.635  1.00 20.00      A    H  
+HETATM  109 H402 PL9 A   1      -5.145  -5.418  -2.877  1.00 20.00      A    H  
+HETATM  110 H403 PL9 A   1      -4.566  -3.987  -1.995  1.00 20.00      A    H  
+HETATM  111 H411 PL9 A   1      -2.458  -5.501  -1.702  1.00 20.00      A    H  
+HETATM  112 H412 PL9 A   1      -4.140  -4.912  -1.589  1.00 20.00      A    H  
+HETATM  113 H421 PL9 A   1      -3.390  -7.294  -3.364  1.00 20.00      A    H  
+HETATM  114 H422 PL9 A   1      -5.011  -6.827  -2.755  1.00 20.00      A    H  
+HETATM  115  H43 PL9 A   1      -3.973  -8.662  -1.808  1.00 20.00      A    H  
+HETATM  116 H451 PL9 A   1      -5.054  -9.125  -1.685  1.00 20.00      A    H  
+HETATM  117 H452 PL9 A   1      -4.735  -9.658  -0.002  1.00 20.00      A    H  
+HETATM  118 H453 PL9 A   1      -6.296  -8.885  -0.422  1.00 20.00      A    H  
+HETATM  119 H461 PL9 A   1      -6.068  -8.793   0.686  1.00 20.00      A    H  
+HETATM  120 H462 PL9 A   1      -5.986  -7.147   1.360  1.00 20.00      A    H  
+HETATM  121 H471 PL9 A   1      -7.508  -8.161  -1.021  1.00 20.00      A    H  
+HETATM  122 H472 PL9 A   1      -6.797  -6.541  -1.168  1.00 20.00      A    H  
+HETATM  123  H48 PL9 A   1      -8.418  -7.074   1.424  1.00 20.00      A    H  
+HETATM  124 H501 PL9 A   1     -10.394  -4.167   0.506  1.00 20.00      A    H  
+HETATM  125 H502 PL9 A   1      -9.970  -5.296   1.810  1.00 20.00      A    H  
+HETATM  126 H503 PL9 A   1     -11.154  -5.773   0.574  1.00 20.00      A    H  
+HETATM  127 H511 PL9 A   1      -9.509  -5.895  -2.235  1.00 20.00      A    H  
+HETATM  128 H512 PL9 A   1      -7.858  -5.377  -1.837  1.00 20.00      A    H  
+HETATM  129 H513 PL9 A   1      -9.216  -4.248  -1.632  1.00 20.00      A    H  
+HETATM  130 H521 PL9 A   1       4.648  12.326  -1.704  1.00 20.00      A    H  
+HETATM  131 H522 PL9 A   1       5.085  12.304   0.019  1.00 20.00      A    H  
+HETATM  132 H523 PL9 A   1       6.354  12.360  -1.220  1.00 20.00      A    H  
+HETATM  133 H531 PL9 A   1       6.787   9.874  -4.232  1.00 20.00      A    H  
+HETATM  134 H532 PL9 A   1       6.975  11.333  -3.241  1.00 20.00      A    H  
+HETATM  135 H533 PL9 A   1       5.394  10.945  -3.961  1.00 20.00      A    H  
+CONECT    1    6   56
+CONECT    1    2
+CONECT    1    2
+CONECT    2    3    7
+CONECT    2    1
+CONECT    2    1
+CONECT    3    2    4
+CONECT    3   54
+CONECT    3   54
+CONECT    4    3   52
+CONECT    4    5
+CONECT    4    5
+CONECT    5    6   53
+CONECT    5    4
+CONECT    5    4
+CONECT    6    1    5
+CONECT    6   55
+CONECT    6   55
+CONECT    7    2    8   57   58
+CONECT    8    7   59
+CONECT    8    9
+CONECT    8    9
+CONECT    9   10   11
+CONECT    9    8
+CONECT    9    8
+CONECT   10    9   60   61   62
+CONECT   11    9   12   63   64
+CONECT   12   11   13   65   66
+CONECT   13   12   67
+CONECT   13   14
+CONECT   13   14
+CONECT   14   15   16
+CONECT   14   13
+CONECT   14   13
+CONECT   15   14   68   69   70
+CONECT   16   14   17   71   72
+CONECT   17   16   18   73   74
+CONECT   18   17   75
+CONECT   18   19
+CONECT   18   19
+CONECT   19   20   21
+CONECT   19   18
+CONECT   19   18
+CONECT   20   19   76   77   78
+CONECT   21   19   22   79   80
+CONECT   22   21   23   81   82
+CONECT   23   22   83
+CONECT   23   24
+CONECT   23   24
+CONECT   24   25   26
+CONECT   24   23
+CONECT   24   23
+CONECT   25   24   84   85   86
+CONECT   26   24   27   87   88
+CONECT   27   26   28   89   90
+CONECT   28   27   91
+CONECT   28   29
+CONECT   28   29
+CONECT   29   30   31
+CONECT   29   28
+CONECT   29   28
+CONECT   30   29   92   93   94
+CONECT   31   29   32   95   96
+CONECT   32   31   33   97   98
+CONECT   33   32   99
+CONECT   33   34
+CONECT   33   34
+CONECT   34   35   36
+CONECT   34   33
+CONECT   34   33
+CONECT   35   34  100  101  102
+CONECT   36   34   37  103  104
+CONECT   37   36   38  105  106
+CONECT   38   37  107
+CONECT   38   39
+CONECT   38   39
+CONECT   39   40   41
+CONECT   39   38
+CONECT   39   38
+CONECT   40   39  108  109  110
+CONECT   41   39   42  111  112
+CONECT   42   41   43  113  114
+CONECT   43   42  115
+CONECT   43   44
+CONECT   43   44
+CONECT   44   45   46
+CONECT   44   43
+CONECT   44   43
+CONECT   45   44  116  117  118
+CONECT   46   44   47  119  120
+CONECT   47   46   48  121  122
+CONECT   48   47  123
+CONECT   48   49
+CONECT   48   49
+CONECT   49   50   51
+CONECT   49   48
+CONECT   49   48
+CONECT   50   49  124  125  126
+CONECT   51   49  127  128  129
+CONECT   52    4  130  131  132
+CONECT   53    5  133  134  135
+CONECT   54    3
+CONECT   54    3
+CONECT   55    6
+CONECT   55    6
+CONECT   56    1
+CONECT   57    7
+CONECT   58    7
+CONECT   59    8
+CONECT   60   10
+CONECT   61   10
+CONECT   62   10
+CONECT   63   11
+CONECT   64   11
+CONECT   65   12
+CONECT   66   12
+CONECT   67   13
+CONECT   68   15
+CONECT   69   15
+CONECT   70   15
+CONECT   71   16
+CONECT   72   16
+CONECT   73   17
+CONECT   74   17
+CONECT   75   18
+CONECT   76   20
+CONECT   77   20
+CONECT   78   20
+CONECT   79   21
+CONECT   80   21
+CONECT   81   22
+CONECT   82   22
+CONECT   83   23
+CONECT   84   25
+CONECT   85   25
+CONECT   86   25
+CONECT   87   26
+CONECT   88   26
+CONECT   89   27
+CONECT   90   27
+CONECT   91   28
+CONECT   92   30
+CONECT   93   30
+CONECT   94   30
+CONECT   95   31
+CONECT   96   31
+CONECT   97   32
+CONECT   98   32
+CONECT   99   33
+CONECT  100   35
+CONECT  101   35
+CONECT  102   35
+CONECT  103   36
+CONECT  104   36
+CONECT  105   37
+CONECT  106   37
+CONECT  107   38
+CONECT  108   40
+CONECT  109   40
+CONECT  110   40
+CONECT  111   41
+CONECT  112   41
+CONECT  113   42
+CONECT  114   42
+CONECT  115   43
+CONECT  116   45
+CONECT  117   45
+CONECT  118   45
+CONECT  119   46
+CONECT  120   46
+CONECT  121   47
+CONECT  122   47
+CONECT  123   48
+CONECT  124   50
+CONECT  125   50
+CONECT  126   50
+CONECT  127   51
+CONECT  128   51
+CONECT  129   51
+CONECT  130   52
+CONECT  131   52
+CONECT  132   52
+CONECT  133   53
+CONECT  134   53
+CONECT  135   53
+END

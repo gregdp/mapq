@@ -65,7 +65,7 @@ except :
 
 
 #gSigma = 0.6
-mapqVersion = "1.9.11"
+mapqVersion = "1.9.12"
 #showDevTools = True
 
 showDevTools = False
@@ -655,6 +655,9 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             b = Tkinter.Button(ff, text="RibD", command=self.RibD)
             b.grid (column=45, row=0, sticky='w', padx=2)
 
+            b = Tkinter.Button(ff, text="Af", command=self.AfColor)
+            b.grid (column=46, row=0, sticky='w', padx=2)
+
             self.selPanel.set(True)
 
 
@@ -931,8 +934,6 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 self.CalcAllQp()
         elif "Load" in op :
             self.GetQsFromFile ()
-        elif "Load" in op :
-            self.GetQsFromFile ()
         elif "Profile" in op :
             self.S_sel()
         elif "sseQ - Show" in op :
@@ -1116,12 +1117,13 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         print "Loading - %s" % path
 
         ext = os.path.splitext ( path )[1]
-        mol = None
+        mols = []
 
         if ext == ".cif" :
             start = time.time()
-            mol = mmcif.LoadMol2 ( path, log=False )
-            print "Loaded %s in %.1fs" % (mol.name, time.time()-start)
+            mols = mmcif.LoadMol2 ( path, log=False )
+            print "Loaded %d mols in %.1fs" % ( len(mols), time.time()-start)
+
 
         elif ext == ".mrc" or ext == ".map" or ext == ".ccp4" or ext == ".hdf" :
             om = chimera.openModels.open ( path )[0]
@@ -1137,19 +1139,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             self.MapSelected (om)
 
         elif ext == ".pdb" or ext == ".ent" :
-            mol = chimera.openModels.open ( path )[0]
+            mols = chimera.openModels.open ( path )
 
-        if mol :
-            mmcif.ColorMol ( mol )
+            for mol in mols :
+                mmcif.ColorMol ( mol )
 
-            #def nucleicOff():
-            from NucleicAcids.cmd import sidechain
-            sidechain("atoms", sel="#%d" % mol.id)
-            from chimera.resCode import nucleic3to1
-            for r in mol.residues :
-                if r.type in nucleic3to1 :
-                    r.fillDisplay = False
+                #def nucleicOff():
+                from NucleicAcids.cmd import sidechain
+                sidechain("atoms", sel="#%d" % mol.id)
+                from chimera.resCode import nucleic3to1
+                for r in mol.residues :
+                    if r.type in nucleic3to1 :
+                        r.fillDisplay = False
 
+            mol = mols[0]
             self.struc.set ( "[%d] %s" % (mol.id, mol.name) )
             self.cur_mol = mol
             self.cur_chains = self.GetChains ( mol )
@@ -1218,7 +1221,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 if fext == ".cif" :
                     mmcif.WriteMol ( self.cur_mol, path, dmap = self.cur_dmap )
                     self.cur_mol.name = fname
-                    self.openedAs = [ path, [] ]
+                    self.cur_mol.openedAs = [ path, [] ]
                     self.struc.set ( "[%d] %s" % (self.cur_mol.id, fname) )
 
                 elif fext == ".pdb" or fext == ".ent" :
@@ -1599,7 +1602,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 r.ribbonDisplay = not self.showingAtoms
                 for at in r.atoms :
                     if at.element.name == "H" :
-                        at.display = False
+                        at.display = self.showH.get()
                     else :
                         at.display = True
             else :
@@ -3245,7 +3248,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
             qscores.QsFromPdbFile ( self.cur_mol, nname )
 
 
-        if 0 :
+        if 1 :
             umsg ( "Saving files with Q-score B-factor" )
             self.SaveQsBfs ( self.cur_mol, 50.0 )
             self.SaveQsBfs ( self.cur_mol, 100.0 )
@@ -3268,10 +3271,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
     def SaveQsBfs ( self, mol, f ) :
 
+        res = float ( self.mapRes.get() )
+        sigma = float ( self.sigma.get() )
+        expQ, expF = qscores.ExpectedQScore (res, sigma)
+
+        print ""
+        print "B-factors -- expected Q at %.2fA, sigma %.2f: %.3f" % (res, sigma, expQ)
+        print expF
+
+        maxB = 0.0
         for at in mol.atoms :
             if not at.element.name == "H" :
                 if hasattr (at, 'Q') :
-                    at.bfactor = f * (1.0 - at.Q)
+                    at.bfactor = max ( 1.0, f * max(0.0, (expQ - at.Q)) )
+                    maxB = max ( at.bfactor, maxB )
                 else :
                     return None
 
@@ -3288,7 +3301,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
         molPath = os.path.splitext(mol.openedAs[0])[0]
 
         nname = molPath + "__Bf%.0f__.pdb" % f
-        print " - saving %s" % nname
+        print " - saving %s - max B: %.3f" % (nname, maxB)
         chimera.PDBio().writePDBfile ( [mol], nname )
 
         return nname
@@ -4543,7 +4556,7 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                             atMap[at] = 1
 
                             at.radius = 1.46
-                            at.drawMode = at.EndCap if at.element.name.lower() == "o" else at.Ball
+                            at.drawMode = at.EndCap # if at.element.name.lower() == "o" else at.Ball
 
                             if at.element.name.upper() in atomColors :
                                 at.color = atomColors[at.element.name.upper()]
@@ -5196,7 +5209,8 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
 
         ptGrid, atGrid = None, None
         points = _multiscale.get_atom_coordinates ( ats, transformed = False )
-        import gridm
+
+        import gridm;
         reload(gridm)
         ptGrid = gridm.Grid()
         ptGrid.FromPoints ( points, 6.0 )
@@ -6682,6 +6696,20 @@ class MapQ_Dialog ( chimera.baseDialog.ModelessDialog ) :
                 at.color = r.ribbonColor
 
         print minR, maxR
+
+
+
+    def AfColor ( self ) :
+
+        print self.cur_mol.name
+        #print self.cur_dmap.name
+        for r in self.cur_mol.residues :
+            if 'CA' in r.atomsMap :
+                bf = r.atomsMap['CA'][0].bfactor
+                if bf > 55 :
+                    r.ribbonColor = chimera.MaterialColor ( .3, .3, 1.0, 1.0 )
+                else :
+                    r.ribbonColor = chimera.MaterialColor ( 1.0, .5, .5, 1.0 )
 
 
 

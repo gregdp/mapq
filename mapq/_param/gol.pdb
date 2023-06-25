@@ -1,0 +1,37 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:40:15 2023
+REMARK  99
+REMARK  99   Ligand name: propane-1,2,3-triol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OCC(O)CO
+FORMUL   1  GOL    C3 H8 O3 
+HETATM    1  C1  GOL A   1       0.760  -0.040  -1.087  1.00 20.00      A    C  
+HETATM    2  O1  GOL A   1       2.161  -0.040  -1.087  1.00 20.00      A    O  
+HETATM    3  C2  GOL A   1       0.251  -0.040   0.352  1.00 20.00      A    C  
+HETATM    4  O2  GOL A   1       0.659   1.137   0.992  1.00 20.00      A    O  
+HETATM    5  C3  GOL A   1      -1.274  -0.117   0.353  1.00 20.00      A    C  
+HETATM    6  O3  GOL A   1      -1.737  -0.187   1.673  1.00 20.00      A    O  
+HETATM    7  H11 GOL A   1       0.399  -0.924  -1.598  1.00 20.00      A    H  
+HETATM    8  H12 GOL A   1       0.399   0.845  -1.598  1.00 20.00      A    H  
+HETATM    9  HO1 GOL A   1       2.475  -0.116  -1.973  1.00 20.00      A    H  
+HETATM   10  H2  GOL A   1       0.656  -0.896   0.879  1.00 20.00      A    H  
+HETATM   11  HO2 GOL A   1       1.195   0.921   1.737  1.00 20.00      A    H  
+HETATM   12  H31 GOL A   1      -1.591  -0.999  -0.189  1.00 20.00      A    H  
+HETATM   13  H32 GOL A   1      -1.680   0.766  -0.126  1.00 20.00      A    H  
+HETATM   14  HO3 GOL A   1      -2.672  -0.311   1.672  1.00 20.00      A    H  
+CONECT    1    2    3    7    8
+CONECT    2    1    9
+CONECT    3    1    4    5   10
+CONECT    4    3   11
+CONECT    5    3    6   12   13
+CONECT    6    5   14
+CONECT    7    1
+CONECT    8    1
+CONECT    9    2
+CONECT   10    3
+CONECT   11    4
+CONECT   12    5
+CONECT   13    5
+CONECT   14    6
+END

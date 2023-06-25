@@ -1,0 +1,193 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:31:21 2023
+REMARK  99
+REMARK  99   Ligand name: 2-methyl-3-[(2E,7R,11R)-3,7,11,15-tetramethylhexadec-2-en-1-yl]naphthalene-1,4-dione
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(C)CCC[C@@H](C)CCC[C@@H](C)CCCC(/C)=C/CC1=C(C)C(=O)c2ccccc2C1=O
+FORMUL   1  PQN    C31 H46 O2 
+HETATM    1  C1  PQN A   1      -0.658  -5.282  -5.702  1.00 20.00      A    C  
+HETATM    2  O1  PQN A   1       0.330  -5.732  -6.181  1.00 20.00      A    O  
+HETATM    3  C2  PQN A   1      -0.562  -4.193  -4.661  1.00 20.00      A    C  
+HETATM    4  C2M PQN A   1       0.804  -3.744  -4.150  1.00 20.00      A    C  
+HETATM    5  C3  PQN A   1      -1.798  -3.613  -4.081  1.00 20.00      A    C  
+HETATM    6  C4  PQN A   1      -3.143  -4.114  -4.531  1.00 20.00      A    C  
+HETATM    7  O4  PQN A   1      -4.135  -3.660  -4.059  1.00 20.00      A    O  
+HETATM    8  C5  PQN A   1      -3.237  -5.252  -5.615  1.00 20.00      A    C  
+HETATM    9  C6  PQN A   1      -4.490  -5.640  -6.110  1.00 20.00      A    C  
+HETATM   10  C7  PQN A   1      -4.573  -6.570  -7.155  1.00 20.00      A    C  
+HETATM   11  C8  PQN A   1      -3.402  -7.115  -7.707  1.00 20.00      A    C  
+HETATM   12  C9  PQN A   1      -2.149  -6.728  -7.213  1.00 20.00      A    C  
+HETATM   13  C10 PQN A   1      -2.063  -5.799  -6.169  1.00 20.00      A    C  
+HETATM   14  C11 PQN A   1      -1.700  -2.528  -2.938  1.00 20.00      A    C  
+HETATM   15  C12 PQN A   1      -3.079  -1.858  -2.742  1.00 20.00      A    C  
+HETATM   16  C13 PQN A   1      -3.160  -0.613  -2.198  1.00 20.00      A    C  
+HETATM   17  C14 PQN A   1      -4.529   0.051  -2.004  1.00 20.00      A    C  
+HETATM   18  C15 PQN A   1      -1.857   0.142  -1.771  1.00 20.00      A    C  
+HETATM   19  C16 PQN A   1      -2.233   1.363  -0.862  1.00 20.00      A    C  
+HETATM   20  C17 PQN A   1      -1.040   2.374  -0.824  1.00 20.00      A    C  
+HETATM   21  C18 PQN A   1      -0.828   2.867   0.624  1.00 20.00      A    C  
+HETATM   22  C19 PQN A   1      -0.392   1.716   1.489  1.00 20.00      A    C  
+HETATM   23  C20 PQN A   1       0.262   3.967   0.641  1.00 20.00      A    C  
+HETATM   24  C21 PQN A   1       0.439   4.502   2.097  1.00 20.00      A    C  
+HETATM   25  C22 PQN A   1       1.949   4.706   2.395  1.00 20.00      A    C  
+HETATM   26  C23 PQN A   1       2.193   4.595   3.912  1.00 20.00      A    C  
+HETATM   27  C24 PQN A   1       2.346   5.987   4.505  1.00 20.00      A    C  
+HETATM   28  C25 PQN A   1       3.479   3.782   4.168  1.00 20.00      A    C  
+HETATM   29  C26 PQN A   1       3.180   2.644   5.182  1.00 20.00      A    C  
+HETATM   30  C27 PQN A   1       3.959   1.366   4.770  1.00 20.00      A    C  
+HETATM   31  C28 PQN A   1       3.863   0.314   5.902  1.00 20.00      A    C  
+HETATM   32  C29 PQN A   1       5.139  -0.546   5.914  1.00 20.00      A    C  
+HETATM   33  C30 PQN A   1       2.643  -0.586   5.663  1.00 20.00      A    C  
+HETATM   34 H2M1 PQN A   1       1.050  -2.771  -4.577  1.00 20.00      A    H  
+HETATM   35 H2M2 PQN A   1       1.557  -4.470  -4.444  1.00 20.00      A    H  
+HETATM   36 H2M3 PQN A   1       0.778  -3.668  -3.070  1.00 20.00      A    H  
+HETATM   37  H6  PQN A   1      -5.396  -5.219  -5.684  1.00 20.00      A    H  
+HETATM   38  H7  PQN A   1      -5.541  -6.869  -7.537  1.00 20.00      A    H  
+HETATM   39  H8  PQN A   1      -3.468  -7.833  -8.514  1.00 20.00      A    H  
+HETATM   40  H9  PQN A   1      -1.245  -7.149  -7.640  1.00 20.00      A    H  
+HETATM   41 H111 PQN A   1      -1.395  -3.005  -2.012  1.00 20.00      A    H  
+HETATM   42 H112 PQN A   1      -0.970  -1.777  -3.215  1.00 20.00      A    H  
+HETATM   43  H12 PQN A   1      -3.987  -2.383  -3.039  1.00 20.00      A    H  
+HETATM   44 H141 PQN A   1      -4.412   1.127  -2.002  1.00 20.00      A    H  
+HETATM   45 H142 PQN A   1      -4.955  -0.267  -1.058  1.00 20.00      A    H  
+HETATM   46 H143 PQN A   1      -5.192  -0.241  -2.817  1.00 20.00      A    H  
+HETATM   47 H151 PQN A   1      -1.338   0.496  -2.655  1.00 20.00      A    H  
+HETATM   48 H152 PQN A   1      -1.213  -0.533  -1.221  1.00 20.00      A    H  
+HETATM   49 H161 PQN A   1      -2.442   1.016   0.139  1.00 20.00      A    H  
+HETATM   50 H162 PQN A   1      -3.113   1.857  -1.265  1.00 20.00      A    H  
+HETATM   51 H171 PQN A   1      -1.263   3.221  -1.466  1.00 20.00      A    H  
+HETATM   52 H172 PQN A   1      -0.135   1.881  -1.176  1.00 20.00      A    H  
+HETATM   53  H18 PQN A   1      -1.761   3.276   1.007  1.00 20.00      A    H  
+HETATM   54 H191 PQN A   1       0.468   1.229   1.038  1.00 20.00      A    H  
+HETATM   55 H192 PQN A   1      -1.205   1.003   1.578  1.00 20.00      A    H  
+HETATM   56 H193 PQN A   1      -0.124   2.085   2.475  1.00 20.00      A    H  
+HETATM   57 H201 PQN A   1      -0.038   4.783  -0.011  1.00 20.00      A    H  
+HETATM   58 H202 PQN A   1       1.200   3.551   0.292  1.00 20.00      A    H  
+HETATM   59 H211 PQN A   1      -0.083   5.452   2.200  1.00 20.00      A    H  
+HETATM   60 H212 PQN A   1       0.027   3.786   2.797  1.00 20.00      A    H  
+HETATM   61 H221 PQN A   1       2.259   5.695   2.049  1.00 20.00      A    H  
+HETATM   62 H222 PQN A   1       2.524   3.948   1.880  1.00 20.00      A    H  
+HETATM   63  H23 PQN A   1       1.355   4.097   4.374  1.00 20.00      A    H  
+HETATM   64 H241 PQN A   1       1.394   6.503   4.466  1.00 20.00      A    H  
+HETATM   65 H242 PQN A   1       3.085   6.546   3.935  1.00 20.00      A    H  
+HETATM   66 H243 PQN A   1       2.671   5.907   5.539  1.00 20.00      A    H  
+HETATM   67 H251 PQN A   1       4.248   4.438   4.575  1.00 20.00      A    H  
+HETATM   68 H252 PQN A   1       3.828   3.351   3.233  1.00 20.00      A    H  
+HETATM   69 H261 PQN A   1       3.491   2.953   6.174  1.00 20.00      A    H  
+HETATM   70 H262 PQN A   1       2.112   2.433   5.186  1.00 20.00      A    H  
+HETATM   71 H271 PQN A   1       4.999   1.617   4.597  1.00 20.00      A    H  
+HETATM   72 H272 PQN A   1       3.528   0.957   3.858  1.00 20.00      A    H  
+HETATM   73  H28 PQN A   1       3.759   0.818   6.856  1.00 20.00      A    H  
+HETATM   74 H291 PQN A   1       5.992   0.075   6.172  1.00 20.00      A    H  
+HETATM   75 H292 PQN A   1       5.034  -1.341   6.648  1.00 20.00      A    H  
+HETATM   76 H293 PQN A   1       5.292  -0.981   4.928  1.00 20.00      A    H  
+HETATM   77 H301 PQN A   1       1.740   0.007   5.728  1.00 20.00      A    H  
+HETATM   78 H302 PQN A   1       2.712  -1.036   4.674  1.00 20.00      A    H  
+HETATM   79 H303 PQN A   1       2.617  -1.372   6.419  1.00 20.00      A    H  
+CONECT    1    3   13
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1    4
+CONECT    3    5
+CONECT    3    5
+CONECT    4    3   34   35   36
+CONECT    5    6   14
+CONECT    5    3
+CONECT    5    3
+CONECT    6    5    8
+CONECT    6    7
+CONECT    6    7
+CONECT    7    6
+CONECT    7    6
+CONECT    8    6    9
+CONECT    8   13
+CONECT    8   13
+CONECT    9    8   37
+CONECT    9   10
+CONECT    9   10
+CONECT   10   11   38
+CONECT   10    9
+CONECT   10    9
+CONECT   11   10   39
+CONECT   11   12
+CONECT   11   12
+CONECT   12   13   40
+CONECT   12   11
+CONECT   12   11
+CONECT   13    1   12
+CONECT   13    8
+CONECT   13    8
+CONECT   14    5   15   41   42
+CONECT   15   14   43
+CONECT   15   16
+CONECT   15   16
+CONECT   16   17   18
+CONECT   16   15
+CONECT   16   15
+CONECT   17   16   44   45   46
+CONECT   18   16   19   47   48
+CONECT   19   18   20   49   50
+CONECT   20   19   21   51   52
+CONECT   21   20   22   23   53
+CONECT   22   21   54   55   56
+CONECT   23   21   24   57   58
+CONECT   24   23   25   59   60
+CONECT   25   24   26   61   62
+CONECT   26   25   27   28   63
+CONECT   27   26   64   65   66
+CONECT   28   26   29   67   68
+CONECT   29   28   30   69   70
+CONECT   30   29   31   71   72
+CONECT   31   30   32   33   73
+CONECT   32   31   74   75   76
+CONECT   33   31   77   78   79
+CONECT   34    4
+CONECT   35    4
+CONECT   36    4
+CONECT   37    9
+CONECT   38   10
+CONECT   39   11
+CONECT   40   12
+CONECT   41   14
+CONECT   42   14
+CONECT   43   15
+CONECT   44   17
+CONECT   45   17
+CONECT   46   17
+CONECT   47   18
+CONECT   48   18
+CONECT   49   19
+CONECT   50   19
+CONECT   51   20
+CONECT   52   20
+CONECT   53   21
+CONECT   54   22
+CONECT   55   22
+CONECT   56   22
+CONECT   57   23
+CONECT   58   23
+CONECT   59   24
+CONECT   60   24
+CONECT   61   25
+CONECT   62   25
+CONECT   63   26
+CONECT   64   27
+CONECT   65   27
+CONECT   66   27
+CONECT   67   28
+CONECT   68   28
+CONECT   69   29
+CONECT   70   29
+CONECT   71   30
+CONECT   72   30
+CONECT   73   31
+CONECT   74   32
+CONECT   75   32
+CONECT   76   32
+CONECT   77   33
+CONECT   78   33
+CONECT   79   33
+END

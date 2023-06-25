@@ -32,7 +32,7 @@ pdbs = []
 cifs = []
 maps = []
 
-mapqVersion = "1.9.11"
+mapqVersion = "1.9.13"
 
 #scriptPath = os.path.dirname(os.path.realpath(__file__))
 #fp = os.open ( os.path.join(scriptPath, "mapq.py" ) )
@@ -229,14 +229,14 @@ if ok :
         fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % maps[0] )
         fp.write ( "mol = chimera.openModels.open ( '%s', type='PDB' )[0]\n" % mod )
         fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
-        fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
+        #fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
 
     for mod in cifs :
         fp.write ( "\n" )
         fp.write ( "dmap = VolumeViewer.open_volume_file ( '%s', 'ccp4')[0]\n" % maps[0] )
-        fp.write ( "mol = mmcif.ReadMol ( '%s' )\n" % mod )
+        fp.write ( "mol = mmcif.ReadMol ( '%s' )[0]\n" % mod )
         fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
-        fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
+        #fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
 
     cmd += "'%s'" % newScript
 

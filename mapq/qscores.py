@@ -35,7 +35,6 @@ import _contour
 import _gaussian
 
 
-
 chargedIons = { "MG":2, "NA":1, "CL":-1, "CA":2, "ZN":2, "MN":2, "FE":3, "CO":2, "NI":2 }
 
 
@@ -2559,7 +2558,8 @@ def CalcQForOpenModelsRess () :
         #atIdStr, sx, sy, sz = l.split()
         atIdStr = l.strip()
         if not atIdStr in aPosMap :
-            fout.write (  "- atid not found: %s\n" % atIdStr )
+            #fout.write (  "- atid not found: %s\n" % atIdStr )
+            print "- atid not found: %s\n" % atIdStr
         #at = atids[atIdStr]
         #pt = [ float(sx), float(sy), float(sz) ]
         doAts.append ( [atIdStr, aPosMap[atIdStr]] )
@@ -2684,15 +2684,15 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         SetBBAts ( mol )
         nname = mol.openedAs[0] + "__Q__" + dmap.name + ".pdb"
         if QsFromPdbFile ( mol, nname ) :
-            #Qavg = QStats1 ( mol, cid )
+            Qavg = QStats1 ( mol, cid )
             #return Qavg
-            print " - got Q from %s" % nname
+            print " - got Q from %s: %.6f" % (nname, Qavg)
             gotQ = True
         nname = mol.openedAs[0] + "__Q__" + dmap.name + ".cif"
         if QsFromCifFile ( mol, nname ) :
-            #Qavg = QStats1 ( mol, cid )
+            Qavg = QStats1 ( mol, cid )
             #return Qavg
-            print " - got Q from %s" % nname
+            print " - got Q from %s: %.6f" % (nname, Qavg)
             gotQ = True
 
     if not gotQ :
@@ -2714,13 +2714,13 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         start = time.time()
 
         tempPath = dmap.data.path + "__Q-scores__mp__calculation__files__"
-        print " - making temp path: %s" % tempPath
-        try :
-            os.mkdir(tempPath)
-        except :
-            print " - could not make temp path (an old calc may have failed):"
-            print "    : check/remove temp path manually and try again"
-            print "    : or, check write permissions"
+        print " - temp path: %s" % tempPath
+        if os.path.exists ( tempPath ) :
+            print " - removing old temp path..."
+            from shutil import rmtree
+            rmtree ( tempPath )
+
+        os.mkdir(tempPath)
 
 
         allAtsFilePath = os.path.join ( tempPath, "all_atoms.txt" )
@@ -2806,13 +2806,13 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
 
             P.dmapPath = os.path.join ( tempPath, "%d_map.mrc" % P.i )
 
-            if 0 :
+            if 1 :
                 nmap = MaskMapResize ( P.atoms, 7.0, dmap, P.dmapPath )
             else :
-                import shutil
-                shutil.copyfile ( dmap.data.path, P.dmapPath )
+                from shutil import copyfile
+                copyfile ( dmap.data.path, P.dmapPath )
 
-        print " - total proc atoms: %d" % totAt
+        print " - total m-proc atoms: %d" % totAt
 
         if closeMap :
             print " - closing %s" % dmap.name
@@ -2909,16 +2909,16 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
                     print l,
                 print ""
                 foute.close()
+                print "__ -x- __"
+                print ""
 
         if 1 :
+            print "Removing temp files",
             for P in procs :
-                #print "Removing temp files",
+                print "%d" % P.i,
                 os.remove ( os.path.join(tempPath, "%d_out.txt" % P.i) )
-                try :
+                if os.path.isfile ( os.path.join(tempPath, "%d_stat.txt" % P.i) ) :
                     os.remove ( os.path.join(tempPath, "%d_stat.txt" % P.i) )
-                except :
-                    print " - did not find _stat file"
-                    pass
                 os.remove ( os.path.join(tempPath, "%d_atoms.txt" % P.i) )
                 os.remove ( os.path.join(tempPath, "%d_map.mrc" % P.i) )
                 os.remove ( os.path.join(tempPath, "%d.log" % P.i) )
@@ -2940,6 +2940,7 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
 
         SaveQFile ( mol, cid, dmap_name, sigma )
         Qavg = QStats1 ( mol, cid )
+        print " - overall map-model Q %f for sigma %.1f " % (Qavg, sigma)
 
 
 
@@ -3160,7 +3161,7 @@ def CalcQ2pn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chi
             chimera.openModels.close ( [dmap] )
 
 
-        import subprocess
+        from subprocess import Popen
 
         if chimeraPath == None :
             chimeraPath = GetChiPath ()
@@ -3186,7 +3187,7 @@ def CalcQ2pn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chi
 
             P.fout = open ( os.path.join(tempPath, "%d.log" % P.i), "w" )
             P.foute = open ( os.path.join(tempPath, "%d_err.log" % P.i), "w" )
-            P.p = subprocess.Popen(args, stdout=P.fout, stderr=P.foute, cwd=inDir)
+            P.p = Popen(args, stdout=P.fout, stderr=P.foute, cwd=inDir)
 
         print ""
         print "Waiting...",
@@ -3210,11 +3211,14 @@ def CalcQ2pn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chi
             fin = os.path.join(tempPath, "%d_out.txt" % P.i)
             #print " - getting from: ", fin
             fp = open ( fin )
+            linei = 0
             for l in fp :
+                linei += 1
                 try :
                     atId, Q = l.split()
                 except :
-                    print " - err line: ", l
+                    print " - err line %d: " % linei, l
+                    print ""
                 at = atids[atId.strip()]
                 at.Q = float(Q)
                 at.bfactor0 = at.bfactor
@@ -3253,16 +3257,14 @@ def CalcQ2pn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chi
                     print l,
                 print ""
                 foute.close()
+                print "__ -x- __"
 
         if 1 :
             for P in procs :
                 #print "Removing temp files",
                 os.remove ( os.path.join(tempPath, "%d_out.txt" % P.i) )
-                try :
+                if os.path.isfile ( os.path.join(tempPath, "%d_stat.txt" % P.i) ) :
                     os.remove ( os.path.join(tempPath, "%d_stat.txt" % P.i) )
-                except :
-                    print " - did not find _stat file"
-                    pass
                 os.remove ( os.path.join(tempPath, "%d_atoms.txt" % P.i) )
                 os.remove ( os.path.join(tempPath, "%d_map.mrc" % P.i) )
                 os.remove ( os.path.join(tempPath, "%d.log" % P.i) )
@@ -3286,6 +3288,8 @@ def CalcQ2pn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chi
         #Qavg = QStats1 ( mol, cid )
         Qavg = Qsum / Qnum
         print " - %.0f q-scores, avg %.4f" % (Qnum, Qavg)
+
+        return Qavg
 
 
 
@@ -3376,7 +3380,14 @@ def CalcQp ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chime
     start = time.time()
 
     tempPath = mapBase + "__Q-scores__temp__"
-    print " - making temp path: %s" % tempPath
+    print " - temp path: %s" % tempPath
+    if os.path.exists ( tempPath ) :
+        print " - removing old temp path..."
+        try :
+            shutil.rmtree ( tempPath )
+        except :
+            print " - could not remove old temp path"
+
     try :
         os.mkdir(tempPath)
     except :
@@ -4228,6 +4239,7 @@ def SaveQStats ( mol, chainId, dmap_name, sigma, RES=3.0 ) :
                 fp.write ( "%f\t%f\t%f\t%f\t%f\n" % (N(Qs,i,0,5), N(Qs,i,3,5), N(Qs,i,1,5), N(Qs,i,2,5), expQ ) )
             elif r.isProt :
                 if len(r.scAtoms) > 0 :
+                    #print r.qBB, r.qSC, r.Q, expQ
                     fp.write ( "%s\t%s\t%d\t%f\t%f\t%f\t%f\t\t" % (r.id.chainId, r.type, r.id.position, r.qBB, r.qSC, r.Q, expQ ) )
                     fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,1), N(Qs,i,1,1), N(Qs,i,2,1), expQ ) )
                     fp.write ( "%f\t%f\t%f\t%f\t\t" % (N(Qs,i,0,2), N(Qs,i,1,2), N(Qs,i,2,2), expQ ) )
@@ -4809,10 +4821,10 @@ def QsFromCifFile ( mol, qfpath ) :
     print " - Qs from file: %s" % qfpath
 
     from mmcif import ReadMol
-    qmol = ReadMol ( qfpath, log=False )
+    qmols = ReadMol ( qfpath, log=False )
 
     rids = {}
-    for r in qmol.residues :
+    for r in qmols[0].residues :
         rids["%d.%s" % (r.id.position,r.id.chainId)] = r
 
     numNotFound, numQ, numNoQ = 0, 0, 0
@@ -4853,6 +4865,8 @@ def QScoreFileName ( mol, dmap ) :
 
     molPath = mol.openedAs[0]
     mapName = dmap.name
+
+    print " -- %s " % molPath
 
     qfpath = ""
     if hasattr ( mol, 'cif' ) :
@@ -5479,9 +5493,7 @@ def CalcR_ ( label = "" ) :
 #[ 0.036254]
 #[ 0.02918004]
 
-
-def MaskMapResize ( atoms, bound, dmap, fout=None ) :
-
+def MaskMapResize ( atoms, bound, dmap, fout=None, cube=False, maskRad=None ) :
 
     import _multiscale
     import _contour
@@ -5496,7 +5508,7 @@ def MaskMapResize ( atoms, bound, dmap, fout=None ) :
 
     if 0 :
         _contour.affine_transform_vertices ( points, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
-        mdata = VolumeData.zone_masked_grid_data ( dmap.data, points, R )
+        mdata = VolumeData.zone_masked_grid_data ( dmap.data, points, dmap.data.step[0]*2.0 )
         #mdata = VolumeData.Array_Grid_Data ( mdata.full_matrix(), dmap.data.origin, dmap.data.step, dmap.data.cell_angles, name = "atom masked" )
 
         mat = mdata.full_matrix()
@@ -5544,7 +5556,19 @@ def MaskMapResize ( atoms, bound, dmap, fout=None ) :
     n2 = hj - lj + 1
     n3 = hk - lk + 1
 
-    #print " - bounds - %d %d %d --> %d %d %d --> %d %d %d" % ( li, lj, lk, hi, hj, hk, n1,n2,n3 )
+    #print " - bounds  - %d %d %d --> %d %d %d --> %d %d %d" % ( li, lj, lk, hi, hj, hk, n1,n2,n3 )
+
+    if cube :
+        n = numpy.max ( [n1, n2, n3] )
+        if n % 2 == 1 : n += 1
+        li2, hi2 = (li + hi)/2 - n/2, (li + hi)/2 + n/2
+        lj2, hj2 = (lj + hj)/2 - n/2, (lj + hj)/2 + n/2
+        lk2, hk2 = (lk + hk)/2 - n/2, (lk + hk)/2 + n/2
+        li, lj, lk = li2, lj2, lk2
+        hi, hj, hk = hi2, hj2, hk2
+        n1, n2, n3 = n, n, n
+
+        #print " - bounds3 - %d %d %d --> %d %d %d --> %d %d %d" % ( li, lj, lk, hi, hj, hk, n1,n2,n3 )
 
     #nmat = numpy.zeros ( (n1,n2,n3), numpy.float32 )
     #dmat = dmap.full_matrix()
@@ -5577,12 +5601,25 @@ def MaskMapResize ( atoms, bound, dmap, fout=None ) :
 
     npoints = grid_indices ( (nn1, nn2, nn3), numpy.single)  # i,j,k indices
     transform_vertices ( npoints, ndata.ijk_to_xyz_transform )
+    #print " - %d points" % len ( npoints )
 
-    # todo - don't interpolate
 
+    if maskRad != None :
+        print " - applying points mask radius %.2f" % maskRad
+        points = _multiscale.get_atom_coordinates ( atoms, transformed = True )
+        _contour.affine_transform_vertices ( points, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+        mdata = VolumeData.zone_masked_grid_data ( dmap.data, points, maskRad )
+        #chimera.openModels.close ( [dmap] )
+        dmap = VolumeViewer.volume.volume_from_grid_data ( mdata )
+
+
+    # todo - todo - possible without interpolation?
     dvals = dmap.interpolated_values ( npoints, dmap.openState.xform )
     #dvals = numpy.where ( dvals > threshold, dvals, numpy.zeros_like(dvals) )
     #nze = numpy.nonzero ( dvals )
+
+    #print " - %d vals" % len ( dvals )
+
 
     nmat = dvals.reshape( (nn3,nn2,nn1) )
 
@@ -5603,6 +5640,169 @@ def MaskMapResize ( atoms, bound, dmap, fout=None ) :
         #d = self.grid_data()
         format = save_grid_data(ndata, fout, None, {}, False)
         #print " - saved data"
+
+
+
+def MaskMapResize_ ( fpoints, bound, dmap, fout=None, cube=False, maskRad=None, makeModel=False ) :
+
+    import _multiscale
+    import _contour
+    import _volume
+    from VolumeData import grid_indices, zone_masked_grid_data, interpolate_volume_data
+    from _contour import affine_transform_vertices
+
+    fpoints0 = None
+
+    fpoints = numpy.asarray ( fpoints )
+    affine_transform_vertices ( fpoints, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+    if maskRad :
+        fpoints0 = fpoints.copy()
+    affine_transform_vertices( fpoints, dmap.data.xyz_to_ijk_transform )
+
+    if 0 and maskRad :
+        print fpoints[0]
+        print fpoints[1]
+        print "---"
+        print fpoints0[0]
+        print fpoints0[1]
+
+    #print " - %s mask %d atoms, %d nonzero points" % ( dmap.name, len(atoms), len(nz) )
+    #transform_vertices( fpoints,  Matrix.xform_matrix( fmap.openState.xform ) )
+    #transform_vertices( fpoints,  Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+    #transform_vertices ( fpoints, dmap.data.xyz_to_ijk_transform )
+
+    #bound = 10
+    #li,lj,lk = numpy.min ( fpoints, axis=0 ) - (bound, bound, bound)
+    #hi,hj,hk = numpy.max ( fpoints, axis=0 ) + (bound, bound, bound)
+
+    bx = int ( numpy.round ( bound / dmap.data.step[0] ) )
+    by = int ( numpy.round ( bound / dmap.data.step[1] ) )
+    bz = int ( numpy.round ( bound / dmap.data.step[2] ) )
+    #print " - bound: %.2f, %.2f, %.2f" % (bx, by, bz)
+
+    if 0 :
+        from time import time
+        start = time()
+        min, max = MinMaxPoints ( fpoints )
+        print "minmax: %.6f" % (time() - start)
+        min = numpy.array(min) - (bx, by, bz)
+        max = numpy.array(max) + (bx, by, bz)
+        #print "min:", min, minn
+        #print "max:", max, farr.max(0)
+
+    #farr = numpy.asarray(fpoints)
+    #start = time()
+    #minn = fpoints.min(0)
+    #maxx = fpoints.max(0)
+    #print "numpy_: %.6f" % (time() - start)
+
+    min = fpoints.min(0) - (bx, by, bz)
+    max = fpoints.max(0) + (bx, by, bz)
+    li,lj,lk = min
+    hi,hj,hk = max
+
+    n1 = hi - li + 1
+    n2 = hj - lj + 1
+    n3 = hk - lk + 1
+
+    #print " - bounds  - %d %d %d --> %d %d %d --> %d %d %d" % ( li, lj, lk, hi, hj, hk, n1,n2,n3 )
+
+    if cube :
+        n = numpy.max ( [n1, n2, n3] )
+        if n % 2 == 1 : n += 1
+        li2, hi2 = (li + hi)/2 - n/2, (li + hi)/2 + n/2
+        lj2, hj2 = (lj + hj)/2 - n/2, (lj + hj)/2 + n/2
+        lk2, hk2 = (lk + hk)/2 - n/2, (lk + hk)/2 + n/2
+        li, lj, lk = li2, lj2, lk2
+        hi, hj, hk = hi2, hj2, hk2
+        n1, n2, n3 = n, n, n
+
+        print " - bounds3 - %d %d %d --> %d %d %d --> %d %d %d" % ( li, lj, lk, hi, hj, hk, n1,n2,n3 )
+
+    #nmat = numpy.zeros ( (n1,n2,n3), numpy.float32 )
+    #dmat = dmap.full_matrix()
+
+    nstep = (dmap.data.step[0], dmap.data.step[1], dmap.data.step[2] )
+
+    nn1 = int ( round (dmap.data.step[0] * float(n1) / nstep[0]) )
+    nn2 = int ( round (dmap.data.step[1] * float(n2) / nstep[1]) )
+    nn3 = int ( round (dmap.data.step[2] * float(n3) / nstep[2]) )
+
+    O = dmap.data.origin
+    #print " - %s origin:" % dmap.name, O
+    nO = ( O[0] + float(li) * dmap.data.step[0],
+           O[1] + float(lj) * dmap.data.step[1],
+           O[2] + float(lk) * dmap.data.step[2] )
+
+    #print " - new map origin:", nO
+
+    ox = round ( nO[0]/dmap.data.step[0] ) * dmap.data.step[0]
+    oy = round ( nO[1]/dmap.data.step[1] ) * dmap.data.step[1]
+    oz = round ( nO[2]/dmap.data.step[2] ) * dmap.data.step[2]
+
+    nO = ( ox, oy, oz )
+
+    #print " - new map origin:", nO
+
+    nmat = numpy.zeros ( (nn1,nn2,nn3), numpy.float32 )
+    ndata = VolumeData.Array_Grid_Data ( nmat, nO, nstep, dmap.data.cell_angles )
+
+    npoints = grid_indices ( (nn1, nn2, nn3), numpy.single)  # i,j,k indices
+    affine_transform_vertices ( npoints, ndata.ijk_to_xyz_transform )
+    # print " - %d points" % len ( npoints )
+
+    # todo - todo - possible without interpolation?
+    dvals = dmap.interpolated_values ( npoints, dmap.openState.xform )
+    #dvals = numpy.where ( dvals > threshold, dvals, numpy.zeros_like(dvals) )
+    #nze = numpy.nonzero ( dvals )
+    #print " - %d vals" % len ( dvals )
+
+    nmat = dvals.reshape( (nn3,nn2,nn1) )
+    ndata = VolumeData.Array_Grid_Data ( nmat, nO, nstep, dmap.data.cell_angles )
+
+    nv = None
+    if makeModel :
+        nv = VolumeViewer.volume.volume_from_grid_data ( ndata )
+        nv.name = dmap.name + "_points"
+        nv.openState.xform = dmap.openState.xform
+
+    if maskRad != None :
+        #print " - applying points mask radius %.2f" % maskRad
+        #points = _multiscale.get_atom_coordinates ( atoms, transformed = True )
+        #affine_transform_vertices ( fpoints0, Matrix.xform_matrix( dmap.openState.xform.inverse() ) )
+        #affine_transform_vertices( fpoints, dmap.data.ijk_to_xyz_transform )
+        #affine_transform_vertices( fpoints0, nv.data.xyz_to_ijk_transform )
+        mdata = VolumeData.zone_masked_grid_data ( ndata, fpoints0, maskRad )
+        ndata = mdata
+
+        if nv :
+            #chimera.openModels.close ( [dmap] )
+            nmap = VolumeViewer.volume.volume_from_grid_data ( mdata )
+            nmap.name = dmap.name + "_points_masked"
+            nmap.openState.xform = dmap.openState.xform
+            chimera.openModels.close ( [nv] )
+            nv = nmap
+
+    if nv :
+        return nv
+    else :
+        return ndata
+
+
+
+def Map2Map ( dmap, toMap ) :
+
+    import _contour
+    n1, n2, n3 = toMap.data.size[0], toMap.data.size[1], toMap.data.size[2]
+    f_points = VolumeData.grid_indices( (n1,n2,n3), numpy.single )  # i,j,k indices
+    _contour.affine_transform_vertices( f_points, toMap.data.ijk_to_xyz_transform )
+
+    d_vals = dmap.interpolated_values ( f_points, toMap.openState.xform )
+    df_mat = d_vals.reshape( (n3,n2,n1) )
+
+    ndata = VolumeData.Array_Grid_Data ( df_mat, toMap.data.origin, toMap.data.step, toMap.data.cell_angles )
+
+    return ndata
 
 
 
@@ -5856,7 +6056,12 @@ def CCScore ( atoms, inMap, R = 2.0, xf=None ) :
     toMol = atoms[0].molecule
     molg = MyMolMapX2 ( atoms, R, min(R/3.0,2.0), xf )
     fpoints, fpoint_weights = fit_points_g ( molg, 1e-2 )
-    map_values = inMap.interpolated_values ( fpoints, toMol.openState.xform )
+    xf = chimera.Xform()
+    try :
+        xf = toMol.openState.xform
+    except :
+        xf = inMap.openState.xform
+    map_values = inMap.interpolated_values ( fpoints, xf )
     #print map_values
     olap, CC, CCm = FitMap.overlap_and_correlation ( fpoint_weights, map_values )
     print " - res %.2f, cc %.3f, ccm %.3f" % (R, CC, CCm)
@@ -5947,6 +6152,62 @@ def MyMolMapX2 ( atoms, resolution, step=1.0, xf=None ) :
 
     #return grid, molecules
     return grid
+
+
+
+def molecule_grid_dataX (m0, atoms, resolution, step, pad, xfT, cutoff_range, sigma_factor, transforms = [], csys = None):
+
+    from _multiscale import get_atom_coordinates
+    xyz = get_atom_coordinates(atoms, transformed = True)
+
+    # Transform coordinates to local coordinates of the molecule containing
+    # the first atom.  This handles multiple unaligned molecules.
+    # Or if on_grid is specified transform to grid coordinates.
+    #m0 = atoms[0].molecule
+    xf = m0.openState.xform
+    if xfT != None :
+        xf.multiply ( xfT )
+    import Matrix as M
+    M.transform_points(xyz, M.xform_matrix(xf.inverse()))
+    if csys:
+        xf.premultiply(csys.xform.inverse())
+    tflist = M.coordinate_transform_list(transforms, M.xform_matrix(xf))
+
+    anum = [a.element.number for a in atoms]
+
+    molecules = set([a.molecule for a in atoms])
+    if len(molecules) > 1:
+        name = 'molmap res %.3g' % (resolution,)
+    else:
+        name = 'molmap %s res %.3g' % (m0.name, resolution)
+
+    grid = bounding_grid(xyz, step, pad, tflist)
+    grid.name = name
+
+    sdev = resolution * sigma_factor
+    add_gaussians(grid, xyz, anum, sdev, cutoff_range, tflist)
+
+    #return grid, molecules
+    return grid
+
+
+def MyMolMapX ( m0, atoms, resolution, step, xf=None ) :
+
+    #from MoleculeMap import molecule_grid_data
+    from math import sqrt, pi
+    from chimera import openModels as om
+    from VolumeViewer import volume_from_grid_data
+
+    atoms = tuple(atoms)
+
+    pad = 3*resolution
+    cutoff_range = 5 # in standard deviations
+    sigma_factor = 1/(pi*sqrt(2)) # standard deviation / resolution
+    transforms,csys = [], None
+    display_threshold = 0.95
+
+    return molecule_grid_dataX (m0, atoms, resolution, step, pad, xf, cutoff_range, sigma_factor, transforms, csys)
+
 
 
 

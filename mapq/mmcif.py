@@ -413,31 +413,32 @@ except :
 # this makes a molecule model but does not add bonds
 def LoadMol ( fpath, log=False ) :
 
-    mol = ReadMol ( fpath, log )
+    mols = ReadMol ( fpath, log )
 
     from time import time
     startt = time()
 
-    chimera.openModels.add ( [mol] )
+    chimera.openModels.add ( mols )
     #return mol
 
-    print " - added %s in %.2f sec" % (mol.name, time() - startt)
+    print " - added %d mols in %.2f sec" % ( len(mols), time() - startt)
 
-    for at in mol.atoms :
-        at.display = True
-        at.drawMode = at.Sphere
-        at.color = mol.chainColors[at.residue.id.chainId]
+    for mol in mols :
+        for at in mol.atoms :
+            at.display = True
+            at.drawMode = at.Sphere
+            at.color = mol.chainColors[at.residue.id.chainId]
 
-    for res in mol.residues :
-        res.ribbonDisplay = False # drawRib
-        res.ribbonDrawMode = 2
-        res.ribbonColor = mol.chainColors[at.residue.id.chainId]
+        for res in mol.residues :
+            res.ribbonDisplay = False # drawRib
+            res.ribbonDrawMode = 2
+            res.ribbonColor = mol.chainColors[at.residue.id.chainId]
 
     #if hasattr ( mol, 'chainDescr' ) :
     #    for cid, descr in mol.chainDescr.iteritems() :
     #        print " - %s - %s" % (cid, ", ".join(descr))
 
-    return mol
+    return mols
 
 
 def ParamPathPdb ( rtype ) :
@@ -525,9 +526,9 @@ def LoadMol2 ( fpath, log=False ) :
         return mol
 
     else :
-        mol = LoadMol2_ ( fpath, log, None )
+        mols = LoadMol2_ ( fpath, log, None )
         #mol = LoadMolCh_ ( fpath, log, None )
-        return mol
+        return mols
 
 
 
@@ -535,95 +536,107 @@ def LoadMol2 ( fpath, log=False ) :
 
 def LoadMol2_ ( fpath, log=False, task=None ) :
 
-    mol = ReadMol ( fpath, log=False )
-
-    crmap = {}
-    rmolmap = {}
-
-    print " - %d residues" % len(mol.residues)
+    mols = ReadMol ( fpath, log=False )
 
     import time
     start = time.time()
 
-    for r in mol.residues :
-        if not r.id.chainId in crmap :
-            crmap[r.id.chainId] = { r.id.position : r }
-        else :
-            crmap[r.id.chainId][r.id.position] = r
+    for mi, mol in enumerate(mols) :
+        print "Mol %d/%d - making bonds..." % (mi+1, len(mols))
+        crmap = {}
+        rmolmap = {}
+        for r in mol.residues :
+            if not r.id.chainId in crmap :
+                crmap[r.id.chainId] = { r.id.position : r }
+            else :
+                crmap[r.id.chainId][r.id.position] = r
 
-    bonds = []
-    for ri, r in enumerate ( mol.residues ) :
-        if task :
-            if ri % 100 == 0 :
-                task.updateStatus( "%s - residue %d/%d" % ( mol.name, ri, len(mol.residues) ) )
+        bonds = []
+        for ri, r in enumerate ( mol.residues ) :
+            if task :
+                if ri % 100 == 0 :
+                    task.updateStatus( "%s - residue %d/%d" % ( mol.name, ri, len(mol.residues) ) )
 
-        rmol = None
+            rmol = None
 
-        rtype = r.type.upper()
-        #if rtype in nucleic1to3 :
-        #    rtype = nucleic1to3[rtype]
-        #    #print r.type, "->", rtype
+            rtype = r.type.upper()
+            #if rtype in nucleic1to3 :
+            #    rtype = nucleic1to3[rtype]
+            #    #print r.type, "->", rtype
 
-        #print "%d %d.%s %s" % (ri, r.id.position, r.id.chainId, r.type)
+            #print "%d %d.%s %s" % (ri, r.id.position, r.id.chainId, r.type)
 
-        if rtype.lower() in rmolmap :
-            rmol = rmolmap[ rtype.lower() ]
-        else :
-            rmol = GetResMol ( rtype.lower() )
-            #if rmol != None :
-            rmolmap[rtype.lower()] = rmol
+            if rtype.lower() in rmolmap :
+                rmol = rmolmap[ rtype.lower() ]
+            else :
+                rmol = GetResMol ( rtype.lower() )
+                #if rmol != None :
+                rmolmap[rtype.lower()] = rmol
 
-        if 1 and rmol != None :
-            for b in rmol.bonds :
-                a1n, a2n = b.atoms[0].name, b.atoms[1].name
-                if a1n in r.atomsMap and a2n in r.atomsMap :
-                    for a1 in r.atomsMap[a1n] :
-                        for a2 in r.atomsMap[a2n] :
-                            #print "%s - %s" % ( At(a1), At(a2) )
-                            #nb = mol.newBond ( a1, a2 )
-                            if a1.altLoc == a2.altLoc :
-                                bonds.append ( [a1,a2] )
+            if 1 and rmol != None :
+                for b in rmol.bonds :
+                    a1n, a2n = b.atoms[0].name, b.atoms[1].name
+                    if a1n in r.atomsMap and a2n in r.atomsMap :
+                        for a1 in r.atomsMap[a1n] :
+                            for a2 in r.atomsMap[a2n] :
+                                #print "%s - %s" % ( At(a1), At(a2) )
+                                #nb = mol.newBond ( a1, a2 )
+                                if a1.altLoc == a2.altLoc :
+                                    bonds.append ( [a1,a2] )
+
+            if 1 :
+                if r.type.upper() in protein3to1 :
+                    if r.id.position-1 in crmap[r.id.chainId] :
+                        pres = crmap[r.id.chainId][r.id.position-1]
+                        if pres.type.upper() in protein3to1 :
+                            #GetSS ( pres, r )
+                            if "C" in pres.atomsMap and "N" in r.atomsMap :
+                                for a1 in pres.atomsMap["C"] :
+                                    for a2 in r.atomsMap["N"] :
+                                        #print a1.name, pres.id.position, a2.name, r.id.position
+                                        #nb = mol.newBond ( a1, a2 )
+                                        if a1.altLoc == a2.altLoc :
+                                            bonds.append ( [a1,a2] )
+
+                if r.type.upper() in nucleic1to3 or r.type.upper() in nucleic3to1 :
+                    if r.id.position-1 in crmap[r.id.chainId] :
+                        pres = crmap[r.id.chainId][r.id.position-1]
+                        if pres.type.upper() in nucleic1to3 or pres.type.upper() in nucleic3to1 :
+                            if "O3'" in pres.atomsMap and "P" in r.atomsMap :
+                                for a1 in pres.atomsMap["O3'"] :
+                                    for a2 in r.atomsMap["P"] :
+                                        #print a1.name, pres.id.position, a2.name, r.id.position
+                                        #nb = mol.newBond ( a1, a2 )
+                                        if a1.altLoc == a2.altLoc :
+                                            bonds.append ( [a1,a2] )
+
+        print ( " - %d bonds, %.1fs" % (len(bonds), time.time()-start)  )
+
+        # adding bonds at end was faster?
+        start = time.time()
+        for a1, a2 in bonds :
+            nb = mol.newBond ( a1, a2 )
+
+        print ( " - added bonds in %.1fs" % (time.time()-start)  )
 
         if 1 :
-            if r.type.upper() in protein3to1 :
-                if r.id.position-1 in crmap[r.id.chainId] :
-                    pres = crmap[r.id.chainId][r.id.position-1]
-                    if pres.type.upper() in protein3to1 :
-                        #GetSS ( pres, r )
-                        if "C" in pres.atomsMap and "N" in r.atomsMap :
-                            for a1 in pres.atomsMap["C"] :
-                                for a2 in r.atomsMap["N"] :
-                                    #print a1.name, pres.id.position, a2.name, r.id.position
-                                    #nb = mol.newBond ( a1, a2 )
-                                    if a1.altLoc == a2.altLoc :
-                                        bonds.append ( [a1,a2] )
+            mol.residues[0].isStrand = True
 
-            if r.type.upper() in nucleic1to3 or r.type.upper() in nucleic3to1 :
-                if r.id.position-1 in crmap[r.id.chainId] :
-                    pres = crmap[r.id.chainId][r.id.position-1]
-                    if pres.type.upper() in nucleic1to3 or pres.type.upper() in nucleic3to1 :
-                        if "O3'" in pres.atomsMap and "P" in r.atomsMap :
-                            for a1 in pres.atomsMap["O3'"] :
-                                for a2 in r.atomsMap["P"] :
-                                    #print a1.name, pres.id.position, a2.name, r.id.position
-                                    #nb = mol.newBond ( a1, a2 )
-                                    if a1.altLoc == a2.altLoc :
-                                        bonds.append ( [a1,a2] )
+        start = time.time()
+        chimera.openModels.add ( [mol] )
+        print " - added mol, %.1fs" % (time.time()-start)
 
-    print ( " - %d bonds, %.1fs" % (len(bonds), time.time()-start)  )
+    return mols
 
-    # adding bonds at end was faster?
-    start = time.time()
-    for a1, a2 in bonds :
-        nb = mol.newBond ( a1, a2 )
 
-    print ( " - added bonds in %.1fs" % (time.time()-start)  )
-
-    start = time.time()
-    chimera.openModels.add ( [mol] )
-    print " - added mol, %.1fs" % (time.time()-start)
-
-    return mol
+def ColorRes ( r ) :
+    for at in r.atoms :
+        #at.display = True
+        #at.drawMode = at.EndCap
+        if at.element.name.upper() in atomColors :
+            at.color = atomColors[at.element.name.upper()]
+        else :
+            at.color = mol.chainColors[r.id.chainId]
 
 
 def ColorMol ( mol ) :
@@ -684,9 +697,11 @@ def ColorMol ( mol ) :
                 else :
                     at.color = mol.chainColors[r.id.chainId]
 
+
     for b in mol.bonds :
         b.drawMode = b.Stick
-        b.display = b.Smart
+        #b.display = b.Smart
+
 
 
 def At ( at ) :
@@ -889,7 +904,7 @@ def diha ( a1, a2, a3, a4 ) :
 
 
 
-def ReadMol ( fpath, log=False ) :
+def ReadMol ( fpath, log=False, readModNum=None ) :
 
     from random import random
     from chimera.resCode import nucleic3to1
@@ -922,18 +937,11 @@ def ReadMol ( fpath, log=False ) :
     import time
     start = time.time()
 
-    rmap = {}
 
-    nmol = chimera.Molecule()
     from os import path
-    #nmol.name = path.splitext ( path.split (fpath)[1] )[0]
-    nmol.name = path.split (fpath) [1]
-    nmol.openedAs = [ fpath, [] ]
-    nmol.cif = cif
-    nmol.cifLoops = loops
 
-    nmol.chainColors = {}
-    nmol.chainDescr = {}
+    molsById = {}
+    rmapsById = {}
 
     numQ = 0
     first = True
@@ -958,7 +966,24 @@ def ReadMol ( fpath, log=False ) :
         bfactor = mp['B_iso_or_equiv']
         altLoc = mp['label_alt_id']
         if altLoc == "." : altLoc = ''
-        modelNum = mp ["pdbx_PDB_model_num"]
+        modelNum = int ( mp ["pdbx_PDB_model_num"] )
+
+        if readModNum != None and readModNum != modelNum :
+            continue
+
+        nmol = None
+        rmap = None
+        if modelNum in molsById :
+            nmol = molsById[modelNum]
+            rmap = rmapsById[modelNum]
+        else :
+            nmol = chimera.Molecule()
+            nmol.name = path.split(fpath)[1]
+            nmol.openedAs = [ fpath, [] ]
+            nmol.cif, nmol.cifLoops = cif, loops
+            nmol.chainColors, nmol.chainDescr = {}, {}
+            rmap = {}
+            molsById[modelNum], rmapsById[modelNum] = nmol, rmap
 
         #print atLabel, atId, chainId, chainEId
 
@@ -1008,7 +1033,6 @@ def ReadMol ( fpath, log=False ) :
         nat = nmol.newAtom ( atName, chimera.Element(atType) )
 
 
-
         drawRib = rtype in protein3to1 or rtype in nucleic3to1
 
         #aMap[at] = nat
@@ -1038,9 +1062,17 @@ def ReadMol ( fpath, log=False ) :
                 pass
 
     end = time.time()
-    print " - created mol with %d atoms, %.1fs, %d q-scores" % ( len(nmol.atoms), end-start, numQ )
 
-    return nmol
+    if len(molsById) == 0 :
+        if readModNum != None :
+            print " - tried to read model %d but no atoms with this id found" % readModNum
+
+    print " - created %d mols in %.1fs, %d q-scores" % ( len(molsById), end-start, numQ )
+    for mid, nmol in molsById.iteritems () :
+        print "  %d - %d atoms" % ( mid, len(nmol.atoms) )
+        if len(molsById) > 1 : nmol.name = nmol.name + " _%d" % mid
+
+    return molsById.values()
 
 
 def DataStr ( data ) :
@@ -1157,7 +1189,7 @@ def UpdateAtoms ( cif, mol, dmap=None ) :
                         #adata[ ilabels['B_iso_or_equiv'] ] = "%.3f" % at.bfactor
 
                         if addQ :
-                            qs = ("%.3f" % at.Q) if hasattr ( at, 'Q' ) else "?"
+                            qs = ("%.6f" % at.Q) if hasattr ( at, 'Q' ) else "?"
                             if addQatI :
                                 adata.insert ( addQatI, qs )
                             else :
@@ -1241,7 +1273,18 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
     data = []
 
     cress = {}
+    molEIds, atEId = {}, 1
     for r in mol.residues :
+
+        rtype = ""
+        if r.type in protein3to1 : rtype = "prot"
+        elif r.type in nucleic3to1 : rtype = "nucleic"
+        else : rtype = r.type
+
+        if not rtype in molEIds :
+            molEIds[rtype] = "%d" % atEId
+            atEId += 1
+
         if r.id.chainId in cress :
             cress[r.id.chainId].append ( [r.id.position, r] )
         else :
@@ -1259,7 +1302,13 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
 
     for r in mol.residues :
 
-        entityId = chainEIds [r.id.chainId]
+        #entityId = chainEIds [r.id.chainId]
+
+        rtype = ""
+        if r.type in protein3to1 : rtype = "prot"
+        elif r.type in nucleic3to1 : rtype = "nucleic"
+        else : rtype = r.type
+        entityId = molEIds[rtype]
 
         for at in r.atoms :
 
@@ -1280,6 +1329,25 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
             if not hasattr ( r, 'cif_label_asym_id' ) :
                 r.cif_label_asym_id = r.id.chainId
 
+
+            if not hasattr ( r, 'cif_label_seq_id' ) :
+                r.cif_label_seq_id = "%d" % r.id.position
+
+            seqStr = "."
+            seqStr = r.cif_label_seq_id
+
+            if not hasattr(at, 'cifGroup') :
+                if r.type in protein3to1 or r.type in nucleic3to1 :
+                    at.cifGroup = "ATOM"
+                    seqStr = r.cif_label_seq_id
+                else :
+                    at.cifGroup = "HETATM"
+            else :
+                if r.type in protein3to1 or r.type in nucleic3to1 :
+                    seqStr = r.cif_label_seq_id
+
+
+
             mdata["group_PDB"]          = adata[0] = "ATOM" if not hasattr(at, 'cifGroup') else at.cifGroup
             mdata["id"]                 = adata[1] = ("%d" % ati) if not hasattr(at, 'cifId') else at.cifId
             mdata["type_symbol"]        = adata[2] = at.element.name
@@ -1288,7 +1356,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
             mdata["label_comp_id"]      = adata[5] = r.type
             mdata["label_asym_id"]      = adata[6] = r.cif_label_asym_id
             mdata["label_entity_id"]    = adata[7] = entityId if not hasattr (r, 'cif_label_entity_id') else r.cif_label_entity_id
-            mdata["label_seq_id"]       = adata[8] = "." if not hasattr ( r, 'cif_label_seq_id' ) else r.cif_label_seq_id
+            mdata["label_seq_id"]       = adata[8] = seqStr # "." if not hasattr ( r, 'cif_label_seq_id' ) else r.cif_label_seq_id
             mdata["pdbx_PDB_ins_code"]  = adata[9] = "?" if r.id.insertionCode == ' ' else r.id.insertionCode
             mdata["Cartn_x"]            = adata[10] = "%.3f" % apos.x
             mdata["Cartn_y"]            = adata[11] = "%.3f" % apos.y
@@ -1301,7 +1369,7 @@ def AddAtoms ( cif, cifLoops, mol, dmap = None ) :
             mdata["auth_comp_id"]       = adata[18] = FS ( r.type )
             mdata["auth_asym_id"]       = adata[19] = r.id.chainId
             mdata["auth_atom_id"]       = adata[20] = FS ( aname )
-            mdata["pdbx_PDB_model_num"] = adata[21] = "1" if not hasattr ( at, 'cifModelNum' ) else at.cifModelNum
+            mdata["pdbx_PDB_model_num"] = adata[21] = "1" if not hasattr ( at, 'cifModelNum' ) else "%d" % at.cifModelNum
 
             data.append ( {'asArray':adata, 'asMap':mdata} )
             ati += 1

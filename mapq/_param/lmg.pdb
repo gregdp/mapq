@@ -1,0 +1,297 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:39:11 2023
+REMARK  99
+REMARK  99   Ligand name: (2S)-3-(beta-D-galactopyranosyloxy)propane-1,2-diyl dioctadecanoate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCCCCCCCCCCCCCCCC(=O)OC[C@H](CO[C@@H]1O[C@H](CO)[C@H](O)[C@H](O)[C@H]1O)OC(=O)CCCCCCCCCCCCCCCCC
+FORMUL   1  LMG    C45 H86 O10 
+HETATM    1  C1  LMG A   1      -2.406  -0.794   7.651  1.00 20.00      A    C  
+HETATM    2  O1  LMG A   1      -2.472  -0.930   6.288  1.00 20.00      A    O  
+HETATM    3  C2  LMG A   1      -1.459   0.347   7.986  1.00 20.00      A    C  
+HETATM    4  O2  LMG A   1      -0.118  -0.022   7.582  1.00 20.00      A    O  
+HETATM    5  C3  LMG A   1      -1.453   0.658   9.437  1.00 20.00      A    C  
+HETATM    6  O3  LMG A   1      -0.651   1.855   9.658  1.00 20.00      A    O  
+HETATM    7  C4  LMG A   1      -2.837   0.896   9.968  1.00 20.00      A    C  
+HETATM    8  O4  LMG A   1      -3.348   2.105   9.399  1.00 20.00      A    O  
+HETATM    9  C5  LMG A   1      -3.788  -0.252   9.626  1.00 20.00      A    C  
+HETATM  141  O5  LMG A   1      -5.285   0.075  11.459  1.00 20.00      A    O  
+HETATM   10  C6  LMG A   1      -5.190   0.129  10.052  1.00 20.00      A    C  
+HETATM   11  O6  LMG A   1      -3.794  -0.556   8.187  1.00 20.00      A    O  
+HETATM   12  C7  LMG A   1      -1.986  -2.175   5.809  1.00 20.00      A    C  
+HETATM   13  C8  LMG A   1      -2.494  -2.407   4.377  1.00 20.00      A    C  
+HETATM   14  C9  LMG A   1      -1.539  -1.731   3.376  1.00 20.00      A    C  
+HETATM   15  O7  LMG A   1      -2.546  -3.783   4.116  1.00 20.00      A    O  
+HETATM   16  C10 LMG A   1      -1.305  -4.464   4.336  1.00 20.00      A    C  
+HETATM   17  O9  LMG A   1      -0.610  -4.151   5.246  1.00 20.00      A    O  
+HETATM   18  C11 LMG A   1      -0.922  -5.681   3.452  1.00 20.00      A    C  
+HETATM   19  C12 LMG A   1       0.153  -6.539   4.186  1.00 20.00      A    C  
+HETATM   20  C13 LMG A   1       1.260  -6.964   3.173  1.00 20.00      A    C  
+HETATM   21  C14 LMG A   1       2.501  -6.020   3.328  1.00 20.00      A    C  
+HETATM   22  C15 LMG A   1       4.039  -6.294   3.204  1.00 20.00      A    C  
+HETATM   23  C16 LMG A   1       4.673  -5.270   2.209  1.00 20.00      A    C  
+HETATM   24  C17 LMG A   1       5.656  -4.336   2.978  1.00 20.00      A    C  
+HETATM   25  C18 LMG A   1       5.612  -2.914   2.357  1.00 20.00      A    C  
+HETATM   26  C19 LMG A   1       6.743  -2.046   2.972  1.00 20.00      A    C  
+HETATM   27  C20 LMG A   1       6.789  -0.667   2.250  1.00 20.00      A    C  
+HETATM   28  C21 LMG A   1       6.875   0.476   3.314  1.00 20.00      A    C  
+HETATM   29  C22 LMG A   1       6.801   1.871   2.592  1.00 20.00      A    C  
+HETATM   30  C23 LMG A   1       5.954   2.864   3.459  1.00 20.00      A    C  
+HETATM   31  C24 LMG A   1       6.119   4.319   2.898  1.00 20.00      A    C  
+HETATM   32  C25 LMG A   1       4.751   5.081   3.007  1.00 20.00      A    C  
+HETATM   33  C26 LMG A   1       5.018   6.616   3.154  1.00 20.00      A    C  
+HETATM   34  C27 LMG A   1       3.683   7.394   2.979  1.00 20.00      A    C  
+HETATM   35  O8  LMG A   1      -2.244  -0.706   2.657  1.00 20.00      A    O  
+HETATM   36  C28 LMG A   1      -2.121  -0.805   1.228  1.00 20.00      A    C  
+HETATM   37  O10 LMG A   1      -2.724  -1.642   0.636  1.00 20.00      A    O  
+HETATM   38  C29 LMG A   1      -1.248   0.236   0.442  1.00 20.00      A    C  
+HETATM   39  C30 LMG A   1      -1.632   0.203  -1.070  1.00 20.00      A    C  
+HETATM   40  C31 LMG A   1      -0.683   1.146  -1.868  1.00 20.00      A    C  
+HETATM   41  C32 LMG A   1      -0.602   0.671  -3.343  1.00 20.00      A    C  
+HETATM   42  C33 LMG A   1      -0.453   1.902  -4.276  1.00 20.00      A    C  
+HETATM   43  C34 LMG A   1      -0.312   1.425  -5.740  1.00 20.00      A    C  
+HETATM   44  C35 LMG A   1      -1.681   1.539  -6.455  1.00 20.00      A    C  
+HETATM   45  C36 LMG A   1      -1.667   0.669  -7.745  1.00 20.00      A    C  
+HETATM   46  C37 LMG A   1      -3.128   0.236  -8.099  1.00 20.00      A    C  
+HETATM   47  C38 LMG A   1      -3.166  -0.334  -9.559  1.00 20.00      A    C  
+HETATM   48  C39 LMG A   1      -4.637  -0.311 -10.090  1.00 20.00      A    C  
+HETATM   49  C40 LMG A   1      -4.626  -0.192 -11.656  1.00 20.00      A    C  
+HETATM   50  C41 LMG A   1      -5.376   1.107 -12.086  1.00 20.00      A    C  
+HETATM   51  C42 LMG A   1      -4.691   1.708 -13.347  1.00 20.00      A    C  
+HETATM   52  C43 LMG A   1      -4.757   3.264 -13.283  1.00 20.00      A    C  
+HETATM   53  C44 LMG A   1      -3.886   3.867 -14.417  1.00 20.00      A    C  
+HETATM   54  C45 LMG A   1      -3.461   5.304 -14.032  1.00 20.00      A    C  
+HETATM   55  HC1 LMG A   1      -2.014  -1.716   8.085  1.00 20.00      A    H  
+HETATM   56  HC2 LMG A   1      -1.768   1.234   7.437  1.00 20.00      A    H  
+HETATM   57  HO2 LMG A   1       0.401   0.762   7.454  1.00 20.00      A    H  
+HETATM   58  HC3 LMG A   1      -1.007  -0.179   9.976  1.00 20.00      A    H  
+HETATM   59  HO3 LMG A   1      -0.202   1.786  10.489  1.00 20.00      A    H  
+HETATM   60  HC4 LMG A   1      -2.786   1.001  11.052  1.00 20.00      A    H  
+HETATM   61  HO4 LMG A   1      -3.288   2.804  10.036  1.00 20.00      A    H  
+HETATM   62  HC5 LMG A   1      -3.477  -1.142  10.173  1.00 20.00      A    H  
+HETATM   63  HO5 LMG A   1      -6.178   0.270  11.725  1.00 20.00      A    H  
+HETATM   64 HC61 LMG A   1      -5.412   1.139   9.712  1.00 20.00      A    H  
+HETATM   65 HC62 LMG A   1      -5.906  -0.568   9.613  1.00 20.00      A    H  
+HETATM   66 HC71 LMG A   1      -2.342  -2.979   6.456  1.00 20.00      A    H  
+HETATM   67 HC72 LMG A   1      -0.898  -2.164   5.810  1.00 20.00      A    H  
+HETATM   68  HC8 LMG A   1      -3.494  -1.979   4.272  1.00 20.00      A    H  
+HETATM   69 HC91 LMG A   1      -1.165  -2.473   2.674  1.00 20.00      A    H  
+HETATM   70 HC92 LMG A   1      -0.706  -1.288   3.913  1.00 20.00      A    H  
+HETATM   71 H111 LMG A   1      -1.806  -6.288   3.268  1.00 20.00      A    H  
+HETATM   72 H112 LMG A   1      -0.521  -5.330   2.506  1.00 20.00      A    H  
+HETATM   73 H121 LMG A   1       0.600  -5.954   4.985  1.00 20.00      A    H  
+HETATM   74 H122 LMG A   1      -0.318  -7.432   4.606  1.00 20.00      A    H  
+HETATM   75 H131 LMG A   1       1.559  -7.994   3.373  1.00 20.00      A    H  
+HETATM   76 H132 LMG A   1       0.871  -6.889   2.157  1.00 20.00      A    H  
+HETATM   77 H141 LMG A   1       2.564  -6.233   2.263  1.00 20.00      A    H  
+HETATM   78 H142 LMG A   1       2.644  -6.654   4.202  1.00 20.00      A    H  
+HETATM   79 H151 LMG A   1       4.199  -7.308   2.833  1.00 20.00      A    H  
+HETATM   80 H152 LMG A   1       4.507  -6.188   4.181  1.00 20.00      A    H  
+HETATM   81 H161 LMG A   1       3.886  -4.672   1.754  1.00 20.00      A    H  
+HETATM   82 H162 LMG A   1       5.217  -5.807   1.431  1.00 20.00      A    H  
+HETATM   83 H171 LMG A   1       5.363  -4.283   4.023  1.00 20.00      A    H  
+HETATM   84 H172 LMG A   1       6.669  -4.734   2.903  1.00 20.00      A    H  
+HETATM   85 H181 LMG A   1       5.754  -2.984   1.279  1.00 20.00      A    H  
+HETATM   86 H182 LMG A   1       4.649  -2.456   2.567  1.00 20.00      A    H  
+HETATM   87 H191 LMG A   1       6.549  -1.895   4.031  1.00 20.00      A    H  
+HETATM   88 H192 LMG A   1       7.701  -2.554   2.846  1.00 20.00      A    H  
+HETATM   89 H201 LMG A   1       5.889  -0.540   1.653  1.00 20.00      A    H  
+HETATM   90 H202 LMG A   1       7.664  -0.626   1.601  1.00 20.00      A    H  
+HETATM   91 H211 LMG A   1       7.818   0.398   3.857  1.00 20.00      A    H  
+HETATM   92 H212 LMG A   1       6.045   0.385   4.013  1.00 20.00      A    H  
+HETATM   93 H221 LMG A   1       6.332   1.750   1.618  1.00 20.00      A    H  
+HETATM   94 H222 LMG A   1       7.808   2.268   2.464  1.00 20.00      A    H  
+HETATM   95 H231 LMG A   1       6.301   2.832   4.491  1.00 20.00      A    H  
+HETATM   96 H232 LMG A   1       4.906   2.577   3.420  1.00 20.00      A    H  
+HETATM   97 H241 LMG A   1       6.426   4.273   1.855  1.00 20.00      A    H  
+HETATM   98 H242 LMG A   1       6.876   4.847   3.476  1.00 20.00      A    H  
+HETATM   99 H251 LMG A   1       4.162   4.899   2.109  1.00 20.00      A    H  
+HETATM  100 H252 LMG A   1       4.205   4.722   3.879  1.00 20.00      A    H  
+HETATM  101 H261 LMG A   1       5.727   6.936   2.391  1.00 20.00      A    H  
+HETATM  102 H262 LMG A   1       5.431   6.820   4.142  1.00 20.00      A    H  
+HETATM  103 H271 LMG A   1       2.878   6.846   3.463  1.00 20.00      A    H  
+HETATM  104 H272 LMG A   1       3.775   8.382   3.433  1.00 20.00      A    H  
+HETATM  105 H273 LMG A   1       3.462   7.501   1.918  1.00 20.00      A    H  
+HETATM  106 H291 LMG A   1      -1.427   1.235   0.840  1.00 20.00      A    H  
+HETATM  107 H292 LMG A   1      -0.195  -0.015   0.553  1.00 20.00      A    H  
+HETATM  108 H301 LMG A   1      -1.534  -0.813  -1.447  1.00 20.00      A    H  
+HETATM  109 H302 LMG A   1      -2.661   0.536  -1.191  1.00 20.00      A    H  
+HETATM  110 H311 LMG A   1      -1.070   2.163  -1.835  1.00 20.00      A    H  
+HETATM  111 H312 LMG A   1       0.310   1.122  -1.425  1.00 20.00      A    H  
+HETATM  112 H321 LMG A   1      -1.510   0.129  -3.600  1.00 20.00      A    H  
+HETATM  113 H322 LMG A   1       0.260   0.016  -3.466  1.00 20.00      A    H  
+HETATM  114 H331 LMG A   1       0.434   2.468  -3.992  1.00 20.00      A    H  
+HETATM  115 H332 LMG A   1      -1.333   2.537  -4.184  1.00 20.00      A    H  
+HETATM  116 H341 LMG A   1       0.018   0.389  -5.753  1.00 20.00      A    H  
+HETATM  117 H342 LMG A   1       0.420   2.047  -6.256  1.00 20.00      A    H  
+HETATM  118 H351 LMG A   1      -1.866   2.580  -6.720  1.00 20.00      A    H  
+HETATM  119 H352 LMG A   1      -2.468   1.189  -5.790  1.00 20.00      A    H  
+HETATM  120 H361 LMG A   1      -1.251   1.248  -8.567  1.00 20.00      A    H  
+HETATM  121 H362 LMG A   1      -1.055  -0.218  -7.578  1.00 20.00      A    H  
+HETATM  122 H371 LMG A   1      -3.459  -0.534  -7.398  1.00 20.00      A    H  
+HETATM  123 H372 LMG A   1      -3.790   1.099  -8.029  1.00 20.00      A    H  
+HETATM  124 H381 LMG A   1      -2.540   0.277 -10.203  1.00 20.00      A    H  
+HETATM  125 H382 LMG A   1      -2.796  -1.360  -9.559  1.00 20.00      A    H  
+HETATM  126 H391 LMG A   1      -5.143  -1.232  -9.798  1.00 20.00      A    H  
+HETATM  127 H392 LMG A   1      -5.162   0.541  -9.665  1.00 20.00      A    H  
+HETATM  128 H401 LMG A   1      -5.127  -1.063 -12.090  1.00 20.00      A    H  
+HETATM  129 H402 LMG A   1      -3.598  -0.152 -12.010  1.00 20.00      A    H  
+HETATM  130 H411 LMG A   1      -6.413   0.868 -12.315  1.00 20.00      A    H  
+HETATM  131 H412 LMG A   1      -5.342   1.829 -11.277  1.00 20.00      A    H  
+HETATM  132 H421 LMG A   1      -3.651   1.391 -13.381  1.00 20.00      A    H  
+HETATM  133 H422 LMG A   1      -5.206   1.359 -14.242  1.00 20.00      A    H  
+HETATM  134 H431 LMG A   1      -4.383   3.604 -12.319  1.00 20.00      A    H  
+HETATM  135 H432 LMG A   1      -5.791   3.589 -13.407  1.00 20.00      A    H  
+HETATM  136 H441 LMG A   1      -4.461   3.894 -15.342  1.00 20.00      A    H  
+HETATM  137 H442 LMG A   1      -3.000   3.252 -14.560  1.00 20.00      A    H  
+HETATM  138 H451 LMG A   1      -2.732   5.262 -13.226  1.00 20.00      A    H  
+HETATM  139 H452 LMG A   1      -3.018   5.796 -14.897  1.00 20.00      A    H  
+HETATM  140 H453 LMG A   1      -4.334   5.864 -13.704  1.00 20.00      A    H  
+CONECT    1    2    3   12   56
+CONECT    2    1   13
+CONECT    3    1    4    5   57
+CONECT    4    3   58
+CONECT    5    3    6    7   59
+CONECT    6    5   60
+CONECT    7    5    8    9   61
+CONECT    8    7   62
+CONECT    9    7   11   12   63
+CONECT   11    9   10   65   66
+CONECT   12    1    9
+CONECT   13    2   14   67   68
+CONECT   14   13   15   16   69
+CONECT   15   14   36   70   71
+CONECT   16   14   17
+CONECT   17   16   19
+CONECT   17   18
+CONECT   17   18
+CONECT   18   17
+CONECT   18   17
+CONECT   19   17   20   72   73
+CONECT   20   19   21   74   75
+CONECT   21   20   22   76   77
+CONECT   22   21   23   78   79
+CONECT   23   22   24   80   81
+CONECT   24   23   25   82   83
+CONECT   25   24   26   84   85
+CONECT   26   25   27   86   87
+CONECT   27   26   28   88   89
+CONECT   28   27   29   90   91
+CONECT   29   28   30   92   93
+CONECT   30   29   31   94   95
+CONECT   31   30   32   96   97
+CONECT   32   31   33   98   99
+CONECT   33   32   34  100  101
+CONECT   34   33   35  102  103
+CONECT   35   34  104  105  106
+CONECT   36   15   37
+CONECT   37   36   39
+CONECT   37   38
+CONECT   37   38
+CONECT   38   37
+CONECT   38   37
+CONECT   39   37   40  107  108
+CONECT   40   39   41  109  110
+CONECT   41   40   42  111  112
+CONECT   42   41   43  113  114
+CONECT   43   42   44  115  116
+CONECT   44   43   45  117  118
+CONECT   45   44   46  119  120
+CONECT   46   45   47  121  122
+CONECT   47   46   48  123  124
+CONECT   48   47   49  125  126
+CONECT   49   48   50  127  128
+CONECT   50   49   51  129  130
+CONECT   51   50   52  131  132
+CONECT   52   51   53  133  134
+CONECT   53   52   54  135  136
+CONECT   54   53   55  137  138
+CONECT   55   54  139  140  141
+CONECT   56    1
+CONECT   57    3
+CONECT   58    4
+CONECT   59    5
+CONECT   60    6
+CONECT   61    7
+CONECT   62    8
+CONECT   63    9
+CONECT   64   10
+CONECT   65   11
+CONECT   66   11
+CONECT   67   13
+CONECT   68   13
+CONECT   69   14
+CONECT   70   15
+CONECT   71   15
+CONECT   72   19
+CONECT   73   19
+CONECT   74   20
+CONECT   75   20
+CONECT   76   21
+CONECT   77   21
+CONECT   78   22
+CONECT   79   22
+CONECT   80   23
+CONECT   81   23
+CONECT   82   24
+CONECT   83   24
+CONECT   84   25
+CONECT   85   25
+CONECT   86   26
+CONECT   87   26
+CONECT   88   27
+CONECT   89   27
+CONECT   90   28
+CONECT   91   28
+CONECT   92   29
+CONECT   93   29
+CONECT   94   30
+CONECT   95   30
+CONECT   96   31
+CONECT   97   31
+CONECT   98   32
+CONECT   99   32
+CONECT  100   33
+CONECT  101   33
+CONECT  102   34
+CONECT  103   34
+CONECT  104   35
+CONECT  105   35
+CONECT  106   35
+CONECT  107   39
+CONECT  108   39
+CONECT  109   40
+CONECT  110   40
+CONECT  111   41
+CONECT  112   41
+CONECT  113   42
+CONECT  114   42
+CONECT  115   43
+CONECT  116   43
+CONECT  117   44
+CONECT  118   44
+CONECT  119   45
+CONECT  120   45
+CONECT  121   46
+CONECT  122   46
+CONECT  123   47
+CONECT  124   47
+CONECT  125   48
+CONECT  126   48
+CONECT  127   49
+CONECT  128   49
+CONECT  129   50
+CONECT  130   50
+CONECT  131   51
+CONECT  132   51
+CONECT  133   52
+CONECT  134   52
+CONECT  135   53
+CONECT  136   53
+CONECT  137   54
+CONECT  138   54
+CONECT  139   55
+CONECT  140   55
+CONECT  141   55
+CONECT   10   11   64
+END

@@ -161,7 +161,7 @@ class Grid (object) :
             boxesk = self.boxes[k]
         else :
             boxesk = {}
-            boxes[k] = boxesk
+            self.boxes[k] = boxesk
 
         boxesj = None
         if j in boxesk :
@@ -216,9 +216,10 @@ class Grid (object) :
         if box1 == box2 :
             at.setCoord ( newPos )
         else :
-            box1.remove ( at )
+            if at in box1 :
+                box1.remove ( at )
+                box2.append ( at )
             at.setCoord ( newPos )
-            box2.append ( at )
 
 
     def MoveAtomLocal1 ( self, at, newPos ) :
@@ -463,7 +464,76 @@ class Grid (object) :
 
         return numAts
 
+    def AtsInSphere ( self, ctr, rad ) :
 
+        #i = int ( numpy.floor ( C[0]/self.D ) )
+        #j = int ( numpy.floor ( C[1]/self.D ) )
+        #k = int ( numpy.floor ( C[2]/self.D ) )
+
+        D = self.D
+        ctr = chimera.Point ( ctr[0], ctr[1], ctr[2] )
+        boxrad = numpy.sqrt ( 3.0*D*D/4.0 )
+
+        for k, jboxes in self.boxes.iteritems() :
+            for j, iboxes in jboxes.iteritems () :
+                for i, atoms in iboxes.iteritems () :
+
+                    boxctr = chimera.Point ( (i+0.5) * D, (j+0.5) * D, (k+.5) * D )
+                    if (boxctr-ctr).length >= (rad + boxrad) :
+                        continue
+
+                    if 0 and len(atoms) > 16 :
+                        for ii in (i, i+1) :
+                            for jj in (j, j+1) :
+                                for kk in (k, k+1) :
+                                    pt = chimera.Point ( ii * D, jj * D, kk * D )
+
+                    for at in atoms :
+                        if ( at.coord() - ctr ).length < rad :
+                            return True
+
+        return False
+
+
+
+    def HasNearPtLocal ( self, C, D = None ) :
+
+        #startt = time.time()
+        ats = []
+        #atsByDist = []
+
+        if D == None :
+            D = self.D
+        else :
+            if D > self.D :
+                print "grid: asking for D larger than box size"
+
+        i = int ( numpy.floor ( C[0]/self.D ) )
+        j = int ( numpy.floor ( C[1]/self.D ) )
+        k = int ( numpy.floor ( C[2]/self.D ) )
+
+        for kk in (k-1, k, k+1) :
+
+            if not kk in self.boxes : continue
+            jboxes = self.boxes[kk]
+
+            for jj in (j-1, j, j+1) :
+
+                if not jj in jboxes : continue
+                iboxes = jboxes[jj]
+
+                for ii in (i-1, i, i+1) :
+
+                    if not ii in iboxes : continue
+                    atsInBox = iboxes[ii]
+                    #ats.extend ( atsInBox )
+
+                    for at in atsInBox :
+                        v = at.coord() - C
+                        if v.length < D :
+                            return True
+
+        return False
 
 
 

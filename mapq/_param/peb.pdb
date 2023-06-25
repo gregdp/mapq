@@ -1,0 +1,212 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:26:06 2023
+REMARK  99
+REMARK  99   Ligand name: 3-[2-[(Z)-[3-(2-carboxyethyl)-5-[(Z)-[(3R,4R)-3-ethyl-4-methyl-5-oxo-pyrrolidin-2-ylidene]methyl]-4-methyl-pyrrol-2-ylidene]methyl]-5-[[(2R)-4-ethenyl-3-methyl-5-oxo-1,2-dihydropyrrol-2-yl]methyl]-4-methyl-1H-pyrrol-3-yl]propanoic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC[C@@H]1[C@@H](C)C(=O)N\C1=C/C2=N\C(=C/c3[nH]c(C[C@H]4NC(=O)C(=C4C)C=C)c(C)c3CCC(O)=O)C(=C2C)CCC(O)=O
+FORMUL   1  PEB    C33 H38 N4 O6  (-2)
+HETATM    1  CHC PEB A   1      -2.452  -2.749   1.007  1.00 20.00      A    C  
+HETATM    2  NC  PEB A   1      -1.219  -1.547   0.591  1.00 20.00      A    N  
+HETATM    3  C1C PEB A   1      -0.469  -1.740  -0.062  1.00 20.00      A    C  
+HETATM    4  C2C PEB A   1       0.349  -2.353   0.640  1.00 20.00      A    C  
+HETATM    5  C3C PEB A   1       0.249  -2.373   0.911  1.00 20.00      A    C  
+HETATM    6  C4C PEB A   1      -1.120  -1.713   0.970  1.00 20.00      A    C  
+HETATM    7  CMC PEB A   1       1.433  -0.702   1.532  1.00 20.00      A    C  
+HETATM    8  CAC PEB A   1       1.097  -3.746   0.215  1.00 20.00      A    C  
+HETATM    9  CBC PEB A   1       1.815  -4.271   1.829  1.00 20.00      A    C  
+HETATM   10  CGC PEB A   1       2.043  -5.791   1.875  1.00 20.00      A    C  
+HETATM   11  O1C PEB A   1       1.740  -6.578   0.720  1.00 20.00      A    O  
+HETATM   12  O2C PEB A   1       2.608  -6.283   2.814  1.00 20.00      A    O-1
+HETATM   13  ND  PEB A   1      -4.531  -2.279   1.804  1.00 20.00      A    N  
+HETATM   14  C1D PEB A   1      -3.140  -2.415   1.990  1.00 20.00      A    C  
+HETATM   15  C2D PEB A   1      -3.004  -3.500   3.038  1.00 20.00      A    C  
+HETATM   16  C3D PEB A   1      -4.107  -3.644   3.750  1.00 20.00      A    C  
+HETATM   17  C4D PEB A   1      -5.165  -2.833   3.115  1.00 20.00      A    C  
+HETATM   18  CMD PEB A   1      -1.822  -4.638   3.026  1.00 20.00      A    C  
+HETATM   19  CAD PEB A   1      -3.847  -3.731   5.207  1.00 20.00      A    C  
+HETATM   20  CBD PEB A   1      -4.831  -3.680   6.152  1.00 20.00      A    C  
+HETATM   21  OD  PEB A   1      -5.988  -2.723   3.378  1.00 20.00      A    O  
+HETATM   22  NA  PEB A   1       3.069   4.916  -0.881  1.00 20.00      A    N  
+HETATM   23  C1A PEB A   1       3.265   5.621  -2.292  1.00 20.00      A    C  
+HETATM   24  C2A PEB A   1       4.060   4.605  -3.212  1.00 20.00      A    C  
+HETATM   25  C3A PEB A   1       4.473   3.560  -2.354  1.00 20.00      A    C  
+HETATM   26  C4A PEB A   1       3.317   3.492  -1.094  1.00 20.00      A    C  
+HETATM   70  CMA PEB A   1       3.046   4.042  -4.501  1.00 20.00      A    C  
+HETATM   71  CBA PEB A   1       7.046   3.361  -2.278  1.00 20.00      A    C  
+HETATM   80  OA  PEB A   1       2.644   6.522  -2.681  1.00 20.00      A    O  
+HETATM   69  CHA PEB A   1       1.835   3.686  -0.848  1.00 20.00      A    C  
+HETATM   27  CAA PEB A   1       5.875   4.007  -1.681  1.00 20.00      A    C  
+HETATM   28  NB  PEB A   1       1.886   0.717  -2.006  1.00 20.00      A    N  
+HETATM   29  C1B PEB A   1       1.094   2.527  -1.682  1.00 20.00      A    C  
+HETATM   30  C2B PEB A   1      -0.730   2.539  -1.822  1.00 20.00      A    C  
+HETATM   31  C3B PEB A   1      -1.337   0.958  -1.667  1.00 20.00      A    C  
+HETATM   32  C4B PEB A   1       0.566  -0.513  -1.837  1.00 20.00      A    C  
+HETATM   33  CHB PEB A   1      -0.232  -1.256  -1.735  1.00 20.00      A    C  
+HETATM   68  CMB PEB A   1      -1.287   3.624  -2.355  1.00 20.00      A    C  
+HETATM   79  CAB PEB A   1      -2.808   0.671  -0.506  1.00 20.00      A    C  
+HETATM   81  CBB PEB A   1      -3.867   2.042  -0.616  1.00 20.00      A    C  
+HETATM   34  CGB PEB A   1      -4.575   2.014  -2.013  1.00 20.00      A    C  
+HETATM   35  O1B PEB A   1      -4.150   2.428  -2.771  1.00 20.00      A    O  
+HETATM   36  O2B PEB A   1      -5.496   1.287  -2.208  1.00 20.00      A    O-1
+HETATM   37 HHC1 PEB A   1      -2.080  -4.031   0.982  1.00 20.00      A    H  
+HETATM   38 HHC2 PEB A   1      -3.084  -2.458  -0.241  1.00 20.00      A    H  
+HETATM   39  HNC PEB A   1      -1.587  -0.066   0.849  1.00 20.00      A    H  
+HETATM   40 HMC1 PEB A   1       2.361  -0.578   0.689  1.00 20.00      A    H  
+HETATM   41 HMC2 PEB A   1       1.674  -0.761   2.138  1.00 20.00      A    H  
+HETATM   42 HMC3 PEB A   1       0.507   0.568   1.362  1.00 20.00      A    H  
+HETATM   43 HAC1 PEB A   1       0.326  -4.492  -0.114  1.00 20.00      A    H  
+HETATM   44 HAC2 PEB A   1       1.760  -3.673  -0.424  1.00 20.00      A    H  
+HETATM   45 HBC1 PEB A   1       0.978  -3.900   2.808  1.00 20.00      A    H  
+HETATM   46 HBC2 PEB A   1       2.765  -3.763   1.999  1.00 20.00      A    H  
+HETATM   47  HND PEB A   1      -4.997  -1.669   1.103  1.00 20.00      A    H  
+HETATM   48 H1D1 PEB A   1      -2.784  -1.530   2.356  1.00 20.00      A    H  
+HETATM   49 HMD1 PEB A   1      -0.696  -4.116   2.758  1.00 20.00      A    H  
+HETATM   50 HMD2 PEB A   1      -1.768  -5.133   4.062  1.00 20.00      A    H  
+HETATM   51 HMD3 PEB A   1      -2.072  -5.478   2.170  1.00 20.00      A    H  
+HETATM   52 HAD1 PEB A   1      -3.920  -5.310   4.674  1.00 20.00      A    H  
+HETATM   53 HBD1 PEB A   1      -4.345  -4.512   7.389  1.00 20.00      A    H  
+HETATM   54 HBD2 PEB A   1      -5.764  -4.929   6.181  1.00 20.00      A    H  
+HETATM   55  HNA PEB A   1       2.434   5.433   0.008  1.00 20.00      A    H  
+HETATM   56 H2A1 PEB A   1       5.018   5.141  -3.708  1.00 20.00      A    H  
+HETATM   57 H3A1 PEB A   1       4.562   2.609  -2.862  1.00 20.00      A    H  
+HETATM   72 HMA1 PEB A   1       2.060   4.858  -4.703  1.00 20.00      A    H  
+HETATM   73 HMA2 PEB A   1       3.697   3.976  -5.395  1.00 20.00      A    H  
+HETATM   74 HMA3 PEB A   1       2.622   2.993  -4.273  1.00 20.00      A    H  
+HETATM   58 HBA1 PEB A   1       7.091   3.608  -3.370  1.00 20.00      A    H  
+HETATM   59 HBA2 PEB A   1       6.912   2.199  -2.120  1.00 20.00      A    H  
+HETATM   60 HBA3 PEB A   1       7.900   3.681  -1.834  1.00 20.00      A    H  
+HETATM   75 HHA1 PEB A   1       1.382   4.061  -1.531  1.00 20.00      A    H  
+HETATM   61 HAA1 PEB A   1       6.013   4.968  -1.718  1.00 20.00      A    H  
+HETATM   62 HAA2 PEB A   1       5.827   3.715  -0.661  1.00 20.00      A    H  
+HETATM   63 HHB1 PEB A   1      -2.048  -0.259  -1.841  1.00 20.00      A    H  
+HETATM   76 HMB1 PEB A   1      -1.716   4.148  -1.592  1.00 20.00      A    H  
+HETATM   77 HMB2 PEB A   1      -2.075   3.369  -3.106  1.00 20.00      A    H  
+HETATM   78 HMB3 PEB A   1      -0.483   4.201  -2.815  1.00 20.00      A    H  
+HETATM   64 HAB1 PEB A   1      -3.358  -0.161  -0.792  1.00 20.00      A    H  
+HETATM   65 HAB2 PEB A   1      -2.540   0.597   0.353  1.00 20.00      A    H  
+HETATM   66 HBB1 PEB A   1      -3.230   3.177  -0.497  1.00 20.00      A    H  
+HETATM   67 HBB2 PEB A   1      -4.671   1.955   0.256  1.00 20.00      A    H  
+CONECT    1    6   14   44   45
+CONECT    2   46
+CONECT    2    3    6
+CONECT    3   37
+CONECT    3    2    4
+CONECT    4    8
+CONECT    4    3    5
+CONECT    5    7
+CONECT    5    4    6
+CONECT    6    1
+CONECT    6    2    5
+CONECT    7    5   47   48   49
+CONECT    8    4    9   50   51
+CONECT    9    8   10   52   53
+CONECT   10    9   12
+CONECT   10   11
+CONECT   10   11
+CONECT   11   10
+CONECT   11   10
+CONECT   12   10
+CONECT   13   14   17   54
+CONECT   14    1   13   15   55
+CONECT   15   14   18
+CONECT   15   16
+CONECT   15   16
+CONECT   16   17   19
+CONECT   16   15
+CONECT   16   15
+CONECT   17   13   16
+CONECT   17   21
+CONECT   17   21
+CONECT   18   15   56   57   58
+CONECT   19   16   59
+CONECT   19   20
+CONECT   19   20
+CONECT   20   60   61
+CONECT   20   19
+CONECT   20   19
+CONECT   21   17
+CONECT   21   17
+CONECT   22   23   26   62
+CONECT   23   22   24
+CONECT   23   29
+CONECT   23   29
+CONECT   24   23   25   27   63
+CONECT   25   24   26   31   64
+CONECT   26   22   25
+CONECT   26   30
+CONECT   26   30
+CONECT   31   25   28   72   73
+CONECT   32   36
+CONECT   32   33
+CONECT   32   33
+CONECT   33   30   34
+CONECT   33   32
+CONECT   33   32
+CONECT   34   33   38
+CONECT   34   35
+CONECT   34   35
+CONECT   35   36   39
+CONECT   35   34
+CONECT   35   34
+CONECT   36   32   35
+CONECT   36   37
+CONECT   36   37
+CONECT   37    3   74
+CONECT   37   36
+CONECT   37   36
+CONECT   41   40   43
+CONECT   41   42
+CONECT   41   42
+CONECT   42   41
+CONECT   42   41
+CONECT   43   41
+CONECT   44    1
+CONECT   45    1
+CONECT   46    2
+CONECT   47    7
+CONECT   48    7
+CONECT   49    7
+CONECT   50    8
+CONECT   51    8
+CONECT   52    9
+CONECT   53    9
+CONECT   54   13
+CONECT   55   14
+CONECT   56   18
+CONECT   57   18
+CONECT   58   18
+CONECT   59   19
+CONECT   60   20
+CONECT   61   20
+CONECT   62   22
+CONECT   63   24
+CONECT   64   25
+CONECT   68   28
+CONECT   69   28
+CONECT   70   28
+CONECT   72   31
+CONECT   73   31
+CONECT   74   37
+CONECT   78   39
+CONECT   79   39
+CONECT   80   40
+CONECT   81   40
+CONECT   38   34   75   76   77
+CONECT   30   33   71
+CONECT   30   26
+CONECT   30   26
+CONECT   27   24   65   66   67
+CONECT   28   31   68   69   70
+CONECT   65   27
+CONECT   66   27
+CONECT   67   27
+CONECT   71   30
+CONECT   75   38
+CONECT   76   38
+CONECT   77   38
+CONECT   39   35   40   78   79
+CONECT   29   23
+CONECT   29   23
+CONECT   40   39   41   80   81
+END

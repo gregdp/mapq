@@ -1,0 +1,339 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Feb  9 11:35:51 2023
+REMARK  99
+REMARK  99   Ligand name: (2S)-3-[(6-O-alpha-D-galactopyranosyl-beta-D-galactopyranosyl)oxy]propane-1,2-diyl dioctadecanoate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCCCCCCCCCCCCCCCC(=O)OC[C@H](CO[C@@H]1O[C@H](CO[C@H]2O[C@H](CO)[C@H](O)[C@H](O)[C@H]2O)[C@H](O)[C@H](O)[C@H]1O)OC(=O)CCCCCCCCCCCCCCCCC
+FORMUL   1  DGD    C51 H96 O15 
+HETATM    1  C1A DGD A   1       1.220   1.754   1.351  1.00 20.00      A    C  
+HETATM    2  C2A DGD A   1       2.778   1.723   1.317  1.00 20.00      A    C  
+HETATM    3  C3A DGD A   1       3.299   0.678   2.339  1.00 20.00      A    C  
+HETATM    4  C4A DGD A   1       4.833   0.525   2.182  1.00 20.00      A    C  
+HETATM    5  C5A DGD A   1       5.276  -0.836   2.756  1.00 20.00      A    C  
+HETATM    6  C6A DGD A   1       5.990  -1.647   1.662  1.00 20.00      A    C  
+HETATM    7  C7A DGD A   1       5.992  -3.122   2.045  1.00 20.00      A    C  
+HETATM    8  C8A DGD A   1       5.155  -3.925   1.013  1.00 20.00      A    C  
+HETATM    9  C9A DGD A   1       4.548  -5.177   1.699  1.00 20.00      A    C  
+HETATM   10  CAA DGD A   1       3.248  -5.584   0.973  1.00 20.00      A    C  
+HETATM   11  CBA DGD A   1       2.053  -4.908   1.651  1.00 20.00      A    C  
+HETATM   12  CCA DGD A   1       1.341  -5.930   2.592  1.00 20.00      A    C  
+HETATM   13  CDA DGD A   1       0.017  -5.353   3.056  1.00 20.00      A    C  
+HETATM   14  CEA DGD A   1       0.032  -5.197   4.596  1.00 20.00      A    C  
+HETATM   15  CFA DGD A   1      -1.321  -4.613   5.068  1.00 20.00      A    C  
+HETATM   16  CGA DGD A   1      -1.143  -3.953   6.458  1.00 20.00      A    C  
+HETATM   17  CHA DGD A   1      -1.736  -4.878   7.547  1.00 20.00      A    C  
+HETATM   18  CIA DGD A   1      -2.575  -4.045   8.530  1.00 20.00      A    C  
+HETATM   19  O1A DGD A   1       0.656   1.950   2.370  1.00 20.00      A    O  
+HETATM   20  C1B DGD A   1      -1.302   2.246  -3.260  1.00 20.00      A    C  
+HETATM   21  C2B DGD A   1      -1.516   3.701  -3.737  1.00 20.00      A    C  
+HETATM   22  C3B DGD A   1      -0.197   4.249  -4.328  1.00 20.00      A    C  
+HETATM   23  C4B DGD A   1       0.070   5.631  -3.771  1.00 20.00      A    C  
+HETATM   24  C5B DGD A   1       1.358   6.181  -4.371  1.00 20.00      A    C  
+HETATM   25  C6B DGD A   1       2.527   5.295  -3.958  1.00 20.00      A    C  
+HETATM   26  C7B DGD A   1       3.744   6.184  -3.584  1.00 20.00      A    C  
+HETATM   27  C8B DGD A   1       5.050   5.513  -4.086  1.00 20.00      A    C  
+HETATM   28  C9B DGD A   1       4.811   4.029  -4.281  1.00 20.00      A    C  
+HETATM   29  CAB DGD A   1       6.168   3.308  -4.479  1.00 20.00      A    C  
+HETATM   30  CBB DGD A   1       5.966   2.078  -5.374  1.00 20.00      A    C  
+HETATM   31  CCB DGD A   1       7.158   1.085  -5.175  1.00 20.00      A    C  
+HETATM   32  CDB DGD A   1       6.857  -0.250  -5.935  1.00 20.00      A    C  
+HETATM   33  CEB DGD A   1       7.903  -1.300  -5.557  1.00 20.00      A    C  
+HETATM   34  CFB DGD A   1       7.353  -2.705  -5.859  1.00 20.00      A    C  
+HETATM   35  CGB DGD A   1       8.485  -3.739  -5.724  1.00 20.00      A    C  
+HETATM   36  CHB DGD A   1       7.889  -5.110  -5.456  1.00 20.00      A    C  
+HETATM   37  CIB DGD A   1       8.969  -6.184  -5.642  1.00 20.00      A    C  
+HETATM   38  O1B DGD A   1      -1.627   1.345  -3.951  1.00 20.00      A    O  
+HETATM   39  O1G DGD A   1       0.473   1.617   0.134  1.00 20.00      A    O  
+HETATM   40  C1G DGD A   1      -0.936   1.497   0.331  1.00 20.00      A    C  
+HETATM   41  C2G DGD A   1      -1.664   1.761  -0.994  1.00 20.00      A    C  
+HETATM   42  O2G DGD A   1      -0.731   1.996  -1.999  1.00 20.00      A    O  
+HETATM   43  C3G DGD A   1      -2.527   0.526  -1.367  1.00 20.00      A    C  
+HETATM   44  O3G DGD A   1      -3.174   0.028  -0.198  1.00 20.00      A    O  
+HETATM   45  C1D DGD A   1      -4.540   0.092  -0.248  1.00 20.00      A    C  
+HETATM   46  C2D DGD A   1      -5.091  -1.311  -0.433  1.00 20.00      A    C  
+HETATM   47  O2D DGD A   1      -4.695  -1.797  -1.729  1.00 20.00      A    O  
+HETATM   48  C3D DGD A   1      -6.575  -1.346  -0.340  1.00 20.00      A    C  
+HETATM   49  O3D DGD A   1      -7.015  -2.735  -0.365  1.00 20.00      A    O  
+HETATM   50  C4D DGD A   1      -7.075  -0.705   0.919  1.00 20.00      A    C  
+HETATM   51  O4D DGD A   1      -6.680  -1.510   2.037  1.00 20.00      A    O  
+HETATM   52  C5D DGD A   1      -6.515   0.708   1.107  1.00 20.00      A    C  
+HETATM   53  O5D DGD A   1      -8.202   1.825   2.356  1.00 20.00      A    O  
+HETATM   54  C6D DGD A   1      -6.928   1.218   2.452  1.00 20.00      A    C  
+HETATM   55  O6D DGD A   1      -5.046   0.738   1.017  1.00 20.00      A    O  
+HETATM   56  C1E DGD A   1      -8.755   2.147   3.563  1.00 20.00      A    C  
+HETATM   57  C2E DGD A   1     -10.270   2.096   3.439  1.00 20.00      A    C  
+HETATM   58  O2E DGD A   1     -10.648   0.816   2.891  1.00 20.00      A    O  
+HETATM   59  C3E DGD A   1     -10.792   3.165   2.560  1.00 20.00      A    C  
+HETATM   60  O3E DGD A   1     -12.245   3.151   2.618  1.00 20.00      A    O  
+HETATM   61  C4E DGD A   1     -10.303   4.523   2.973  1.00 20.00      A    C  
+HETATM   62  O4E DGD A   1     -10.882   4.859   4.235  1.00 20.00      A    O  
+HETATM   63  C5E DGD A   1      -8.783   4.571   3.100  1.00 20.00      A    C  
+HETATM   64  O6E DGD A   1      -8.267   3.508   3.975  1.00 20.00      A    O  
+HETATM   65  C6E DGD A   1      -8.384   5.906   3.667  1.00 20.00      A    C  
+HETATM   66  O5E DGD A   1      -8.406   5.845   5.064  1.00 20.00      A    O  
+HETATM   67 HA21 DGD A   1       3.164   2.702   1.574  1.00 20.00      A    H  
+HETATM   68 HA22 DGD A   1       3.114   1.452   0.317  1.00 20.00      A    H  
+HETATM   69 HA31 DGD A   1       3.070   1.010   3.342  1.00 20.00      A    H  
+HETATM   70 HA32 DGD A   1       2.818  -0.279   2.155  1.00 20.00      A    H  
+HETATM   71 HA41 DGD A   1       5.097   0.578   1.131  1.00 20.00      A    H  
+HETATM   72 HA42 DGD A   1       5.334   1.326   2.723  1.00 20.00      A    H  
+HETATM   73 HA51 DGD A   1       5.961  -0.673   3.592  1.00 20.00      A    H  
+HETATM   74 HA52 DGD A   1       4.407  -1.382   3.101  1.00 20.00      A    H  
+HETATM   75 HA61 DGD A   1       5.473  -1.520   0.726  1.00 20.00      A    H  
+HETATM   76 HA62 DGD A   1       7.020  -1.295   1.560  1.00 20.00      A    H  
+HETATM   77 HA71 DGD A   1       5.561  -3.239   3.028  1.00 20.00      A    H  
+HETATM   78 HA72 DGD A   1       7.015  -3.495   2.051  1.00 20.00      A    H  
+HETATM   79 HA81 DGD A   1       5.800  -4.240   0.185  1.00 20.00      A    H  
+HETATM   80 HA82 DGD A   1       4.356  -3.300   0.632  1.00 20.00      A    H  
+HETATM   81 HA91 DGD A   1       4.327  -4.951   2.731  1.00 20.00      A    H  
+HETATM   82 HA92 DGD A   1       5.256  -5.992   1.653  1.00 20.00      A    H  
+HETATM   83 HAT1 DGD A   1       3.301  -5.268  -0.072  1.00 20.00      A    H  
+HETATM   84 HAT2 DGD A   1       3.129  -6.664   1.020  1.00 20.00      A    H  
+HETATM   85 HAE1 DGD A   1       2.399  -4.062   2.234  1.00 20.00      A    H  
+HETATM   86 HAE2 DGD A   1       1.354  -4.563   0.895  1.00 20.00      A    H  
+HETATM   87 HAW1 DGD A   1       1.163  -6.859   2.050  1.00 20.00      A    H  
+HETATM   88 HAW2 DGD A   1       1.969  -6.127   3.450  1.00 20.00      A    H  
+HETATM   89 HAH1 DGD A   1      -0.790  -6.023   2.767  1.00 20.00      A    H  
+HETATM   90 HAH2 DGD A   1      -0.135  -4.391   2.599  1.00 20.00      A    H  
+HETATM   91 HAF1 DGD A   1       0.840  -4.522   4.885  1.00 20.00      A    H  
+HETATM   92 HAF2 DGD A   1       0.190  -6.172   5.059  1.00 20.00      A    H  
+HETATM   93 HAN1 DGD A   1      -2.056  -5.412   5.137  1.00 20.00      A    H  
+HETATM   94 HAN2 DGD A   1      -1.661  -3.871   4.357  1.00 20.00      A    H  
+HETATM   95 HAS1 DGD A   1      -0.082  -3.796   6.653  1.00 20.00      A    H  
+HETATM   96 HAS2 DGD A   1      -1.659  -2.998   6.473  1.00 20.00      A    H  
+HETATM   97 HAV1 DGD A   1      -0.922  -5.371   8.089  1.00 20.00      A    H  
+HETATM   98 HAV2 DGD A   1      -2.365  -5.628   7.081  1.00 20.00      A    H  
+HETATM   99 HAG1 DGD A   1      -2.820  -4.650   9.401  1.00 20.00      A    H  
+HETATM  100 HAG2 DGD A   1      -3.489  -3.726   8.045  1.00 20.00      A    H  
+HETATM  101 HAG3 DGD A   1      -2.003  -3.166   8.846  1.00 20.00      A    H  
+HETATM  102 HB21 DGD A   1      -1.820   4.320  -2.891  1.00 20.00      A    H  
+HETATM  103 HB22 DGD A   1      -2.292   3.722  -4.500  1.00 20.00      A    H  
+HETATM  104 HB31 DGD A   1       0.620   3.590  -4.062  1.00 20.00      A    H  
+HETATM  105 HB32 DGD A   1      -0.280   4.305  -5.408  1.00 20.00      A    H  
+HETATM  106 HB41 DGD A   1      -0.756   6.288  -4.022  1.00 20.00      A    H  
+HETATM  107 HB42 DGD A   1       0.170   5.573  -2.696  1.00 20.00      A    H  
+HETATM  108 HB51 DGD A   1       1.521   7.177  -4.015  1.00 20.00      A    H  
+HETATM  109 HB52 DGD A   1       1.278   6.192  -5.453  1.00 20.00      A    H  
+HETATM  110 HB61 DGD A   1       2.238   4.689  -3.093  1.00 20.00      A    H  
+HETATM  111 HB62 DGD A   1       2.795   4.644  -4.783  1.00 20.00      A    H  
+HETATM  112 HB71 DGD A   1       3.789   6.301  -2.506  1.00 20.00      A    H  
+HETATM  113 HB72 DGD A   1       3.637   7.153  -4.045  1.00 20.00      A    H  
+HETATM  114 HB81 DGD A   1       5.345   5.958  -5.029  1.00 20.00      A    H  
+HETATM  115 HB82 DGD A   1       5.843   5.660  -3.350  1.00 20.00      A    H  
+HETATM  116 HB91 DGD A   1       4.309   3.624  -3.404  1.00 20.00      A    H  
+HETATM  117 HB92 DGD A   1       4.191   3.877  -5.154  1.00 20.00      A    H  
+HETATM  118 HBT1 DGD A   1       6.556   2.993  -3.511  1.00 20.00      A    H  
+HETATM  119 HBT2 DGD A   1       6.876   3.987  -4.950  1.00 20.00      A    H  
+HETATM  120 HBE1 DGD A   1       5.925   2.387  -6.404  1.00 20.00      A    H  
+HETATM  121 HBE2 DGD A   1       5.040   1.587  -5.108  1.00 20.00      A    H  
+HETATM  122 HBW1 DGD A   1       8.069   1.529  -5.569  1.00 20.00      A    H  
+HETATM  123 HBW2 DGD A   1       7.286   0.877  -4.111  1.00 20.00      A    H  
+HETATM  124 HBH1 DGD A   1       6.893  -0.074  -7.002  1.00 20.00      A    H  
+HETATM  125 HBH2 DGD A   1       5.871  -0.607  -5.662  1.00 20.00      A    H  
+HETATM  126 HBF1 DGD A   1       8.127  -1.221  -4.508  1.00 20.00      A    H  
+HETATM  127 HBF2 DGD A   1       8.802  -1.135  -6.130  1.00 20.00      A    H  
+HETATM  128 HBN1 DGD A   1       6.558  -2.942  -5.156  1.00 20.00      A    H  
+HETATM  129 HBN2 DGD A   1       6.957  -2.729  -6.876  1.00 20.00      A    H  
+HETATM  130 HBS1 DGD A   1       9.131  -3.461  -4.904  1.00 20.00      A    H  
+HETATM  131 HBS2 DGD A   1       9.064  -3.769  -6.648  1.00 20.00      A    H  
+HETATM  132 HBV1 DGD A   1       7.513  -5.147  -4.438  1.00 20.00      A    H  
+HETATM  133 HBV2 DGD A   1       7.075  -5.292  -6.148  1.00 20.00      A    H  
+HETATM  134 HBG1 DGD A   1       8.554  -7.160  -5.403  1.00 20.00      A    H  
+HETATM  135 HBG2 DGD A   1       9.807  -5.975  -4.980  1.00 20.00      A    H  
+HETATM  136 HBG3 DGD A   1       9.314  -6.178  -6.678  1.00 20.00      A    H  
+HETATM  137 HG11 DGD A   1      -1.261   2.222   1.075  1.00 20.00      A    H  
+HETATM  138 HG12 DGD A   1      -1.167   0.493   0.677  1.00 20.00      A    H  
+HETATM  139  HG2 DGD A   1      -2.304   2.629  -0.887  1.00 20.00      A    H  
+HETATM  140 HG31 DGD A   1      -3.278   0.815  -2.103  1.00 20.00      A    H  
+HETATM  141 HG32 DGD A   1      -1.892  -0.245  -1.783  1.00 20.00      A    H  
+HETATM  142  HD1 DGD A   1      -4.836   0.695  -1.089  1.00 20.00      A    H  
+HETATM  143  HD2 DGD A   1      -4.677  -1.953   0.330  1.00 20.00      A    H  
+HETATM  144 HO2D DGD A   1      -4.744  -2.753  -1.740  1.00 20.00      A    H  
+HETATM  145  HD3 DGD A   1      -6.993  -0.823  -1.190  1.00 20.00      A    H  
+HETATM  146 HO3D DGD A   1      -7.604  -2.865  -1.089  1.00 20.00      A    H  
+HETATM  147  HD4 DGD A   1      -8.158  -0.652   0.881  1.00 20.00      A    H  
+HETATM  148 HO4D DGD A   1      -7.335  -2.157   2.203  1.00 20.00      A    H  
+HETATM  149  HD5 DGD A   1      -6.925   1.351   0.342  1.00 20.00      A    H  
+HETATM  150 HD61 DGD A   1      -6.200   1.953   2.803  1.00 20.00      A    H  
+HETATM  151 HD62 DGD A   1      -6.974   0.393   3.152  1.00 20.00      A    H  
+HETATM  152  HE1 DGD A   1      -8.439   1.420   4.307  1.00 20.00      A    H  
+HETATM  153  HE2 DGD A   1     -10.708   2.207   4.428  1.00 20.00      A    H  
+HETATM  154 HO2E DGD A   1     -11.172   0.345   3.522  1.00 20.00      A    H  
+HETATM  155  HE3 DGD A   1     -10.471   2.969   1.537  1.00 20.00      A    H  
+HETATM  156 HO3E DGD A   1     -12.592   2.925   1.769  1.00 20.00      A    H  
+HETATM  157  HE4 DGD A   1     -10.615   5.247   2.234  1.00 20.00      A    H  
+HETATM  158 HO4E DGD A   1     -11.592   5.470   4.105  1.00 20.00      A    H  
+HETATM  159  HE5 DGD A   1      -8.346   4.456   2.115  1.00 20.00      A    H  
+HETATM  160 HE61 DGD A   1      -9.079   6.666   3.328  1.00 20.00      A    H  
+HETATM  161 HE62 DGD A   1      -7.388   6.156   3.334  1.00 20.00      A    H  
+HETATM  162 HO5E DGD A   1      -8.066   6.648   5.420  1.00 20.00      A    H  
+CONECT    1    2   39
+CONECT    1   19
+CONECT    1   19
+CONECT    2    1    3   67   68
+CONECT    3    2    4   69   70
+CONECT    4    3    5   71   72
+CONECT    5    4    6   73   74
+CONECT    6    5    7   75   76
+CONECT    7    6    8   77   78
+CONECT    8    7    9   79   80
+CONECT    9    8   10   81   82
+CONECT   10    9   11   83   84
+CONECT   11   10   12   85   86
+CONECT   12   11   13   87   88
+CONECT   13   12   14   89   90
+CONECT   14   13   15   91   92
+CONECT   15   14   16   93   94
+CONECT   16   15   17   95   96
+CONECT   17   16   18   97   98
+CONECT   18   17   99  100  101
+CONECT   19    1
+CONECT   19    1
+CONECT   20   21   42
+CONECT   20   38
+CONECT   20   38
+CONECT   21   20   22  102  103
+CONECT   22   21   23  104  105
+CONECT   23   22   24  106  107
+CONECT   24   23   25  108  109
+CONECT   25   24   26  110  111
+CONECT   26   25   27  112  113
+CONECT   27   26   28  114  115
+CONECT   28   27   29  116  117
+CONECT   29   28   30  118  119
+CONECT   30   29   31  120  121
+CONECT   31   30   32  122  123
+CONECT   32   31   33  124  125
+CONECT   33   32   34  126  127
+CONECT   34   33   35  128  129
+CONECT   35   34   36  130  131
+CONECT   36   35   37  132  133
+CONECT   37   36  134  135  136
+CONECT   38   20
+CONECT   38   20
+CONECT   39    1   40
+CONECT   40   39   41  137  138
+CONECT   41   40   42   43  139
+CONECT   42   20   41
+CONECT   43   41   44  140  141
+CONECT   44   43   45
+CONECT   45   44   46   55  142
+CONECT   46   45   47   48  143
+CONECT   47   46  144
+CONECT   48   46   49   50  145
+CONECT   49   48  146
+CONECT   50   48   51   52  147
+CONECT   51   50  148
+CONECT   52   50   54   55  149
+CONECT   53   54   56
+CONECT   54   52   53  150  151
+CONECT   55   45   52
+CONECT   56   53   57   64  152
+CONECT   57   56   58   59  153
+CONECT   58   57  154
+CONECT   59   57   60   61  155
+CONECT   60   59  156
+CONECT   61   59   62   63  157
+CONECT   62   61  158
+CONECT   63   61   64   65  159
+CONECT   64   56   63
+CONECT   65   63   66  160  161
+CONECT   66   65  162
+CONECT   67    2
+CONECT   68    2
+CONECT   69    3
+CONECT   70    3
+CONECT   71    4
+CONECT   72    4
+CONECT   73    5
+CONECT   74    5
+CONECT   75    6
+CONECT   76    6
+CONECT   77    7
+CONECT   78    7
+CONECT   79    8
+CONECT   80    8
+CONECT   81    9
+CONECT   82    9
+CONECT   83   10
+CONECT   84   10
+CONECT   85   11
+CONECT   86   11
+CONECT   87   12
+CONECT   88   12
+CONECT   89   13
+CONECT   90   13
+CONECT   91   14
+CONECT   92   14
+CONECT   93   15
+CONECT   94   15
+CONECT   95   16
+CONECT   96   16
+CONECT   97   17
+CONECT   98   17
+CONECT   99   18
+CONECT  100   18
+CONECT  101   18
+CONECT  102   21
+CONECT  103   21
+CONECT  104   22
+CONECT  105   22
+CONECT  106   23
+CONECT  107   23
+CONECT  108   24
+CONECT  109   24
+CONECT  110   25
+CONECT  111   25
+CONECT  112   26
+CONECT  113   26
+CONECT  114   27
+CONECT  115   27
+CONECT  116   28
+CONECT  117   28
+CONECT  118   29
+CONECT  119   29
+CONECT  120   30
+CONECT  121   30
+CONECT  122   31
+CONECT  123   31
+CONECT  124   32
+CONECT  125   32
+CONECT  126   33
+CONECT  127   33
+CONECT  128   34
+CONECT  129   34
+CONECT  130   35
+CONECT  131   35
+CONECT  132   36
+CONECT  133   36
+CONECT  134   37
+CONECT  135   37
+CONECT  136   37
+CONECT  137   40
+CONECT  138   40
+CONECT  139   41
+CONECT  140   43
+CONECT  141   43
+CONECT  142   45
+CONECT  143   46
+CONECT  144   47
+CONECT  145   48
+CONECT  146   49
+CONECT  147   50
+CONECT  148   51
+CONECT  149   52
+CONECT  150   54
+CONECT  151   54
+CONECT  152   56
+CONECT  153   57
+CONECT  154   58
+CONECT  155   59
+CONECT  156   60
+CONECT  157   61
+CONECT  158   62
+CONECT  159   63
+CONECT  160   65
+CONECT  161   65
+CONECT  162   66
+END
