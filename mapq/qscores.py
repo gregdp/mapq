@@ -2464,7 +2464,7 @@ def Calc ( chimeraPath, mol, numProc, res=3.0, bfactorF=-1, sigma=0.6 ) :
         CalcQ ( mol, None, dmap, sigma, log=False )
     else :
         #CalcQp ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath )
-        CalcQpn ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath, closeMap=True )
+        CalcQpn ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath, closeMap=True, res=res )
 
     SaveQStats ( mol, "All", dmap_name, sigma, res )
 
@@ -2939,8 +2939,12 @@ def CalcQpn ( mol, cid, dmap, sigma, useOld=False, log=False, numProc=None, chim
         print " - done, time: %.0f min, %.1f sec" % ( totMin, totSec )
 
         SaveQFile ( mol, cid, dmap_name, sigma )
+
         Qavg = QStats1 ( mol, cid )
-        print " - overall map-model Q %f for sigma %.1f " % (Qavg, sigma)
+        print " - average  Q-score %f for sigma %.1f" % (Qavg, sigma)
+
+        Qexp, eqn = ExpectedQScore (res, sigma)
+        print " - expected Q-score %f at %.2f A resolution" % (Qexp, res)
 
 
 

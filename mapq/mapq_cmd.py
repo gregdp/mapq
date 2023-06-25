@@ -32,7 +32,7 @@ pdbs = []
 cifs = []
 maps = []
 
-mapqVersion = "1.9.13"
+mapqVersion = "1.9.14"
 
 #scriptPath = os.path.dirname(os.path.realpath(__file__))
 #fp = os.open ( os.path.join(scriptPath, "mapq.py" ) )
@@ -200,7 +200,17 @@ if ok :
 
     #scriptPath = os.path.dirname(os.path.realpath(__file__))
     scriptPath = os.path.dirname ( maps[0] )
-    newScript = os.path.join ( scriptPath, "_mapqScript.py" )
+    #newScript = os.path.join ( scriptPath, "_mapqScript.py" )
+
+    emd_name = os.path.splitext ( os.path.split ( maps[0] )[1] )[0]
+
+    ss = ""
+    for mod in pdbs :
+        ss += "_" + os.path.splitext ( os.path.split ( mod )[1] )[0]
+    for mod in cifs :
+        ss += "_" + os.path.splitext ( os.path.split ( mod )[1] )[0]
+
+    newScript = os.path.join ( scriptPath, "_mapqScript_%s%s.py" % (emd_name, ss) )
 
     print ("Creating Chimera script in %s" % newScript)
     print ("")
@@ -222,7 +232,8 @@ if ok :
 
 
     print ("Running:")
-    cmd = "%s --nogui --silent --nostatus " % chimeraPath
+    #cmd = "%s --nogui --silent --nostatus " % chimeraPath
+    cmd = "%s --nogui " % chimeraPath
 
     for mod in pdbs :
         fp.write ( "\n" )
@@ -238,32 +249,37 @@ if ok :
         fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
         #fp.write ( "chimera.openModels.close ( [dmap,mol] )\n" )
 
+    fp.close()
     cmd += "'%s'" % newScript
-
     print (" : " + cmd)
     print ("")
+    sys.stdout.flush()
 
-    if 0 :
-        fp.write ( "qscores.Calc('%s', mol, %d, %f, %f, %f)\n" % (chimeraPath, numProc, res, bfactor, gSigma) )
+    if 1 :
+        os.system(cmd)
 
-    elif 0 :
-        if numProc == 1 :
-            #CalcQ ( mol, None, dmap, sigma, log=True )
-            fp.write ( "qscores.CalcQ ( mol, 'All', dmap, %f )\n" % ( gSigma) )
-        else :
-            #CalcQp ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath )
-            #CalcQpn ( mol, None, dmap, sigma, numProc=numProc, chimeraPath=chimeraPath, closeMap=True )
-            fp.write ( "qscores.CalcQpn ( mol, 'All', dmap, %f, useOld=False, numProc=%d, chimeraPath='%s', closeMap=True )\n" % ( gSigma, numProc, chimeraPath) )
+    else :
+        args = []
+        args.append ( chimeraPath )
+        args.append ( "--nogui" )
+        args.append ( newScript )
 
+        import subprocess
+        #p = subprocess.Popen(args, stdout=fout, stderr=ferr, cwd=mpath)
+        p = subprocess.Popen(args, cwd=scriptPath)
+        p.wait()
+        fout.close()
+        ferr.close()
 
-
-    fp.close()
-
-    os.system(cmd)
-
-    if 0 :
-        print ( "Removing temp Chimera script ")
-        print ( " - %s" % newScript )
+    if 1 :
+        print ( " - removing temporary Chimera scripts:")
+        print ( "   - %s" % newScript )
         os.remove ( newScript )
-        print ( " - %s" % (newScript+"c") )
+        print ( "   - %s" % (newScript+"c") )
         os.remove ( newScript + "c" )
+
+    print " - done mapQ_cmd script"
+    sys.stdout.flush()
+
+
+#
