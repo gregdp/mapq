@@ -1,0 +1,64 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:00:40 2023
+REMARK  99
+REMARK  99   Ligand name: (2S)-2-azanyl-2-[(4S,6R)-2-azanyl-4-hydroxy-1,4,5,6-tetrahydropyrimidin-6-yl]ethanoic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H]([C@H]1C[C@H](O)N=C(N)N1)C(O)=O
+FORMUL   1  5OH    C6 H11 N4 O3  (-1)
+HETATM    1  C   5OH A   1      -2.060   1.665  -0.707  1.00 20.00      A    C  
+HETATM    2  N   5OH A   1       0.148   1.465  -1.632  1.00 20.00      A    N  
+HETATM    3  O   5OH A   1      -3.090   1.222  -1.261  1.00 20.00      A    O  
+HETATM    4  CA  5OH A   1      -0.750   0.853  -0.750  1.00 20.00      A    C  
+HETATM    5  CB  5OH A   1      -0.122   0.807   0.677  1.00 20.00      A    C  
+HETATM    6  NP  5OH A   1       1.502   0.521   0.538  1.00 20.00      A    N  
+HETATM    7  CQ  5OH A   1       1.734  -0.779   0.069  1.00 20.00      A    C  
+HETATM    8  NQ  5OH A   1       2.987  -1.100  -0.610  1.00 20.00      A    N  
+HETATM    9  CR  5OH A   1      -0.744  -0.123   1.390  1.00 20.00      A    C  
+HETATM   10  NR  5OH A   1       0.801  -1.921   0.589  1.00 20.00      A    N  
+HETATM   11  CS  5OH A   1      -0.520  -1.621   0.784  1.00 20.00      A    C  
+HETATM   12  OS  5OH A   1      -1.065  -2.553   1.685  1.00 20.00      A    O  
+HETATM   13  OXT 5OH A   1      -2.102   2.747  -0.092  1.00 20.00      A    O-1
+HETATM   14  HN  5OH A   1      -0.112   2.406  -1.763  1.00 20.00      A    H  
+HETATM   15  HNA 5OH A   1       0.132   0.982  -2.523  1.00 20.00      A    H  
+HETATM   16  HA  5OH A   1      -0.962  -0.165  -1.091  1.00 20.00      A    H  
+HETATM   17  HP  5OH A   1      -0.272   1.809   1.181  1.00 20.00      A    H  
+HETATM   18  HNP 5OH A   1       2.200   1.251   0.531  1.00 20.00      A    H  
+HETATM   19  HNQ 5OH A   1       3.179  -2.056  -0.908  1.00 20.00      A    H  
+HETATM   20 HNQA 5OH A   1       3.648  -0.372  -0.806  1.00 20.00      A    H  
+HETATM   21  HR  5OH A   1      -1.819   0.083   1.270  1.00 20.00      A    H  
+HETATM   22  HRA 5OH A   1      -0.245  -0.123   2.381  1.00 20.00      A    H  
+HETATM   23  HS  5OH A   1      -1.028  -1.694  -0.142  1.00 20.00      A    H  
+HETATM   24  HOS 5OH A   1      -1.441  -3.304   1.190  1.00 20.00      A    H  
+CONECT    1    4   13
+CONECT    1    3
+CONECT    1    3
+CONECT    2    4   14   15
+CONECT    3    1
+CONECT    3    1
+CONECT    4    1    2    5   16
+CONECT    5    4    9   17    6
+CONECT    6    5    7   18
+CONECT    7    6    8
+CONECT    7   10
+CONECT    7   10
+CONECT    8    7   19   20
+CONECT    9    5   21   22   11
+CONECT   10   11
+CONECT   10    7
+CONECT   10    7
+CONECT   11   10    9   12   23
+CONECT   12   11   24
+CONECT   13    1
+CONECT   14    2
+CONECT   15    2
+CONECT   16    4
+CONECT   17    5
+CONECT   18    6
+CONECT   19    8
+CONECT   20    8
+CONECT   21    9
+CONECT   22    9
+CONECT   23   11
+CONECT   24   12
+END

@@ -465,11 +465,11 @@ def GetResMol ( rtype ) :
     ppath = path.join ( dir_path, '_param' )
     fname = path.join ( ppath, "%s.pdb" % rtype )
 
-    if not path.isfile(fname) :
+    if 0 and not path.isfile(fname) :
         print " - did not find %s" % fname
 
         phPath = "/Users/greg/_mol/phenix-installer-1.19.2-4158-mac-intel-osx-x86_64/build/bin/phenix.elbow"
-        if not path.isfile ( phPath ) :
+        if path.isfile ( phPath ) :
             print " - %s - phenix.elbow not found" % rtype
             return None
 
@@ -496,11 +496,14 @@ def GetResMol ( rtype ) :
             print " - elbow file not found %s" % fname
             return None
 
-    import chimera
-    nmol = chimera.PDBio().readPDBfile ( fname )[0]
-    #print " - read %s - %d atoms - %d res" % ( fname, len(nmol.atoms), len(nmol.residues) )
-    #addRes = nmol.residues[0]
-    return nmol
+    if path.isfile(fname) :
+        import chimera
+        nmol = chimera.PDBio().readPDBfile ( fname )[0]
+        #print " - read %s - %d atoms - %d res" % ( fname, len(nmol.atoms), len(nmol.residues) )
+        #addRes = nmol.residues[0]
+        return nmol
+    else :
+        return None
 
 
 

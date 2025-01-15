@@ -1,0 +1,10 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:18:35 2023
+REMARK  99
+REMARK  99   Ligand name: copper(2+)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [Cu++]
+FORMUL   1  CU    CU  (2)
+HETATM    1 CU    CU A   1      10.000  10.000  10.000  1.00 20.00      A   CU+2
+END

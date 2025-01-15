@@ -1,0 +1,40 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:08:46 2023
+REMARK  99
+REMARK  99   Ligand name: S-hydroxy-L-cysteine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](CSO)C(O)=O
+FORMUL   1  CSO    C3 H6 N O3 S  (-1)
+HETATM    1  N   CSO A   1      -1.954   0.151  -0.695  1.00 20.00      A    N  
+HETATM    2  CA  CSO A   1      -0.512   0.304  -0.633  1.00 20.00      A    C  
+HETATM    3  CB  CSO A   1      -0.051   0.203   0.820  1.00 20.00      A    C  
+HETATM    4  SG  CSO A   1       1.714  -0.221   0.867  1.00 20.00      A    S  
+HETATM    5  C   CSO A   1       0.153  -0.797  -1.456  1.00 20.00      A    C  
+HETATM    6  O   CSO A   1      -0.163  -2.001  -1.268  1.00 20.00      A    O  
+HETATM    7  OXT CSO A   1       1.018  -0.501  -2.321  1.00 20.00      A    O-1
+HETATM    8  OD  CSO A   1       2.284  -0.035   2.408  1.00 20.00      A    O  
+HETATM    9  H   CSO A   1      -2.388   0.828  -0.096  1.00 20.00      A    H  
+HETATM   10  HN2 CSO A   1      -2.264   0.293  -1.638  1.00 20.00      A    H  
+HETATM   11  HA  CSO A   1      -0.233   1.272  -1.033  1.00 20.00      A    H  
+HETATM   12  HB2 CSO A   1      -0.622  -0.568   1.327  1.00 20.00      A    H  
+HETATM   13  HB3 CSO A   1      -0.209   1.154   1.316  1.00 20.00      A    H  
+HETATM   14  HD  CSO A   1       3.226  -0.082   2.402  1.00 20.00      A    H  
+CONECT    1    2    9   10
+CONECT    2    1    3    5   11
+CONECT    3    2    4   12   13
+CONECT    4    3    8
+CONECT    5    2    7
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5
+CONECT    8    4   14
+CONECT    9    1
+CONECT   10    1
+CONECT   11    2
+CONECT   12    3
+CONECT   13    3
+CONECT   14    8
+END

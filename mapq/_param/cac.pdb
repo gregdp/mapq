@@ -1,0 +1,34 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:47:20 2023
+REMARK  99
+REMARK  99   Ligand name: dimethylarsinate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: C[As](C)([O-])=O
+FORMUL   1  CAC    C2 H6 O2 AS  (-1)
+HETATM    1 AS   CAC A   1       0.450  -0.000   0.613  1.00 20.00      A   AS  
+HETATM    2  O1  CAC A   1       2.050  -0.000   0.613  1.00 20.00      A    O  
+HETATM    3  O2  CAC A   1      -0.143  -0.000   2.289  1.00 20.00      A    O-1
+HETATM    4  C1  CAC A   1      -0.204   1.603  -0.312  1.00 20.00      A    C  
+HETATM    5  C2  CAC A   1      -0.204  -1.603  -0.312  1.00 20.00      A    C  
+HETATM    6  H11 CAC A   1      -1.288   1.603  -0.312  1.00 20.00      A    H  
+HETATM    7  H12 CAC A   1       0.157   2.487   0.199  1.00 20.00      A    H  
+HETATM    8  H13 CAC A   1       0.157   1.603  -1.333  1.00 20.00      A    H  
+HETATM    9  H21 CAC A   1       0.157  -1.603  -1.333  1.00 20.00      A    H  
+HETATM   10  H22 CAC A   1      -1.288  -1.603  -0.312  1.00 20.00      A    H  
+HETATM   11  H23 CAC A   1       0.157  -2.487   0.199  1.00 20.00      A    H  
+CONECT    1    3    4    5
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1    6    7    8
+CONECT    5    1    9   10   11
+CONECT    6    4
+CONECT    7    4
+CONECT    8    4
+CONECT    9    5
+CONECT   10    5
+CONECT   11    5
+END

@@ -1,0 +1,20 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:25:19 2023
+REMARK  99
+REMARK  99   Ligand name: nitrate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [O-][N+]([O-])=O
+FORMUL   1  NO3    N O3  (-1)
+HETATM    1  N   NO3 A   1      -0.010   0.007  -0.055  1.00 20.00      A    N+1
+HETATM    2  O1  NO3 A   1      -0.208   0.159  -1.204  1.00 20.00      A    O  
+HETATM    3  O2  NO3 A   1       1.060  -0.794   0.371  1.00 20.00      A    O-1
+HETATM    4  O3  NO3 A   1      -0.842   0.627   0.888  1.00 20.00      A    O-1
+CONECT    1    3    4
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+END

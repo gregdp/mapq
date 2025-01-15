@@ -1,0 +1,33 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:20:17 2023
+REMARK  99
+REMARK  99   Ligand name: propanedioate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [O-]C(=O)CC([O-])=O
+FORMUL   1  MLI    C3 H2 O4  (-2)
+HETATM    1  C1  MLI A   1      -0.352  -0.000  -0.498  1.00 20.00      A    C  
+HETATM    2  C2  MLI A   1       1.175  -0.000  -0.498  1.00 20.00      A    C  
+HETATM    3  C3  MLI A   1      -0.861  -0.000   0.941  1.00 20.00      A    C  
+HETATM    4  O6  MLI A   1       1.804   1.078  -0.334  1.00 20.00      A    O  
+HETATM    5  O7  MLI A   1       1.804  -1.078  -0.662  1.00 20.00      A    O-1
+HETATM    6  O8  MLI A   1      -1.225   1.078   1.481  1.00 20.00      A    O  
+HETATM    7  O9  MLI A   1      -0.917  -1.078   1.589  1.00 20.00      A    O-1
+HETATM    8  H11 MLI A   1      -0.713  -0.885  -1.009  1.00 20.00      A    H  
+HETATM    9  H12 MLI A   1      -0.713   0.885  -1.009  1.00 20.00      A    H  
+CONECT    1    2    3    8    9
+CONECT    2    1    5
+CONECT    2    4
+CONECT    2    4
+CONECT    3    1    7
+CONECT    3    6
+CONECT    3    6
+CONECT    4    2
+CONECT    4    2
+CONECT    5    2
+CONECT    6    3
+CONECT    6    3
+CONECT    7    3
+CONECT    8    1
+CONECT    9    1
+END

@@ -1,0 +1,93 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:47:09 2023
+REMARK  99
+REMARK  99   Ligand name: 2-amino-9-[(2R,4aR,6R,7R,7aS)-2,7-dihydroxy-2-oxidotetrahydro-4H-furo[3,2-d][1,3,2]dioxaphosphinin-6-yl]-1,9-dihydro-6H-purin-6-one
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC1=Nc2n(cnc2C(=O)N1)[C@@H]3O[C@@H]4CO[P@](O)(=O)O[C@H]4[C@H]3O
+FORMUL   1  PCG    C10 H12 N5 O7 P 
+HETATM    1  PA  PCG A   1      -0.543   1.703  -4.270  1.00 20.00      A    P  
+HETATM    2  O1A PCG A   1      -1.092   1.456  -5.804  1.00 20.00      A    O  
+HETATM    3  O2A PCG A   1      -1.006   3.004  -3.796  1.00 20.00      A    O  
+HETATM    4  O5' PCG A   1       1.189   1.696  -4.287  1.00 20.00      A    O  
+HETATM    5  C5' PCG A   1       1.785   1.702  -2.849  1.00 20.00      A    C  
+HETATM    6  C4' PCG A   1       1.201   0.556  -1.982  1.00 20.00      A    C  
+HETATM    7  O4' PCG A   1       1.558   0.464  -0.773  1.00 20.00      A    O  
+HETATM    8  C3' PCG A   1      -0.612   0.570  -1.957  1.00 20.00      A    C  
+HETATM    9  O3' PCG A   1      -1.168   0.500  -3.265  1.00 20.00      A    O  
+HETATM   10  C2' PCG A   1      -0.928  -0.260  -1.161  1.00 20.00      A    C  
+HETATM   11  O2' PCG A   1      -1.088  -1.577  -1.830  1.00 20.00      A    O  
+HETATM   12  C1' PCG A   1       0.367  -0.314  -0.056  1.00 20.00      A    C  
+HETATM   13  N9  PCG A   1       0.063   0.235   0.991  1.00 20.00      A    N  
+HETATM   14  C8  PCG A   1       0.194   1.538   1.306  1.00 20.00      A    C  
+HETATM   15  N7  PCG A   1       0.214   1.644   2.650  1.00 20.00      A    N  
+HETATM   16  C5  PCG A   1       0.098   0.422   3.160  1.00 20.00      A    C  
+HETATM   17  C6  PCG A   1      -0.022  -0.079   4.606  1.00 20.00      A    C  
+HETATM   18  O6  PCG A   1      -0.047   0.697   5.501  1.00 20.00      A    O  
+HETATM   19  N1  PCG A   1      -0.154  -1.479   4.867  1.00 20.00      A    N  
+HETATM   20  C2  PCG A   1      -0.175  -2.411   3.768  1.00 20.00      A    C  
+HETATM   21  N2  PCG A   1      -0.307  -3.833   4.025  1.00 20.00      A    N  
+HETATM   22  N3  PCG A   1      -0.060  -1.924   2.394  1.00 20.00      A    N  
+HETATM   23  C4  PCG A   1       0.003  -0.458   2.124  1.00 20.00      A    C  
+HETATM   24 HO1A PCG A   1      -0.627   2.020  -6.400  1.00 20.00      A    H  
+HETATM   25 H5'1 PCG A   1       1.558   2.652  -2.377  1.00 20.00      A    H  
+HETATM   26 H5'2 PCG A   1       2.861   1.581  -2.913  1.00 20.00      A    H  
+HETATM   27  H4' PCG A   1       1.499  -0.370  -2.462  1.00 20.00      A    H  
+HETATM   28  H3' PCG A   1      -0.915   1.527  -1.544  1.00 20.00      A    H  
+HETATM   29  H2' PCG A   1      -1.844   0.030  -0.656  1.00 20.00      A    H  
+HETATM   30 HO2' PCG A   1      -1.989  -1.848  -1.777  1.00 20.00      A    H  
+HETATM   31  H1' PCG A   1       0.654  -1.344   0.127  1.00 20.00      A    H  
+HETATM   32  H8  PCG A   1       0.274   2.358   0.602  1.00 20.00      A    H  
+HETATM   33  HN1 PCG A   1      -0.233  -1.809   5.809  1.00 20.00      A    H  
+HETATM   34 HN21 PCG A   1      -0.388  -4.167   4.967  1.00 20.00      A    H  
+HETATM   35 HN22 PCG A   1      -0.324  -4.481   3.261  1.00 20.00      A    H  
+CONECT    1    2    4    9
+CONECT    1    3
+CONECT    1    3
+CONECT    2    1   24
+CONECT    3    1
+CONECT    3    1
+CONECT    4    1    5
+CONECT    5    4    6   25   26
+CONECT    6    5    7    8   27
+CONECT    7    6   12
+CONECT    8    6    9   10   28
+CONECT    9    1    8
+CONECT   10    8   11   12   29
+CONECT   11   10   30
+CONECT   12    7   10   13   31
+CONECT   13   12
+CONECT   13   14   23
+CONECT   14   32
+CONECT   14   13   15
+CONECT   15   14   16
+CONECT   16   17
+CONECT   16   15   23
+CONECT   17   16   19
+CONECT   17   18
+CONECT   17   18
+CONECT   18   17
+CONECT   18   17
+CONECT   19   17   20   33
+CONECT   20   19   21
+CONECT   20   22
+CONECT   20   22
+CONECT   21   20   34   35
+CONECT   22   23
+CONECT   22   20
+CONECT   22   20
+CONECT   23   22
+CONECT   23   13   16
+CONECT   24    2
+CONECT   25    5
+CONECT   26    5
+CONECT   27    6
+CONECT   28    8
+CONECT   29   10
+CONECT   30   11
+CONECT   31   12
+CONECT   32   14
+CONECT   33   19
+CONECT   34   21
+CONECT   35   21
+END

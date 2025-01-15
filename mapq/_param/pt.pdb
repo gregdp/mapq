@@ -1,0 +1,10 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:35:59 2023
+REMARK  99
+REMARK  99   Ligand name: platinum(2+)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [Pt++]
+FORMUL   1  PT    PT  (2)
+HETATM    1 PT    PT A   1      10.000  10.000  10.000  1.00 20.00      A   PT+2
+END

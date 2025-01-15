@@ -1,0 +1,77 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:56:46 2023
+REMARK  99
+REMARK  99   Ligand name: 2-[4-(2-hydroxyethyl)piperazin-1-yl]ethanesulfonic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OCCN1CCN(CC1)CC[S](O)(=O)=O
+FORMUL   1  EPE    C8 H17 N2 O4 S  (-1)
+HETATM    1  N1  EPE A   1      -0.520   0.240  -1.106  1.00 20.00      A    N  
+HETATM    2  C2  EPE A   1       0.930   0.259  -1.061  1.00 20.00      A    C  
+HETATM    3  C3  EPE A   1       1.460   0.248   0.371  1.00 20.00      A    C  
+HETATM    4  N4  EPE A   1       0.903  -0.844   1.150  1.00 20.00      A    N  
+HETATM    5  C5  EPE A   1      -0.547  -0.863   1.105  1.00 20.00      A    C  
+HETATM    6  C6  EPE A   1      -1.077  -0.851  -0.328  1.00 20.00      A    C  
+HETATM    7  C7  EPE A   1       1.420  -2.106   0.653  1.00 20.00      A    C  
+HETATM    8  C8  EPE A   1       2.235  -2.789   1.748  1.00 20.00      A    C  
+HETATM    9  O8  EPE A   1       2.484  -4.119   1.384  1.00 20.00      A    O  
+HETATM   10  C9  EPE A   1      -1.037   1.502  -0.609  1.00 20.00      A    C  
+HETATM   11  C10 EPE A   1      -1.778   2.226  -1.730  1.00 20.00      A    C  
+HETATM   12  S   EPE A   1      -2.556   3.729  -1.070  1.00 20.00      A    S  
+HETATM   13  O1S EPE A   1      -3.757   3.395  -0.217  1.00 20.00      A    O  
+HETATM   14  O2S EPE A   1      -3.195   4.544  -2.169  1.00 20.00      A    O  
+HETATM   15  O3S EPE A   1      -1.546   4.545  -0.299  1.00 20.00      A    O-1
+HETATM   16  H21 EPE A   1       1.309  -0.614  -1.582  1.00 20.00      A    H  
+HETATM   17  H22 EPE A   1       1.285   1.155  -1.559  1.00 20.00      A    H  
+HETATM   18  H31 EPE A   1       2.540   0.145   0.345  1.00 20.00      A    H  
+HETATM   19  H32 EPE A   1       1.201   1.187   0.849  1.00 20.00      A    H  
+HETATM   20  H51 EPE A   1      -0.926   0.010   1.626  1.00 20.00      A    H  
+HETATM   21  H52 EPE A   1      -0.902  -1.759   1.603  1.00 20.00      A    H  
+HETATM   22  H61 EPE A   1      -0.818  -1.790  -0.805  1.00 20.00      A    H  
+HETATM   23  H62 EPE A   1      -2.156  -0.748  -0.302  1.00 20.00      A    H  
+HETATM   24  H71 EPE A   1       0.593  -2.746   0.364  1.00 20.00      A    H  
+HETATM   25  H72 EPE A   1       2.053  -1.923  -0.209  1.00 20.00      A    H  
+HETATM   26  H81 EPE A   1       1.680  -2.767   2.679  1.00 20.00      A    H  
+HETATM   27  H82 EPE A   1       3.178  -2.267   1.876  1.00 20.00      A    H  
+HETATM   28  HO8 EPE A   1       3.096  -4.502   1.992  1.00 20.00      A    H  
+HETATM   29  H91 EPE A   1      -1.718   1.315   0.214  1.00 20.00      A    H  
+HETATM   30  H92 EPE A   1      -0.213   2.118  -0.263  1.00 20.00      A    H  
+HETATM   31 H101 EPE A   1      -2.542   1.573  -2.139  1.00 20.00      A    H  
+HETATM   32 H102 EPE A   1      -1.077   2.496  -2.512  1.00 20.00      A    H  
+CONECT    1    2    6   10
+CONECT    2    1    3   16   17
+CONECT    3    2    4   18   19
+CONECT    4    3    5    7
+CONECT    5    4    6   20   21
+CONECT    6    1    5   22   23
+CONECT    7    4    8   24   25
+CONECT    8    7    9   26   27
+CONECT    9    8   28
+CONECT   10    1   11   29   30
+CONECT   11   10   12   31   32
+CONECT   12   11   15
+CONECT   12   13   14
+CONECT   12   13   14
+CONECT   13   12
+CONECT   13   12
+CONECT   14   12
+CONECT   14   12
+CONECT   15   12
+CONECT   16    2
+CONECT   17    2
+CONECT   18    3
+CONECT   19    3
+CONECT   20    5
+CONECT   21    5
+CONECT   22    6
+CONECT   23    6
+CONECT   24    7
+CONECT   25    7
+CONECT   26    8
+CONECT   27    8
+CONECT   28    9
+CONECT   29   10
+CONECT   30   10
+CONECT   31   11
+CONECT   32   11
+END

@@ -1,0 +1,19 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:09:32 2023
+REMARK  99
+REMARK  99   Ligand name: tetrafluoroaluminate(1-)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: F[Al-](F)(F)F
+FORMUL   1  ALF    AL F4  (-1)
+HETATM    1 AL   ALF A   1       7.392  68.829  74.609  1.00 20.00      A   AL-1
+HETATM    2  F1  ALF A   1       8.574  70.028  75.184  1.00 20.00      A    F  
+HETATM    3  F2  ALF A   1       6.161  67.636  74.036  1.00 20.00      A    F  
+HETATM    4  F3  ALF A   1       8.325  68.619  73.094  1.00 20.00      A    F  
+HETATM    5  F4  ALF A   1       6.468  69.049  76.125  1.00 20.00      A    F  
+CONECT    1    2    3    4    5
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1
+END

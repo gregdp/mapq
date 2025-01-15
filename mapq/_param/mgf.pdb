@@ -1,0 +1,17 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:09:07 2023
+REMARK  99
+REMARK  99   Ligand name: trifluoromagnesate(1-)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: F[Mg-](F)F
+FORMUL   1  MGF    F3 MG  (-1)
+HETATM    1  F1  MGF A   1      23.488   0.965   5.415  1.00 20.00      A    F  
+HETATM    2 MG   MGF A   1      24.189   0.258   6.812  1.00 20.00      A   MG-1
+HETATM    3  F2  MGF A   1      25.202  -0.854   6.726  1.00 20.00      A    F  
+HETATM    4  F3  MGF A   1      23.790   1.013   8.099  1.00 20.00      A    F  
+CONECT    1    2
+CONECT    2    1    3    4
+CONECT    3    2
+CONECT    4    2
+END

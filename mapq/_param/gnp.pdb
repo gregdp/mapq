@@ -1,0 +1,125 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:44:58 2023
+REMARK  99
+REMARK  99   Ligand name: 5'-O-[(S)-hydroxy{[(R)-hydroxy(phosphonoamino)phosphoryl]oxy}phosphoryl]guanosine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC1=Nc2n(cnc2C(=O)N1)[C@@H]3O[C@H](CO[P@@](O)(=O)O[P@@](O)(=O)N[P](O)(O)=O)[C@@H](O)[C@H]3O
+FORMUL   1  GNP    C10 H13 N6 O13 P3  (-4)
+HETATM    1  PG  GNP A   1       0.401  -6.966  -0.555  1.00 20.00      A    P  
+HETATM    2  O1G GNP A   1      -0.886  -7.024  -1.366  1.00 20.00      A    O  
+HETATM    3  O2G GNP A   1       1.404  -7.993  -1.108  1.00 20.00      A    O-1
+HETATM    4  O3G GNP A   1       0.094  -7.289   0.918  1.00 20.00      A    O-1
+HETATM    5  N3B GNP A   1       1.089  -5.371  -0.663  1.00 20.00      A    N  
+HETATM    6  PB  GNP A   1       2.285  -4.879   0.471  1.00 20.00      A    P  
+HETATM    7  O1B GNP A   1       1.856  -5.311   1.874  1.00 20.00      A    O  
+HETATM    8  O2B GNP A   1       3.599  -5.522   0.125  1.00 20.00      A    O-1
+HETATM    9  O3A GNP A   1       2.446  -3.246   0.427  1.00 20.00      A    O  
+HETATM   10  PA  GNP A   1       3.419  -2.382   1.471  1.00 20.00      A    P  
+HETATM   11  O1A GNP A   1       3.008  -2.668   2.899  1.00 20.00      A    O  
+HETATM   12  O2A GNP A   1       4.863  -2.789   1.274  1.00 20.00      A    O-1
+HETATM   13  O5' GNP A   1       3.259  -0.778   1.166  1.00 20.00      A    O  
+HETATM   14  C5' GNP A   1       1.931  -0.206   1.129  1.00 20.00      A    C  
+HETATM   15  C4' GNP A   1       1.984   1.175   0.392  1.00 20.00      A    C  
+HETATM   16  O4' GNP A   1       0.711   1.366  -0.500  1.00 20.00      A    O  
+HETATM   17  C3' GNP A   1       1.950   2.121   1.239  1.00 20.00      A    C  
+HETATM   18  O3' GNP A   1       2.706   3.290   0.724  1.00 20.00      A    O  
+HETATM   19  C2' GNP A   1       0.336   2.511   1.417  1.00 20.00      A    C  
+HETATM   20  O2' GNP A   1       0.197   3.878   1.912  1.00 20.00      A    O  
+HETATM   21  C1' GNP A   1      -0.173   2.412   0.254  1.00 20.00      A    C  
+HETATM   22  N9  GNP A   1      -1.582   1.924   0.337  1.00 20.00      A    N  
+HETATM   23  C8  GNP A   1      -2.317   1.159   1.180  1.00 20.00      A    C  
+HETATM   24  N7  GNP A   1      -3.544   1.027   0.659  1.00 20.00      A    N  
+HETATM   25  C5  GNP A   1      -3.579   1.711  -0.517  1.00 20.00      A    C  
+HETATM   26  C6  GNP A   1      -4.591   1.888  -1.475  1.00 20.00      A    C  
+HETATM   27  O6  GNP A   1      -5.691   1.431  -1.280  1.00 20.00      A    O  
+HETATM   28  N1  GNP A   1      -4.348   2.604  -2.580  1.00 20.00      A    N  
+HETATM   29  C2  GNP A   1      -3.116   3.164  -2.776  1.00 20.00      A    C  
+HETATM   30  N2  GNP A   1      -2.840   3.872  -4.002  1.00 20.00      A    N  
+HETATM   31  N3  GNP A   1      -2.124   2.993  -1.840  1.00 20.00      A    N  
+HETATM   32  C4  GNP A   1      -2.365   2.264  -0.712  1.00 20.00      A    C  
+HETATM   33 HNB3 GNP A   1       0.813  -4.768  -1.374  1.00 20.00      A    H  
+HETATM   34 H5'2 GNP A   1       1.557  -0.056   2.178  1.00 20.00      A    H  
+HETATM   35 H5'1 GNP A   1       1.302  -0.835   0.630  1.00 20.00      A    H  
+HETATM   36  H4' GNP A   1       2.855   1.245  -0.203  1.00 20.00      A    H  
+HETATM   37  H3' GNP A   1       2.394   1.764   2.259  1.00 20.00      A    H  
+HETATM   38 HO3' GNP A   1       3.462   3.454   1.287  1.00 20.00      A    H  
+HETATM   39  H2' GNP A   1      -0.133   1.825   2.083  1.00 20.00      A    H  
+HETATM   40 HO2' GNP A   1      -0.016   3.860   2.842  1.00 20.00      A    H  
+HETATM   41  H1' GNP A   1      -0.131   3.387  -0.261  1.00 20.00      A    H  
+HETATM   42  H8  GNP A   1      -1.984   0.759   2.114  1.00 20.00      A    H  
+HETATM   43  HN1 GNP A   1      -5.064   2.718  -3.272  1.00 20.00      A    H  
+HETATM   44 HN21 GNP A   1      -1.892   4.117  -4.241  1.00 20.00      A    H  
+HETATM   45 HN22 GNP A   1      -3.547   4.166  -4.539  1.00 20.00      A    H  
+CONECT    1    3    4    5
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1    6   33
+CONECT    6    5    8    9
+CONECT    6    7
+CONECT    6    7
+CONECT    7    6
+CONECT    7    6
+CONECT    8    6
+CONECT    9    6   10
+CONECT   10    9   12   13
+CONECT   10   11
+CONECT   10   11
+CONECT   11   10
+CONECT   11   10
+CONECT   12   10
+CONECT   13   10   14
+CONECT   14   13   15   34   35
+CONECT   15   14   16   17   36
+CONECT   16   15   21
+CONECT   17   15   18   19   37
+CONECT   18   17   38
+CONECT   19   17   20   21   39
+CONECT   20   19   40
+CONECT   21   16   19   22   41
+CONECT   22   21
+CONECT   22   23   32
+CONECT   23   42
+CONECT   23   22   24
+CONECT   24   23   25
+CONECT   25   26
+CONECT   25   24
+CONECT   25   32
+CONECT   25   32
+CONECT   26   25
+CONECT   26   27   28
+CONECT   26   27   28
+CONECT   27   26
+CONECT   27   26
+CONECT   28   29   43
+CONECT   28   26
+CONECT   28   26
+CONECT   29   28   30
+CONECT   29   31
+CONECT   29   31
+CONECT   30   29   44   45
+CONECT   31   32
+CONECT   31   29
+CONECT   31   29
+CONECT   32   31
+CONECT   32   22
+CONECT   32   25
+CONECT   32   25
+CONECT   33    5
+CONECT   34   14
+CONECT   35   14
+CONECT   36   15
+CONECT   37   17
+CONECT   38   18
+CONECT   39   19
+CONECT   40   20
+CONECT   41   21
+CONECT   42   23
+CONECT   43   28
+CONECT   44   30
+CONECT   45   30
+END

@@ -1,0 +1,57 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:50:35 2023
+REMARK  99
+REMARK  99   Ligand name: beta-D-fructofuranose
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: OC[C@H]1O[C@](O)(CO)[C@@H](O)[C@@H]1O
+FORMUL   1  FRU    C6 H12 O6 
+HETATM    1  C1  FRU A   1       2.416   0.423  -0.348  1.00 20.00      A    C  
+HETATM    2  C2  FRU A   1       0.835   0.421  -0.350  1.00 20.00      A    C  
+HETATM    3  C3  FRU A   1       0.266   0.401   1.175  1.00 20.00      A    C  
+HETATM    4  C4  FRU A   1      -0.915  -0.099   1.099  1.00 20.00      A    C  
+HETATM    5  C5  FRU A   1      -0.896  -1.000  -0.146  1.00 20.00      A    C  
+HETATM    6  C6  FRU A   1      -2.004  -0.735  -0.961  1.00 20.00      A    C  
+HETATM    7  O1  FRU A   1       2.879   0.125  -1.628  1.00 20.00      A    O  
+HETATM    8  O2  FRU A   1       0.343   1.536  -1.027  1.00 20.00      A    O  
+HETATM    9  O3  FRU A   1       0.202   1.766   1.705  1.00 20.00      A    O  
+HETATM   10  O4  FRU A   1      -1.211  -0.932   2.348  1.00 20.00      A    O  
+HETATM   11  O5  FRU A   1       0.407  -0.649  -0.895  1.00 20.00      A    O  
+HETATM   12  O6  FRU A   1      -1.983  -1.595  -2.069  1.00 20.00      A    O  
+HETATM   13  H11 FRU A   1       2.769   1.377  -0.061  1.00 20.00      A    H  
+HETATM   14  H12 FRU A   1       2.791  -0.348   0.371  1.00 20.00      A    H  
+HETATM   15  H3  FRU A   1       0.922  -0.248   1.829  1.00 20.00      A    H  
+HETATM   16  H4  FRU A   1      -1.695   0.736   0.972  1.00 20.00      A    H  
+HETATM   17  H5  FRU A   1      -0.883  -2.013   0.143  1.00 20.00      A    H  
+HETATM   18  H61 FRU A   1      -2.909  -0.893  -0.405  1.00 20.00      A    H  
+HETATM   19  H62 FRU A   1      -1.961   0.312  -1.307  1.00 20.00      A    H  
+HETATM   20  HO1 FRU A   1       3.775  -0.054  -1.594  1.00 20.00      A    H  
+HETATM   21  HO2 FRU A   1       0.958   1.796  -1.700  1.00 20.00      A    H  
+HETATM   22  HO3 FRU A   1       0.667   1.807   2.511  1.00 20.00      A    H  
+HETATM   23  HO4 FRU A   1      -1.938  -0.543   2.826  1.00 20.00      A    H  
+HETATM   24  HO6 FRU A   1      -2.834  -1.593  -2.487  1.00 20.00      A    H  
+CONECT    1    2    7   13   14
+CONECT    2    1    3    8   11
+CONECT    3    2    4    9   15
+CONECT    4    3    5   10   16
+CONECT    5    4    6   11   17
+CONECT    6    5   12   18   19
+CONECT    7    1   20
+CONECT    8    2   21
+CONECT    9    3   22
+CONECT   10    4   23
+CONECT   11    2    5
+CONECT   12    6   24
+CONECT   13    1
+CONECT   14    1
+CONECT   15    3
+CONECT   16    4
+CONECT   17    5
+CONECT   18    6
+CONECT   19    6
+CONECT   20    7
+CONECT   21    8
+CONECT   22    9
+CONECT   23   10
+CONECT   24   12
+END

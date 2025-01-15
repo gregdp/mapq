@@ -1,0 +1,63 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:46:04 2023
+REMARK  99
+REMARK  99   Ligand name: 1-phosphono-L-histidine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](Cc1cn(cn1)[P](O)(O)=O)C(O)=O
+FORMUL   1  NEP    C6 H7 N3 O5 P  (-3)
+HETATM    1  N   NEP A   1       0.555  -1.351   3.206  1.00 20.00      A    N  
+HETATM    2  CA  NEP A   1       0.466  -1.435   1.759  1.00 20.00      A    C  
+HETATM    3  C   NEP A   1       1.393  -2.539   1.255  1.00 20.00      A    C  
+HETATM    4  O   NEP A   1       0.925  -3.500   0.590  1.00 20.00      A    O  
+HETATM    5  CB  NEP A   1       0.884  -0.101   1.146  1.00 20.00      A    C  
+HETATM    6  CG  NEP A   1       0.058   0.162  -0.111  1.00 20.00      A    C  
+HETATM    7  ND1 NEP A   1      -0.522  -0.749  -0.859  1.00 20.00      A    N  
+HETATM    8  CD2 NEP A   1      -0.161   1.377  -0.683  1.00 20.00      A    C  
+HETATM    9  CE1 NEP A   1      -1.104  -0.126  -1.894  1.00 20.00      A    C  
+HETATM   10  NE2 NEP A   1      -0.872   1.189  -1.772  1.00 20.00      A    N  
+HETATM   11  P   NEP A   1      -1.377   2.399  -2.858  1.00 20.00      A    P  
+HETATM   12  O1P NEP A   1      -0.168   3.020  -3.517  1.00 20.00      A    O-1
+HETATM   13  O2P NEP A   1      -2.142   3.462  -2.108  1.00 20.00      A    O-1
+HETATM   14  O3P NEP A   1      -2.267   1.788  -3.914  1.00 20.00      A    O  
+HETATM   15  OXT NEP A   1       2.624  -2.497   1.518  1.00 20.00      A    O-1
+HETATM   16  H   NEP A   1       1.352  -0.799   3.460  1.00 20.00      A    H  
+HETATM   17  H2  NEP A   1      -0.277  -0.924   3.567  1.00 20.00      A    H  
+HETATM   18  HA  NEP A   1      -0.554  -1.661   1.472  1.00 20.00      A    H  
+HETATM   19  HB2 NEP A   1       1.937  -0.137   0.885  1.00 20.00      A    H  
+HETATM   20  HB3 NEP A   1       0.716   0.695   1.863  1.00 20.00      A    H  
+HETATM   21  HD2 NEP A   1       0.198   2.329  -0.314  1.00 20.00      A    H  
+HETATM   22  HE1 NEP A   1      -1.664  -0.603  -2.690  1.00 20.00      A    H  
+CONECT    1    2   16   17
+CONECT    2    1    3    5   18
+CONECT    3    2   15
+CONECT    3    4
+CONECT    3    4
+CONECT    4    3
+CONECT    4    3
+CONECT    5    2    6   19   20
+CONECT    6    5
+CONECT    6    7    8
+CONECT    7    6    9
+CONECT    8   21
+CONECT    8    6   10
+CONECT    9   22
+CONECT    9    7   10
+CONECT   10   11
+CONECT   10    8    9
+CONECT   11   10   12   13
+CONECT   11   14
+CONECT   11   14
+CONECT   12   11
+CONECT   13   11
+CONECT   14   11
+CONECT   14   11
+CONECT   15    3
+CONECT   16    1
+CONECT   17    1
+CONECT   18    2
+CONECT   19    5
+CONECT   20    5
+CONECT   21    8
+CONECT   22    9
+END

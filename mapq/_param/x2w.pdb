@@ -1,0 +1,73 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:20:52 2023
+REMARK  99
+REMARK  99   Ligand name: N-acetyl-5-oxo-5-(phosphonooxy)-L-norvaline
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(=O)N[C@@H](CCC(=O)O[P](O)(O)=O)C(O)=O
+FORMUL   1  X2W    C7 H9 N O8 P  (-3)
+HETATM    1  CA  X2W A   1       1.158  -0.275   0.377  1.00 20.00      A    C  
+HETATM    2  CB  X2W A   1      -0.362  -0.201   0.254  1.00 20.00      A    C  
+HETATM    3  CG  X2W A   1      -0.791   1.257   0.114  1.00 20.00      A    C  
+HETATM    4  C3  X2W A   1      -2.315   1.335   0.051  1.00 20.00      A    C  
+HETATM    5  C   X2W A   1       1.542  -0.475   1.841  1.00 20.00      A    C  
+HETATM    6  O   X2W A   1       1.261  -1.555   2.424  1.00 20.00      A    O  
+HETATM    7  OXT X2W A   1       2.132   0.444   2.469  1.00 20.00      A    O-1
+HETATM    8  C1  X2W A   1       3.017  -1.377  -0.908  1.00 20.00      A    C  
+HETATM    9  O1  X2W A   1       3.724  -0.454  -0.677  1.00 20.00      A    O  
+HETATM   10  P   X2W A   1      -4.615   2.505   0.519  1.00 20.00      A    P  
+HETATM   11  O2P X2W A   1      -4.872   2.737  -0.951  1.00 20.00      A    O-1
+HETATM   12  O1P X2W A   1      -5.118   3.689   1.310  1.00 20.00      A    O  
+HETATM   13  O3P X2W A   1      -5.338   1.257   0.966  1.00 20.00      A    O-1
+HETATM   14  N1  X2W A   1       1.654  -1.389  -0.410  1.00 20.00      A    N  
+HETATM   15  C2  X2W A   1       3.533  -2.541  -1.751  1.00 20.00      A    C  
+HETATM   16  O2  X2W A   1      -2.921   0.568  -0.619  1.00 20.00      A    O  
+HETATM   17  OE2 X2W A   1      -2.996   2.323   0.771  1.00 20.00      A    O  
+HETATM   18  HA  X2W A   1       1.595   0.647   0.012  1.00 20.00      A    H  
+HETATM   19 HB1C X2W A   1      -0.681  -0.758  -0.620  1.00 20.00      A    H  
+HETATM   20 HB2C X2W A   1      -0.817  -0.629   1.141  1.00 20.00      A    H  
+HETATM   21  H1  X2W A   1       1.047  -2.153  -0.633  1.00 20.00      A    H  
+HETATM   22 HG1C X2W A   1      -0.370   1.672  -0.796  1.00 20.00      A    H  
+HETATM   23 HG2C X2W A   1      -0.435   1.823   0.968  1.00 20.00      A    H  
+HETATM   24 H21C X2W A   1       2.893  -2.672  -2.618  1.00 20.00      A    H  
+HETATM   25 H22C X2W A   1       3.527  -3.450  -1.155  1.00 20.00      A    H  
+HETATM   26 H23C X2W A   1       4.547  -2.330  -2.078  1.00 20.00      A    H  
+CONECT    1    2    5   14   18
+CONECT    2    1    3   19   20
+CONECT    3    2    4   22   23
+CONECT    4    3   17
+CONECT    4   16
+CONECT    4   16
+CONECT    5    1    7
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5
+CONECT    8   14   15
+CONECT    8    9
+CONECT    8    9
+CONECT    9    8
+CONECT    9    8
+CONECT   10   13   11   17
+CONECT   10   12
+CONECT   10   12
+CONECT   11   10
+CONECT   12   10
+CONECT   12   10
+CONECT   13   10
+CONECT   14    1    8   21
+CONECT   15    8   24   25   26
+CONECT   16    4
+CONECT   16    4
+CONECT   17   10    4
+CONECT   18    1
+CONECT   19    2
+CONECT   20    2
+CONECT   21   14
+CONECT   22    3
+CONECT   23    3
+CONECT   24   15
+CONECT   25   15
+CONECT   26   15
+END

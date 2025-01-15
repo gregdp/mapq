@@ -1,0 +1,96 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:28:41 2023
+REMARK  99
+REMARK  99   Ligand name: methyl hydrogen (S)-undecylphosphonate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCCCCCCCCC[P@@](O)(=O)OC
+FORMUL   1  MUP    C12 H26 O3 P  (-1)
+HETATM    1  C1  MUP A   1      -3.880   1.181  -2.204  1.00 20.00      A    C  
+HETATM    2  C2  MUP A   1      -2.410   0.771  -2.261  1.00 20.00      A    C  
+HETATM    3  C3  MUP A   1      -2.007   0.134  -0.933  1.00 20.00      A    C  
+HETATM    4  C4  MUP A   1      -0.501  -0.116  -0.924  1.00 20.00      A    C  
+HETATM    5  C5  MUP A   1      -0.066  -0.556   0.472  1.00 20.00      A    C  
+HETATM    6  C6  MUP A   1       1.457  -0.656   0.522  1.00 20.00      A    C  
+HETATM    7  C7  MUP A   1       1.898  -0.995   1.945  1.00 20.00      A    C  
+HETATM    8  C8  MUP A   1       3.420  -1.120   1.990  1.00 20.00      A    C  
+HETATM    9  C9  MUP A   1       3.865  -1.409   3.422  1.00 20.00      A    C  
+HETATM   10  C10 MUP A   1       5.389  -1.357   3.501  1.00 20.00      A    C  
+HETATM   11  C11 MUP A   1       5.835  -1.679   4.926  1.00 20.00      A    C  
+HETATM   12  CM  MUP A   1      -6.614   2.793  -4.902  1.00 20.00      A    C  
+HETATM   13  O1P MUP A   1      -3.418   2.945  -4.275  1.00 20.00      A    O  
+HETATM   14  O2P MUP A   1      -5.904   2.526  -3.727  1.00 20.00      A    O  
+HETATM   15  O3P MUP A   1      -4.408   0.769  -4.881  1.00 20.00      A    O-1
+HETATM   16  P   MUP A   1      -4.395   1.874  -3.852  1.00 20.00      A    P  
+HETATM   17  H11 MUP A   1      -4.488   0.313  -1.971  1.00 20.00      A    H  
+HETATM   18  H12 MUP A   1      -4.016   1.934  -1.436  1.00 20.00      A    H  
+HETATM   19  H21 MUP A   1      -1.797   1.648  -2.442  1.00 20.00      A    H  
+HETATM   20  H22 MUP A   1      -2.264   0.056  -3.064  1.00 20.00      A    H  
+HETATM   21  H31 MUP A   1      -2.267   0.801  -0.118  1.00 20.00      A    H  
+HETATM   22  H32 MUP A   1      -2.531  -0.808  -0.810  1.00 20.00      A    H  
+HETATM   23  H41 MUP A   1       0.019   0.796  -1.195  1.00 20.00      A    H  
+HETATM   24  H42 MUP A   1      -0.260  -0.895  -1.640  1.00 20.00      A    H  
+HETATM   25  H51 MUP A   1      -0.500  -1.524   0.698  1.00 20.00      A    H  
+HETATM   26  H52 MUP A   1      -0.404   0.172   1.202  1.00 20.00      A    H  
+HETATM   27  H61 MUP A   1       1.892   0.292   0.225  1.00 20.00      A    H  
+HETATM   28  H62 MUP A   1       1.791  -1.436  -0.155  1.00 20.00      A    H  
+HETATM   29  H71 MUP A   1       1.450  -1.935   2.248  1.00 20.00      A    H  
+HETATM   30  H72 MUP A   1       1.580  -0.208   2.619  1.00 20.00      A    H  
+HETATM   31  H81 MUP A   1       3.736  -1.931   1.342  1.00 20.00      A    H  
+HETATM   32  H82 MUP A   1       3.869  -0.192   1.652  1.00 20.00      A    H  
+HETATM   33  H91 MUP A   1       3.520  -2.395   3.715  1.00 20.00      A    H  
+HETATM   34  H92 MUP A   1       3.442  -0.665   4.089  1.00 20.00      A    H  
+HETATM   35 H101 MUP A   1       5.732  -0.364   3.231  1.00 20.00      A    H  
+HETATM   36 H102 MUP A   1       5.811  -2.085   2.817  1.00 20.00      A    H  
+HETATM   37 H111 MUP A   1       5.482  -0.904   5.600  1.00 20.00      A    H  
+HETATM   38 H112 MUP A   1       6.920  -1.725   4.964  1.00 20.00      A    H  
+HETATM   39 H113 MUP A   1       5.421  -2.637   5.227  1.00 20.00      A    H  
+HETATM   40  HM1 MUP A   1      -5.980   3.341  -5.592  1.00 20.00      A    H  
+HETATM   41  HM2 MUP A   1      -6.923   1.857  -5.359  1.00 20.00      A    H  
+HETATM   42  HM3 MUP A   1      -7.492   3.388  -4.667  1.00 20.00      A    H  
+CONECT    1    2   16   17   18
+CONECT    2    1    3   19   20
+CONECT    3    2    4   21   22
+CONECT    4    3    5   23   24
+CONECT    5    4    6   25   26
+CONECT    6    5    7   27   28
+CONECT    7    6    8   29   30
+CONECT    8    7    9   31   32
+CONECT    9    8   10   33   34
+CONECT   10    9   11   35   36
+CONECT   11   10   37   38   39
+CONECT   12   14   40   41   42
+CONECT   13   16
+CONECT   13   16
+CONECT   14   12   16
+CONECT   15   16
+CONECT   16    1   14   15
+CONECT   16   13
+CONECT   16   13
+CONECT   17    1
+CONECT   18    1
+CONECT   19    2
+CONECT   20    2
+CONECT   21    3
+CONECT   22    3
+CONECT   23    4
+CONECT   24    4
+CONECT   25    5
+CONECT   26    5
+CONECT   27    6
+CONECT   28    6
+CONECT   29    7
+CONECT   30    7
+CONECT   31    8
+CONECT   32    8
+CONECT   33    9
+CONECT   34    9
+CONECT   35   10
+CONECT   36   10
+CONECT   37   11
+CONECT   38   11
+CONECT   39   11
+CONECT   40   12
+CONECT   41   12
+CONECT   42   12
+END

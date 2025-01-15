@@ -1,0 +1,186 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:41:23 2023
+REMARK  99
+REMARK  99   Ligand name: [(2R,3S,4R,5R)-5-(3-aminocarbonylpyridin-1-ium-1-yl)-3,4-dihydroxy-oxolan-2-yl]methyl [[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-3,4-dihydroxy-oxolan-2-yl]methoxy-hydroxy-phosphoryl] phosphate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC(=O)c1ccc[n+](c1)[C@@H]2O[C@H](CO[P]([O-])(=O)O[P@](O)(=O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n4cnc5c(N)ncnc45)[C@@H](O)[C@H]2O
+FORMUL   1  NAD    C21 H26 N7 O14 P2  (-1)
+HETATM    1  PA  NAD A   1       0.754  -1.157   0.512  1.00 20.00      A    P  
+HETATM    2  O1A NAD A   1       0.747  -0.898   2.003  1.00 20.00      A    O  
+HETATM    3  O2A NAD A   1      -0.121  -2.344   0.202  1.00 20.00      A    O-1
+HETATM    4  O5B NAD A   1       2.297  -1.471   0.016  1.00 20.00      A    O  
+HETATM    5  C5B NAD A   1       3.194  -2.052   0.939  1.00 20.00      A    C  
+HETATM    6  C4B NAD A   1       4.225  -2.972   0.169  1.00 20.00      A    C  
+HETATM    7  O4B NAD A   1       5.258  -3.570   1.166  1.00 20.00      A    O  
+HETATM    8  C3B NAD A   1       3.627  -3.967  -0.334  1.00 20.00      A    C  
+HETATM    9  O3B NAD A   1       4.299  -4.388  -1.555  1.00 20.00      A    O  
+HETATM   10  C2B NAD A   1       3.715  -5.168   0.808  1.00 20.00      A    C  
+HETATM   11  O2B NAD A   1       3.568  -6.483   0.169  1.00 20.00      A    O  
+HETATM   12  C1B NAD A   1       4.864  -5.063   1.328  1.00 20.00      A    C  
+HETATM   13  N9A NAD A   1       4.809  -5.430   2.798  1.00 20.00      A    N  
+HETATM   14  C8A NAD A   1       4.003  -5.315   3.853  1.00 20.00      A    C  
+HETATM   15  N7A NAD A   1       4.515  -6.067   4.856  1.00 20.00      A    N  
+HETATM   16  C5A NAD A   1       5.634  -6.641   4.411  1.00 20.00      A    C  
+HETATM   17  C6A NAD A   1       6.594  -7.415   5.047  1.00 20.00      A    C  
+HETATM   18  N6A NAD A   1       6.580  -8.226   6.259  1.00 20.00      A    N  
+HETATM   19  N1A NAD A   1       7.690  -7.767   4.402  1.00 20.00      A    N  
+HETATM   20  C2A NAD A   1       7.879  -7.372   3.113  1.00 20.00      A    C  
+HETATM   21  N3A NAD A   1       6.937  -6.611   2.485  1.00 20.00      A    N  
+HETATM   22  C4A NAD A   1       5.823  -6.251   3.136  1.00 20.00      A    C  
+HETATM   23  O3  NAD A   1       0.173   0.186  -0.290  1.00 20.00      A    O  
+HETATM   24  PN  NAD A   1      -1.423   0.714  -0.193  1.00 20.00      A    P  
+HETATM   25  O1N NAD A   1      -2.020   0.278   1.126  1.00 20.00      A    O  
+HETATM   26  O2N NAD A   1      -2.222   0.115  -1.327  1.00 20.00      A    O-1
+HETATM   27  O5D NAD A   1      -1.464   2.376  -0.300  1.00 20.00      A    O  
+HETATM   28  C5D NAD A   1      -1.632   2.975  -1.592  1.00 20.00      A    C  
+HETATM   29  C4D NAD A   1      -1.449   4.531  -1.477  1.00 20.00      A    C  
+HETATM   30  O4D NAD A   1      -2.260   5.254  -2.602  1.00 20.00      A    O  
+HETATM   31  C3D NAD A   1      -1.938   4.948  -0.386  1.00 20.00      A    C  
+HETATM   32  O3D NAD A   1      -1.198   6.117   0.080  1.00 20.00      A    O  
+HETATM   33  C2D NAD A   1      -3.516   5.369  -0.730  1.00 20.00      A    C  
+HETATM   34  O2D NAD A   1      -3.997   6.339   0.246  1.00 20.00      A    O  
+HETATM   35  C1D NAD A   1      -3.489   5.890  -1.886  1.00 20.00      A    C  
+HETATM   36  N1N NAD A   1      -4.768   5.561  -2.641  1.00 20.00      A    N+1
+HETATM   37  C2N NAD A   1      -5.885   6.302  -2.433  1.00 20.00      A    C  
+HETATM   38  C3N NAD A   1      -7.044   6.037  -3.159  1.00 20.00      A    C  
+HETATM   39  C7N NAD A   1      -8.294   6.911  -2.958  1.00 20.00      A    C  
+HETATM   40  O7N NAD A   1      -8.269   7.801  -2.192  1.00 20.00      A    O  
+HETATM   41  N7N NAD A   1      -9.475   6.685  -3.768  1.00 20.00      A    N  
+HETATM   42  C4N NAD A   1      -7.055   5.039  -4.073  1.00 20.00      A    C  
+HETATM   43  C5N NAD A   1      -5.934   4.296  -4.281  1.00 20.00      A    C  
+HETATM   44  C6N NAD A   1      -4.778   4.563  -3.554  1.00 20.00      A    C  
+HETATM   45 H51A NAD A   1       3.729  -1.271   1.462  1.00 20.00      A    H  
+HETATM   46 H52A NAD A   1       2.644  -2.646   1.647  1.00 20.00      A    H  
+HETATM   47  H4B NAD A   1       4.737  -2.408  -0.610  1.00 20.00      A    H  
+HETATM   48  H3B NAD A   1       2.592  -3.717  -0.535  1.00 20.00      A    H  
+HETATM   49 HO3A NAD A   1       3.650  -4.619  -2.210  1.00 20.00      A    H  
+HETATM   50  H2B NAD A   1       2.952  -5.024   1.560  1.00 20.00      A    H  
+HETATM   51 HO2A NAD A   1       2.645  -6.718   0.133  1.00 20.00      A    H  
+HETATM   52  H1B NAD A   1       5.577  -5.702   0.797  1.00 20.00      A    H  
+HETATM   53  H8A NAD A   1       3.100  -4.730   3.899  1.00 20.00      A    H  
+HETATM   54 H61A NAD A   1       6.185  -7.856   7.109  1.00 20.00      A    H  
+HETATM   55 H62A NAD A   1       6.924  -9.166   6.235  1.00 20.00      A    H  
+HETATM   56  H2A NAD A   1       8.802  -7.741   2.677  1.00 20.00      A    H  
+HETATM   57 H51N NAD A   1      -2.630   2.754  -1.968  1.00 20.00      A    H  
+HETATM   58 H52N NAD A   1      -0.891   2.574  -2.275  1.00 20.00      A    H  
+HETATM   59  H4D NAD A   1      -0.389   4.801  -1.542  1.00 20.00      A    H  
+HETATM   60  H3D NAD A   1      -1.914   4.162   0.358  1.00 20.00      A    H  
+HETATM   61 HO3N NAD A   1      -0.842   5.942   0.936  1.00 20.00      A    H  
+HETATM   62  H2D NAD A   1      -4.145   4.487  -0.733  1.00 20.00      A    H  
+HETATM   63 HO2N NAD A   1      -4.445   5.885   0.950  1.00 20.00      A    H  
+HETATM   64  H1D NAD A   1      -3.359   6.972  -1.807  1.00 20.00      A    H  
+HETATM   65  H2N NAD A   1      -5.860   7.131  -1.746  1.00 20.00      A    H  
+HETATM   66 H71N NAD A   1      -9.536   5.877  -4.346  1.00 20.00      A    H  
+HETATM   67 H72N NAD A   1     -10.257   7.317  -3.704  1.00 20.00      A    H  
+HETATM   68  H4N NAD A   1      -7.987   4.774  -4.581  1.00 20.00      A    H  
+HETATM   69  H5N NAD A   1      -5.970   3.442  -4.938  1.00 20.00      A    H  
+HETATM   70  H6N NAD A   1      -4.271   3.823  -4.156  1.00 20.00      A    H  
+CONECT    1    3    4   23
+CONECT    1    2
+CONECT    1    2
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1    5
+CONECT    5    4    6   45   46
+CONECT    6    5    7    8   47
+CONECT    7    6   12
+CONECT    8    6    9   10   48
+CONECT    9    8   49
+CONECT   10    8   11   12   50
+CONECT   11   10   51
+CONECT   12    7   10   13   52
+CONECT   13   12
+CONECT   13   14   22
+CONECT   14   53
+CONECT   14   13   15
+CONECT   15   14   16
+CONECT   16   17
+CONECT   16   15
+CONECT   16   22
+CONECT   16   22
+CONECT   17   16   18
+CONECT   17   19
+CONECT   17   19
+CONECT   18   17   54   55
+CONECT   19   20
+CONECT   19   17
+CONECT   19   17
+CONECT   20   19   56
+CONECT   20   21
+CONECT   20   21
+CONECT   21   22
+CONECT   21   20
+CONECT   21   20
+CONECT   22   21
+CONECT   22   13
+CONECT   22   16
+CONECT   22   16
+CONECT   23    1   24
+CONECT   24   23   26   27
+CONECT   24   25
+CONECT   24   25
+CONECT   25   24
+CONECT   25   24
+CONECT   26   24
+CONECT   27   24   28
+CONECT   28   27   29   57   58
+CONECT   29   28   30   31   59
+CONECT   30   29   35
+CONECT   31   29   32   33   60
+CONECT   32   31   61
+CONECT   33   31   34   35   62
+CONECT   34   33   63
+CONECT   35   30   33   36   64
+CONECT   36   35   37
+CONECT   36   44
+CONECT   36   44
+CONECT   37   36   65
+CONECT   37   38
+CONECT   37   38
+CONECT   38   39   42
+CONECT   38   37
+CONECT   38   37
+CONECT   39   38   41
+CONECT   39   40
+CONECT   39   40
+CONECT   40   39
+CONECT   40   39
+CONECT   41   39   66   67
+CONECT   42   38   68
+CONECT   42   43
+CONECT   42   43
+CONECT   43   44   69
+CONECT   43   42
+CONECT   43   42
+CONECT   44   43   70
+CONECT   44   36
+CONECT   44   36
+CONECT   45    5
+CONECT   46    5
+CONECT   47    6
+CONECT   48    8
+CONECT   49    9
+CONECT   50   10
+CONECT   51   11
+CONECT   52   12
+CONECT   53   14
+CONECT   54   18
+CONECT   55   18
+CONECT   56   20
+CONECT   57   28
+CONECT   58   28
+CONECT   59   29
+CONECT   60   31
+CONECT   61   32
+CONECT   62   33
+CONECT   63   34
+CONECT   64   35
+CONECT   65   37
+CONECT   66   41
+CONECT   67   41
+CONECT   68   42
+CONECT   69   43
+CONECT   70   44
+END

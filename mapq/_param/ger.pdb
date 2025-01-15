@@ -1,0 +1,133 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:17:05 2023
+REMARK  99
+REMARK  99   Ligand name: (6E,10E,14E)-2,6,10,14-tetramethylhexadeca-2,6,10,14-tetraene
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: C\C=C(/C)CC\C=C(/C)CC\C=C(/C)CCC=C(C)C
+FORMUL   1  GER    C20 H34 
+HETATM    1  C1  GER A   1      -5.570  -0.183   5.130  1.00 20.00      A    C  
+HETATM    2  C2  GER A   1      -4.043   0.010   4.978  1.00 20.00      A    C  
+HETATM    3  C3  GER A   1      -3.700   1.303   4.920  1.00 20.00      A    C  
+HETATM    4  C4  GER A   1      -3.175   2.554   4.176  1.00 20.00      A    C  
+HETATM    5  C5  GER A   1      -3.812   1.145   3.362  1.00 20.00      A    C  
+HETATM    6  C6  GER A   1      -2.540   0.410   2.818  1.00 20.00      A    C  
+HETATM    7  C7  GER A   1      -2.483   0.549   1.266  1.00 20.00      A    C  
+HETATM    8  C8  GER A   1      -2.381  -0.642   0.653  1.00 20.00      A    C  
+HETATM    9  C9  GER A   1      -1.612  -1.705  -0.166  1.00 20.00      A    C  
+HETATM   10  C10 GER A   1      -0.818  -0.408   0.708  1.00 20.00      A    C  
+HETATM   11  C11 GER A   1      -0.362   0.402  -0.566  1.00 20.00      A    C  
+HETATM   12  C12 GER A   1       1.196   0.570  -0.548  1.00 20.00      A    C  
+HETATM   13  C13 GER A   1       1.610   1.588  -1.338  1.00 20.00      A    C  
+HETATM   14  C14 GER A   1       2.320   2.158  -2.599  1.00 20.00      A    C  
+HETATM   15  C15 GER A   1       1.763   0.499  -2.465  1.00 20.00      A    C  
+HETATM   16  C16 GER A   1       3.274   0.084  -2.591  1.00 20.00      A    C  
+HETATM   17  C17 GER A   1       3.412  -1.060  -3.636  1.00 20.00      A    C  
+HETATM   18  C18 GER A   1       4.575  -1.730  -3.751  1.00 20.00      A    C  
+HETATM   19  C19 GER A   1       4.711  -2.867  -4.790  1.00 20.00      A    C  
+HETATM   20  C20 GER A   1       5.772  -1.363  -2.846  1.00 20.00      A    C  
+HETATM   21  H11 GER A   1      -5.989   0.657   5.681  1.00 20.00      A    H  
+HETATM   22  H12 GER A   1      -6.029  -0.236   4.145  1.00 20.00      A    H  
+HETATM   23  H13 GER A   1      -5.767  -1.108   5.672  1.00 20.00      A    H  
+HETATM   24  H21 GER A   1      -4.031  -0.461   4.002  1.00 20.00      A    H  
+HETATM   25  H41 GER A   1      -2.629   3.189   4.875  1.00 20.00      A    H  
+HETATM   26  H42 GER A   1      -4.015   3.109   3.761  1.00 20.00      A    H  
+HETATM   27  H43 GER A   1      -2.513   2.246   3.374  1.00 20.00      A    H  
+HETATM   28  H51 GER A   1      -3.887   2.129   2.901  1.00 20.00      A    H  
+HETATM   29  H52 GER A   1      -4.700   0.562   3.118  1.00 20.00      A    H  
+HETATM   30  H61 GER A   1      -1.648   0.856   3.256  1.00 20.00      A    H  
+HETATM   31  H62 GER A   1      -2.588  -0.646   3.087  1.00 20.00      A    H  
+HETATM   32  H71 GER A   1      -1.535   1.076   1.299  1.00 20.00      A    H  
+HETATM   33  H91 GER A   1      -1.024  -2.327   0.509  1.00 20.00      A    H  
+HETATM   34  H92 GER A   1      -0.954  -1.212  -0.868  1.00 20.00      A    H  
+HETATM   35  H93 GER A   1      -2.322  -2.329  -0.710  1.00 20.00      A    H  
+HETATM   36 H101 GER A   1      -0.567   0.156   1.605  1.00 20.00      A    H  
+HETATM   37 H102 GER A   1      -0.307  -1.369   0.729  1.00 20.00      A    H  
+HETATM   38 H111 GER A   1      -0.833   1.386  -0.559  1.00 20.00      A    H  
+HETATM   39 H112 GER A   1      -0.659  -0.136  -1.464  1.00 20.00      A    H  
+HETATM   40 H121 GER A   1       1.354  -0.398  -1.010  1.00 20.00      A    H  
+HETATM   41 H141 GER A   1       1.786   3.043  -2.948  1.00 20.00      A    H  
+HETATM   42 H142 GER A   1       2.327   1.408  -3.380  1.00 20.00      A    H  
+HETATM   43 H143 GER A   1       3.345   2.429  -2.347  1.00 20.00      A    H  
+HETATM   44 H151 GER A   1       1.417   0.910  -3.417  1.00 20.00      A    H  
+HETATM   45 H152 GER A   1       1.169  -0.373  -2.209  1.00 20.00      A    H  
+HETATM   46 H161 GER A   1       3.862   0.944  -2.914  1.00 20.00      A    H  
+HETATM   47 H162 GER A   1       3.638  -0.261  -1.624  1.00 20.00      A    H  
+HETATM   48 H171 GER A   1       2.569  -1.319  -4.274  1.00 20.00      A    H  
+HETATM   49 H191 GER A   1       4.307  -3.789  -4.374  1.00 20.00      A    H  
+HETATM   50 H192 GER A   1       4.161  -2.604  -5.691  1.00 20.00      A    H  
+HETATM   51 H193 GER A   1       5.763  -3.010  -5.036  1.00 20.00      A    H  
+HETATM   52 H201 GER A   1       5.506  -1.535  -1.806  1.00 20.00      A    H  
+HETATM   53 H202 GER A   1       6.630  -1.983  -3.110  1.00 20.00      A    H  
+HETATM   54 H203 GER A   1       6.025  -0.314  -2.988  1.00 20.00      A    H  
+CONECT    1    2   21   22   23
+CONECT    2    1   24
+CONECT    2    3
+CONECT    2    3
+CONECT    3    4    5
+CONECT    3    2
+CONECT    3    2
+CONECT    4    3   25   26   27
+CONECT    5    3    6   28   29
+CONECT    6    5    7   30   31
+CONECT    7    6   32
+CONECT    7    8
+CONECT    7    8
+CONECT    8    9   10
+CONECT    8    7
+CONECT    8    7
+CONECT    9    8   33   34   35
+CONECT   10    8   11   36   37
+CONECT   11   10   12   38   39
+CONECT   12   11   40
+CONECT   12   13
+CONECT   12   13
+CONECT   13   14   15
+CONECT   13   12
+CONECT   13   12
+CONECT   14   13   41   42   43
+CONECT   15   13   16   44   45
+CONECT   16   15   17   46   47
+CONECT   17   16   48
+CONECT   17   18
+CONECT   17   18
+CONECT   18   19   20
+CONECT   18   17
+CONECT   18   17
+CONECT   19   18   49   50   51
+CONECT   20   18   52   53   54
+CONECT   21    1
+CONECT   22    1
+CONECT   23    1
+CONECT   24    2
+CONECT   25    4
+CONECT   26    4
+CONECT   27    4
+CONECT   28    5
+CONECT   29    5
+CONECT   30    6
+CONECT   31    6
+CONECT   32    7
+CONECT   33    9
+CONECT   34    9
+CONECT   35    9
+CONECT   36   10
+CONECT   37   10
+CONECT   38   11
+CONECT   39   11
+CONECT   40   12
+CONECT   41   14
+CONECT   42   14
+CONECT   43   14
+CONECT   44   15
+CONECT   45   15
+CONECT   46   16
+CONECT   47   16
+CONECT   48   17
+CONECT   49   19
+CONECT   50   19
+CONECT   51   19
+CONECT   52   20
+CONECT   53   20
+CONECT   54   20
+END

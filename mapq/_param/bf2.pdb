@@ -1,0 +1,15 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Oct 19 19:00:31 2023
+REMARK  99
+REMARK  99   Ligand name: beryllium difluoride
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: F[Be]F
+FORMUL   1  BF2    BE F2 
+HETATM    1 BE   BF2 A   1      37.170  68.362 -12.729  1.00 20.00      A   BE  
+HETATM    2  F1  BF2 A   1      35.781  68.849 -12.699  1.00 20.00      A    F  
+HETATM    3  F2  BF2 A   1      38.050  69.248 -11.913  1.00 20.00      A    F  
+CONECT    1    2    3
+CONECT    2    1
+CONECT    3    1
+END

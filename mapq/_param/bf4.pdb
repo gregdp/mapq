@@ -1,0 +1,19 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Oct 19 19:00:29 2023
+REMARK  99
+REMARK  99   Ligand name: tetrafluoroberyllate(2-)
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: F[Be--](F)(F)F
+FORMUL   1  BF4    BE F4  (-2)
+HETATM    1 BE   BF4 A   1      -1.523   1.706  20.014  1.00 20.00      A   BE-2
+HETATM    2  F1  BF4 A   1      -0.650   2.909  20.082  1.00 20.00      A    F  
+HETATM    3  F2  BF4 A   1      -0.973   0.698  19.058  1.00 20.00      A    F  
+HETATM    4  F3  BF4 A   1      -1.577   1.097  21.362  1.00 20.00      A    F  
+HETATM    5  F4  BF4 A   1      -2.888   2.124  19.569  1.00 20.00      A    F  
+CONECT    1    2    3    4    5
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1
+END

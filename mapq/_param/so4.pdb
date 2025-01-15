@@ -1,0 +1,23 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Oct 19 18:59:38 2023
+REMARK  99
+REMARK  99   Ligand name: sulfate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [O-][S]([O-])(=O)=O
+FORMUL   1  SO4    O4 S  (-2)
+HETATM    1  S   SO4 A   1      -0.033  -0.015  -0.012  1.00 20.00      A    S  
+HETATM    2  O1  SO4 A   1       1.340  -0.107  -0.634  1.00 20.00      A    O  
+HETATM    3  O2  SO4 A   1       0.253   0.836   1.203  1.00 20.00      A    O  
+HETATM    4  O3  SO4 A   1      -1.011   0.665  -0.940  1.00 20.00      A    O-1
+HETATM    5  O4  SO4 A   1      -0.548  -1.378   0.383  1.00 20.00      A    O-1
+CONECT    1    4    5
+CONECT    1    2    3
+CONECT    1    2    3
+CONECT    2    1
+CONECT    2    1
+CONECT    3    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1
+END

@@ -1,0 +1,72 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX version 1.21.2-5419-
+REMARK  99   - file written: Fri Oct 11 10:56:20 2024
+REMARK  99
+REMARK  99   Ligand name: 2-(acetylamino)-2-deoxy-alpha-D-galactopyranose
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(=O)N[C@H]1[C@@H](O)O[C@H](CO)[C@H](O)[C@@H]1O
+FORMUL   1  A2G    C8 H15 N O6 
+HETATM    1  O5  A2G A   1      -1.451   0.403  -1.368  1.00 20.00      A    O  
+HETATM    2  C1  A2G A   1       0.017   0.422  -1.359  1.00 20.00      A    C  
+HETATM    3  O1  A2G A   1       0.479  -0.683  -2.024  1.00 20.00      A    O  
+HETATM    4  C2  A2G A   1       0.586   0.418   0.069  1.00 20.00      A    C  
+HETATM    5  N2  A2G A   1       2.072   0.275  -0.004  1.00 20.00      A    N  
+HETATM    6  C3  A2G A   1       0.042  -0.685   0.878  1.00 20.00      A    C  
+HETATM    7  O3  A2G A   1       0.504  -0.527   2.269  1.00 20.00      A    O  
+HETATM    8  C4  A2G A   1      -1.431  -0.704   0.865  1.00 20.00      A    C  
+HETATM    9  O4  A2G A   1      -1.916   0.458   1.563  1.00 20.00      A    O  
+HETATM   10  C5  A2G A   1      -1.996  -0.697  -0.564  1.00 20.00      A    C  
+HETATM   11  C6  A2G A   1      -3.485  -0.557  -0.495  1.00 20.00      A    C  
+HETATM   12  O6  A2G A   1      -4.026  -0.669  -1.786  1.00 20.00      A    O  
+HETATM   13  C7  A2G A   1       2.930   1.376   0.410  1.00 20.00      A    C  
+HETATM   14  O7  A2G A   1       2.451   2.383   0.803  1.00 20.00      A    O  
+HETATM   15  C8  A2G A   1       4.446   1.231   0.337  1.00 20.00      A    C  
+HETATM   16  H1  A2G A   1       0.358   1.314  -1.868  1.00 20.00      A    H  
+HETATM   17  HO1 A2G A   1       0.465  -0.519  -2.956  1.00 20.00      A    H  
+HETATM   18  H2  A2G A   1       0.340   1.358   0.548  1.00 20.00      A    H  
+HETATM   19  HN2 A2G A   1       2.478  -0.572  -0.357  1.00 20.00      A    H  
+HETATM   20  H3  A2G A   1       0.409  -1.625   0.482  1.00 20.00      A    H  
+HETATM   21  HO3 A2G A   1       0.802  -1.362   2.599  1.00 20.00      A    H  
+HETATM   22  H4  A2G A   1      -1.774  -1.595   1.374  1.00 20.00      A    H  
+HETATM   23  HO4 A2G A   1      -2.369   0.189   2.344  1.00 20.00      A    H  
+HETATM   24  H5  A2G A   1      -1.748  -1.637  -1.042  1.00 20.00      A    H  
+HETATM   25  H61 A2G A   1      -3.738   0.413  -0.080  1.00 20.00      A    H  
+HETATM   26  H81 A2G A   1       4.761   0.404   0.966  1.00 20.00      A    H  
+HETATM   27  H82 A2G A   1       4.915   2.148   0.682  1.00 20.00      A    H  
+HETATM   28  H83 A2G A   1       4.742   1.037  -0.689  1.00 20.00      A    H  
+HETATM   29  H62 A2G A   1      -3.893  -1.338   0.137  1.00 20.00      A    H  
+HETATM   30  HO6 A2G A   1      -4.969  -0.657  -1.734  1.00 20.00      A    H  
+CONECT    1   10    2
+CONECT    2    1    4   16    3
+CONECT    3    2   17
+CONECT    4    2    6   18    5
+CONECT    5    4   19   13
+CONECT    6    4    8    7   20
+CONECT    7    6   21
+CONECT    8    6    9   22   10
+CONECT    9    8   23
+CONECT   10    1    8   11   24
+CONECT   11   10   12   25   29
+CONECT   12   11   30
+CONECT   13    5   15
+CONECT   13   14
+CONECT   13   14
+CONECT   14   13
+CONECT   14   13
+CONECT   15   13   26   27   28
+CONECT   16    2
+CONECT   17    3
+CONECT   18    4
+CONECT   19    5
+CONECT   20    6
+CONECT   21    7
+CONECT   22    8
+CONECT   23    9
+CONECT   24   10
+CONECT   25   11
+CONECT   26   15
+CONECT   27   15
+CONECT   28   15
+CONECT   29   11
+CONECT   30   12
+END

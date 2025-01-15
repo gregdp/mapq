@@ -1,0 +1,62 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:20:44 2023
+REMARK  99
+REMARK  99   Ligand name: N-acetyl-L-glutamic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CC(=O)N[C@@H](CCC(O)=O)C(O)=O
+FORMUL   1  NLG    C7 H9 N O5  (-2)
+HETATM    1  CA  NLG A   1      -0.417  -0.248  -0.142  1.00 20.00      A    C  
+HETATM    2  C   NLG A   1      -1.942  -0.179  -0.167  1.00 20.00      A    C  
+HETATM    3  OXT NLG A   1      -2.613  -1.193  -0.494  1.00 20.00      A    O-1
+HETATM    4  O   NLG A   1      -2.529   0.892   0.139  1.00 20.00      A    O  
+HETATM    5  CB  NLG A   1       0.069  -0.245   1.306  1.00 20.00      A    C  
+HETATM    6  CG  NLG A   1       0.258  -1.684   1.783  1.00 20.00      A    C  
+HETATM    7  CD  NLG A   1       0.645  -1.684   3.260  1.00 20.00      A    C  
+HETATM    8  OE1 NLG A   1      -0.250  -1.699   4.145  1.00 20.00      A    O  
+HETATM    9  OE2 NLG A   1       1.859  -1.662   3.592  1.00 20.00      A    O-1
+HETATM   10  C7  NLG A   1       0.214   0.900  -2.288  1.00 20.00      A    C  
+HETATM   11  C8  NLG A   1       0.809   2.101  -3.020  1.00 20.00      A    C  
+HETATM   12  O7  NLG A   1      -0.174  -0.036  -2.902  1.00 20.00      A    O  
+HETATM   13  N2  NLG A   1       0.131   0.901  -0.839  1.00 20.00      A    N  
+HETATM   14  HA  NLG A   1      -0.089  -1.157  -0.631  1.00 20.00      A    H  
+HETATM   15 HBC1 NLG A   1       1.014   0.284   1.369  1.00 20.00      A    H  
+HETATM   16 HBC2 NLG A   1      -0.665   0.250   1.933  1.00 20.00      A    H  
+HETATM   17 HGC1 NLG A   1      -0.669  -2.232   1.652  1.00 20.00      A    H  
+HETATM   18 HGC2 NLG A   1       1.043  -2.157   1.203  1.00 20.00      A    H  
+HETATM   19 H8C1 NLG A   1       0.315   3.009  -2.686  1.00 20.00      A    H  
+HETATM   20 H8C2 NLG A   1       0.663   1.982  -4.089  1.00 20.00      A    H  
+HETATM   21 H8C3 NLG A   1       1.871   2.166  -2.804  1.00 20.00      A    H  
+HETATM   22  H2  NLG A   1       0.458   1.692  -0.319  1.00 20.00      A    H  
+CONECT    1    2    5   13   14
+CONECT    2    1    3
+CONECT    2    4
+CONECT    2    4
+CONECT    3    2
+CONECT    4    2
+CONECT    4    2
+CONECT    5    1    6   15   16
+CONECT    6    5    7   17   18
+CONECT    7    6    9
+CONECT    7    8
+CONECT    7    8
+CONECT    8    7
+CONECT    8    7
+CONECT    9    7
+CONECT   10   11   13
+CONECT   10   12
+CONECT   10   12
+CONECT   11   10   19   20   21
+CONECT   12   10
+CONECT   12   10
+CONECT   13    1   10   22
+CONECT   14    1
+CONECT   15    5
+CONECT   16    5
+CONECT   17    6
+CONECT   18    6
+CONECT   19   11
+CONECT   20   11
+CONECT   21   11
+CONECT   22   13
+END

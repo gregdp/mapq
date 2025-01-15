@@ -1,0 +1,20 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Oct 19 18:39:20 2023
+REMARK  99
+REMARK  99   Ligand name: thiocyanate
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: [S-]C#N
+FORMUL   1  SCN    C N S  (-1)
+HETATM    1  S   SCN A   1       0.332  -0.350  -1.514  1.00 20.00      A    S-1
+HETATM    2  C   SCN A   1      -0.048   0.050   0.217  1.00 20.00      A    C  
+HETATM    3  N   SCN A   1      -0.284   0.300   1.297  1.00 20.00      A    N  
+CONECT    1    2
+CONECT    2    1
+CONECT    2    3
+CONECT    2    3
+CONECT    2    3
+CONECT    3    2
+CONECT    3    2
+CONECT    3    2
+END

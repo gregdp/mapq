@@ -1,0 +1,45 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Thu Oct 19 18:39:28 2023
+REMARK  99
+REMARK  99   Ligand name: (2R,3R)-1,4-disulfanylbutane-2,3-diol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: O[C@@H](CS)[C@@H](O)CS
+FORMUL   1  DTT    C4 H10 O2 S2 
+HETATM    1  S1  DTT A   1      -3.080  -0.311  -1.380  1.00 20.00      A    S  
+HETATM    2  C1  DTT A   1      -1.269  -0.182  -1.371  1.00 20.00      A    C  
+HETATM    3  C2  DTT A   1      -0.774  -0.057   0.068  1.00 20.00      A    C  
+HETATM    4  O2  DTT A   1      -1.518   0.925   0.733  1.00 20.00      A    O  
+HETATM    5  C3  DTT A   1       0.701   0.335   0.067  1.00 20.00      A    C  
+HETATM    6  O3  DTT A   1       0.830   1.664   0.488  1.00 20.00      A    O  
+HETATM    7  C4  DTT A   1       1.471  -0.577   1.018  1.00 20.00      A    C  
+HETATM    8  S4  DTT A   1       3.144   0.083   1.269  1.00 20.00      A    S  
+HETATM    9  HS1 DTT A   1      -3.505  -0.486  -2.626  1.00 20.00      A    H  
+HETATM   10  H11 DTT A   1      -0.966   0.694  -1.935  1.00 20.00      A    H  
+HETATM   11  H12 DTT A   1      -0.841  -1.069  -1.825  1.00 20.00      A    H  
+HETATM   12  H2  DTT A   1      -0.895  -1.007   0.575  1.00 20.00      A    H  
+HETATM   13  HO2 DTT A   1      -1.970   0.536   1.465  1.00 20.00      A    H  
+HETATM   14  H3  DTT A   1       1.101   0.233  -0.935  1.00 20.00      A    H  
+HETATM   15  HO3 DTT A   1       1.240   2.172  -0.195  1.00 20.00      A    H  
+HETATM   16  H41 DTT A   1       1.535  -1.573   0.592  1.00 20.00      A    H  
+HETATM   17  H42 DTT A   1       0.954  -0.625   1.971  1.00 20.00      A    H  
+HETATM   18  HS2 DTT A   1       3.843  -0.758   2.022  1.00 20.00      A    H  
+CONECT    1    2    9
+CONECT    2    1    3   10   11
+CONECT    3    2    4    5   12
+CONECT    4    3   13
+CONECT    5    3    6    7   14
+CONECT    6    5   15
+CONECT    7    5    8   16   17
+CONECT    8    7   18
+CONECT    9    1
+CONECT   10    2
+CONECT   11    2
+CONECT   12    3
+CONECT   13    4
+CONECT   14    5
+CONECT   15    6
+CONECT   16    7
+CONECT   17    7
+CONECT   18    8
+END

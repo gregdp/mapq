@@ -1,0 +1,105 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:28:30 2023
+REMARK  99
+REMARK  99   Ligand name: octyl beta-D-glucopyranoside
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: CCCCCCCCO[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O
+FORMUL   1  BOG    C14 H28 O6 
+HETATM    1  C1  BOG A   1       2.172   0.139   1.581  1.00 20.00      A    C  
+HETATM    2  O1  BOG A   1       1.973   0.064   0.230  1.00 20.00      A    O  
+HETATM    3  C2  BOG A   1       3.649   0.438   1.849  1.00 20.00      A    C  
+HETATM    4  O2  BOG A   1       4.440  -0.698   1.421  1.00 20.00      A    O  
+HETATM    5  C3  BOG A   1       3.911   0.690   3.280  1.00 20.00      A    C  
+HETATM    6  O3  BOG A   1       5.296   1.123   3.435  1.00 20.00      A    O  
+HETATM    7  C4  BOG A   1       3.019   1.739   3.833  1.00 20.00      A    C  
+HETATM    8  O4  BOG A   1       3.221   1.819   5.248  1.00 20.00      A    O  
+HETATM    9  C5  BOG A   1       1.534   1.438   3.558  1.00 20.00      A    C  
+HETATM   10  O5  BOG A   1       1.276   1.191   2.140  1.00 20.00      A    O  
+HETATM   11  C6  BOG A   1       0.704   2.619   4.009  1.00 20.00      A    C  
+HETATM   12  O6  BOG A   1       0.274   2.411   5.319  1.00 20.00      A    O  
+HETATM   13  C1' BOG A   1       1.073  -0.976  -0.167  1.00 20.00      A    C  
+HETATM   14  C2' BOG A   1       0.610  -0.731  -1.627  1.00 20.00      A    C  
+HETATM   15  C3' BOG A   1      -0.592  -1.637  -1.944  1.00 20.00      A    C  
+HETATM   16  C4' BOG A   1      -1.375  -1.053  -3.140  1.00 20.00      A    C  
+HETATM   17  C5' BOG A   1      -2.774  -1.777  -3.259  1.00 20.00      A    C  
+HETATM   18  C6' BOG A   1      -3.701  -0.955  -4.161  1.00 20.00      A    C  
+HETATM   19  C7' BOG A   1      -5.156  -1.502  -4.045  1.00 20.00      A    C  
+HETATM   20  C8' BOG A   1      -6.153  -0.473  -4.672  1.00 20.00      A    C  
+HETATM   21  H1  BOG A   1       1.919  -0.815   2.033  1.00 20.00      A    H  
+HETATM   22  H2  BOG A   1       3.936   1.299   1.288  1.00 20.00      A    H  
+HETATM   23  HO2 BOG A   1       5.232  -0.392   1.011  1.00 20.00      A    H  
+HETATM   24  H3  BOG A   1       3.758  -0.241   3.839  1.00 20.00      A    H  
+HETATM   25  HO3 BOG A   1       5.708   0.634   4.158  1.00 20.00      A    H  
+HETATM   26  H4  BOG A   1       3.272   2.687   3.382  1.00 20.00      A    H  
+HETATM   27  HO4 BOG A   1       3.726   2.583   5.449  1.00 20.00      A    H  
+HETATM   28  H5  BOG A   1       1.246   0.567   4.120  1.00 20.00      A    H  
+HETATM   29  H61 BOG A   1       1.309   3.529   3.966  1.00 20.00      A    H  
+HETATM   30  H62 BOG A   1      -0.169   2.728   3.349  1.00 20.00      A    H  
+HETATM   31  HO6 BOG A   1      -0.374   3.053   5.542  1.00 20.00      A    H  
+HETATM   32 H1'1 BOG A   1       0.207  -0.978   0.494  1.00 20.00      A    H  
+HETATM   33 H1'2 BOG A   1       1.581  -1.941  -0.104  1.00 20.00      A    H  
+HETATM   34 H2'1 BOG A   1       0.323   0.298  -1.744  1.00 20.00      A    H  
+HETATM   35 H2'2 BOG A   1       1.423  -0.959  -2.307  1.00 20.00      A    H  
+HETATM   36 H3'1 BOG A   1      -0.241  -2.625  -2.194  1.00 20.00      A    H  
+HETATM   37 H3'2 BOG A   1      -1.235  -1.691  -1.087  1.00 20.00      A    H  
+HETATM   38 H4'1 BOG A   1      -0.804  -1.209  -4.061  1.00 20.00      A    H  
+HETATM   39 H4'2 BOG A   1      -1.530   0.010  -2.987  1.00 20.00      A    H  
+HETATM   40 H5'1 BOG A   1      -3.217  -1.870  -2.274  1.00 20.00      A    H  
+HETATM   41 H5'2 BOG A   1      -2.634  -2.764  -3.688  1.00 20.00      A    H  
+HETATM   42 H6'1 BOG A   1      -3.366  -1.033  -5.193  1.00 20.00      A    H  
+HETATM   43 H6'2 BOG A   1      -3.680   0.072  -3.855  1.00 20.00      A    H  
+HETATM   44 H7'1 BOG A   1      -5.231  -2.454  -4.578  1.00 20.00      A    H  
+HETATM   45 H7'2 BOG A   1      -5.406  -1.655  -2.990  1.00 20.00      A    H  
+HETATM   46 H8'1 BOG A   1      -6.054  -0.487  -5.760  1.00 20.00      A    H  
+HETATM   47 H8'2 BOG A   1      -5.927   0.524  -4.299  1.00 20.00      A    H  
+HETATM   48 H8'3 BOG A   1      -7.174  -0.741  -4.397  1.00 20.00      A    H  
+CONECT    1    2    3   10   21
+CONECT    2    1   13
+CONECT    3    1    4    5   22
+CONECT    4    3   23
+CONECT    5    3    6    7   24
+CONECT    6    5   25
+CONECT    7    5    8    9   26
+CONECT    8    7   27
+CONECT    9    7   10   11   28
+CONECT   10    1    9
+CONECT   11    9   12   29   30
+CONECT   12   11   31
+CONECT   13    2   14   32   33
+CONECT   14   13   15   34   35
+CONECT   15   14   16   36   37
+CONECT   16   15   17   38   39
+CONECT   17   16   18   40   41
+CONECT   18   17   19   42   43
+CONECT   19   18   20   44   45
+CONECT   20   19   46   47   48
+CONECT   21    1
+CONECT   22    3
+CONECT   23    4
+CONECT   24    5
+CONECT   25    6
+CONECT   26    7
+CONECT   27    8
+CONECT   28    9
+CONECT   29   11
+CONECT   30   11
+CONECT   31   12
+CONECT   32   13
+CONECT   33   13
+CONECT   34   14
+CONECT   35   14
+CONECT   36   15
+CONECT   37   15
+CONECT   38   16
+CONECT   39   16
+CONECT   40   17
+CONECT   41   17
+CONECT   42   18
+CONECT   43   18
+CONECT   44   19
+CONECT   45   19
+CONECT   46   20
+CONECT   47   20
+CONECT   48   20
+END

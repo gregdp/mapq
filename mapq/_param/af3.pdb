@@ -1,0 +1,17 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:08:08 2023
+REMARK  99
+REMARK  99   Ligand name: aluminum trifluoride
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: F[Al](F)F
+FORMUL   1  AF3    AL F3 
+HETATM    1 AL   AF3 A   1      36.776  67.463 -13.515  1.00 20.00      A   AL  
+HETATM    2  F1  AF3 A   1      35.047  67.448 -13.645  1.00 20.00      A    F  
+HETATM    3  F2  AF3 A   1      37.765  66.871 -14.893  1.00 20.00      A    F  
+HETATM    4  F3  AF3 A   1      37.378  68.077 -12.032  1.00 20.00      A    F  
+CONECT    1    2    3    4
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+END

@@ -1,0 +1,51 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:00:29 2023
+REMARK  99
+REMARK  99   Ligand name: (Z)-3-(aminocarbonylamino)-2-azanyl-prop-2-enoic acid
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: NC(=O)N/C=C(N)/C(O)=O
+FORMUL   1  UAL    C4 H6 N3 O3  (-1)
+HETATM    1  C   UAL A   1       1.441   1.019  -2.356  1.00 20.00      A    C  
+HETATM    2  N   UAL A   1       0.487   1.959  -0.152  1.00 20.00      A    N  
+HETATM    3  O   UAL A   1       2.693   1.034  -2.487  1.00 20.00      A    O  
+HETATM    4  C1  UAL A   1      -1.268  -1.301   0.904  1.00 20.00      A    C  
+HETATM    5  N1  UAL A   1      -0.001  -0.604   0.775  1.00 20.00      A    N  
+HETATM    6  N2  UAL A   1      -1.765  -1.668   2.218  1.00 20.00      A    N  
+HETATM    7  O2  UAL A   1      -1.889  -1.585  -0.064  1.00 20.00      A    O  
+HETATM    8  CA  UAL A   1       0.821   0.812  -0.977  1.00 20.00      A    C  
+HETATM    9  CB  UAL A   1       0.589  -0.406  -0.536  1.00 20.00      A    C  
+HETATM   10  OXT UAL A   1       0.701   1.157  -3.365  1.00 20.00      A    O-1
+HETATM   11  HN  UAL A   1      -0.408   2.401  -0.247  1.00 20.00      A    H  
+HETATM   12  HN2 UAL A   1      -1.241  -1.424   3.038  1.00 20.00      A    H  
+HETATM   13 HN2A UAL A   1      -2.630  -2.166   2.306  1.00 20.00      A    H  
+HETATM   14  HB  UAL A   1       0.838  -1.262  -1.153  1.00 20.00      A    H  
+HETATM   15  H5  UAL A   1       1.155   2.316   0.503  1.00 20.00      A    H  
+HETATM   16  H6  UAL A   1       0.478  -0.283   1.593  1.00 20.00      A    H  
+CONECT    1   10    8
+CONECT    1    3
+CONECT    1    3
+CONECT    2    8   11   15
+CONECT    3    1
+CONECT    3    1
+CONECT    4    5    6
+CONECT    4    7
+CONECT    4    7
+CONECT    5    4    9   16
+CONECT    6    4   12   13
+CONECT    7    4
+CONECT    7    4
+CONECT    8    2    1
+CONECT    8    9
+CONECT    8    9
+CONECT    9    5   14
+CONECT    9    8
+CONECT    9    8
+CONECT   10    1
+CONECT   11    2
+CONECT   12    6
+CONECT   13    6
+CONECT   14    9
+CONECT   15    2
+CONECT   16    5
+END

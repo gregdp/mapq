@@ -1,0 +1,46 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:30:57 2023
+REMARK  99
+REMARK  99   Ligand name: 3-sulfo-L-alanine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](C[S](O)(=O)=O)C(O)=O
+FORMUL   1  OCS    C3 H5 N O5 S  (-2)
+HETATM    1  N   OCS A   1      -2.037   0.252  -0.396  1.00 20.00      A    N  
+HETATM    2  CA  OCS A   1      -0.591   0.146  -0.465  1.00 20.00      A    C  
+HETATM    3  CB  OCS A   1      -0.027  -0.042   0.942  1.00 20.00      A    C  
+HETATM    4  SG  OCS A   1       1.751   0.330   0.935  1.00 20.00      A    S  
+HETATM    5  C   OCS A   1      -0.209  -1.053  -1.331  1.00 20.00      A    C  
+HETATM    6  O   OCS A   1       0.565  -0.900  -2.311  1.00 20.00      A    O  
+HETATM    7  OXT OCS A   1      -0.669  -2.194  -1.064  1.00 20.00      A    O-1
+HETATM    8  OD1 OCS A   1       2.287   0.468   2.340  1.00 20.00      A    O  
+HETATM    9  OD2 OCS A   1       2.504  -0.727   0.163  1.00 20.00      A    O-1
+HETATM   10  OD3 OCS A   1       2.020   1.709   0.383  1.00 20.00      A    O  
+HETATM   11  H   OCS A   1      -2.410   0.338  -1.323  1.00 20.00      A    H  
+HETATM   12  HN2 OCS A   1      -2.287   1.061   0.141  1.00 20.00      A    H  
+HETATM   13  HA  OCS A   1      -0.183   1.050  -0.900  1.00 20.00      A    H  
+HETATM   14  HB2 OCS A   1      -0.534   0.628   1.627  1.00 20.00      A    H  
+HETATM   15  HB3 OCS A   1      -0.180  -1.068   1.259  1.00 20.00      A    H  
+CONECT    1    2   11   12
+CONECT    2    1    3    5   13
+CONECT    3    2    4   14   15
+CONECT    4    3    9
+CONECT    4    8   10
+CONECT    4    8   10
+CONECT    5    2    7
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5
+CONECT    8    4
+CONECT    8    4
+CONECT    9    4
+CONECT   10    4
+CONECT   10    4
+CONECT   11    1
+CONECT   12    1
+CONECT   13    2
+CONECT   14    3
+CONECT   15    3
+END

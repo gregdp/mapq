@@ -1,0 +1,143 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 11:55:20 2023
+REMARK  99
+REMARK  99   Ligand name: 5'-O-(L-glutaminylsulfamoyl)adenosine
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: N[C@@H](CCC(N)=O)C(=O)N[S](=O)(=O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1O)n2cnc3c(N)ncnc23
+FORMUL   1  QSI    C15 H22 N8 O8 S 
+HETATM    1  N   QSI A   1      -3.221   4.739  -2.574  1.00 20.00      A    N  
+HETATM    2  CA  QSI A   1      -2.645   3.412  -2.520  1.00 20.00      A    C  
+HETATM    3  CB  QSI A   1      -3.339   2.505  -3.568  1.00 20.00      A    C  
+HETATM    4  CG  QSI A   1      -4.645   1.886  -2.948  1.00 20.00      A    C  
+HETATM    5  CD  QSI A   1      -5.740   1.811  -4.033  1.00 20.00      A    C  
+HETATM    6  OE1 QSI A   1      -5.440   1.634  -5.157  1.00 20.00      A    O  
+HETATM    7  NE2 QSI A   1      -7.153   1.902  -3.661  1.00 20.00      A    N  
+HETATM    8  C   QSI A   1      -1.142   3.494  -2.831  1.00 20.00      A    C  
+HETATM    9  O   QSI A   1      -0.777   3.683  -3.947  1.00 20.00      A    O  
+HETATM   10  N10 QSI A   1      -0.142   3.372  -1.733  1.00 20.00      A    N  
+HETATM   11  S   QSI A   1       1.283   2.456  -1.977  1.00 20.00      A    S  
+HETATM   12  O1S QSI A   1       2.261   3.187  -2.869  1.00 20.00      A    O  
+HETATM   13  O2S QSI A   1       1.004   1.244  -2.783  1.00 20.00      A    O  
+HETATM   14  O5' QSI A   1       1.950   2.078  -0.569  1.00 20.00      A    O  
+HETATM   15  C5' QSI A   1       1.465   0.922   0.046  1.00 20.00      A    C  
+HETATM   16  C4' QSI A   1       2.542   0.361   1.010  1.00 20.00      A    C  
+HETATM   17  O4' QSI A   1       1.978  -0.313   1.982  1.00 20.00      A    O  
+HETATM   18  C1' QSI A   1       2.966  -1.452   2.320  1.00 20.00      A    C  
+HETATM   19  N9  QSI A   1       2.317  -2.634   2.391  1.00 20.00      A    N  
+HETATM   20  C4  QSI A   1       1.839  -3.068   3.588  1.00 20.00      A    C  
+HETATM   21  N3  QSI A   1       1.832  -2.505   4.828  1.00 20.00      A    N  
+HETATM   22  C2  QSI A   1       1.283  -3.161   5.861  1.00 20.00      A    C  
+HETATM   23  N1  QSI A   1       0.729  -4.396   5.672  1.00 20.00      A    N  
+HETATM   24  C6  QSI A   1       0.733  -4.944   4.477  1.00 20.00      A    C  
+HETATM   25  N6  QSI A   1      -0.210  -6.017   4.622  1.00 20.00      A    N  
+HETATM   26  C5  QSI A   1       1.303  -4.264   3.404  1.00 20.00      A    C  
+HETATM   27  N7  QSI A   1       1.441  -4.586   2.092  1.00 20.00      A    N  
+HETATM   28  C8  QSI A   1       2.066  -3.576   1.480  1.00 20.00      A    C  
+HETATM   29  C2' QSI A   1       4.010  -1.465   1.154  1.00 20.00      A    C  
+HETATM   30  O2' QSI A   1       5.330  -0.896   1.632  1.00 20.00      A    O  
+HETATM   31  C3' QSI A   1       3.506  -0.704   0.229  1.00 20.00      A    C  
+HETATM   32  O3' QSI A   1       4.564  -0.002  -0.467  1.00 20.00      A    O  
+HETATM   33  HN1 QSI A   1      -2.694   5.359  -1.975  1.00 20.00      A    H  
+HETATM   34  HN2 QSI A   1      -4.170   4.704  -2.266  1.00 20.00      A    H  
+HETATM   35  HA  QSI A   1      -2.789   2.994  -1.524  1.00 20.00      A    H  
+HETATM   36  HB1 QSI A   1      -2.663   1.708  -3.860  1.00 20.00      A    H  
+HETATM   37  HB2 QSI A   1      -3.598   3.093  -4.442  1.00 20.00      A    H  
+HETATM   38  HG1 QSI A   1      -4.978   2.492  -2.151  1.00 20.00      A    H  
+HETATM   39  HG2 QSI A   1      -4.430   0.872  -2.575  1.00 20.00      A    H  
+HETATM   40 HN21 QSI A   1      -7.417   1.925  -2.703  1.00 20.00      A    H  
+HETATM   41 HN22 QSI A   1      -7.849   1.915  -4.368  1.00 20.00      A    H  
+HETATM   42  HN0 QSI A   1      -0.307   3.816  -0.854  1.00 20.00      A    H  
+HETATM   43 H5'1 QSI A   1       0.530   1.170   0.627  1.00 20.00      A    H  
+HETATM   44 H5'2 QSI A   1       1.234   0.180  -0.710  1.00 20.00      A    H  
+HETATM   45  H4' QSI A   1       3.116   1.139   1.404  1.00 20.00      A    H  
+HETATM   46  H1' QSI A   1       3.464  -1.241   3.259  1.00 20.00      A    H  
+HETATM   47  H2  QSI A   1       1.277  -2.718   6.829  1.00 20.00      A    H  
+HETATM   48 HN61 QSI A   1      -0.645  -6.190   5.522  1.00 20.00      A    H  
+HETATM   49 HN62 QSI A   1      -0.416  -6.606   3.847  1.00 20.00      A    H  
+HETATM   50  H8  QSI A   1       2.360  -3.545   0.416  1.00 20.00      A    H  
+HETATM   51  H2' QSI A   1       4.142  -2.481   0.776  1.00 20.00      A    H  
+HETATM   52  HO2 QSI A   1       6.069  -1.432   1.273  1.00 20.00      A    H  
+HETATM   53  H3' QSI A   1       2.917  -1.302  -0.471  1.00 20.00      A    H  
+HETATM   54  HO3 QSI A   1       4.895  -0.555  -1.202  1.00 20.00      A    H  
+CONECT    1    2   33   34
+CONECT    2    1    3    8   35
+CONECT    3    2    4   36   37
+CONECT    4    3    5   38   39
+CONECT    5    4    7
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5   40   41
+CONECT    8    2   10
+CONECT    8    9
+CONECT    8    9
+CONECT    9    8
+CONECT    9    8
+CONECT   10    8   11   42
+CONECT   11   10   14
+CONECT   11   12   13
+CONECT   11   12   13
+CONECT   12   11
+CONECT   12   11
+CONECT   13   11
+CONECT   13   11
+CONECT   14   11   15
+CONECT   15   14   16   43   44
+CONECT   16   15   17   31   45
+CONECT   17   16   18
+CONECT   18   17   19   29   46
+CONECT   19   18
+CONECT   19   20   28
+CONECT   20   21
+CONECT   20   19
+CONECT   20   26
+CONECT   20   26
+CONECT   21   20
+CONECT   21   22
+CONECT   21   22
+CONECT   22   23   47
+CONECT   22   21
+CONECT   22   21
+CONECT   23   22
+CONECT   23   24
+CONECT   23   24
+CONECT   24   25   26
+CONECT   24   23
+CONECT   24   23
+CONECT   25   24   48   49
+CONECT   26   24
+CONECT   26   27
+CONECT   26   20
+CONECT   26   20
+CONECT   27   26   28
+CONECT   28   50
+CONECT   28   19   27
+CONECT   29   18   30   31   51
+CONECT   30   29   52
+CONECT   31   16   29   32   53
+CONECT   32   31   54
+CONECT   33    1
+CONECT   34    1
+CONECT   35    2
+CONECT   36    3
+CONECT   37    3
+CONECT   38    4
+CONECT   39    4
+CONECT   40    7
+CONECT   41    7
+CONECT   42   10
+CONECT   43   15
+CONECT   44   15
+CONECT   45   16
+CONECT   46   18
+CONECT   47   22
+CONECT   48   25
+CONECT   49   25
+CONECT   50   28
+CONECT   51   29
+CONECT   52   30
+CONECT   53   31
+CONECT   54   32
+END

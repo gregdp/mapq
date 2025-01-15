@@ -5,26 +5,26 @@ import os
 import shutil
 import sys
 
-print sys.argv[1]
+print ( sys.argv[1] )
 fromPath = sys.argv[1]
 
 files = ["mapq.py", "qscores.py", "mmcif.py", "gridm.py", "mapq_cmd.py"]
 
 for f in files :
-    print f,
+    print ( " + " + f)
 
     try :
         shutil.copy2 ( fromPath + "/" + f, "./" + f )
-        print "  - ok"
+        print ( "  - ok" )
     except :
-        print "?"
+        print ("?")
 
 
 for f in os.listdir ( fromPath + "/_param" ) :
 
     fname, fext = os.path.splitext (f)
     if fext == ".pdb" :
-        print f,
+        #print (f),
         shutil.copy2 ( fromPath + "/_param/" + f, "./_param/" + f )
 
-print ""
+print ("")

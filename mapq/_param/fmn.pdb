@@ -1,0 +1,138 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:33:25 2023
+REMARK  99
+REMARK  99   Ligand name: 1-deoxy-1-(7,8-dimethyl-2,4-dioxo-3,4-dihydrobenzo[g]pteridin-10(2H)-yl)-5-O-phosphono-D-ribitol
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: Cc1cc2N=C3C(=O)NC(=O)N=C3N(C[C@H](O)[C@H](O)[C@H](O)CO[P](O)(O)=O)c2cc1C
+FORMUL   1  FMN    C17 H19 N4 O9 P  (-2)
+HETATM    1  N1  FMN A   1      -0.590   2.344   2.555  1.00 20.00      A    N  
+HETATM    2  C2  FMN A   1      -1.079   3.928   2.777  1.00 20.00      A    C  
+HETATM    3  O2  FMN A   1      -2.460   4.230   4.156  1.00 20.00      A    O  
+HETATM    4  N3  FMN A   1      -1.564   4.303   2.233  1.00 20.00      A    N  
+HETATM    5  C4  FMN A   1      -2.226   3.665   1.268  1.00 20.00      A    C  
+HETATM    6  O4  FMN A   1      -3.282   3.887   1.026  1.00 20.00      A    O  
+HETATM    7  C4A FMN A   1      -1.890   2.855   0.782  1.00 20.00      A    C  
+HETATM    8  N5  FMN A   1      -1.579   2.734   1.391  1.00 20.00      A    N  
+HETATM    9  C5A FMN A   1      -0.618   0.449   0.034  1.00 20.00      A    C  
+HETATM   10  C6  FMN A   1      -1.770   2.760   0.220  1.00 20.00      A    C  
+HETATM   11  C7  FMN A   1      -3.075   2.838  -0.182  1.00 20.00      A    C  
+HETATM   12  C7M FMN A   1      -3.603   4.441  -0.207  1.00 20.00      A    C  
+HETATM   13  C8  FMN A   1      -3.625   1.823  -0.567  1.00 20.00      A    C  
+HETATM   14  C8M FMN A   1      -4.951   1.530   1.014  1.00 20.00      A    C  
+HETATM   15  C9  FMN A   1      -2.709   0.285  -0.668  1.00 20.00      A    C  
+HETATM   16  C9A FMN A   1      -0.800   0.145  -0.098  1.00 20.00      A    C  
+HETATM   17  N10 FMN A   1      -0.989   0.001   0.200  1.00 20.00      A    N  
+HETATM   18  C10 FMN A   1      -0.788   1.184   1.390  1.00 20.00      A    C  
+HETATM   19  C1' FMN A   1       0.319  -0.559  -0.071  1.00 20.00      A    C  
+HETATM   20  C2' FMN A   1       1.248  -1.846   0.502  1.00 20.00      A    C  
+HETATM   21  O2' FMN A   1       1.117  -2.145   1.372  1.00 20.00      A    O  
+HETATM   22  C3' FMN A   1       1.555  -2.989  -0.730  1.00 20.00      A    C  
+HETATM   23  O3' FMN A   1       0.685  -4.078  -0.655  1.00 20.00      A    O  
+HETATM   24  C4' FMN A   1       3.298  -3.445  -0.567  1.00 20.00      A    C  
+HETATM   25  O4' FMN A   1       4.012  -2.195   0.181  1.00 20.00      A    O  
+HETATM   26  C5' FMN A   1       4.011  -3.753  -1.896  1.00 20.00      A    C  
+HETATM   27  O5' FMN A   1       4.834  -4.908  -1.715  1.00 20.00      A    O  
+HETATM   28  P   FMN A   1       6.576  -5.139  -2.773  1.00 20.00      A    P  
+HETATM   29  O1P FMN A   1       7.286  -4.068  -2.708  1.00 20.00      A    O  
+HETATM   30  O2P FMN A   1       6.334  -5.381  -3.981  1.00 20.00      A    O-1
+HETATM   31  O3P FMN A   1       7.343  -6.288  -2.163  1.00 20.00      A    O-1
+HETATM   32  HN3 FMN A   1      -1.643   5.846   2.000  1.00 20.00      A    H  
+HETATM   33  H6  FMN A   1      -0.635   3.670  -0.662  1.00 20.00      A    H  
+HETATM   34 HM71 FMN A   1      -3.293   4.903   0.622  1.00 20.00      A    H  
+HETATM   35 HM72 FMN A   1      -3.175   4.953  -1.111  1.00 20.00      A    H  
+HETATM   36 HM73 FMN A   1      -4.783   4.478  -0.250  1.00 20.00      A    H  
+HETATM   37 HM81 FMN A   1      -5.584   0.823   0.784  1.00 20.00      A    H  
+HETATM   38 HM82 FMN A   1      -4.346   1.215   1.994  1.00 20.00      A    H  
+HETATM   39 HM83 FMN A   1      -5.415   2.325   1.172  1.00 20.00      A    H  
+HETATM   40  H9  FMN A   1      -3.527  -0.214  -0.676  1.00 20.00      A    H  
+HETATM   41 H1'1 FMN A   1       0.179  -0.695  -1.259  1.00 20.00      A    H  
+HETATM   42 H1'2 FMN A   1       1.110   0.733  -0.046  1.00 20.00      A    H  
+HETATM   43  H2' FMN A   1       1.877  -1.551   0.549  1.00 20.00      A    H  
+HETATM   44 HO2' FMN A   1       0.231  -2.565   1.519  1.00 20.00      A    H  
+HETATM   45  H3' FMN A   1       1.384  -2.441  -1.852  1.00 20.00      A    H  
+HETATM   46 HO3' FMN A   1       0.908  -4.553  -1.048  1.00 20.00      A    H  
+HETATM   47  H4' FMN A   1       3.380  -4.398   0.133  1.00 20.00      A    H  
+HETATM   48 HO4' FMN A   1       4.266  -2.412   0.887  1.00 20.00      A    H  
+HETATM   49 H5'1 FMN A   1       4.724  -2.774  -2.245  1.00 20.00      A    H  
+HETATM   50 H5'2 FMN A   1       3.326  -3.951  -2.627  1.00 20.00      A    H  
+CONECT    1    2
+CONECT    1   18
+CONECT    1   18
+CONECT    2    1    4
+CONECT    2    3
+CONECT    2    3
+CONECT    3    2
+CONECT    3    2
+CONECT    4    2    5   32
+CONECT    5    4    7
+CONECT    5    6
+CONECT    5    6
+CONECT    6    5
+CONECT    6    5
+CONECT    7    5   18
+CONECT    7    8
+CONECT    7    8
+CONECT    8    9
+CONECT    8    7
+CONECT    8    7
+CONECT    9    8   16
+CONECT    9   10
+CONECT    9   10
+CONECT   10   11   33
+CONECT   10    9
+CONECT   10    9
+CONECT   11   10   12
+CONECT   11   13
+CONECT   11   13
+CONECT   12   11   34   35   36
+CONECT   13   14   15
+CONECT   13   11
+CONECT   13   11
+CONECT   14   13   37   38   39
+CONECT   15   13   40
+CONECT   15   16
+CONECT   15   16
+CONECT   16    9   17
+CONECT   16   15
+CONECT   16   15
+CONECT   17   16   18   19
+CONECT   18    7   17
+CONECT   18    1
+CONECT   18    1
+CONECT   19   17   20   41   42
+CONECT   20   19   21   22   43
+CONECT   21   20   44
+CONECT   22   20   23   24   45
+CONECT   23   22   46
+CONECT   24   22   25   26   47
+CONECT   25   24   48
+CONECT   26   24   27   49   50
+CONECT   27   26   28
+CONECT   28   27   30   31
+CONECT   28   29
+CONECT   28   29
+CONECT   29   28
+CONECT   29   28
+CONECT   30   28
+CONECT   31   28
+CONECT   32    4
+CONECT   33   10
+CONECT   34   12
+CONECT   35   12
+CONECT   36   12
+CONECT   37   14
+CONECT   38   14
+CONECT   39   14
+CONECT   40   15
+CONECT   41   19
+CONECT   42   19
+CONECT   43   20
+CONECT   44   21
+CONECT   45   22
+CONECT   46   23
+CONECT   47   24
+CONECT   48   25
+CONECT   49   26
+CONECT   50   26
+END

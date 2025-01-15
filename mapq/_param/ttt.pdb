@@ -1,0 +1,130 @@
+REMARK  99 electronic Ligand Builder and Optimisation Workbench (eLBOW)
+REMARK  99   - a module of PHENIX
+REMARK  99   - file written: Fri Oct 20 12:31:31 2023
+REMARK  99
+REMARK  99   Ligand name: 5-amino-2-methyl-N-[(1R)-1-naphthalen-1-ylethyl]benzamide
+REMARK  99   Random seed: 3628800
+REMARK  99   SMILES string: C[C@@H](NC(=O)c1cc(N)ccc1C)c2cccc3ccccc23
+FORMUL   1  TTT    C20 H20 N2 O 
+HETATM    1  C1  TTT A   1       1.078  -0.790   0.997  1.00 20.00      A    C  
+HETATM    2  C3  TTT A   1       2.597  -0.726   0.855  1.00 20.00      A    C  
+HETATM    3  C8  TTT A   1      -3.182   0.928  -0.538  1.00 20.00      A    C  
+HETATM    4  C9  TTT A   1      -2.116   1.422  -3.066  1.00 20.00      A    C  
+HETATM    5  C10 TTT A   1       3.273  -1.264   1.938  1.00 20.00      A    C  
+HETATM    6  C11 TTT A   1      -3.858   1.742  -1.416  1.00 20.00      A    C  
+HETATM    7  C12 TTT A   1      -3.324   1.994  -2.693  1.00 20.00      A    C  
+HETATM    8  C13 TTT A   1       3.301  -0.105  -0.163  1.00 20.00      A    C  
+HETATM    9  C14 TTT A   1      -3.700   0.701   0.750  1.00 20.00      A    C  
+HETATM   10  C16 TTT A   1       2.966  -2.097   3.181  1.00 20.00      A    C  
+HETATM   11  C19 TTT A   1       4.682  -0.022  -0.099  1.00 20.00      A    C  
+HETATM   12  C20 TTT A   1      -4.891   1.298   1.135  1.00 20.00      A    C  
+HETATM   13  C21 TTT A   1       5.359  -0.560   0.983  1.00 20.00      A    C  
+HETATM   14  C22 TTT A   1      -5.575   2.122   0.247  1.00 20.00      A    C  
+HETATM   15  O7  TTT A   1       0.593  -1.268   1.967  1.00 20.00      A    O  
+HETATM   16  C17 TTT A   1       4.654  -1.181   2.002  1.00 20.00      A    C  
+HETATM   17  N01 TTT A   1       5.526   0.685  -1.044  1.00 20.00      A    N  
+HETATM   18  N2  TTT A   1       0.229  -0.286  -0.065  1.00 20.00      A    N  
+HETATM   19  C6  TTT A   1      -1.162  -0.694  -0.138  1.00 20.00      A    C  
+HETATM   20  C01 TTT A   1      -1.259  -2.045  -0.846  1.00 20.00      A    C  
+HETATM   21  C5  TTT A   1      -1.958   0.348  -0.918  1.00 20.00      A    C  
+HETATM   22  C18 TTT A   1      -5.066   2.347  -1.025  1.00 20.00      A    C  
+HETATM   23  C4  TTT A   1      -1.433   0.598  -2.178  1.00 20.00      A    C  
+HETATM   43  H9  TTT A   1      -1.706   1.617  -4.049  1.00 20.00      A    H  
+HETATM   24  H12 TTT A   1      -3.856   2.636  -3.385  1.00 20.00      A    H  
+HETATM   25  H13 TTT A   1       2.772   0.316  -1.010  1.00 20.00      A    H  
+HETATM   26  H14 TTT A   1      -3.168   0.059   1.442  1.00 20.00      A    H  
+HETATM   27  H16 TTT A   1       2.812  -1.437   4.030  1.00 20.00      A    H  
+HETATM   28 H16A TTT A   1       3.800  -2.762   3.386  1.00 20.00      A    H  
+HETATM   29 H16B TTT A   1       2.068  -2.683   3.011  1.00 20.00      A    H  
+HETATM   30  H20 TTT A   1      -5.289   1.123   2.127  1.00 20.00      A    H  
+HETATM   31  H21 TTT A   1       6.439  -0.495   1.034  1.00 20.00      A    H  
+HETATM   32  H22 TTT A   1      -6.506   2.589   0.548  1.00 20.00      A    H  
+HETATM   33  H17 TTT A   1       5.184  -1.601   2.848  1.00 20.00      A    H  
+HETATM   34 HN01 TTT A   1       5.582   0.375  -1.995  1.00 20.00      A    H  
+HETATM   35 HN0A TTT A   1       6.038   1.495  -0.749  1.00 20.00      A    H  
+HETATM   36  HN2 TTT A   1       0.597   0.355  -0.739  1.00 20.00      A    H  
+HETATM   37  H6  TTT A   1      -1.564  -0.782   0.862  1.00 20.00      A    H  
+HETATM   38  H01 TTT A   1      -2.217  -2.119  -1.353  1.00 20.00      A    H  
+HETATM   39 H01A TTT A   1      -0.457  -2.131  -1.573  1.00 20.00      A    H  
+HETATM   40 H01B TTT A   1      -1.174  -2.844  -0.115  1.00 20.00      A    H  
+HETATM   41  H18 TTT A   1      -5.599   2.989  -1.716  1.00 20.00      A    H  
+HETATM   42  H4  TTT A   1      -0.489   0.151  -2.470  1.00 20.00      A    H  
+CONECT    1    2   18
+CONECT    1   15
+CONECT    1   15
+CONECT    2    1    8
+CONECT    2    5
+CONECT    2    5
+CONECT    3    9
+CONECT    3    6   21
+CONECT    3    6   21
+CONECT    4    7   24
+CONECT    4   23
+CONECT    4   23
+CONECT    5   10   16
+CONECT    5    2
+CONECT    5    2
+CONECT    6   22
+CONECT    6    3    7
+CONECT    6    3    7
+CONECT    7    4   25
+CONECT    7    6
+CONECT    7    6
+CONECT    8    2   26
+CONECT    8   11
+CONECT    8   11
+CONECT    9    3   27
+CONECT    9   12
+CONECT    9   12
+CONECT   10    5   28   29   30
+CONECT   11   13   17
+CONECT   11    8
+CONECT   11    8
+CONECT   12   14   31
+CONECT   12    9
+CONECT   12    9
+CONECT   13   11   32
+CONECT   13   16
+CONECT   13   16
+CONECT   14   12   33
+CONECT   14   22
+CONECT   14   22
+CONECT   15    1
+CONECT   15    1
+CONECT   16    5   34
+CONECT   16   13
+CONECT   16   13
+CONECT   17   11   35   36
+CONECT   18    1   19   37
+CONECT   19   18   20   21   38
+CONECT   20   19   39   40   41
+CONECT   21   19   23
+CONECT   21    3
+CONECT   21    3
+CONECT   22    6   42
+CONECT   22   14
+CONECT   22   14
+CONECT   23   21   43
+CONECT   23    4
+CONECT   23    4
+CONECT   25    7
+CONECT   26    8
+CONECT   27    9
+CONECT   28   10
+CONECT   29   10
+CONECT   30   10
+CONECT   31   12
+CONECT   32   13
+CONECT   33   14
+CONECT   34   16
+CONECT   35   17
+CONECT   36   17
+CONECT   37   18
+CONECT   38   19
+CONECT   39   20
+CONECT   40   20
+CONECT   41   20
+CONECT   42   22
+CONECT   43   23
+CONECT   24    4
+END
