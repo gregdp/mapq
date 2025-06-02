@@ -10,11 +10,9 @@ A plugin for <a href="https://www.cgl.ucsf.edu/chimera/">UCSF Chimera</a> to cal
 Practical Notes:
 * Q-scores are now reported in EMDB validation reports, they are calculated using this plugin.
 * The default sigma is now 0.4 to match Q-scores calculated in the EMDB.
-* Q-scores can be compared to Q_peak, Q_low_95%, and Q_high_95%, which compares it to other maps and model in the EMDB at similar reported resolution. See the recent biorXiv for an explanation.
+* Q-scores can be compared to Q_peak, Q_low_95%, and Q_high_95%, which are determined from other maps and models in the EMDB at similar reported resolution. See the recent <a href="https://www.biorxiv.org/content/10.1101/2025.01.14.633006v1" target="_blank">BioRXiv</a> for an explanation.
 * If using Google Drive: when calculating Q-scores with multiple processes, the process fails if the map and model files are on a Google Drive path. 
 * A video that shows how to genreate a color key for displaying Q-scores on a model ribbon: https://www.youtube.com/watch?v=lxy3reAXLKI
-
-https://www.biorxiv.org/content/10.1101/2025.01.14.633006v1
   
 More details:
 * (2025) Q-score as a reliability measure for protein, nucleic acid, and small molecule atomic coordinate models derived from 3DEM density maps  <a href="https://www.biorxiv.org/content/10.1101/2025.01.14.633006v1" target="_blank">BioRXiv</a>
