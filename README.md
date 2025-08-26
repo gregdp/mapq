@@ -4,7 +4,7 @@ A plugin for <a href="https://www.cgl.ucsf.edu/chimera/">UCSF Chimera</a> to cal
 
 
 * <a href="https://github.com/gregdp/mapq/wiki/MapQ-Install">Install the latest version</a>
-* [Tutorials](https://github.com/gregdp/mapq/tree/master/tutorials)
+* [Documentation and Tutorial](https://github.com/gregdp/mapq/tree/master/documentation)
 * [Report an issue or ask a question](https://github.com/gregdp/mapq/issues)
 
 Practical Notes:
